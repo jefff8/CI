@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Forms</title>
+        <!-- Bootstrap -->
+        <link href="<?php echo base_url()."style/bootstrap/css/bootstrap.min.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/bootstrap/css/bootstrap-responsive.min.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/assets/styles.css"?>" rel="stylesheet" media="screen">
+        <script src="<?php echo base_url()."style/vendors/modernizr-2.6.2-respond-1.1.0.min.js"?>"></script>
+    </head>
+    
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="<?php echo site_url('pj_all')?>">江门市建设工程施工质量管理系统</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel <i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">Profile</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="<?php echo site_url('login')?>">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">项目管理</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">综合查询</a>
+                            </li>
+                            <li class="">
+                                <a href="#" role="" class="" data-toggle="">任务通知</a>
+                            </li>
+                            <li class="">
+                                <a href="#" role="button" class="" data-toggle="">系统管理</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li class="active">
+                            <a href="index.html"><i class="icon-chevron-right"></i>项目新建</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/span-->
+                <div class="span9" id="content">
+
+                     <!-- wizard -->
+                    <div class="row-fluid section">
+                         <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">项目信息</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <div id="rootwizard">
+                                        <div class="navbar">
+                                          <div class="navbar-inner">
+                                            <div class="container">
+                                        <ul>
+                                            <li><a href="#tab1" data-toggle="tab">基本信息</a></li>
+                                        </ul>
+                                         </div>
+                                          </div>
+                                        </div>
+                                       
+                                        <div class="tab-content">
+                                            <div class="tab-pane" id="tab1">
+                                                <form action="<?php echo site_url('pj_all/add')?>" method="POST" class="form-horizontal" >
+                                                  <fieldset>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">项目名称:</label>
+                                                      <div class="controls">
+                                                        <input name="pj_name" class="input-xlarge focused" id="focusedInput" type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">地区:</label>
+                                                      <div class="controls">
+                                                        <input name="area" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group" style="display: none;">
+                                                      <label  class="control-label" for="focusedInput">时间戳:</label>
+                                                      <div class="controls">
+                                                        <input name="timestamp" id="timestamp" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                   <!--  <button id="save" class="btn btn-default" style="margin-left:410px" type="submit">提交</button> -->
+                                                    <div class="form-actions">
+                                                      <button id="save" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                      <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                    </div>
+                                                  </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+	            <!-- /wizard -->
+                </div>
+            </div>
+        </div>
+        <!--/.fluid-container-->
+        <link href="<?echo base_url()."style/vendors/datepicker.css"?>" rel="stylesheet" media="screen">
+        <link href="<?echo base_url()."style/vendors/uniform.default.css"?>" rel="stylesheet" media="screen">
+        <link href="<?echo base_url()."style/vendors/chosen.min.css"?>" rel="stylesheet" media="screen">
+
+        <link href="<?echo base_url()."style/vendors/wysiwyg/bootstrap-wysihtml5.css"?>" rel="stylesheet" media="screen">
+
+        <script src="<?php echo base_url()."style/vendors/jquery-1.9.1.js"?>"></script>
+        <script src="<?php echo base_url()."style/bootstrap/js/bootstrap.min.js"?>"></script>
+        <script src="<?php echo base_url()."style/vendors/jquery.uniform.min.js"?>"></script>
+        <script src="<?php echo base_url()."style/vendors/chosen.jquery.min.js"?>"></script>
+        <script src="<?php echo base_url()."style/vendors/bootstrap-datepicker.js"?>"></script>
+
+        <script src="<?php echo base_url()."style/vendors/wysiwyg/wysihtml5-0.3.0.js"?>"></script>
+        <script src="<?php echo base_url()."style/vendors/wysiwyg/bootstrap-wysihtml5.js"?>"></script>
+
+        <script src="<?php echo base_url()."style/vendors/wizard/jquery.bootstrap.wizard.min.js"?>"></script>
+
+    	<script type="text/javascript" src="<?php echo base_url()."style/vendors/jquery-validation/dist/jquery.validate.min.js"?>"></script>
+    	<script src="<?php echo base_url()."style/assets/form-validation.js"?>"></script>
+            
+    	<script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
+        <script>
+
+        	jQuery(document).ready(function() {   
+        	   FormValidation.init();
+        	});
+    	
+
+            $(function() {
+                $(".datepicker").datepicker();
+                $(".uniform_on").uniform();
+                $(".chzn-select").chosen();
+                $('.textarea').wysihtml5();
+
+                $('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+                    var $total = navigation.find('li').length;
+                    var $current = index+1;
+                    var $percent = ($current/$total) * 100;
+                    $('#rootwizard').find('.bar').css({width:$percent+'%'});
+                    // If it's the last tab then hide the last button and show the finish instead
+                    if($current >= $total) {
+                        $('#rootwizard').find('.pager .next').hide();
+                        $('#rootwizard').find('.pager .finish').show();
+                        $('#rootwizard').find('.pager .finish').removeClass('disabled');
+                    } else {
+                        $('#rootwizard').find('.pager .next').show();
+                        $('#rootwizard').find('.pager .finish').hide();
+                    }
+                }});
+                $('#rootwizard .finish').click(function() {
+                    alert('Finished!, Starting over!');
+                    $('#rootwizard').find("a[href*='tab1']").trigger('click');
+                });
+            });
+
+            //获取当前时间戳
+            var timestamp = new Date().getTime();
+            document.getElementById('timestamp').value = timestamp;
+        </script>
+    </body>
+
+</html>

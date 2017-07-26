@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>江门市建设工程施工质量管理系统</title>
+    <!-- Bootstrap -->
+    <link href="<?php echo base_url()."style/bootstrap/css/bootstrap.min.css"?>" rel="stylesheet" media="screen">
+    <link href="<?php echo base_url()."style/bootstrap/css/bootstrap-responsive.min.css"?>" rel="stylesheet" media="screen">
+    <link href="<?php echo base_url()."style/assets/styles.css"?>" rel="stylesheet" media="screen">
+     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="<?php echo base_url()."style/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"?>"></script>
+  </head>
+  <body id="login">
+    <div class="container">
+      <form action="<?php echo site_url('login/verify')?>" method="post" class="form-signin">
+        用户名：<input name="username" type="text" class="input-block-level" placeholder="用户名" value="<?php echo set_value('username')?>"  >
+        <?php echo form_error('username','<span style="color:red;">','</span><br/>')?>
+        密码：<input name="password" type="password" class="input-block-level" placeholder="密码">
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me">记住账号
+        </label>
+        <button class="btn btn-large btn-primary" type="submit" >登陆</button>
+      </form>
+    </div> <!-- /container -->
+    <script src="<?php echo base_url(). "style/vendors/jquery-1.9.1.min.js"?>"></script>
+    <script src="<?php echo baseurl()."style/bootstrap/js/bootstrap.min.js"?>"></script>
+    <script type="text/javascript">
+				
+    </script>
+  </body>
+</html>
