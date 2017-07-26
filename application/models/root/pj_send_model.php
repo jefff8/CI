@@ -9,5 +9,21 @@ class Pj_send_model extends CI_Model{
 		$data = $this->db->get_where('材料送检',array('工程时间戳'=>$pj_timestamp))->result_array();
 		return $data;
 	}
+
+	/**
+	 * 送检添加
+	 */
+	public function add($data){
+		$this->db->insert('材料送检',$data);
+	}
+
+	/**
+	 * 送检详情
+	 */
+	public function detail($send_id){
+		$data = $this->db->get_where('材料送检',array('id'=>$send_id))->result_array();
+		return $data;
+	}
+
 }
 ?>

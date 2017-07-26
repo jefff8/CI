@@ -11,7 +11,6 @@
         <link href="<?php echo base_url()."style/assets/DT_bootstrap.css"?>" rel="stylesheet" media="screen">
         <script src="<?php echo base_url()."style/vendors/modernizr-2.6.2-respond-1.1.0.min.js"?>"></script>
     </head>
-    
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
@@ -78,7 +77,6 @@
                         </li>
                     </ul>
                 </div>
-                
                 <!--/span-->
                 <div class="span9" id="content">
                     <div class="row-fluid">
@@ -103,7 +101,7 @@
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
-                                         <a href="<?php echo site_url('pj_send/add/'.$pj_timestamp) ?>"><button class="btn btn-success">新建<i class="icon-plus icon-white"></i></button></a>
+                                         <a href="<?php echo site_url('pj_send/add_page/'.$pj_timestamp.'/'.$send_data[0]['工程名称']) ?>"><button class="btn btn-success">新建<i class="icon-plus icon-white"></i></button></a>
                                       </div>
                                       <div class="btn-group pull-right">
                                          <button data-toggle="dropdown" class="btn dropdown-toggle">工具<span class="caret"></span></button>
@@ -134,14 +132,14 @@
                                             <?php  foreach($send_data as $v): ?>
                                                 <tr class="">
                                                     <td><?php echo $v['id'] ?></td>
-                                                    <td><a href="<?php echo site_url('pj_send/add/'. $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><a href="<?php echo site_url('pj_send/check/'. $v['id'] . '/' .$v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
                                                     <td><?php echo $v['取样人'] ?></td>
                                                     <td><?php echo $v['进场日期'] ?></td>
                                                     <td><?php echo $v['取样日期'] ?></td>
-                                                    <td><a href="" type="button" class="btn btn-default">删除</a></td>
+                                                    <td><a href="" type="button" class="btn btn-default">提交</a></td>
                                                 </tr>
                                             <?php  endforeach ?>
                                         </tbody>
@@ -165,10 +163,7 @@
         <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
         <script src="<?php echo base_url()."style/assets/DT_bootstrap.js"?>"></script>
         <script>
-        $(function() {
-            // Easy pie charts
-            $('.chart').easyPieChart({animate: 1000});
-        });
+    
         </script>
     </body>
 
