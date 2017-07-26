@@ -2,7 +2,7 @@
 <html class="no-js">
     
     <head>
-        <title>材料见证送检</title>
+        <title>实体质量自检</title>
         <!-- Bootstrap -->
         <link href="<?php echo base_url()."style/bootstrap/css/bootstrap.min.css"?>" rel="stylesheet" media="screen">
         <link href="<?php echo base_url()."style/bootstr/css/bootstrap-responsive.min.css"?>" rel="stylesheet" media="screen">
@@ -55,8 +55,8 @@
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li class="active">
-                            <a href="<?php echo site_url('pj_send/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
+                        <li>
+                            <a href="<?php echo site_url('pj_send/index/'.$entity_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
                         </li>
                         <li>
                             <a href="entity_nor.html"><i class="icon-chevron-right"></i>第三方实体检测 </a>
@@ -64,8 +64,8 @@
                         <li>
                             <a href="material_self.html"><i class="icon-chevron-right"></i>材料自检</a>
                         </li>
-                        <li>
-                            <a href="<?php echo site_url('entity_self/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
+                        <li class="active">
+                            <a href="<?php echo site_url('entity_self/index/'.$entity_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
                         </li>
                         <li>
                             <a href="material_con.html"><i class="icon-chevron-right"></i>材料监督抽检</a>
@@ -85,10 +85,9 @@
                     	<div class="navbar">
                         	<div class="nav nav-tabs">
                                 <ul class="nav nav-tabs">
-                                  <li role="presentation" class="active"><a href="#">取样</a></li>
-                                  <li role="presentation"><a href="#">见证</a></li>
-                                  <li role="presentation"><a href="#">收样</a></li>
-                                  <li role="presentation"><a href="#">结果</a></li>
+                                  <li role="presentation" class="active"><a href="#">实体抽检</a></li>
+                                  <li role="presentation"><a href="#">监理见证</a></li>
+                                  <li role="presentation"><a href="#">自检结果</a></li>
                                 </ul>
                         	</div>
                     	</div>
@@ -103,7 +102,7 @@
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
-                                         <a href="<?php echo site_url('pj_send/add/'.$pj_timestamp) ?>"><button class="btn btn-success">新建<i class="icon-plus icon-white"></i></button></a>
+                                         <a href=""><button class="btn btn-success">新建<i class="icon-plus icon-white"></i></button></a>
                                       </div>
                                       <div class="btn-group pull-right">
                                          <button data-toggle="dropdown" class="btn dropdown-toggle">工具<span class="caret"></span></button>
@@ -131,15 +130,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php  foreach($send_data as $v): ?>
+                                            <?php  foreach($entity_data as $v): ?>
                                                 <tr class="">
                                                     <td><?php echo $v['id'] ?></td>
-                                                    <td><a href="<?php echo site_url('pj_send/add/'. $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><?php echo $v['自检自测类型'] ?></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
                                                     <td><?php echo $v['取样人'] ?></td>
-                                                    <td><?php echo $v['进场日期'] ?></td>
+                                                    <td><?php echo $v['进厂日期'] ?></td>
                                                     <td><?php echo $v['取样日期'] ?></td>
                                                     <td><a href="" type="button" class="btn btn-default">删除</a></td>
                                                 </tr>
