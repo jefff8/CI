@@ -14,9 +14,9 @@ class Pj_query extends CI_Controller{
 	 */
 	public function query(){
 		$data = $this->input->post('type_data');
-		$this->load->model('root/pj_query','query');
-		$data['total'] = $this->query->query($data);
-		p($data['total']);
+		// $this->load->model('root/pj_query','check');
+		// $data['total'] = $this->check->query($data);
+		var_dump($data);
 	}
 }
 ?>
