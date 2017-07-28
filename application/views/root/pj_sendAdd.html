@@ -112,24 +112,102 @@
                                        
                                         <div class="tab-content">
                                             <div class="tab-pane" id="tab1">
-                                                <form action="<?php echo site_url('pj_all/add')?>" method="POST" class="form-horizontal" >
+                                                <form action="<?php echo site_url('pj_send/add')?>" method="POST" class="form-horizontal" >
                                                   <fieldset>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">项目名称:</label>
-                                                      <div class="controls">
-                                                        <input name="pj_name" class="input-xlarge focused" id="focusedInput" type="text" >
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">地区:</label>
-                                                      <div class="controls">
-                                                        <input name="area" class="input-xlarge focused" id="focusedInput"  type="text" >
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group" style="display: none;">
+                                                     <div class="control-group" style="display: none;">
                                                       <label  class="control-label" for="focusedInput">时间戳:</label>
                                                       <div class="controls">
                                                         <input name="timestamp" id="timestamp" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group" style="display: none;">
+                                                      <label  class="control-label" for="focusedInput">工程时间戳:</label>
+                                                      <div class="controls">
+                                                        <input name="pj_timestamp" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $pj_timestamp ?> ">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group" style="display: none;">
+                                                      <label  class="control-label" for="focusedInput">工程名称:</label>
+                                                      <div class="controls">
+                                                        <input name="pj_name" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $pj_name ?>">
+                                                      </div>
+                                                    </div>
+                                                     <div class="control-group" style="display: none;">
+                                                      <label  class="control-label" for="focusedInput">工程单状态:</label>
+                                                      <div class="controls">
+                                                        <input name="pj_status" class="input-xlarge focused" id="focusedInput" type="text" value="新增">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">取样类型:</label>
+                                                      <div class="controls">
+                                                        <input name="get_type" class="input-xlarge focused" id="focusedInput" type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">规格:</label>
+                                                      <div class="controls">
+                                                        <input name="specification" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">数量:</label>
+                                                      <div class="controls">
+                                                        <input name="num" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">生产厂家:</label>
+                                                      <div class="controls">
+                                                        <input name="manufacturers" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">取样人:</label>
+                                                      <div class="controls">
+                                                        <input name="get_guy" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                     <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">进场日期:</label>
+                                                      <div class="controls">
+                                                        <input name="enter_date" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                     <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">取样日期:</label>
+                                                      <div class="controls">
+                                                        <input name="get_date" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">合格证编号:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">使用部位:</label>
+                                                      <div class="controls">
+                                                        <input name="use_part" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">经销商单位:</label>
+                                                      <div class="controls">
+                                                        <input name="agency" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">备注:</label>
+                                                      <div class="controls">
+                                                        <input name="remark" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测单位:</label>
+                                                      <div class="controls">
+                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" >
                                                       </div>
                                                     </div>
                                                     <div class="form-actions">
