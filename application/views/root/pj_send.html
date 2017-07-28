@@ -129,7 +129,7 @@
                                         <tbody>
                                             <?php  foreach($send_data as $v): ?>
                                                 <tr class="">
-                                                    <td><a href="<?php echo site_url('pj_send/detail/'. $v['时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
@@ -183,7 +183,7 @@
                                         <tbody>
                                             <?php  foreach($witness_data as $v): ?>
                                                 <tr class="">
-                                                    <td><a href="<?php echo site_url('pj_send/detail/'. $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
@@ -238,7 +238,7 @@
                                         <tbody>
                                             <?php  foreach($samp_data as $v): ?>
                                                 <tr class="">
-                                                    <td><a href="<?php echo site_url('pj_send/detail/'. $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
@@ -293,7 +293,7 @@
                                         <tbody>
                                             <?php  foreach($result_data as $v): ?>
                                                 <tr class="">
-                                                    <td><a href="<?php echo site_url('pj_send/detail/'. $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>

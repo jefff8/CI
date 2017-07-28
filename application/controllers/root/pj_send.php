@@ -16,16 +16,8 @@ class Pj_send extends CI_Controller{
 		$this->load->view('root/pj_send.html',$data);
 	}
 
-	/**
 
-	 * 送检详情
-	 */
-	public function detail(){
-		$pj_timestamp = $this->uri->segment(3);
-		$data['pj_timestamp'] = $pj_timestamp;
-		$this->load->model('root/pj_detail_model','pj_send');
-		$data['send_data'] = $this->pj_send->detail($pj_timestamp);
-
+     /**
 	 /* 送检添加页面
 	 */
 	public function add_page(){
