@@ -11,7 +11,6 @@
         <link href="<?php echo base_url()."style/assets/DT_bootstrap.css"?>" rel="stylesheet" media="screen">
         <script src="<?php echo base_url()."style/vendors/modernizr-2.6.2-respond-1.1.0.min.js"?>"></script>
     </head>
-    
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
@@ -74,11 +73,10 @@
                             <a href="entity_con.html"><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
                         </li>
                         <li>
-                            <a href="pro_all.html"><i class="icon-chevron-right"></i>综合查询</a>
+                            <a href="<?php echo site_url('pj_query/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
                         </li>
                     </ul>
                 </div>
-                
                 <!--/span-->
                 <div class="span9" id="content">
                     <div class="row-fluid">
@@ -247,7 +245,7 @@
                                                     <td><?php echo $v['取样人'] ?></td>
                                                     <td><?php echo $v['进场日期'] ?></td>
                                                     <td><?php echo $v['取样日期'] ?></td>
-                                                    <td><a href="" type="button" class="btn btn-default">删除</a></td>
+                                                    <td><button href="" type="button" class="btn btn-default">提交</button>&nbsp;&nbsp;&nbsp;<button href="" type="button" class="btn btn-default">删除</button></td>
                                                 </tr>
                                             <?php  endforeach ?>
                                         </tbody>
@@ -329,10 +327,7 @@
         <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
         <script src="<?php echo base_url()."style/assets/DT_bootstrap.js"?>"></script>
         <script>
-        $(function() {
-            // Easy pie charts
-            $('.chart').easyPieChart({animate: 1000});
-        });
+    
         </script>
     </body>
 
