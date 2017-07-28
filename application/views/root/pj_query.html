@@ -119,63 +119,73 @@
         <script src="<?php echo base_url()."style/assets/DT_bootstrap.js"?>"></script>
         <script src="<?php echo base_url()."style/Echart/echarts.js"?>"></script>
         <script type="text/javascript">
-                $("#query").click(function(){
-                    var type_data = document.getElementById("type_data").value;
-                    var controller = "<?php echo site_url('pj_query/query') ?>";
-                    $.ajax({
-                        data:{
-                            type_data:type_data
-                        },
-                        type:"post",
-                        url:controller,
-                        success:function(){
-                            alert("success");
-                            // location.href="<?php echo site_url('pj_query/query') ?>"
-                        }
-                    });
+	        function showpic(pass,fail){
+	             //基于准备好的dom，初始化echarts实例
+//	            var pass = 9;
+//	            var fail = 5;
+	            var pieChart = echarts.init(document.getElementById('pieChart'));
+	            option = {
+	                title : {
+	                    text: '',
+	                    subtext: '',
+	                    x:'center'
+	                },
+	                tooltip : {
+	                    trigger: 'item',
+	                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+	                },
+	                 color:['#0CAF2D','#FF0000'],
+	                legend: {
+	                    orient: 'vertical',
+	                    left: 'left',
+	                    data: [
+	                    {value:pass, name:'合格数'+pass+'项'},
+	                    {value:fail, name:'不合格数'+fail+'项'},],
+	                },
+	                series : [
+	                    {
+	                        name: '访问来源',
+	                        type: 'pie',
+	                        radius : '55%',
+	                        center: ['50%', '60%'],
+	                        data:[
+	                            {value:pass, name:'合格数'+pass+'项'},
+	                            {value:fail, name:'不合格数'+fail+'项'},
+	                        ],
+	                        itemStyle: {
+	                            emphasis: {
+	                                shadowBlur: 10,
+	                                shadowOffsetX: 0,
+	                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+	                            }
+	                        }
+	                    }
+	                ]
+	            }; 
+	            // 使用刚指定的配置项和数据显示图表。
+	            pieChart.setOption(option);         
+	       }
+            //异步
+            $("#query").click(function show(){
+                var type_data = document.getElementById("type_data").value;
+//              alert(type_data);
+                var controller = "<?php echo site_url('pj_query/query') ?>";
+                $.ajax({
+                    data:{
+                        type_data:type_data
+                    },
+                    aysnc:true,
+                    type:"post",
+                    url:controller,
+                    dataType:'json',
+                    success:function(data){
+                    	var pass = data['total']['pass'][0];
+                    	var fail = data['total']['fail'][0];
+//                      	alert(pass_num+'/'+fail_num);
+						showpic(pass,fail);
+                    }
                 });
-                 //基于准备好的dom，初始化echarts实例
-                var pieChart = echarts.init(document.getElementById('pieChart'));
-                option = {
-                    title : {
-                        text: '',
-                        subtext: '',
-                        x:'center'
-                    },
-                    tooltip : {
-                        trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
-                    },
-                     color:['#0CAF2D','#FF0000'],
-                    legend: {
-                        orient: 'vertical',
-                        left: 'left',
-                        data: [
-                        {value:2, name:'合格数2项'},
-                        {value:3, name:'不合格数3项'},],
-                    },
-                    series : [
-                        {
-                            name: '访问来源',
-                            type: 'pie',
-                            radius : '55%',
-                            center: ['50%', '60%'],
-                            data:[
-                                {value:2, name:'合格数2项'},
-                                {value:3, name:'不合格数3项'},
-                            ],
-                            itemStyle: {
-                                emphasis: {
-                                    shadowBlur: 10,
-                                    shadowOffsetX: 0,
-                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                }
-                            }
-                        }
-                    ]
-                };  
-                // 使用刚指定的配置项和数据显示图表。
-                pieChart.setOption(option);         
+            });
         </script>
     </body>
 
