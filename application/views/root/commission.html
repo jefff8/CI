@@ -2,7 +2,7 @@
 <html class="no-js">
     
     <head>
-        <title>材料自检</title>
+        <title>第三方实体检测</title>
         <!-- Bootstrap -->
         <link href="<?php echo base_url()."style/bootstrap/css/bootstrap.min.css"?>" rel="stylesheet" media="screen">
         <link href="<?php echo base_url()."style/bootstr/css/bootstrap-responsive.min.css"?>" rel="stylesheet" media="screen">
@@ -56,22 +56,22 @@
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                         <li>
-                            <a href="<?php echo site_url('pj_send/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
+                            <a href="<?php echo site_url('pj_send/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
+                        </li>
+                        <li  class="active">
+                            <a href="<?php echo site_url('commission/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('commission/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
-                        </li>
-                        <li class="active">
-                            <a href="<?php echo site_url('material_self/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
+                            <a href="<?php echo site_url('material_self/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('entity_self/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
+                            <a href="<?php echo site_url('entity_self/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
                         </li>
                         <li>
                             <a href="material_con.html"><i class="icon-chevron-right"></i>材料监督抽检</a>
                         </li>
                         <li>
-                            <a href="material_con.html"><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
+                            <a href="entity_con.html"><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
                         </li>
                         <li>
                             <a href="pro_all.html"><i class="icon-chevron-right"></i>综合查询</a>
@@ -117,7 +117,7 @@
 		                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example1">
 		                                        <thead>
 		                                            <tr>
-		                                                <th>取样类型</th>
+		                                                <th>检测类型</th>
 		                                                <th>规格</th>
 		                                                <th>数量</th>
 		                                                <th>生产厂家</th>
@@ -128,14 +128,14 @@
 		                                            </tr>
 		                                        </thead>
 		                                        <tbody>
-		                                            <?php  foreach($material_data as $v): ?>
+		                                            <?php  foreach($commission_data as $v): ?>
 		                                                <tr class="">
-		                                                    <td><?php echo $v['自检自测类型'] ?></td>
+		                                                    <td><?php echo $v['检测类型'] ?></td>
 		                                                    <td><?php echo $v['规格'] ?></td>
 		                                                    <td><?php echo $v['数量'] ?></td>
 		                                                    <td><?php echo $v['生产厂家'] ?></td>
 		                                                    <td><?php echo $v['取样人'] ?></td>
-		                                                    <td><?php echo $v['进厂日期'] ?></td>
+		                                                    <td><?php echo $v['进场日期'] ?></td>
 		                                                    <td><?php echo $v['取样日期'] ?></td>
 		                                                    <td><a href="" type="button" class="btn btn-default">查看</a></td>
 		                                                </tr>
@@ -171,7 +171,7 @@
 		                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
 		                                        <thead>
 		                                            <tr>
-		                                                <th>取样类型</th>
+		                                                <th>检测类型</th>
 		                                                <th>规格</th>
 		                                                <th>数量</th>
 		                                                <th>生产厂家</th>
@@ -184,12 +184,12 @@
 		                                        <tbody>
 		                                                <?php  foreach($witness_data as $v): ?>
 		                                                <tr class="">
-		                                                    <td><?php echo $v['自检自测类型'] ?></td>
+		                                                    <td><?php echo $v['检测类型'] ?></td>
 		                                                    <td><?php echo $v['规格'] ?></td>
 		                                                    <td><?php echo $v['数量'] ?></td>
 		                                                    <td><?php echo $v['生产厂家'] ?></td>
 		                                                    <td><?php echo $v['取样人'] ?></td>
-		                                                    <td><?php echo $v['进厂日期'] ?></td>
+		                                                    <td><?php echo $v['进场日期'] ?></td>
 		                                                    <td><?php echo $v['取样日期'] ?></td>
 		                                                    <td><a href="" type="button" class="btn btn-default">查看</a></td>
 		                                                </tr>
@@ -225,7 +225,7 @@
 		                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example3">
 		                                        <thead>
 		                                            <tr>
-		                                                <th>取样类型</th>
+		                                                <th>检测类型</th>
 		                                                <th>规格</th>
 		                                                <th>数量</th>
 		                                                <th>生产厂家</th>
@@ -239,12 +239,12 @@
 		                                        <tbody>
 		                                                <?php  foreach($result_data as $v): ?>
 		                                                <tr class="">
-		                                                    <td><?php echo $v['自检自测类型'] ?></td>
+		                                                    <td><?php echo $v['检测类型'] ?></td>
 		                                                    <td><?php echo $v['规格'] ?></td>
 		                                                    <td><?php echo $v['数量'] ?></td>
 		                                                    <td><?php echo $v['生产厂家'] ?></td>
 		                                                    <td><?php echo $v['取样人'] ?></td>
-		                                                    <td><?php echo $v['进厂日期'] ?></td>
+		                                                    <td><?php echo $v['进场日期'] ?></td>
 		                                                    <td><?php echo $v['取样日期'] ?></td>
 		                                                    <td><?php echo $v['工程单状态'] ?></td>
 		                                                    <td><a href="" type="button" class="btn btn-default">查看</a></td>

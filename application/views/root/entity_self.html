@@ -27,7 +27,7 @@
                                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel<i class="caret"></i></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a  href="<?php base_url() ?>">账号注销</a>
+                                        <a  href="<?php echo site_url('login') ?>">账号注销</a>
                                     </li>
                                 </ul>
                             </li>
@@ -59,7 +59,7 @@
                             <a href="<?php echo site_url('pj_send/index/'.$entity_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
                         </li>
                         <li>
-                            <a href="entity_nor.html"><i class="icon-chevron-right"></i>第三方实体检测 </a>
+                            <a href="<?php echo site_url('commission/index/'.$entity_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('material_self/index/'.$entity_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>

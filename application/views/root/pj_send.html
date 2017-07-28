@@ -27,7 +27,7 @@
                                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel<i class="caret"></i></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a tabindex="-1" href="">账号注销</a>
+                                        <a tabindex="-1" href="<?php echo site_url('login') ?>">账号注销</a>
                                     </li>
                                 </ul>
                             </li>
@@ -59,7 +59,7 @@
                             <a href="<?php echo site_url('pj_send/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
                         </li>
                         <li>
-                            <a href="entity_nor.html"><i class="icon-chevron-right"></i>第三方实体检测 </a>
+                            <a href="<?php echo site_url('commission/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('material_self/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
@@ -85,15 +85,17 @@
                     	<div class="navbar">
                         	<div class="nav nav-tabs">
                                 <ul class="nav nav-tabs">
-                                  <li role="presentation" class="active"><a href="#">取样</a></li>
-                                  <li role="presentation"><a href="#">见证</a></li>
-                                  <li role="presentation"><a href="#">收样</a></li>
-                                  <li role="presentation"><a href="#">结果</a></li>
+                                  <li role="presentation" class="active"><a href="#about-1" data-toggle="tab">取样</a></li>
+                                  <li role="presentation"><a href="#about-2" data-toggle="tab">见证</a></li>
+                                  <li role="presentation"><a href="#about-3" data-toggle="tab">收样</a></li>
+                                  <li role="presentation"><a href="#about-4" data-toggle="tab">结果</a></li>
                                 </ul>
                         	</div>
                     	</div>
                     </div>
                     <!--工程列表-->
+            <div class="tab-content">
+                <div class="tab-pane active" id="about-1">	
                     <div class="row-fluid" >
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
@@ -102,9 +104,114 @@
                             <div class="block-content collapse in">
                                 <div class="span12">
                                    <div class="table-toolbar">
-                                      <div class="btn-group">
-                                         <a href="<?php echo site_url('pj_send/add/'.$pj_timestamp) ?>"><button class="btn btn-success">新建<i class="icon-plus icon-white"></i></button></a>
+                                      <div class="btn-group pull-right">
+                                         <button data-toggle="dropdown" class="btn dropdown-toggle">工具<span class="caret"></span></button>
+                                         <ul class="dropdown-menu">
+                                            <li><a href="#">打印</a></li>
+                                            <li><a href="#">PDF</a></li>
+                                            <li><a href="#">导出</a></li>
+                                        
+                                         </ul>
                                       </div>
+                                   </div>
+                                    
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+                                        <thead>
+                                            <tr>
+                                                <th>取样类型</th>
+                                                <th>规格</th>
+                                                <th>数量</th>
+                                                <th>生产厂家</th>
+                                                <th>取样人</th>
+                                                <th>进场日期</th>
+                                                <th>取样日期</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php  foreach($send_data as $v): ?>
+                                                <tr class="">
+                                                    <td><a href="<?php echo site_url('pj_send/detail/'. $v['时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><?php echo $v['规格'] ?></td>
+                                                    <td><?php echo $v['数量'] ?></td>
+                                                    <td><?php echo $v['生产厂家'] ?></td>
+                                                    <td><?php echo $v['取样人'] ?></td>
+                                                    <td><?php echo $v['进场日期'] ?></td>
+                                                    <td><?php echo $v['取样日期'] ?></td>
+                                                    <td><a href="" type="button" class="btn btn-default">删除</a></td>
+                                                </tr>
+                                            <?php  endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--见证-->
+                 <div class="tab-pane" id="about-2">	
+                    <div class="row-fluid" >
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">工程列表</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                   <div class="table-toolbar">
+                                      <div class="btn-group pull-right">
+                                         <button data-toggle="dropdown" class="btn dropdown-toggle">工具<span class="caret"></span></button>
+                                         <ul class="dropdown-menu">
+                                            <li><a href="#">打印</a></li>
+                                            <li><a href="#">PDF</a></li>
+                                            <li><a href="#">导出</a></li>
+                                        
+                                         </ul>
+                                      </div>
+                                   </div>
+                                    
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example1">
+                                        <thead>
+                                            <tr>
+                                                <th>取样类型</th>
+                                                <th>规格</th>
+                                                <th>数量</th>
+                                                <th>生产厂家</th>
+                                                <th>取样人</th>
+                                                <th>进场日期</th>
+                                                <th>取样日期</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php  foreach($witness_data as $v): ?>
+                                                <tr class="">
+                                                    <td><a href="<?php echo site_url('pj_send/detail/'. $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><?php echo $v['规格'] ?></td>
+                                                    <td><?php echo $v['数量'] ?></td>
+                                                    <td><?php echo $v['生产厂家'] ?></td>
+                                                    <td><?php echo $v['取样人'] ?></td>
+                                                    <td><?php echo $v['进场日期'] ?></td>
+                                                    <td><?php echo $v['取样日期'] ?></td>
+                                                    <td><a href="" type="button" class="btn btn-default">删除</a></td>
+                                                </tr>
+                                            <?php  endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--收样-->
+                 <div class="tab-pane" id="about-3">	
+                    <div class="row-fluid" >
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">工程列表</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                   <div class="table-toolbar">
                                       <div class="btn-group pull-right">
                                          <button data-toggle="dropdown" class="btn dropdown-toggle">工具<span class="caret"></span></button>
                                          <ul class="dropdown-menu">
@@ -131,10 +238,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php  foreach($send_data as $v): ?>
+                                            <?php  foreach($samp_data as $v): ?>
                                                 <tr class="">
-                                                    <td><?php echo $v['id'] ?></td>
-                                                    <td><a href="<?php echo site_url('pj_send/add/'. $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><a href="<?php echo site_url('pj_send/detail/'. $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
@@ -150,6 +256,64 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <!--结果-->
+                 <div class="tab-pane" id="about-4">	
+                    <div class="row-fluid" >
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">工程列表</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                   <div class="table-toolbar">
+                                      <div class="btn-group pull-right">
+                                         <button data-toggle="dropdown" class="btn dropdown-toggle">工具<span class="caret"></span></button>
+                                         <ul class="dropdown-menu">
+                                            <li><a href="#">打印</a></li>
+                                            <li><a href="#">PDF</a></li>
+                                            <li><a href="#">导出</a></li>
+                                        
+                                         </ul>
+                                      </div>
+                                   </div>
+                                    
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example3">
+                                        <thead>
+                                            <tr>
+                                                <th>取样类型</th>
+                                                <th>规格</th>
+                                                <th>数量</th>
+                                                <th>生产厂家</th>
+                                                <th>取样人</th>
+                                                <th>进场日期</th>
+                                                <th>取样日期</th>
+                                                <th>结果</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php  foreach($result_data as $v): ?>
+                                                <tr class="">
+                                                    <td><a href="<?php echo site_url('pj_send/detail/'. $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><?php echo $v['规格'] ?></td>
+                                                    <td><?php echo $v['数量'] ?></td>
+                                                    <td><?php echo $v['生产厂家'] ?></td>
+                                                    <td><?php echo $v['取样人'] ?></td>
+                                                    <td><?php echo $v['进场日期'] ?></td>
+                                                    <td><?php echo $v['取样日期'] ?></td>
+                                                    <td><?php echo $v['工程单状态'] ?></td>
+                                                    <td><a href="" type="button" class="btn btn-default">删除</a></td>
+                                                </tr>
+                                            <?php  endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                     <!--工程列表-->
                 </div>
             </div>
