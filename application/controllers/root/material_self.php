@@ -14,14 +14,11 @@
 		}
 		//查看详情
 		public function check(){
-//			$material_id = 94;
 			$material_id = $this->uri->segment(3);
-//			$material_timestamp = 123456;
 			$material_timestamp = $this->uri->segment(4);
 			$this->load->model('root/material_self_model','material_self');
 			$data['detail_data'] = $this->material_self->check($material_id);
 			$data['pj_timestamp']= $material_timestamp;
-//			$this->output->enable_profiler(TRUE);
 			$this->load->view('root/material_self_Detail.html',$data);
 			
 		}
