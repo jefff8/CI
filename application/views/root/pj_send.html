@@ -67,10 +67,10 @@
                             <a href="<?php echo site_url('entity_self/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
                         </li>
                         <li>
-                            <a href="material_con.html"><i class="icon-chevron-right"></i>材料监督抽检</a>
+                            <a href="#"><!--<a href="material_con.html">--><i class="icon-chevron-right"></i>材料监督抽检</a>
                         </li>
                         <li>
-                            <a href="entity_con.html"><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
+                            <a href="#"><!--<a href="entity_con.html">--><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('pj_query/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
@@ -129,14 +129,18 @@
                                         <tbody>
                                             <?php  foreach($send_data as $v): ?>
                                                 <tr class="">
-                                                    <td><a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><?php echo $v['取样类型'] ?></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
                                                     <td><?php echo $v['取样人'] ?></td>
                                                     <td><?php echo $v['进场日期'] ?></td>
                                                     <td><?php echo $v['取样日期'] ?></td>
-                                                    <td><a href="" type="button" class="btn btn-default">删除</a></td>
+                                                    <td>
+                                                    	<a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>" type="button" class="btn btn-default">查看</a>
+                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+                                                    </td>
+                                                    <!--<td></td>-->
                                                 </tr>
                                             <?php  endforeach ?>
                                         </tbody>
@@ -183,14 +187,17 @@
                                         <tbody>
                                             <?php  foreach($witness_data as $v): ?>
                                                 <tr class="">
-                                                    <td><a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><?php echo $v['取样类型'] ?></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
                                                     <td><?php echo $v['取样人'] ?></td>
                                                     <td><?php echo $v['进场日期'] ?></td>
                                                     <td><?php echo $v['取样日期'] ?></td>
-                                                    <td><a href="" type="button" class="btn btn-default">删除</a></td>
+                                                    <td>
+                                                    	<a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>" type="button" class="btn btn-default">查看</a>
+                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+                                                    </td>
                                                 </tr>
                                             <?php  endforeach ?>
                                         </tbody>
@@ -224,7 +231,6 @@
                                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
                                         <thead>
                                             <tr>
-                                                <th>id</th>
                                                 <th>取样类型</th>
                                                 <th>规格</th>
                                                 <th>数量</th>
@@ -238,14 +244,17 @@
                                         <tbody>
                                             <?php  foreach($samp_data as $v): ?>
                                                 <tr class="">
-                                                    <td><a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><?php echo $v['取样类型'] ?></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
                                                     <td><?php echo $v['取样人'] ?></td>
                                                     <td><?php echo $v['进场日期'] ?></td>
                                                     <td><?php echo $v['取样日期'] ?></td>
-                                                    <td><button href="" type="button" class="btn btn-default">提交</button>&nbsp;&nbsp;&nbsp;<button href="" type="button" class="btn btn-default">删除</button></td>
+                                                    <td>
+                                                    	<a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>" type="button" class="btn btn-default">查看</a>
+                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+                                                    </td>
                                                 </tr>
                                             <?php  endforeach ?>
                                         </tbody>
@@ -293,7 +302,7 @@
                                         <tbody>
                                             <?php  foreach($result_data as $v): ?>
                                                 <tr class="">
-                                                    <td><a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>"><?php echo $v['取样类型'] ?></a></td>
+                                                    <td><?php echo $v['取样类型'] ?></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
@@ -301,7 +310,10 @@
                                                     <td><?php echo $v['进场日期'] ?></td>
                                                     <td><?php echo $v['取样日期'] ?></td>
                                                     <td><?php echo $v['工程单状态'] ?></td>
-                                                    <td><a href="" type="button" class="btn btn-default">删除</a></td>
+                                                    <td>
+                                                    	<a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>" type="button" class="btn btn-default">查看</a>
+                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+                                                    </td>
                                                 </tr>
                                             <?php  endforeach ?>
                                         </tbody>

@@ -2,7 +2,7 @@
 <html class="no-js">
     
     <head>
-        <title>材料见证送检详情</title>
+        <title>材料自检详情</title>
         <!-- Bootstrap -->
         <link href="<?php echo base_url()."style/bootstrap/css/bootstrap.min.css"?>" rel="stylesheet" media="screen">
         <link href="<?php echo base_url()."style/bootstrap/css/bootstrap-responsive.min.css"?>" rel="stylesheet" media="screen">
@@ -53,13 +53,13 @@
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li class="active">
+                        <li>
                             <a href="<?php echo site_url('pj_send/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('commission/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="<?php echo site_url('material_self/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
                         </li>
                         <li>
@@ -78,18 +78,6 @@
                 </div>
                 <!--/span-->
                 <div class="span9" id="content">
-                    <!--<div class="row-fluid">
-                      <div class="navbar">
-                          <div class="nav nav-tabs">
-                                <ul class="nav nav-tabs">
-                                  <li role="presentation" class="active"><a href="#">取样</a></li>
-                                  <li role="presentation"><a href="#">见证</a></li>
-                                  <li role="presentation"><a href="#">收样</a></li>
-                                  <li role="presentation"><a href="#">结果</a></li>
-                                </ul>
-                          </div>
-                      </div>
-                    </div>-->
                     <!--工程列表-->
                     <div class="row-fluid section">
                         <div class="block">
@@ -104,7 +92,6 @@
                                             <div class="container">
                                                 <ul>
                                                     <li><a href="#tab1" data-toggle="tab">基本信息</a></li>
-                                                    <li><a href="#tab3" data-toggle="tab">复检情况</a></li>
                                                     <li><a href="#tab2" data-toggle="tab">附件查看</a></li>
                                                 </ul>
                                             </div>
@@ -112,160 +99,153 @@
                                         </div>
                                         <div class="tab-content">
                                             <div class="tab-pane" id="tab1">
-                                                <form action="<?php echo site_url('pj_send/add')?>" method="POST" class="form-horizontal" >
+                                                <form action="" method="POST" class="form-horizontal" >
                                                   <fieldset>
-                                                  <?php foreach($send_data as $v): ?>
+                                                  <?php foreach($detail_data as $v): ?>
                                                     <div class="control-group" style="display: none;">
                                                       <label  class="control-label" for="focusedInput">工程时间戳:</label>
                                                       <div class="controls">
-                                                        <input name="pj_timestamp" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程时间戳'] ?>">
+                                                        <input name="pj_timestamp" class="input-xlarge focused" id="" type="text" value="<?php echo $v['工程时间戳'] ?>">
                                                       </div>
                                                     </div>
                                                     <div class="control-group" style="display: none;">
                                                       <label  class="control-label" for="focusedInput">工程名称:</label>
                                                       <div class="controls">
-                                                        <input name="pj_name" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程名称'] ?>">
+                                                        <input name="pj_name" class="input-xlarge focused" id="" type="text" value="<?php echo $v['工程名称'] ?>">
                                                       </div>
                                                     </div>
                                                      <div class="control-group" style="display: none;">
                                                       <label  class="control-label" for="focusedInput">工程单状态:</label>
                                                       <div class="controls">
-                                                        <input name="pj_status" class="input-xlarge focused" id="focusedInput" type="text" value="新增">
+                                                        <input name="pj_status" class="input-xlarge focused" id="" type="text" value="<?php echo $v['工程单状态'] ?>">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">取样类型:</label>
+                                                      <label  class="control-label" for="focusedInput">自检自测类型:</label>
                                                       <div class="controls">
-                                                        <input name="get_type" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['取样类型'] ?>" readonly="readonly">
+                                                        <input name="get_type" class="input-xlarge focused" id="" type="text" value="<?php echo $v['自检自测类型'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">规格:</label>
                                                       <div class="controls">
-                                                        <input name="specification" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['规格'] ?>" readonly="readonly">
+                                                        <input name="specification" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['规格'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">数量:</label>
                                                       <div class="controls">
-                                                        <input name="num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['数量'] ?>" readonly="readonly">
+                                                        <input name="specification" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['数量'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">生产厂家:</label>
                                                       <div class="controls">
-                                                        <input name="manufacturers" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['生产厂家'] ?>" readonly="readonly">
+                                                        <input name="num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['生产厂家'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">取样人:</label>
                                                       <div class="controls">
-                                                        <input name="get_guy" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['取样人'] ?>"  readonly="readonly">
+                                                        <input name="get_guy" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['取样人'] ?>"  readonly="readonly">
                                                       </div>
                                                     </div>
                                                      <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">进场日期:</label>
                                                       <div class="controls">
-                                                        <input name="enter_date" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['进场日期'] ?>" readonly="readonly">
+                                                        <input name="enter_date" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['进场日期'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                      <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">取样日期:</label>
                                                       <div class="controls">
-                                                        <input name="get_date" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['取样日期'] ?>" readonly="readonly">
+                                                        <input name="get_date" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['取样日期'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">合格证编号:</label>
                                                       <div class="controls">
-                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['合格证编号'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['合格证编号'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">使用部位:</label>
                                                       <div class="controls">
-                                                        <input name="use_part" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['使用部位'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['使用部位'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">经销商单位:</label>
                                                       <div class="controls">
-                                                        <input name="agency" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['经销商单位'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['经销商单位'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">备注:</label>
                                                       <div class="controls">
-                                                        <input name="remark" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['备注'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">检测单位:</label>
-                                                      <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['检测单位'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">样品编号:</label>
-                                                      <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['样品编号'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">检测报告编号:</label>
-                                                      <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['检测报告编号'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['备注'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">送样日期:</label>
                                                       <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['送样日期'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['送样日期'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">收样日期:</label>
+                                                      <label  class="control-label" for="focusedInput"> 收样日期:</label>
                                                       <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['收样日期'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['收样日期'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">送样单位:</label>
                                                       <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['送样单位'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['送样单位'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">见证单位:</label>
                                                       <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['见证单位'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['见证单位'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">收样单位:</label>
                                                       <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['收样单位'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['收样单位'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">送样人:</label>
                                                       <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['送样人'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['送样人'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">见证人:</label>
                                                       <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['见证人'] ?>" readonly="readonly">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['见证人'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测报告编号:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['检测报告编号'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">处理情况:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['处理情况'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">退场记录:</label>
                                                       <div class="controls">
-                                                        <textarea name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['退场记录'] ?>" readonly="readonly"></textarea>
+                                                        <textarea name="qualified_num" class="input-xlarge focused" id=""  type="text" value="<?php echo $v['退场记录'] ?>" readonly="readonly"></textarea>
                                                       </div>
                                                     </div>
-                                                    
                                                     
                                                     <div style="display: none;" class="form-actions">
                                                       <button id="save" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
@@ -283,7 +263,7 @@
 								                        <div class="span12">
 															<table class="table">
 												                <tr>
-												                  <th>场景照片</th>
+												                  <th>检测前照片</th>
 												                </tr>
 												                <tr>
 												                  <td>
@@ -312,7 +292,7 @@
 												                  </td>
 												                </tr>
 												                <tr>
-												                  <th>样品照片</th>
+												                  <th>监测实施过程中照片</th>
 												                </tr>
 												                <tr>
 												                  <td>
@@ -341,7 +321,7 @@
 												                  </td>
 												                </tr>
 												                <tr>
-												                  <th>收样照片</th>
+												                  <th>检测设备照片</th>
 												                </tr>
 												                <tr>
 												                  <td>
@@ -370,7 +350,7 @@
 												                  </td>
 												                </tr>
 												                <tr>
-												                  <th>检测照片</th>
+												                  <th>自测照片</th>
 												                </tr>
 												                <tr>
 												                  <td>
@@ -433,110 +413,6 @@
                                                   </fieldset>
                                                 </form>
                                             </div>
-                                            
-                                            <div class="tab-pane" id="tab3">
-                                                <form action="<?php echo site_url('pj_send/add')?>" method="POST" class="form-horizontal" >
-                                                  <fieldset>
-                                                  <?php foreach($send_data as $v): ?>
-                                                    <div class="control-group" style="display: none;">
-                                                      <label  class="control-label" for="focusedInput">工程时间戳:</label>
-                                                      <div class="controls">
-                                                        <input name="pj_timestamp" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程时间戳'] ?>">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group" style="display: none;">
-                                                      <label  class="control-label" for="focusedInput">工程名称:</label>
-                                                      <div class="controls">
-                                                        <input name="pj_name" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程名称'] ?>">
-                                                      </div>
-                                                    </div>
-                                                     <div class="control-group" style="display: none;">
-                                                      <label  class="control-label" for="focusedInput">工程单状态:</label>
-                                                      <div class="controls">
-                                                        <input name="pj_status" class="input-xlarge focused" id="focusedInput" type="text" value="新增">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">取样类型:</label>
-                                                      <div class="controls">
-                                                        <input name="get_type" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['取样类型'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">规格:</label>
-                                                      <div class="controls">
-                                                        <input name="specification" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['规格'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">数量:</label>
-                                                      <div class="controls">
-                                                        <input name="num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['数量'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">生产厂家:</label>
-                                                      <div class="controls">
-                                                        <input name="manufacturers" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['生产厂家'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">取样人:</label>
-                                                      <div class="controls">
-                                                        <input name="get_guy" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['取样人'] ?>"  readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                     <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">进场日期:</label>
-                                                      <div class="controls">
-                                                        <input name="enter_date" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['进场日期'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                     <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">取样日期:</label>
-                                                      <div class="controls">
-                                                        <input name="get_date" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['取样日期'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">合格证编号:</label>
-                                                      <div class="controls">
-                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['合格证编号'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">使用部位:</label>
-                                                      <div class="controls">
-                                                        <input name="use_part" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['使用部位'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">经销商单位:</label>
-                                                      <div class="controls">
-                                                        <input name="agency" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['经销商单位'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">备注:</label>
-                                                      <div class="controls">
-                                                        <input name="remark" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['备注'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">检测单位:</label>
-                                                      <div class="controls">
-                                                        <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['检测单位'] ?>" readonly="readonly">
-                                                      </div>
-                                                    </div>
-                                                    <div style="display: none;" class="form-actions">
-                                                      <button id="save" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                                      <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                                    </div>
-                                                  <?php endforeach ?>
-                                                  </fieldset>
-                                                </form>
-                                            </div>
-                                            
                                         </div>  
                                     </div>
                                 </div>

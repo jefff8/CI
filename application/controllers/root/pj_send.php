@@ -16,7 +16,6 @@ class Pj_send extends CI_Controller{
 		$this->load->view('root/pj_send.html',$data);
 	}
 
-
      /**
 	 /* 送检添加页面
 	 */

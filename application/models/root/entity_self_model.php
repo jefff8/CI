@@ -20,5 +20,10 @@ class Entity_self_model extends CI_Model{
 		$data = $this->db->query($sql,array($entity_timestamp,'合格','不合格'))->result_array();
 		return $data;
 	}
+	public function check($en_id){
+		$sql = "select * from 实体自检  where id=? ";
+		$data = $this->db->query($sql,array($en_id))->result_array();
+		return $data;
+	}
 }
 ?>

@@ -137,7 +137,10 @@
 		                                                    <td><?php echo $v['取样人'] ?></td>
 		                                                    <td><?php echo $v['进厂日期'] ?></td>
 		                                                    <td><?php echo $v['取样日期'] ?></td>
-		                                                    <td><a href="" type="button" class="btn btn-default">查看</a></td>
+		                                                    <td>
+		                                                    	<a href="<?php echo site_url().'/entity_self/check'.'/'.$v['id'].'/'.$v['工程时间戳'] ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+		                                                    </td>
 		                                                </tr>
 		                                            <?php  endforeach ?>
 		                                        </tbody>
@@ -191,7 +194,10 @@
 		                                                    <td><?php echo $v['取样人'] ?></td>
 		                                                    <td><?php echo $v['进厂日期'] ?></td>
 		                                                    <td><?php echo $v['取样日期'] ?></td>
-		                                                    <td><a href="" type="button" class="btn btn-default">查看</a></td>
+		                                                    <td>
+		                                                    	<a href="<?php echo site_url().'/entity_self/check'.'/'.$v['id'].'/'.$v['工程时间戳'] ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+		                                                    </td>
 		                                                </tr>
 		                                            <?php  endforeach ?>
 		                                        </tbody>
@@ -247,7 +253,10 @@
 		                                                    <td><?php echo $v['进厂日期'] ?></td>
 		                                                    <td><?php echo $v['取样日期'] ?></td>
 		                                                    <td><?php echo $v['工程单状态'] ?></td>
-		                                                    <td><a href="" type="button" class="btn btn-default">查看</a></td>
+		                                                    <td>
+		                                                    	<a href="<?php echo site_url().'/entity_self/check'.'/'.$v['id'].'/'.$v['工程时间戳'] ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+		                                                    </td>
 		                                                </tr>
 		                                            <?php  endforeach ?>
 		                                        </tbody>

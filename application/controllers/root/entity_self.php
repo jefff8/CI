@@ -11,5 +11,14 @@
 			$data['entity_timestamp'] = $entity_timestamp;
 			$this->load->view('root/entity_self.html',$data);
 		}
+		public function check(){
+			$en_id = $this->uri->segment(3);
+			$pj_timestamp = $this->uri->segment(4);
+			$this->load->model('root/entity_self_model','en_model');
+			$data['detail_data'] = $this->en_model->check($en_id);
+			$data['pj_timestamp']=$pj_timestamp;
+//			$this->output->enable_profiler(TRUE);
+			$this->load->view('root/entity_self_Detail.html',$data);
+		}
 	}
 ?>

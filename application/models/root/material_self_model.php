@@ -20,5 +20,11 @@ class Material_self_model extends CI_Model{
 		$data = $this->db->query($sql,array($material_timestamp,'合格','不合格'))->result_array();
 		return $data;
 	}
+	public function check($material_id){
+		$sql = "select * from 材料自检  where id=? ";
+		$data = $this->db->query($sql,array($material_id))->result_array();
+//		return $material_id;
+		return $data;
+	}
 }
 ?>

@@ -68,13 +68,13 @@
                             <a href="<?php echo site_url('entity_self/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
                         </li>
                         <li>
-                            <a href="material_con.html"><i class="icon-chevron-right"></i>材料监督抽检</a>
+                            <a href=""><!--material_con.html--><i class="icon-chevron-right"></i>材料监督抽检</a>
                         </li>
                         <li>
-                            <a href="entity_con.html"><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
+                            <a href=""><!--entity_con.html--><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
                         </li>
                         <li>
-                            <a href="pro_all.html"><i class="icon-chevron-right"></i>综合查询</a>
+                            <a href="<?php echo site_url('pj_query/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
                         </li>
                     </ul>
                 </div>
@@ -92,7 +92,7 @@
                         	</div>
                     	</div>
                     </div>
-                    <!--实体自检-->
+                    <!--实体抽检-->
                 <div class="tab-content">
                     	<div class="tab-pane active" id="about-1">
 		                    <div class="row-fluid" >
@@ -118,12 +118,12 @@
 		                                        <thead>
 		                                            <tr>
 		                                                <th>检测类型</th>
-		                                                <th>规格</th>
-		                                                <th>数量</th>
-		                                                <th>生产厂家</th>
+		                                                <th>检测单位</th>
 		                                                <th>取样人</th>
-		                                                <th>进场日期</th>
-		                                                <th>取样日期</th>
+		                                                <!--<th>见证人</th>-->
+		                                                <th>检测日期</th>
+		                                                <th>委托编号</th>
+		                                                <!--<th>取样日期</th>-->
 		                                                <th>操作</th>
 		                                            </tr>
 		                                        </thead>
@@ -131,13 +131,16 @@
 		                                            <?php  foreach($commission_data as $v): ?>
 		                                                <tr class="">
 		                                                    <td><?php echo $v['检测类型'] ?></td>
-		                                                    <td><?php echo $v['规格'] ?></td>
-		                                                    <td><?php echo $v['数量'] ?></td>
-		                                                    <td><?php echo $v['生产厂家'] ?></td>
+		                                                    <td><?php echo $v['检测单位'] ?></td>
 		                                                    <td><?php echo $v['取样人'] ?></td>
-		                                                    <td><?php echo $v['进场日期'] ?></td>
+		                                                    <!--<td><?php echo $v['生产厂家'] ?></td>-->
 		                                                    <td><?php echo $v['取样日期'] ?></td>
-		                                                    <td><a href="" type="button" class="btn btn-default">查看</a></td>
+		                                                    <td><?php echo $v['委托编号'] ?></td>
+		                                                    <!--<td><?php echo $v['取样日期'] ?></td>-->
+		                                                    <td>
+		                                                    	<a href="<?php echo site_url('commission/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$commission_timestamp) ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+		                                                    </td>
 		                                                </tr>
 		                                            <?php  endforeach ?>
 		                                        </tbody>
@@ -191,7 +194,10 @@
 		                                                    <td><?php echo $v['取样人'] ?></td>
 		                                                    <td><?php echo $v['进场日期'] ?></td>
 		                                                    <td><?php echo $v['取样日期'] ?></td>
-		                                                    <td><a href="" type="button" class="btn btn-default">查看</a></td>
+		                                                    <td>
+		                                                    	<a href="<?php echo site_url('commission/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$commission_timestamp) ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+		                                                    </td>
 		                                                </tr>
 		                                            <?php  endforeach ?>
 		                                        </tbody>
@@ -247,7 +253,10 @@
 		                                                    <td><?php echo $v['进场日期'] ?></td>
 		                                                    <td><?php echo $v['取样日期'] ?></td>
 		                                                    <td><?php echo $v['工程单状态'] ?></td>
-		                                                    <td><a href="" type="button" class="btn btn-default">查看</a></td>
+		                                                    <td>
+		                                                    	<a href="<?php echo site_url('commission/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$commission_timestamp) ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+		                                                    </td>
 		                                                </tr>
 		                                            <?php  endforeach ?>
 		                                        </tbody>
