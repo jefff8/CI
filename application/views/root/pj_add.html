@@ -22,16 +22,16 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel <i class="caret"></i>
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> 我的账号 <i class="caret"></i>
 
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a tabindex="-1" href="#">Profile</a>
+                                        <a tabindex="-1" href="#">个人信息</a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a tabindex="-1" href="<?php echo site_url('login')?>">Logout</a>
+                                        <a tabindex="-1" href="<?php echo site_url('login')?>">注销</a>
                                     </li>
                                 </ul>
                             </li>
@@ -59,8 +59,11 @@
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li class="">
+                            <a href="<?php echo site_url('pj_all')?>"><i class="icon-chevron-right"></i>我的工程</a>
+                        </li>
                         <li class="active">
-                            <a href="index.html"><i class="icon-chevron-right"></i>项目新建</a>
+                            <a href=""><i class="icon-chevron-right"></i>项目新建</a>
                         </li>
                     </ul>
                 </div>
