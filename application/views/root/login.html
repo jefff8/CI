@@ -21,13 +21,16 @@
   <body id="login" class="row bg">
     <div class="container">
       <form action="<?php echo site_url('login/verify')?>" method="post" class="form-signin " >
-        用户名：<input name="username" type="text" class="input-block-level" placeholder="用户名" value="<?php echo set_value('username')?>"  >
+        <input name="username" type="text" class="input-block-level" placeholder="用户名" value="<?php echo set_value('username')?>" style="width: 230px" >&nbsp;&nbsp;<a href="">注册账号</a>
         <?php echo form_error('username','<span style="color:red;">','</span><br/>')?>
-        密码：<input name="password" type="password" class="input-block-level" placeholder="密码">
+        <input name="password" type="password" class="input-block-level" placeholder="密码" style="width: 230px">&nbsp;&nbsp;<a href="">找回密码</a>
         <label class="checkbox">
           <input type="checkbox" value="remember-me">记住账号
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          
         </label>
-        <button class="btn btn-large btn-primary" type="submit" >登陆</button>
+
+        <button class="btn btn-large btn-primary" type="submit" style="width: 230px">登录</button>
       </form>
     </div>
     <script src="<?php echo base_url(). "style/vendors/jquery-1.9.1.min.js"?>"></script>
