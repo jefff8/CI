@@ -16,8 +16,8 @@ class Material_self_model extends CI_Model{
 		return $data;
 	}
 	public function result($material_timestamp){
-		$sql = "select * from 材料自检 where 工程时间戳=? and (工程单状态=? or 工程单状态=?)";
-		$data = $this->db->query($sql,array($material_timestamp,'合格','不合格'))->result_array();
+		$sql = "select * from 材料自检 where 工程时间戳=? and (工程单状态=? or 工程单状态=? or 工程单状态=?)";
+		$data = $this->db->query($sql,array($material_timestamp,'合格','不合格','已处理'))->result_array();
 		return $data;
 	}
 	public function check($material_id){
