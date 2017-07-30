@@ -63,7 +63,9 @@ class Pj_send extends CI_Controller{
 		$passval['send_id'] = $this->uri->segment(3);
 		$passval['pj_timestamp'] = $this->uri->segment(4);
 		$this->load->model('root/pj_send_model','send_detail');
-		$passval['send_data'] = $this->send_detail->detail($passval['send_id']);
+		$passval['send_data_st'] = $this->send_detail->detail_st($passval['send_id']);
+		$passval['send_data_nd'] = $this->send_detail->detail_nd($passval['send_id']);
+//		$this->output->enable_profiler(TRUE);
 		$this->load->view('root/pj_sendDetail.html',$passval);
 	}
 
