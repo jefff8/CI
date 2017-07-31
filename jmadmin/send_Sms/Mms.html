@@ -1,0 +1,171 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+  td  {font-size:12px;}
+ .style1 {color:#FF00FF}
+</style>
+<title>WebService彩信接口测试页面</title>
+<script language="javascript">
+ function initFrame()
+ { 
+     var Info=document.getElementById("txtframe").value;
+	 var txtInfo=document.getElementById("txt").value;
+	 var picInfo=document.getElementById("pic").value;
+	 var voiceInfo=document.getElementById("voice").value;
+	 Info+=txtInfo;
+	 Info+=',';
+	 Info+=picInfo;
+	 Info+=',';
+	 Info+=voiceInfo;
+	 Info+=';';
+	 document.getElementById("txtframe").value=Info;
+ }
+
+</script>
+</head>
+<body>
+	<form action="UploadMmsFile.php" method="post" enctype="multipart/form-data">
+	<div align="center">
+     <table width="52%" border="1" cellpadding="3" cellspacing="0">
+      <tr>
+        <td height="24" colspan="2" align="left" valign="middle">上传彩信文件</td>
+      </tr>
+      <tr>
+        <td height="29" align="right" valign="middle">企业ID</td>
+        <td align="left" valign="middle"><input name="CorpID" type="text" id="CorpID" size="8" maxlength="6"></td>
+      </tr>
+      <tr>
+        <td height="27" align="right" valign="middle" >登录名</td>
+        <td align="left" valign="middle" ><input name="LoginName" type="text" id="LoginName" size="10" maxlength="10"></td>
+      </tr>
+	   <tr>
+        <td height="27" align="right" valign="middle" >密码</td>
+        <td align="left" valign="middle" ><input name="pwd" type="text" id="pwd" size="10" maxlength="10"></td>
+      </tr>
+	   <tr>
+        <td height="27" align="right" valign="middle" >服务器地址</td>
+        <td align="left" valign="middle" ><input name="serverIP" type="text" id="serverIP" value="http://sms3.mobset.com:8080/Api?wsdl" size="50" maxlength="1000"></td>
+      </tr>
+	    <tr>
+        <td height="27" align="right" valign="middle" >彩信标题</td>
+        <td align="left" valign="middle" ><input name="mmsTitle" type="text" id="mmsTitle" value="" size="50" maxlength="100"></td>
+      </tr>
+	    <tr>
+        <td height="155" align="right" valign="middle" >浏览文件</td>
+        <td align="left" valign="middle" >
+		   <p>文本文件：<input type="file" name="txt" id="txt"></p>
+           <p>图像文件：<input type="file" name="pic" id="pic"></p>
+		   <p>声音文件：<input type="file" name="voice" id="voice"></p>
+		   <p><input type="button" name="insert" value="插入帧" onClick="initFrame();"></p>
+		</td>
+	    </tr>
+		<tr>
+        <td height="27" align="right" valign="middle" >帧列表</td>
+        <td align="left" valign="middle" ><input name="txtframe" id="txtframe" type="text" size="50" maxlength="3000">(同帧用','隔开；不同帧用';';隔开</td>
+	    </tr>
+	   <tr align="center">
+        <td height="38" colspan="2" valign="middle" ><input type="submit" name="Submit" value="提交"></td>
+      </tr>
+     </table>
+   
+	</div>
+</form>
+<form action="Mms_GetFileStatus.php" method="post">
+   <div align="center">
+       <table width="52%" border="1" cellpadding="3" cellspacing="0">
+      <tr>
+        <td height="24" colspan="2" align="left" valign="middle">获取彩信文件状态</td>
+      </tr>
+      <tr>
+        <td height="29" align="right" valign="middle">企业ID</td>
+        <td align="left" valign="middle"><input name="CorpID" type="text" id="CorpID" size="8" maxlength="6"></td>
+      </tr>
+      <tr>
+        <td height="27" align="right" valign="middle" >登录名</td>
+        <td align="left" valign="middle" ><input name="LoginName" type="text" id="LoginName" size="10" maxlength="10"></td>
+      </tr>
+	   <tr>
+        <td height="27" align="right" valign="middle" >密码</td>
+        <td align="left" valign="middle" ><input name="pwd" type="text" id="pwd" size="10" maxlength="10"></td>
+      </tr>
+	   <tr>
+        <td height="27" align="right" valign="middle" >服务器地址</td>
+        <td align="left" valign="middle" ><input name="serverIP" type="text" id="serverIP" value="http://sms3.mobset.com:8080/Api?wsdl" size="50" maxlength="1000"></td>
+      </tr>
+	    <tr>
+        <td height="27" align="right" valign="middle" >彩信文件ID</td>
+        <td align="left" valign="middle" ><input name="mmFileID" type="text" id="mmFileID" value="" size="" maxlength="100"></td>
+        </tr>
+	   <tr align="center">
+        <td height="38" colspan="2" valign="middle" ><input type="submit" name="Submit" value="提交"></td>
+      </tr>
+     </table>
+   </div>
+</form>
+<form action="SendMms.php" method="post">
+   <div align="center">
+    <table width="52%" border="1" cellpadding="3" cellspacing="0">
+      <tr>
+        <td height="24" colspan="2" align="left" valign="middle">发送彩信</td>
+      </tr>
+      <tr>
+        <td height="29" align="right" valign="middle">企业ID</td>
+        <td align="left" valign="middle"><input name="CorpID" type="text" id="CorpID" size="8" maxlength="6"></td>
+      </tr>
+      <tr>
+        <td height="27" align="right" valign="middle" >登录名</td>
+        <td align="left" valign="middle" ><input name="LoginName" type="text" id="LoginName" size="10" maxlength="10"></td>
+      </tr>
+	   <tr>
+        <td height="27" align="right" valign="middle" >密码</td>
+        <td align="left" valign="middle" ><input name="pwd" type="text" id="pwd" size="10" maxlength="10"></td>
+      </tr>
+	   <tr>
+        <td height="27" align="right" valign="middle" >服务器地址</td>
+        <td align="left" valign="middle" ><input name="serverIP" type="text" id="serverIP" value="http://sms3.mobset.com:8080/Api?wsdl" size="50" maxlength="1000"></td>
+      </tr>
+	     <tr>
+        <td height="27" align="right" valign="middle" >手机号码</td>
+        <td align="left" valign="middle" ><input name="mobPhone" type="text" id="mobPhone"  size="50" maxlength="15"></td>
+      </tr>
+	     <tr>
+        <td height="27" align="right" valign="middle" >彩信ID</td>
+        <td align="left" valign="middle" ><input name="mmsID" type="text" id="mmsID" value=""></td>
+      </tr>
+	   <tr align="center">
+        <td height="38" colspan="2" valign="middle" ><input type="submit" name="Submit" value="提交"></td>
+      </tr>
+     </table>
+   </div>
+</form>
+   <form action="Mms_GetReport.php" method="post">
+   <div align="center">
+       <table width="52%" border="1" cellpadding="3" cellspacing="0">
+      <tr>
+        <td height="24" colspan="2" align="left" valign="middle">获取彩信状态报告</td>
+      </tr>
+      <tr>
+        <td height="29" align="right" valign="middle">企业ID</td>
+        <td align="left" valign="middle"><input name="CorpID" type="text" id="CorpID" size="8" maxlength="6"></td>
+      </tr>
+      <tr>
+        <td height="27" align="right" valign="middle" >登录名</td>
+        <td align="left" valign="middle" ><input name="LoginName" type="text" id="LoginName" size="10" maxlength="10"></td>
+      </tr>
+	   <tr>
+        <td height="27" align="right" valign="middle" >密码</td>
+        <td align="left" valign="middle" ><input name="pwd" type="text" id="pwd" size="10" maxlength="10"></td>
+      </tr>
+	   <tr>
+        <td height="27" align="right" valign="middle" >服务器地址</td>
+        <td align="left" valign="middle" ><input name="serverIP" type="text" id="serverIP" value="http://sms3.mobset.com:8080/Api?wsdl" size="50" maxlength="1000"></td>
+      </tr>
+	   <tr align="center">
+        <td height="38" colspan="2" valign="middle" ><input type="submit" name="Submit" value="提交"></td>
+      </tr>
+     </table>
+   </div>
+</form>
+</body>
+</html>
