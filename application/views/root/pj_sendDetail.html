@@ -641,31 +641,31 @@
 											                  <td>
 											                  	<div id="Scene_photos" class="row-fluid padd-bottom">
 												                  	<?php 
-												                  		foreach($send_data_nd as $w):
-												                  		if($w['场景照片']<>'0'){
-												                  			$pho = explode('~*^*~',$w['场景照片']);
-												                  			$len = count($pho);
-												                  			for($i=1;$i<$len;$i++){
-												                  	?>
-									                                  <div  class="span3">
-									                                      <a href="<?php echo base_url()."upload/".$pho[$i] ?>" class="thumbnail"    >
-									                                      <a href="<?php echo base_url()."upload/15013256160.jpg" ?>" class="thumbnail"    >
-									                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."upload/".$pho[$i] ?>" >
-									                                      </a>
-									                                  </div>
-									                                <?php
-									                                		}
-									                                	}else{
-									                                ?>
-									                                  <div  class="span3">
-									                                      <!--<a href="<?php echo base_url()."upload/nodata.png" ?>" class="thumbnail"    >-->
-									                                      <a href="<?php echo base_url()."upload/15013256160.jpg" ?>" class="thumbnail"    >
-									                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."upload/nodata.png" ?>" >
-									                                      </a>
-									                                  </div>
-									                                <?php
-									                                	}
-									                                ?>
+												                  			foreach($send_data_nd as $w):
+													                  		if($v['场景照片']<>'0'){
+													                  			$pho = explode('~*^*~',$v['场景照片']);
+													                  			$len = count($pho);
+													                  			for($i=1;$i<$len;$i++){
+													                  	?>
+										                                  <div  class="span3">
+										                                      <a href="<?php echo base_url()."upload/".$pho[$i] ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."upload/".$pho[$i] ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                		}
+										                                	}else{
+										                                ?>
+										                                  <div  class="span3">
+										                                      <a href="<?php echo base_url()."upload/nodata.png" ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."upload/nodata.png" ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                	}
+										                                ?>
 								                          		</div>
 											                  </td>
 											                </tr>
