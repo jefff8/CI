@@ -22,7 +22,7 @@
     <div class="container">
       <form action="<?php echo site_url('login/verify')?>" method="post" class="form-signin " >
         <input name="username" type="text" class="input-block-level" placeholder="用户名" value="<?php echo set_value('username')?>" style="width: 230px" >
-        <?php echo form_error('username','<span style="color:red;">','</span><br/>')?>
+        <?php echo form_error('username','<p style="color:red;">','</p><br/>')?>
         <input name="password" type="password" class="input-block-level" placeholder="密码" style="width: 230px">&nbsp;&nbsp;<a href="">找回密码</a>
         <label class="checkbox">
           <input type="checkbox" value="remember-me">记住账号
