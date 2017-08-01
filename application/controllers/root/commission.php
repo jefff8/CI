@@ -1,6 +1,6 @@
 <?php
  	defined('BASEPATH') OR exit('No direct script access allowed');
-	class Commission extends CI_Controller{
+	class Commission extends MY_Controller{
 		//第三方实体检测
 		public function index(){
 			$commission_timestamp = $this->uri->segment(3);
