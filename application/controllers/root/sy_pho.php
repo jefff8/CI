@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-Class Sy_pho extends CI_Controller{
+Class Sy_pho extends MY_Controller{
 	//页面账号信息显示
 	public function index(){
 		$this->load->model('root/sy_pho_model','sy_pho');
@@ -13,7 +13,6 @@ Class Sy_pho extends CI_Controller{
 	}
 	//账号验证
 	public function check(){
-//		$mas = 'ko';
 		$mas = $this->input->post('mas');
 		$this->load->model('root/sy_pho_model','sy_pho');
 		$data = $this->sy_pho->check($mas);
@@ -22,12 +21,6 @@ Class Sy_pho extends CI_Controller{
 	//账号新建保存
 	public function save(){
 		$data = array(
-//			'姓名' => $this->input->post('name'),
-//			'账号' => $this->input->post('accn'),
-//			'密码' => $this->input->post('pass'),
-//			'邮箱' => $this->input->post('mail'),
-//			'手机' => $this->input->post('phoe'),
-//			'单位' => $this->input->post('part')
 			'姓名' => $this->input->post('name'),
 			'账号' => $this->input->post('account'),
 			'密码' => $this->input->post('password'),
@@ -38,7 +31,6 @@ Class Sy_pho extends CI_Controller{
 		$this->load->model('root/sy_pho_model','sy_pho');
 		$this->sy_pho->save($data);
 		success('sy_pho','保存成功');
-//		echo print_r($data);
 	}
 
 }
