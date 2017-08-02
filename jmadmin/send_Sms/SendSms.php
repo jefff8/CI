@@ -1,5 +1,5 @@
 <?php
-require("../conn.php");
+
 error_reporting(E_ALL^E_NOTICE);
 header("Content-Type: text/html;charset=utf-8");
 
@@ -20,12 +20,23 @@ try {
     $strLoginName=$_POST['LoginName'];
 	$strPasswd=$_POST['pwd'];
 	$mobPhone=$_POST['mobPhone'];
+//	$gcmc=$_POST['gcmc'];//工程名称
+//	$mytime=$_POST['mytime'];//当前时间与日期
+//	$myName=$_POST['myName'];//账号人姓名
+//	$send=$_POST['send'];//子模块名
 	//短信内容
 	$smsContent=$_POST['smsContent'];
 	//产生随机数
 	$yzm=rand(pow(10,(6-1)),pow(10,6)-1);
 	//短信内容+验证码
 	$smsContent=$smsContent.$yzm;
+	
+	//添加记录
+//	require("../conn.php");
+//	$sql = "insert into 短信记录 (工程名称,子模块,姓名,手机号,时间) values ('".$gcmc."','".$send."','".$myName."','".$mobPhone."','".$mytime."')";
+//	$conn->query($sql);
+//	$conn->close();
+	
 	$longSms=0;
 	$strTimeStamp=GetTimeString();
 	$strInput=$lCorpID.$strPasswd.$strTimeStamp;
@@ -41,6 +52,7 @@ try {
 	$result = $client->Sms_Send($param);
 	//print_r($result);
 //	print_r($result->ErrMsg."--短信ID:".$result->SmsIDList->SmsIDGroup->SmsID);
+	
 	$jsonresult='success';
 	$json = '{"result":"'.$jsonresult.'",
 			  "smsContent":"'.$smsContent.'",
