@@ -1,6 +1,6 @@
 <?php
  	defined('BASEPATH') OR exit('No direct script access allowed');
-	class material_self extends CI_Controller{
+	class material_self extends MY_Controller{
 		//材料自检
 		public function index(){
 			$material_timestamp = $this->uri->segment(3);

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');	
-class Pj_query extends CI_Controller{
+class Pj_query extends MY_Controller{
 	/**
 	 * 查询页面
 	 */

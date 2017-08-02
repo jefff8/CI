@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');	
-class Pj_all extends CI_Controller{
+class Pj_all extends MY_Controller{
 	/**
 	 * 首页全部工程
 	 * @return [type] [description]

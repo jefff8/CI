@@ -27,7 +27,7 @@
                                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> 我的账号<i class="caret"></i></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a  href="<?php echo site_url('login') ?>">账号注销</a>
+                                        <a  href="<?php echo site_url('login/login_out')?>">账号注销</a>
                                     </li>
                                 </ul>
                             </li>
@@ -74,7 +74,7 @@
                             <a ><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
                         </li>
                         <li>
-                            <a href="pro_all.html"><i class="icon-chevron-right"></i>综合查询</a>
+                            <a href="<?php echo site_url('pj_query/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
                         </li>
                     </ul>
                 </div>
@@ -139,7 +139,7 @@
 		                                                    <td><?php echo $v['取样日期'] ?></td>
 		                                                    <td>
 		                                                    	<a href="<?php echo site_url().'/material_self/check'.'/'.$v['id'].'/'.$material_timestamp ?>" type="button" class="btn btn-default">查看</a>
-		                                                    	<a href="" type="button" class="btn btn-default">删除</a>
+		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
 		                                                    </td>
 		                                                </tr>
 		                                            <?php  endforeach ?>

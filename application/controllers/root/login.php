@@ -37,6 +37,14 @@ class Login extends CI_Controller{
 			if(!$user_data || $user_data[0]['密码']!=$password){
 				error("账号不存在或密码错误！");
 			}else{
+				//储存用户session值
+				$sessionData = array(
+					'username' => $username,
+					'userid' => $user_data[0]['id'],
+					'logintime' => time()
+					);
+				//变量$sessionData设置到userdata
+				$this->session->set_userdata($sessionData); 
 				$this->load->model('root/pj_all_model','pj_all');
 				$data['pj_all'] = $this->pj_all->index();
 				$this->load->view('root/pj_all.html',$data);
@@ -44,6 +52,15 @@ class Login extends CI_Controller{
 		}else{
 			$this->load->view('root/login.html');
 		}
+	}
+
+	/**
+	 * 用户注销
+	 */
+	public function login_out(){
+		//消除session值
+		$this->session->sess_destroy();
+		success('login/index','注销成功~');
 	}
 
 }

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Pj_send extends CI_Controller{
+class Pj_send extends MY_Controller{
 	/**
 	 * 材料见证送检页面
 	 * @return [type] [description]

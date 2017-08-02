@@ -1,6 +1,6 @@
 <?php
  	defined('BASEPATH') OR exit('No direct script access allowed');
-	class Entity_self extends CI_Controller{
+	class Entity_self extends MY_Controller{
 		//实体质量自检
 		public function index(){
 			$entity_timestamp = $this->uri->segment(3);
