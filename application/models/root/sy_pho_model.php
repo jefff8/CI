@@ -5,8 +5,16 @@ class Sy_pho_model extends CI_Model{
 		$data = $this->db->get('用户信息')->result_array();
 		return $data;
 	}
-	public function add(){
-		
+	
+	public function check($mas){
+		$sql = "select * from 用户信息 where 账号 =?";
+		$data = $this->db->query($sql,array($mas))->result_array();
+		$return = count($data);
+		return $return;
+	}
+	
+	public function save($data){
+		$this->db->insert('用户信息',$data);
 	}
 }
 ?>

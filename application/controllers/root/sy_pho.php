@@ -7,10 +7,40 @@ Class Sy_pho extends CI_Controller{
 		$data['sy_all'] = $this->sy_pho->index();
 		$this->load->view('root/sy_pho.html',$data);
 	}
-	//账号新建
+	//账号新建页面
 	public function add(){
 		$this->load->view('root/sy_pho_add.html');
 	}
+	//账号验证
+	public function check(){
+//		$mas = 'ko';
+		$mas = $this->input->post('mas');
+		$this->load->model('root/sy_pho_model','sy_pho');
+		$data = $this->sy_pho->check($mas);
+		echo $data;
+	}
+	//账号新建保存
+	public function save(){
+		$data = array(
+//			'姓名' => $this->input->post('name'),
+//			'账号' => $this->input->post('accn'),
+//			'密码' => $this->input->post('pass'),
+//			'邮箱' => $this->input->post('mail'),
+//			'手机' => $this->input->post('phoe'),
+//			'单位' => $this->input->post('part')
+			'姓名' => $this->input->post('name'),
+			'账号' => $this->input->post('account'),
+			'密码' => $this->input->post('password'),
+			'邮箱' => $this->input->post('mail'),
+			'手机' => $this->input->post('phone'),
+			'单位' => $this->input->post('part')
+		);
+		$this->load->model('root/sy_pho_model','sy_pho');
+		$this->sy_pho->save($data);
+		success('sy_pho','保存成功');
+//		echo print_r($data);
+	}
+
 }
 
 ?>

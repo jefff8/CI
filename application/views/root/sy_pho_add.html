@@ -88,44 +88,57 @@
                                         </div>
                                         <div class="tab-content">
                                             <div class="tab-pane" id="tab1">
-                                                <form action="<?php echo site_url('pj_all/add')?>" method="POST" class="form-horizontal" >
+                                                <form action="<?php echo site_url('sy_pho/save')?>" method="POST" class="form-horizontal" >
                                                   <fieldset>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">姓名:</label>
                                                       <div class="controls">
-                                                        <input name="" class="input-xlarge focused" id="name" type="text" >
+                                                        <input name="name" class="input-xlarge focused" id="name" type="text" required="required"/>
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">账号:</label>
                                                       <div class="controls">
-                                                        <input name="" class="input-xlarge focused" id="account"  type="text" >
+                                                        <input name="account" class="input-xlarge focused" id="account"  type="text" onchange="check(this.id)" required="required"/>
+                                                        <input  style="border:0px;" name="acc_mas" class="input-xlarge focused" id="acc_mas"  type="text"/> 
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">密码:</label>
                                                       <div class="controls">
-                                                        <input name="" class="input-xlarge focused" id="password"  type="text" >
-                                                        <input  style="display: none;" name="password_mas" class="input-xlarge focused" id=""  type="text" hidden="hidden">
+                                                        <input name="password" class="input-xlarge focused" id="password"  type="password" onchange="check(this.id)" required="required"/>
+                                                        <input  style="border:0px;" name="pass_mas" class="input-xlarge focused" id="pass_mas"  /> 
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">确认密码:</label>
                                                       <div class="controls">
-                                                        <input name="" class="input-xlarge focused" id="pass"  type="text" >
-                                                        <input  style="display: none;" name="password_mas" class="input-xlarge focused" id=""  type="text" hidden="hidden"> 
+                                                        <input name="" class="input-xlarge focused" id="pass"  type="password" onchange="check(this.id)" />
+                                                        <input  style="border:0px;" name="password_mas" class="input-xlarge focused" id="password_mas"  /> 
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">邮箱:</label>
                                                       <div class="controls">
-                                                        <input name="" class="input-xlarge focused" id="mail"  type="email" onchange="check(this.value)" >
+                                                        <input name="mail" class="input-xlarge focused" id="mail"  type="email" />
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">手机:</label>
                                                       <div class="controls">
-                                                        <input name="" class="input-xlarge focused" id="phone"  type="text" >
+                                                        <input name="phone" class="input-xlarge focused" id="phone"  type="text" required="required" />
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">单位:</label>
+                                                      <div class="controls">
+                                                        <select id="part" name="part">
+                                                        	<option></option>
+                                                        	<option>施工单位</option>
+                                                        	<option>监理单位</option>
+                                                        	<option>检测单位</option>
+                                                        	<option>监督单位</option>
+                                                        </select>
                                                       </div>
                                                     </div>
                                                      <div class="form-actions">
@@ -203,22 +216,98 @@
             });
 
             //获取当前时间戳
-            var timestamp = new Date().getTime();
-            document.getElementById('timestamp').value = timestamp;
+//          var timestamp = new Date().getTime();
+//          document.getElementById('timestamp').value = timestamp;
         </script>
         <!--账号密码动态验证-->
         <script>
         	function check(falg){
-        		if(falg == pass){
+        		if(falg == 'pass'){
         			var che_passw = document.getElementById('password');
         			var pass = document.getElementById('pass');
-        			if(pass == che_passw ){
-        				
+        			var showmas = document.getElementById('password_mas');
+        			if(pass.value == che_passw.value ){
+        				showmas.style.color = '#8FBC8F';
+        				showmas.value = "已确认";
         			}else{
-        				var showmas = document.getElementsByName('password_mas');
+        				showmas.style.color = '#FF0000';
+        				showmas.value = "两次输入的密码不一致";
+        				
         			}
+        		}else if(falg == 'password'){
+        			var word = document.getElementById('password');
+        			var wordstr = document.getElementById('password').value;
+        			var showmas = document.getElementById('pass_mas');
+        			if(wordstr.length < 6 ){
+        				showmas.value = "密码需大于六位";
+        				showmas.style.color = '#FF0000';
+        				var pass = document.getElementById('pass');
+        				pass.value = '';
+        			}else{
+        				showmas.style.color = '#8FBC8F';
+        				showmas.value = "密码合法";
+        				var pass = document.getElementById('pass');
+        				pass.value = '';
+        			}
+        		}else if(falg == 'account'){
+        			var mas = document.getElementById('account').value;
+        			var controller = "<?php echo site_url('sy_pho/check') ?>";
+        			$.ajax({
+        				url:controller,
+        				type:'post',
+		        		aysnc:true,
+		        		data:{
+		        			mas:mas
+		        		},
+		        		success:function(data){
+		        			//判断返回值，如果返回‘1’，则账号已经存在；返回’0’则不存在，可使用
+		        			if(data == 0){
+		        				var showmas = document.getElementById('acc_mas');
+		        				showmas.value = "账号合法";
+		        				showmas.style.color = '#8FBC8F';
+		        			}else{
+		        				var showmas = document.getElementById('acc_mas');
+		        				showmas.value = "账号已存在";
+		        				showmas.style.color = '#FF0000';
+		        			}
+		        		}
+        			});
         		}
         	}
+        	
+//      	var SAVE = document.getElementById('save_mas');
+//      	SAVE.addEventListener('click',function(){
+//      		var mas_name = document.getElementById('name');
+//      		var mas_accn = document.getElementById('account');
+//      		var mas_pass = document.getElementById('pass');
+//      		var mas_mali = document.getElementById('mail');
+//      		var mas_phoe = document.getElementById('phone');
+//      		var mas_part = document.getElementById('part');
+//      		
+//      		var account_mas = document.getElementById('acc_mas').value;
+//      		var pass_mas = document.getElementById('password_mas').value;
+//      		if(account_mas=='账号合法'&&pass_mas=='已确认'){
+//      			var controller = "<?php echo site_url('sy_pho/save') ?>";
+//	        		$.ajax({
+//	        			url:controller,
+//	    				type:'post',
+//		        		aysnc:true,
+//		        		data:{
+//		        			name:mas_name.value,
+//		        			accn:mas_accn.value,
+//		        			pass:mas_pass.value,
+//		        			mail:mas_mali.value,
+//		        			phoe:mas_phoe.value,
+//		        			part:mas_part.value
+//		        		},
+//		        		success:function(data){
+//		        		}
+//	        		});
+//      		}else{
+//      			alert('请将信息填写完整');
+//      			alert(account_mas+'/'+pass_mas);
+//      		}
+//      	});
         </script>
     </body>
 
