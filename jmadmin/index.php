@@ -1,6 +1,7 @@
 <?php
 	require("conn.php");
-	$sql = "select count(*) as pj_num from 我的工程  ";
+	$uid = $_POST['uid'];
+	$sql = "SELECT count(*) as pj_num from 用户工程关系表 A INNER JOIN 我的工程 B ON A.工程id=B.id  where 用户id='$uid'";
 	$result = $conn->query($sql);
 	if($result->num_rows>0){
 		while($row = $result->fetch_assoc()){

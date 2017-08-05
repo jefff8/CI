@@ -100,21 +100,21 @@
                                                       <label  class="control-label" for="focusedInput">账号:</label>
                                                       <div class="controls">
                                                         <input name="account" class="input-xlarge focused" id="account"  type="text" onchange="check(this.id)" required="required"/>
-                                                        <input  style="border:0px;" name="acc_mas" class="input-xlarge focused" id="acc_mas"  type="text"/> 
+                                                        <span  style="border:0px;" name="acc_mas" class="input-xlarge focused" id="acc_mas" ></span> 
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">密码:</label>
                                                       <div class="controls">
                                                         <input name="password" class="input-xlarge focused" id="password"  type="password" onchange="check(this.id)" required="required"/>
-                                                        <input  style="border:0px;" name="pass_mas" class="input-xlarge focused" id="pass_mas"  /> 
+                                                        <span  style="border:0px;" name="pass_mas" class="input-xlarge focused" id="pass_mas"  ></span> 
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">确认密码:</label>
                                                       <div class="controls">
                                                         <input name="" class="input-xlarge focused" id="pass"  type="password" onchange="check(this.id)" />
-                                                        <input  style="border:0px;" name="password_mas" class="input-xlarge focused" id="password_mas"  /> 
+                                                        <span  style="border:0px;" name="password_mas" class="input-xlarge focused" id="password_mas" ></span> 
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
@@ -160,12 +160,6 @@
             </div>
         </div>
         <!--/.fluid-container-->
-        <link href="<?echo base_url()."style/vendors/datepicker.css"?>" rel="stylesheet" media="screen">
-        <link href="<?echo base_url()."style/vendors/uniform.default.css"?>" rel="stylesheet" media="screen">
-        <link href="<?echo base_url()."style/vendors/chosen.min.css"?>" rel="stylesheet" media="screen">
-
-        <link href="<?echo base_url()."style/vendors/wysiwyg/bootstrap-wysihtml5.css"?>" rel="stylesheet" media="screen">
-
         <script src="<?php echo base_url()."style/vendors/jquery-1.9.1.js"?>"></script>
         <script src="<?php echo base_url()."style/bootstrap/js/bootstrap.min.js"?>"></script>
         <script src="<?php echo base_url()."style/vendors/jquery.uniform.min.js"?>"></script>
@@ -228,7 +222,7 @@
         			var showmas = document.getElementById('password_mas');
         			if(pass.value == che_passw.value ){
         				showmas.style.color = '#8FBC8F';
-        				showmas.value = "已确认";
+        				showmas.innerHTML = "已确认";
         			}else{
         				showmas.style.color = '#FF0000';
         				showmas.value = "两次输入的密码不一致";
@@ -239,13 +233,13 @@
         			var wordstr = document.getElementById('password').value;
         			var showmas = document.getElementById('pass_mas');
         			if(wordstr.length < 6 ){
-        				showmas.value = "密码需大于六位";
+        				showmas.innerHTML = "密码需大于六位";
         				showmas.style.color = '#FF0000';
         				var pass = document.getElementById('pass');
         				pass.value = '';
         			}else{
         				showmas.style.color = '#8FBC8F';
-        				showmas.value = "密码合法";
+        				showmas.innerHTML = "密码合法";
         				var pass = document.getElementById('pass');
         				pass.value = '';
         			}
@@ -263,11 +257,11 @@
 		        			//判断返回值，如果返回‘1’，则账号已经存在；返回’0’则不存在，可使用
 		        			if(data == 0){
 		        				var showmas = document.getElementById('acc_mas');
-		        				showmas.value = "账号合法";
+		        				showmas.innerHTML = "账号合法";
 		        				showmas.style.color = '#8FBC8F';
 		        			}else{
 		        				var showmas = document.getElementById('acc_mas');
-		        				showmas.value = "账号已存在";
+		        				showmas.innerHTML = "账号已存在";
 		        				showmas.style.color = '#FF0000';
 		        			}
 		        		}

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html>
     
     <head>
-        <title>材料见证送检</title>
+        <title>工程详情</title>
         <!-- Bootstrap -->
         <link href="<?php echo base_url()."style/bootstrap/css/bootstrap.min.css"?>" rel="stylesheet" media="screen">
         <link href="<?php echo base_url()."style/bootstrap/css/bootstrap-responsive.min.css"?>" rel="stylesheet" media="screen">
@@ -18,30 +18,36 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="<?php echo site_url('pj_all') ?>">江门市建设工程施工质量管理系统</a>
+                    <a class="brand" href="<?php echo site_url('pj_all')?>">江门市建设工程施工质量管理系统</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> 我的账号<i class="caret"></i></a>
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> 我的账号 <i class="caret"></i>
+
+                                </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a tabindex="-1" href="<?php echo site_url('login/login_out')?>">账号注销</a>
+                                        <a tabindex="-1" href="#">个人信息</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="<?php echo site_url('login/login_out')?>">注销</a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="nav">
                             <li class="active">
-                                <a >项目管理</a>
+                                <a href="#">项目管理</a>
                             </li>
                             <li class="">
-                                <a  >综合查询</a>
+                                <a href="#" >综合查询</a>
                             </li>
                             <li class="">
-                                <a  >任务通知</a>
+                                <a href="#" role="" class="" data-toggle="">任务通知</a>
                             </li>
                             <li class="">
-                                <a href="<?php echo site_url('sy_pho')?>">系统管理</a>
+                                <a href="<?php echo site_url('sy_pho')?>" role="button" class="" data-toggle="">系统管理</a>
                             </li>
                         </ul>
                     </div>
@@ -53,43 +59,20 @@
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li class="">
+                            <a href="<?php echo site_url('pj_all')?>"><i class="icon-chevron-right"></i>我的工程</a>
+                        </li>
                         <li class="active">
-                            <a href="<?php echo site_url('pj_send/index/'.$pj_timestamp)?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('commission/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('material_self/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('entity_self/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
-                        </li>
-                        <li>
-                            <a href="#"><!--<a href="material_con.html">--><i class="icon-chevron-right"></i>材料监督抽检</a>
-                        </li>
-                        <li>
-                            <a href="#"><!--<a href="entity_con.html">--><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('pj_query/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
+                            <a href=""><i class="icon-chevron-right"></i>工程详情</a>
                         </li>
                     </ul>
                 </div>
-                
                 <!--/span-->
                 <div class="span9" id="content">
-                    <div class="row-fluid">
-                    	<div class="navbar">
-                        	<div class="nav nav-tabs">
-                                <ul class="nav nav-tabs">
-                                  <li role="presentation"><a href="#">基本信息</a></li>
-                                </ul>
-                        	</div>
-                    	</div>
-                    </div>
-                    <!--工程列表-->
+
+                     <!-- wizard -->
                     <div class="row-fluid section">
+                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left">项目信息</div>
@@ -100,42 +83,202 @@
                                         <div class="navbar">
                                           <div class="navbar-inner">
                                             <div class="container">
-                                                <ul>
-                                                    <li><a href="#tab1" data-toggle="tab">基本信息</a></li>
-                                                </ul>
-                                            </div>
+                                        <ul>
+                                            <li><a href="#tab1" data-toggle="tab">基本信息</a></li>
+                                            <li><a href="#tab2" data-toggle="tab">人员信息</a></li>
+                                        </ul>
+                                         </div>
                                           </div>
                                         </div>
-                                       
                                         <div class="tab-content">
+                                            <!--工程基本信息-->
                                             <div class="tab-pane" id="tab1">
-                                                <form action="<?php echo site_url('pj_all/add')?>" method="POST" class="form-horizontal" >
+                                                <form  class="form-horizontal"  id="pj_form" >
                                                   <fieldset>
-                                                    <div class="control-group">
-                                                      <label  class="control-label" for="focusedInput">项目名称:</label>
+                                                  <?php foreach($pj_detail['detail'] as $v): ?> 
+                                                     <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">工程名称:</label>
                                                       <div class="controls">
-                                                        <input name="pj_name" class="input-xlarge focused" id="focusedInput" type="text" >
+                                                        <input name="pj_name" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入公司名称" value="<?php echo $v['工程名称'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">所属公司:</label>
+                                                      <div class="controls">
+                                                        <input name="company" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入公司名称" value="<?php echo $v['所属公司'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">地区:</label>
                                                       <div class="controls">
-                                                        <input name="area" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                       <!--地区选择器-->
+                                                       <!--  <select id="province" name="province"></select>
+                                                        <select id="city" name="city"></select> -->
+                                                        <input name="area" class="input-xlarge focused" id="focusedInput"  type="text" placeholder="请输入具体地址" value="<?php echo $v['地区'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">栋数:</label>
+                                                      <div class="controls">
+                                                        <input name="house_num" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入栋数" value="<?php echo $v['栋数'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">层数(层):</label>
+                                                      <div class="controls">
+                                                        <input name="layer_num" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入层数" value="<?php echo $v['层数'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">高度(m):</label>
+                                                      <div class="controls">
+                                                        <input name="height" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入高度" value="<?php echo $v['高度'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">建筑面积(㎡):</label>
+                                                      <div class="controls">
+                                                        <input name="covered_area" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入建筑面积" value="<?php echo $v['建筑面积'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">基坑深度(m):</label>
+                                                      <div class="controls">
+                                                        <input name="depth" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入基坑深度" value="<?php echo $v['基坑深度'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">开工日期:</label>
+                                                      <div class="controls">
+                                                        <input name="start_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="0000-00-00" value="<?php echo $v['开工日期'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">竣工日期:</label>
+                                                      <div class="controls">
+                                                        <input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="0000-00-00" value="<?php echo $v['竣工日期'] ?>" readonly="readonly">
                                                       </div>
                                                     </div>
                                                     <div class="control-group" style="display: none;">
                                                       <label  class="control-label" for="focusedInput">时间戳:</label>
                                                       <div class="controls">
-                                                        <input name="timestamp" id="timestamp" class="input-xlarge focused" id="focusedInput"  type="text" >
+                                                        <input name="timestamp" id="timestamp" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['时间戳'] ?>">
                                                       </div>
                                                     </div>
-                                                    <div class="form-actions">
-                                                      <button id="save" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                                      <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                                    </div>
+                                                  <?php endforeach ?>
                                                   </fieldset>
                                                 </form>
+                                                 <div class="form-actions">
+                                                    <button id="alter" class="btn btn-primary" style="margin-left: 160px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                    <button id="save" class="btn btn-primary" style="display: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                    <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                  </div>
                                             </div>
+                                            <!--工程基本信息-->
+
+
+                                            <!--工程人员信息-->
+                                            <div class="tab-pane" id="tab2">
+                                                <form  class="form-horizontal" >
+                                                  <fieldset>
+
+                                                    <div class="panel-heading" style="margin-left: 95px;">
+                                                        <h3 class="panel-title label " style="height: 20px;"><span style="font-size: 20px;">项目部</span></h3>
+                                                    </div>
+                                                    <div class="control-group" id="select0">
+                                                      <label  class="control-label" for="focusedInput">人员姓名:</label>
+                                                      <?php foreach($pj_detail['item'] as $v): ?>
+                                                      <div class="controls">
+                                                        <input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="联系电话" value="<?php echo $v['姓名']?>" readonly="readonly" >
+                                                        <span style="margin-left: 30px;">联系电话：</span><input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="联系电话" value="<?php echo $v['手机']?>" readonly="readonly" >
+                                                         <button type="button" id="add" class="btn "  >删除</button>
+                                                      </div>
+                                                      <br/>
+                                                     <?php endforeach ?>
+                                                      <button type="button" id="add" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
+                                                    </div>
+                                                   
+                                                    <div class="panel-heading" style="margin-left: 80px;">
+                                                        <h3 class="panel-title label " style="height: 20px;"><span style="font-size: 20px;">施工单位</span></h3>
+                                                    </div>
+                                                    <div class="control-group" id="select1">
+                                                      <label  class="control-label" for="focusedInput">人员姓名:</label>
+                                                  
+                                                      <?php foreach($pj_detail['road'] as $v): ?>
+                                                      <div class="controls">
+                                                        <input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="联系电话" value="<?php echo $v['姓名']?>" readonly="readonly" >
+                                                        <span style="margin-left: 30px;">联系电话：</span><input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="联系电话" value="<?php echo $v['手机']?>" readonly="readonly" >
+                                                        <button type="button" id="add" class="btn "  >删除</button>
+                                                      </div>
+                                                      <br/>
+                                                     <?php endforeach ?>
+                                                     
+                                                      <button type="button" id="add" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
+                                                    </div>
+
+                                                    <div class="panel-heading" style="margin-left: 80px;">
+                                                        <h3 class="panel-title label " style="height: 20px;"><span style="font-size: 20px;">监理单位</span></h3>
+                                                    </div>
+                                                    <div class="control-group" id="select2">
+                                                      <label  class="control-label" for="focusedInput">人员姓名:</label>
+                                                    
+                                                      <?php foreach($pj_detail['overseeing'] as $v): ?>
+                                                      <div class="controls">
+                                                        <input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="联系电话" value="<?php echo $v['姓名']?>" readonly="readonly" >
+                                                        <span style="margin-left: 30px;">联系电话：</span><input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="联系电话" value="<?php echo $v['手机']?>" readonly="readonly" >
+                                                        <button type="button" id="add" class="btn "  >删除</button>
+                                                      </div>
+                                                      <br/>
+                                                     <?php endforeach ?>
+                                                    
+                                                      <button type="button" id="add" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
+                                                    </div>
+
+
+                                                    <div class="panel-heading" style="margin-left: 80px;">
+                                                        <h3 class="panel-title label " style="height: 20px;"><span style="font-size: 20px;">检测单位</span></h3>
+                                                    </div>
+                                                    <div class="control-group" id="select3">
+                                                      <label  class="control-label" for="focusedInput">人员姓名:</label>
+                                                    
+                                                      <?php foreach($pj_detail['detection'] as $v): ?>
+                                                      <div class="controls">
+                                                        <input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="联系电话" value="<?php echo $v['姓名']?>" readonly="readonly" >
+                                                        <span style="margin-left: 30px;">联系电话：</span><input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="联系电话" value="<?php echo $v['手机']?>" readonly="readonly" >
+                                                        <button type="button" id="add" class="btn "  >删除</button>
+                                                      </div>
+                                                      <br/>
+                                                     <?php endforeach ?>
+                                                      
+                                                      <button type="button" id="add" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
+                                                    </div>
+
+                                                    <div class="panel-heading" style="margin-left: 80px;">
+                                                        <h3 class="panel-title label " style="height: 20px;"><span style="font-size: 20px;">监督机构</span></h3>
+                                                    </div>
+                                                    <div class="control-group" id="select4">
+                                                      <label  class="control-label" for="focusedInput">人员姓名:</label>
+                                                     
+                                                      <?php foreach($pj_detail['Supervision'] as $v): ?>
+                                                      <div class="controls">
+                                                        <input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="联系电话" value="<?php echo $v['姓名']?>" readonly="readonly" >
+                                                        <span style="margin-left: 30px;">联系电话：</span><input name="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="联系电话" value="<?php echo $v['手机']?>" readonly="readonly" >
+                                                        <button type="button" id="add" class="btn "  >删除</button>
+                                                      </div>
+                                                      <br/>
+                                                     <?php endforeach ?>
+                                                     
+                                                      <button type="button" id="add" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
+                                                    </div>
+                                                   
+                                                  </fieldset>
+                                                </form>
+                                                 <div class="form-actions" >
+                                                      <button id="save_user" class="btn btn-primary" style="margin-left: 350px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                      <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                    </div>
+                                            </div>
+                                            <!--工程人员信息-->
                                         </div>  
                                     </div>
                                 </div>
@@ -143,16 +286,16 @@
                         </div>
                         <!-- /block -->
                     </div>
-                    <!--工程列表-->
+	            <!-- /wizard -->
                 </div>
             </div>
         </div>
         <!--/.fluid-container-->
-        <link href="<?echo base_url()."style/vendors/datepicker.css"?>" rel="stylesheet" media="screen">
+        <!-- <link href="<?echo base_url()."style/vendors/datepicker.css"?>" rel="stylesheet" media="screen">
         <link href="<?echo base_url()."style/vendors/uniform.default.css"?>" rel="stylesheet" media="screen">
         <link href="<?echo base_url()."style/vendors/chosen.min.css"?>" rel="stylesheet" media="screen">
 
-        <link href="<?echo base_url()."style/vendors/wysiwyg/bootstrap-wysihtml5.css"?>" rel="stylesheet" media="screen">
+        <link href="<?echo base_url()."style/vendors/wysiwyg/bootstrap-wysihtml5.css"?>" rel="stylesheet" media="screen"> -->
 
         <script src="<?php echo base_url()."style/vendors/jquery-1.9.1.js"?>"></script>
         <script src="<?php echo base_url()."style/bootstrap/js/bootstrap.min.js"?>"></script>
@@ -165,15 +308,19 @@
 
         <script src="<?php echo base_url()."style/vendors/wizard/jquery.bootstrap.wizard.min.js"?>"></script>
 
-        <script type="text/javascript" src="<?php echo base_url()."style/vendors/jquery-validation/dist/jquery.validate.min.js"?>"></script>
-        <script src="<?php echo base_url()."style/assets/form-validation.js"?>"></script>
-            
-        <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
+      	<script type="text/javascript" src="<?php echo base_url()."style/vendors/jquery-validation/dist/jquery.validate.min.js"?>"></script>
+      	<script src="<?php echo base_url()."style/assets/form-validation.js"?>"></script>
+        <!-- <script src="<?php echo base_url()."style/region/PCASClass.js"?>"></script>     -->
+      	<script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
+        <script language="javascript" defer>     
+                // new PCAS("province","city","请选择省份","请选择市区");
+        </script>
         <script>
-            jQuery(document).ready(function() {   
-               FormValidation.init();
-            });
-        
+
+        	jQuery(document).ready(function() {   
+        	   FormValidation.init();
+        	});
+    	
 
             $(function() {
                 $(".datepicker").datepicker();
@@ -201,10 +348,109 @@
                     $('#rootwizard').find("a[href*='tab1']").trigger('click');
                 });
             });
+            
+            /**
+             * 项目基本信息修改
+             */
+            $("#alter").click(function(){
+                var save = document.getElementById("save");
+                var alter = document.getElementById("alter");
+                save.style="margin-left:160px";
+                alter.style="display:none";
+                var pj_form = document.getElementById("pj_form");
+                var length = document.getElementsByTagName("input").length;
+                for(var i=0;i<length;i++){
+                  pj_form.getElementsByTagName("input")[i].removeAttribute("readonly");
+                }
+            });
+       
+            $("#add").click(function(){
+                var select1 = document.getElementById("select1");
+                var length = select1.getElementsByTagName("select").length;
+                var str = "";
+                for(var i=0;i<length;i++){
+                    if(select1.getElementsByTagName("select")[i].value!='请下拉选择'){
+                        str += select1.getElementsByTagName("select")[i].value +"|";
+                    }        
+                }
+                str = str.substring(0,(str.length-1));
+                // alert(str);
+            });
 
-            //获取当前时间戳
-            var timestamp = new Date().getTime();
-            document.getElementById('timestamp').value = timestamp;
+            //保存
+            $("#save_user").click(function(){
+                //项目部
+                var select0 = document.getElementById("select0");
+                var length = select0.getElementsByTagName("select").length;
+                var item = "";
+                for(var i=0;i<length;i++){
+                    if(select0.getElementsByTagName("select")[i].value!='请下拉选择'){
+                        item += select0.getElementsByTagName("select")[i].value +"|";
+                    }        
+                }
+                item = item.substring(0,(item.length-1));
+
+                //施工单位
+                var select1 = document.getElementById("select1");
+                var length = select1.getElementsByTagName("select").length;
+                var road_user = "";
+                for(var i=0;i<length;i++){
+                    if(select1.getElementsByTagName("select")[i].value!='请下拉选择'){
+                        road_user += select1.getElementsByTagName("select")[i].value +"|";
+                    }        
+                }
+                road_user = road_user.substring(0,(road_user.length-1));
+
+                //监理单位
+                var select2 = document.getElementById("select2");
+                var length = select2.getElementsByTagName("select").length;
+                var overseeing = "";
+                for(var i=0;i<length;i++){
+                    if(select2.getElementsByTagName("select")[i].value!='请下拉选择'){
+                        overseeing += select2.getElementsByTagName("select")[i].value +"|";
+                    }        
+                }
+                overseeing = overseeing.substring(0,(overseeing.length-1));
+
+                //检测单位
+                var select3 = document.getElementById("select3");
+                var length = select3.getElementsByTagName("select").length;
+                var detection = "";
+                for(var i=0;i<length;i++){
+                    if(select3.getElementsByTagName("select")[i].value!='请下拉选择'){
+                        detection += select3.getElementsByTagName("select")[i].value +"|";
+                    }        
+                }
+                detection = detection.substring(0,(detection.length-1));
+
+                //监督机构
+                var select4 = document.getElementById("select4");
+                var length = select4.getElementsByTagName("select").length;
+                var Supervision = "";
+                for(var i=0;i<length;i++){
+                    if(select4.getElementsByTagName("select")[i].value!='请下拉选择'){
+                        Supervision += select4.getElementsByTagName("select")[i].value +"|";
+                    }        
+                }
+                Supervision = Supervision.substring(0,(Supervision.length-1));
+
+                //Ajax添加用户id
+                var controller = "<?php echo site_url('pj_all/add_userid') ?>";
+                $.ajax({
+                    data:{
+                        item:item,
+                        road_user:road_user,
+                        overseeing:overseeing,
+                        detection:detection,
+                        Supervision:Supervision
+                    },
+                    url:controller,
+                    type:"post",
+                    success:function(data){
+                        // alert(data);
+                    }
+                });
+            });
         </script>
     </body>
 

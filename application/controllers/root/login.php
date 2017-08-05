@@ -46,7 +46,8 @@ class Login extends CI_Controller{
 				//变量$sessionData设置到userdata
 				$this->session->set_userdata($sessionData); 
 				$this->load->model('root/pj_all_model','pj_all');
-				$data['pj_all'] = $this->pj_all->index();
+				$uid = $sessionData['userid'];
+				$data['pj_all'] = $this->pj_all->index($uid);
 				$this->load->view('root/pj_all.html',$data);
 			}
 		}else{

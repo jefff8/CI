@@ -1,6 +1,7 @@
 <?php
 	require('../conn.php');
-	$sql = "select id,时间戳,工程名称,地区  from 我的工程  order by id";
+	$uid = $_POST['uid'];
+	$sql = "SELECT * from 用户工程关系表 A INNER JOIN 我的工程 B ON A.工程id=B.id  where 用户id='1' order by 工程id";
 	$result = $conn->query($sql);
 	$class = mysqli_num_rows($result);
 	$i = 0;

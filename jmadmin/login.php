@@ -11,12 +11,14 @@
 		$jsonresult='success';
    		$shji=$row["手机"];
 		$my_name=$row["姓名"];
+		$uid=$row["id"];
 	}else{
 		$jsonresult='error'; 
 	}	
 	$json = '{"result":"'.$jsonresult.'",
 			  "shji":"'.$shji.'",
-			  "my_name":"'.$my_name.'"
+			  "my_name":"'.$my_name.'",
+			  "uid":"'.$uid.'"
 			}';
 	echo $json;
 	$conn->close();

@@ -20,7 +20,7 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="<?php echo site_url('pj_all')?>">江门市建设工程施工质量管理系统</a>
+                    <a class="brand" href="<?php echo site_url('pj_all/index')?>">江门市建设工程施工质量管理系统</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
@@ -28,10 +28,6 @@
 
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <!-- <li>
-                                        <a tabindex="-1" href="#">Profile</a>
-                                    </li>
-                                    <li class="divider"></li> -->
                                     <li>
                                         <a tabindex="-1" href="<?php echo site_url('login/login_out')?>">账号注销</a>
                                     </li>
@@ -98,16 +94,20 @@
                                                 <th>id</th>
                                                 <th>工程名称</th>
                                                 <th>地区</th>
-                                                <th>操作</th>
+                                                <th>所属公司</th>
+                                                <th style="width: 70px;">详情</th>
+                                                <th style="width: 70px;">操作</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach($pj_all as $v): ?>
                                                 <tr class="">
-                                                    <td><?php echo $v['id']?></td>
+                                                    <td><?php echo $v['工程id']?></td>
                                                     <td><a href="<?php echo site_url('pj_send/index/' .$v['时间戳'] )?>"><?php echo $v['工程名称']?></a></td>
                                                     <td><?php echo $v['地区']?></td>
-                                                    <td><button id="<?php echo $v['时间戳']?>" type="button" class="btn btn-default" onclick="del(this.id)">删除</button></td>
+                                                    <td><?php echo $v['所属公司']?></td>
+                                                    <td><button  type="button" class="btn btn-default" onclick="window.location='<?php echo site_url('pj_all/detail/' . $v['id']) ?>' ">查看</button></td>
+                                                    <td><button id="<?php echo $v['工程id']?>" type="button" class="btn btn-default" onclick="del(this.id)">删除</button></td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
@@ -127,30 +127,26 @@
         <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
         <script src="<?php echo base_url()."style/assets/DT_bootstrap.js"?>"></script>
         <script>
-        /**
-         * 项目删除
-         * @param  {[type]} pj_timestamp [description]
-         * @return {[type]}              [description]
-         */
-            function del(pj_timestamp){
+            /**
+             * 项目删除
+             * @param  {[type]} pj_timestamp [description]
+             * @return {[type]}              [description]
+             */
+            function del(pid){
                 var controller = "<?php echo site_url('pj_all/del') ?>";
                 $.ajax({
                     data:{
-                        pj_timestamp:pj_timestamp
+                        pid:pid
                     },
                     type:"post",
                     url:controller,
+
                     success:function(){
                         alert("删除成功！");
                         location.href="<?php echo site_url('pj_all') ?>"
                     }
                 });
             }
-                    
         </script>
-
-
-
     </body>
-
 </html>
