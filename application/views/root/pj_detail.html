@@ -103,6 +103,24 @@
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">施工单位:</label>
+                                                      <div class="controls">
+                                                        <input id="construction" name="construction" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入施工单位" value="<?php echo $v['施工单位'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">监理单位:</label>
+                                                      <div class="controls">
+                                                        <input id="supervision" name="supervision" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入监理单位" value="<?php echo $v['监理单位'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测单位:</label>
+                                                      <div class="controls">
+                                                        <input id="detection" name="detection" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入检测单位" value="<?php echo $v['检测单位'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">所属公司:</label>
                                                       <div class="controls">
                                                         <input id="company" name="company" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入公司名称" value="<?php echo $v['所属公司'] ?>" readonly="readonly">
@@ -375,6 +393,9 @@
                     data:{
                         timestamp:document.getElementById("timestamp").value,
                         pj_name:document.getElementById("pj_name").value,
+                        construction:document.getElementById("construction").value,
+                        supervision:document.getElementById("supervision").value,
+                        detection:document.getElementById("detection").value,
                         company:document.getElementById("company").value,
                         area:document.getElementById("area").value,
                         house_num:document.getElementById("house_num").value,

@@ -102,6 +102,24 @@
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">施工单位:</label>
+                                                      <div class="controls">
+                                                        <input name="construction" id="construction" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入施工单位">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">监理单位:</label>
+                                                      <div class="controls">
+                                                        <input name="supervision" id="supervision" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入监理单位">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测单位:</label>
+                                                      <div class="controls">
+                                                        <input name="detection" id="detection" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入检测单位">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">所属公司:</label>
                                                       <div class="controls">
                                                         <input name="company" id="company" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入公司名称">
@@ -408,6 +426,9 @@
                   data:{
                       timestamp:document.getElementById("timestamp").value,
                       pj_name:document.getElementById("pj_name").value,
+                      construction:document.getElementById("construction").value,
+                      supervision:document.getElementById("supervision").value,
+                      detection:document.getElementById("detection").value,
                       company:document.getElementById("company").value,
                       area:document.getElementById("area").value,
                       house_num:document.getElementById("house_num").value,
