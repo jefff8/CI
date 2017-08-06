@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Pj_all_model extends CI_Model{
 	/**
-	 * 全部项目
+	 * 全部工程
 	 * @return [type] [description]
 	 */		
 	public function index($uid){
@@ -11,14 +11,14 @@ class Pj_all_model extends CI_Model{
 	}
 
 	/**
-	 * 添加项目
+	 * 添加工程
 	 */
 	public function add($data){
 		$this->db->insert('我的工程',$data);
 	}
 
 	/**
-	 * 删除项目
+	 * 删除工程
 	 */
 	public function del($pid){
 		$this->db->delete('我的工程',array('id'=>$pid));
@@ -26,24 +26,24 @@ class Pj_all_model extends CI_Model{
 	}
 
 	/**
-	 * 项目详情
+	 * 工程详情
 	 */
 	public function detail($pid){
 		$data['detail'] = $this->db->query("select * from 我的工程 where id='$pid' ")->result_array();
 		//项目部
-		$data['item'] = $this->db->query("select * from 用户工程关系表 a inner join 用户信息 b on a.用户id=b.id where a.工程id='$pid' and b.单位='项目部' ")->result_array();
+		$data['item'] = $this->db->query("select a.id,b.姓名,b.手机 from 用户工程关系表 a inner join 用户信息 b on a.用户id=b.id where a.工程id='$pid' and b.单位='项目部' ")->result_array();
 
 		//施工单位
-		$data['road'] = $this->db->query("select * from 用户工程关系表 a inner join 用户信息 b on a.用户id=b.id where a.工程id='$pid' and b.单位='施工单位' ")->result_array();
+		$data['road'] = $this->db->query("select a.id,b.姓名,b.手机 from 用户工程关系表 a inner join 用户信息 b on a.用户id=b.id where a.工程id='$pid' and b.单位='施工单位' ")->result_array();
 
 		//监理单位
-		$data['overseeing'] = $this->db->query("select * from 用户工程关系表 a inner join 用户信息 b on a.用户id=b.id where a.工程id='$pid' and b.单位='监理单位' ")->result_array();
+		$data['overseeing'] = $this->db->query("select a.id,b.姓名,b.手机 from 用户工程关系表 a inner join 用户信息 b on a.用户id=b.id where a.工程id='$pid' and b.单位='监理单位' ")->result_array();
 
 		//检测单位
-		$data['detection'] = $this->db->query("select * from 用户工程关系表 a inner join 用户信息 b on a.用户id=b.id where a.工程id='$pid' and b.单位='检测单位' ")->result_array();
+		$data['detection'] = $this->db->query("select a.id,b.姓名,b.手机 from 用户工程关系表 a inner join 用户信息 b on a.用户id=b.id where a.工程id='$pid' and b.单位='检测单位' ")->result_array();
 
 		//监督单位
-		$data['Supervision'] = $this->db->query("select * from 用户工程关系表 a inner join 用户信息 b on a.用户id=b.id where a.工程id='$pid' and b.单位='监督机构' ")->result_array();
+		$data['Supervision'] = $this->db->query("select a.id,b.姓名,b.手机 from 用户工程关系表 a inner join 用户信息 b on a.用户id=b.id where a.工程id='$pid' and b.单位='监督机构' ")->result_array();
 		return $data;
 	}
 
@@ -72,38 +72,67 @@ class Pj_all_model extends CI_Model{
 		//项目部
 		$length0 = count($data['item']);
 		$item = $data['item'];
-		for($i=0;$i<$length0;$i++){
-			$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$item[$i]','$new_pj')");
+		if($item[0]){
+			for($i=0;$i<$length0;$i++){
+				$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$item[$i]','$new_pj')");
+			}
 		}
-
+		
 
 		//施工单位
 		$length1 = count($data['road_user']);
 		$road = $data['road_user'];
-		for($i=0;$i<$length1;$i++){
-			$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$road[$i]','$new_pj')");
+		if($road[0]){
+			for($i=0;$i<$length1;$i++){
+				$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$road[$i]','$new_pj')");
+			}
 		}
+		
 
 		//监理单位
 		$length2 = count($data['overseeing']);
 		$overseeing = $data['overseeing'];
-		for($i=0;$i<$length2;$i++){
-			$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$overseeing[$i]','$new_pj')");
+		if($overseeing[0]){
+			for($i=0;$i<$length2;$i++){
+				$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$overseeing[$i]','$new_pj')");
+			}
 		}
+		
 
 		//检测单位
 		$length3 = count($data['detection']);
 		$detection = $data['detection'];
-		for($i=0;$i<$length3;$i++){
-			$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$detection[$i]','$new_pj')");
+		if($detection[0]){
+			for($i=0;$i<$length3;$i++){
+				$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$detection[$i]','$new_pj')");
+			}
 		}
+		
 
 		//监督单位
 		$length4 = count($data['Supervision']);
 		$Supervision = $data['Supervision'];
-		for($i=0;$i<$length4;$i++){
-			$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$Supervision[$i]','$new_pj')");
+		if($Supervision[0]){
+			for($i=0;$i<$length4;$i++){
+				$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$Supervision[$i]','$new_pj')");
+			}
 		}
+	}
+
+	/**
+	 * 工程基本信息更新
+	 */
+	public function update($data){
+		$timestamp = $data['时间戳'];
+		$where = " 时间戳 = '$timestamp' ";
+		$this->db->update('我的工程',$data,$where);
+	}
+
+	/**
+	 * 删除工程人员
+	 */
+	public function del_user($id){
+		$this->db->delete('用户工程关系表',array('id'=>$id));
 	}
 
 }

@@ -416,7 +416,7 @@
                       covered_area:document.getElementById("covered_area").value,
                       depth:document.getElementById("depth").value,
                       start_date:document.getElementById("start_date").value,
-                      complete_date:document.getElementById("complete_date").value,
+                      complete_date:document.getElementById("complete_date").value
                   },
                   url:pj_info,
                   type:'post',
@@ -556,16 +556,11 @@
                     url:controller,
                     type:"post",
                     success:function(data){
+                        // alert(data);
                         alert("分配成功！");
                         window.location="<?php echo site_url('pj_all') ?>";
                     }
                 });
-
-
-
-
-               
-                
             });
         </script>
     </body>

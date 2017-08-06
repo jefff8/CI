@@ -17,10 +17,7 @@ class Pj_all extends MY_Controller{
 	 */
 	public function pj_add(){
 		$this->load->helpers('form');
-		//获取项目部单位人员
-		// $this->load->model('root/pj_all_model','get_user');
-		// $data['pj_department'] = $this->get_user->
-		//获取施工单位人员
+		//获取各单位人员
 		$this->load->model('root/pj_all_model','get_user');
 		$data['all'] = $this->get_user->user_name();
 		// p($data);
@@ -55,7 +52,9 @@ class Pj_all extends MY_Controller{
 	 */
 	public function detail(){
 		$pid = $this->uri->segment(3);
-		// p($pid);
+		// //获取各单位人员
+		$this->load->model('root/pj_all_model','get_user');
+		$data['all'] = $this->get_user->user_name();
 		$this->load->model('root/pj_all_model','pj_detail');
 		$data['pj_detail'] = $this->pj_detail->detail($pid);
 		// p($data['pj_detail']);
@@ -84,18 +83,50 @@ class Pj_all extends MY_Controller{
 		$detection_data = $this->input->post('detection');//获取检测单位选择的人员
 		$Supervision_data = $this->input->post('Supervision');//获取监督单位选择的人员
 		$user['item'] = explode('|',$item_data);
+		// p ($item_data);
 		$user['road_user'] = explode('|',$road_data);
 		$user['overseeing'] = explode('|',$overseeing_data);
 		$user['detection'] = explode('|',$detection_data);
 		$user['Supervision'] = explode('|',$Supervision_data);
+		// echo count($user['item']);
+		// p($user['item'][0]);
 		$this->load->model('root/pj_all_model','add_user');
 		$this->add_user->add_id($user);
 		success('pj_all/index','分配成功！');
-		// p($var);
-		// p(explode('|', $road_user));
-		// p($road_user);
+		
 	}
 
+	/**
+	 * 工程基本信息更新
+	 */
+	public function update(){
+		$data = array(
+				'时间戳' => $this->input->post('timestamp'),
+				'工程名称'=> $this->input->post('pj_name'),
+				'所属公司'=> $this->input->post('company'),
+				'地区'=> $this->input->post('area'),
+				'栋数'=> $this->input->post('house_num'),
+				'层数'=> $this->input->post('layer_num'),
+				'高度'=> $this->input->post('height'),
+				'建筑面积'=> $this->input->post('covered_area'),
+				'基坑深度'=> $this->input->post('depth'),
+				'开工日期'=> $this->input->post('start_date'),
+				'竣工日期'=> $this->input->post('complete_date')
+			);
+		// $data['timestamp'] = $this->input->post('timestamp');
+		// echo $data['工程名称'];
+		$this->load->model('root/pj_all_model','update');
+		$this->update->update($data);
+	}
+
+	/**
+	 * 删除工程人员
+	 */
+	public function del_user(){
+		$id = $this->input->post('id');
+		$this->load->model('root/pj_all_model','del_user');
+		$this->del_user->del_user($id);
+	}
 
 
 }

@@ -126,6 +126,7 @@
         <script src="<?php echo base_url()."style/vendors/datatables/js/jquery.dataTables.min.js"?>"></script>
         <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
         <script src="<?php echo base_url()."style/assets/DT_bootstrap.js"?>"></script>
+        <script src="<?php echo base_url()."style/layer/layer.js" ?>"></script>
         <script>
             /**
              * 项目删除
@@ -133,17 +134,22 @@
              * @return {[type]}              [description]
              */
             function del(pid){
-                var controller = "<?php echo site_url('pj_all/del') ?>";
-                $.ajax({
-                    data:{
-                        pid:pid
-                    },
-                    type:"post",
-                    url:controller,
+                layer.confirm('删除后,所有数据不可恢复！确定删除？',{
+                    btn:['确定','取消'],
+                    btn1:function(index,layero){
+                        var controller = "<?php echo site_url('pj_all/del') ?>";
+                        $.ajax({
+                            data:{
+                                pid:pid
+                            },
+                            type:"post",
+                            url:controller,
 
-                    success:function(){
-                        alert("删除成功！");
-                        location.href="<?php echo site_url('pj_all') ?>"
+                            success:function(){
+                                alert("删除成功！");
+                                location.href="<?php echo site_url('pj_all') ?>"
+                            }
+                        });
                     }
                 });
             }
