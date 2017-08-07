@@ -6,7 +6,7 @@ class Pj_query_model extends CI_Model{
 	 */
 	public function select($type_data){
 		$str_0 = $this->db->select('count(id)')->where(array('工程单状态'=>'合格'))->get($type_data)->result_array();
-		$str_1 = $this->db->select('count(id)')->where(array('工程单状态'=>'不合格'))->get($type_data)->result_array();
+		$str_1 = $this->db->query("select count(id) from $type_data where 工程单状态 = '不合格' or 工程单状态 = '复检不合格' or 工程单状态 = '已处理'  ")->result_array();
 		$data['pass'] = array_values($str_0[0]) ;
 		$data['fail'] = array_values($str_1[0]) ;
 		return $data;

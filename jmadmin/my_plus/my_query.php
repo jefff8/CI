@@ -5,7 +5,7 @@
 	$category = $_POST['category'];
 	
 	//不合格数
-	$sql1 = "select count(*) as result_fail from $category   where  工程时间戳 = '$pj_timestamp' and 工程名称 = '$pj_name' and 工程单状态 = '不合格' ";
+	$sql1 = "select count(*) as result_fail from $category   where  工程时间戳 = '$pj_timestamp' and 工程名称 = '$pj_name' and 工程单状态 = '不合格' or 工程单状态 = '复检不合格' or 工程单状态 = '已处理'  ";
 	$result1 = $conn->query($sql1);
 	if($result1->num_rows > 0){
 		while($row = $result1->fetch_assoc()){

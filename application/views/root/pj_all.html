@@ -112,7 +112,7 @@
                                                     <td><?php echo $v['监理单位']?></td>
                                                     <td><?php echo $v['检测单位']?></td>
                                                     <td><?php echo $v['所属公司']?></td>
-                                                    <td><button  style="width: 100px;" type="button" class="btn btn-primary" onclick="window.location='<?php echo site_url('pj_all/detail/' . $v['id']) ?>' ">查看</button></td>
+                                                    <td><button  style="width: 100px;" type="button" class="btn btn-primary" onclick="window.location='<?php echo site_url('pj_all/detail/' . $v['工程id']) ?>' ">查看</button></td>
                                                     <td><button id="<?php echo $v['工程id']?>" type="button" class="btn btn-danger" onclick="del(this.id)">删除</button></td>
                                                 </tr>
                                             <?php endforeach ?>
