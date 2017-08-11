@@ -13,7 +13,7 @@
 				$i++;
 			}
 		}
-		$sql2 = "select * from 项目类型选择  where 项目模块='$pj_type' and 大类='道路工程'";
+		$sql2 = "select * from 项目类型选择  where 项目模块='$pj_type' and 大类='市政工程'";
 		$result2 = $conn->query($sql2);
 		if($result2->num_rows>0){
 			$i=0;
@@ -50,7 +50,7 @@
 			}
 			
 		}
-		$sql2 = "select * from 项目类型选择  where 项目模块='$pj_type' and 大类='道路工程'";
+		$sql2 = "select * from 项目类型选择  where 项目模块='$pj_type' and 大类='市政工程'";
 		$result2 = $conn->query($sql2);
 		if($result2->num_rows>0){
 			$i=0;
