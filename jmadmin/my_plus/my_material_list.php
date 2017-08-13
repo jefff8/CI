@@ -154,8 +154,9 @@
 	}else if($flag=="合格"){
 		$ulid = $_POST['ulid'];
 		$gcmc = $_POST['gcmc'];
+		$testNum = $_POST['testNum'];
 		require('../conn.php');
-		$sql = "update 材料送检  set 工程单状态 = '合格' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		$sql = "update 材料送检  set 工程单状态 = '合格',检测报告编号='$testNum' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$result = $conn->query($sql);
 		if($result){
 			$data_arr['结果']="处理成功！";
@@ -246,5 +247,19 @@
 		$data_json = json_encode($data_arr);
 		echo $data_json;
 		$conn->close();
-	}															
+	}else if($flag=='审批通过'){
+		$ulid = $_POST['ulid'];
+		$gcmc = $_POST['gcmc'];
+		require('../conn.php');
+		$sql = "update 材料送检  set 工程单状态 = '已处理' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		$result = $conn->query($sql);
+		if($result){
+			$data_arr['结果']="提交成功！";
+		}else{
+			$data_arr['结果']="提交失败！";
+		}
+		$conn->close();
+		$data_json = json_encode($data_arr);
+		echo $data_json;
+	}											
 ?>
