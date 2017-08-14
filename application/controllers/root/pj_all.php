@@ -20,7 +20,8 @@ class Pj_all extends MY_Controller{
 		//获取各单位人员
 		$this->load->model('root/pj_all_model','get_user');
 		$data['all'] = $this->get_user->user_name();
-		// p($data);
+		$data['org'] = $this->get_user->org_name();
+//		 p($data['org']);
 		$this->load->view('root/pj_add.html',$data);
 	}
 
@@ -49,7 +50,17 @@ class Pj_all extends MY_Controller{
 		$this->all->add($data);
 		echo "<script> alert('添加成功~请添加工程人员！') </script>";
 	}
-
+	/**
+	 * 检测手机号：获取手机号
+	 */
+	 public function check_phone(){
+	 	$this->load->model('root/pj_all_model','get_user');
+		$data = $this->get_user->user_name();
+//		print_r($data);
+		$json = json_encode($data);
+		echo $json;
+	 }
+	 
 	/**
 	 * 项目详情
 	 */
@@ -60,6 +71,7 @@ class Pj_all extends MY_Controller{
 		$data['all'] = $this->get_user->user_name();
 		$this->load->model('root/pj_all_model','pj_detail');
 		$data['pj_detail'] = $this->pj_detail->detail($pid);
+		$data['org'] = $this->get_user->org_name();
 		// p($data['pj_detail']);
 		$this->load->view('root/pj_detail.html',$data);
 	}
@@ -80,12 +92,12 @@ class Pj_all extends MY_Controller{
 	 * 添加人员id到用户工程关系表
 	 */
 	public function add_userid(){
-		$item_data = $this->input->post('item');//获取项目部选择的人员
+//		$item_data = $this->input->post('item');//获取项目部选择的人员
 		$road_data = $this->input->post('road_user');//获取施工单位选择的人员
 		$overseeing_data = $this->input->post('overseeing');//获取监理单位选择的人员
 		$detection_data = $this->input->post('detection');//获取检测单位选择的人员
 		$Supervision_data = $this->input->post('Supervision');//获取监督单位选择的人员
-		$user['item'] = explode('|',$item_data);
+//		$user['item'] = explode('|',$item_data);
 		// p ($item_data);
 		$user['road_user'] = explode('|',$road_data);
 		$user['overseeing'] = explode('|',$overseeing_data);
