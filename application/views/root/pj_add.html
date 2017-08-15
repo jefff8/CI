@@ -8,6 +8,36 @@
         <link href="<?php echo base_url()."style/bootstrap/css/bootstrap-responsive.min.css"?>" rel="stylesheet" media="screen">
         <link href="<?php echo base_url()."style/assets/styles.css"?>" rel="stylesheet" media="screen">
         <script src="<?php echo base_url()."style/vendors/modernizr-2.6.2-respond-1.1.0.min.js"?>"></script>
+        
+        <style type="text/css">
+        	.select_org_name {
+        		position: absolute;
+				width: 283px;
+				border: 1px solid #999;
+				background-color: #F8FDEF;
+				z-index: 10;
+				display: none;
+        	}
+        	.tab_org_name input {
+        		zoom: 180%;
+        	}
+        	.tab_org_name td:first-child {
+        		border-bottom: 1px solid #000000;
+        		width: 50%;
+        		text-align: center;
+        		
+        	}
+        	.tab_org_name td{
+        		border-bottom: 1px solid #000000;
+        		width: 50%;
+        		text-align: right;
+        		
+        	}
+        	table {
+        		width: 100%;
+				border-collapse:collapse;
+			}
+        </style>
     </head>
     
     <body>
@@ -105,18 +135,48 @@
                                                       <label  class="control-label" for="focusedInput">施工单位:</label>
                                                       <div class="controls">
                                                         <input name="construction" id="construction" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入施工单位">
+                                                        <div class="select_org_name" id="construction_org_name">
+                                                        	<table class="tab_org_name" id="tab_construction">
+                                                        		<?php foreach($org['road'] as $o): ?>
+                                                        			<tr>
+                                                        				<td><label for="<?php echo $o['id'] ?>"><?php echo $o['单位名称'] ?></label></td>
+                                                        				<td><input type="checkbox" id="<?php echo $o['id'] ?>" /></td>
+                                                        			</tr>
+                                                        		<?php endforeach ?>
+                                                        	</table>
+                                                        </div>
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">监理单位:</label>
                                                       <div class="controls">
                                                         <input name="supervision" id="supervision" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入监理单位">
+                                                      	<div class="select_org_name" id="supervision_org_name">
+                                                        	<table class="tab_org_name" id="tab_supervision">
+                                                        		<?php foreach($org['overseeing'] as $o): ?>
+                                                        			<tr>
+                                                        				<td><label for="<?php echo $o['id'] ?>"><?php echo $o['单位名称'] ?></label></td>
+                                                        				<td><input type="checkbox" id="<?php echo $o['id'] ?>" /></td>
+                                                        			</tr>
+                                                        		<?php endforeach ?>
+                                                        	</table>
+                                                        </div>
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">检测单位:</label>
                                                       <div class="controls">
                                                         <input name="detection" id="detection" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入检测单位">
+                                                      	<div class="select_org_name" id="detection_org_name">
+                                                        	<table class="tab_org_name" id="tab_detection">
+                                                        		<?php foreach($org['detection'] as $o): ?>
+                                                        			<tr>
+                                                        				<td><label for="<?php echo $o['id'] ?>"><?php echo $o['单位名称'] ?></label></td>
+                                                        				<td><input type="checkbox" id="<?php echo $o['id'] ?>" /></td>
+                                                        			</tr>
+                                                        		<?php endforeach ?>
+                                                        	</table>
+                                                        </div>
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
@@ -167,13 +227,13 @@
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">开工日期:</label>
                                                       <div class="controls">
-                                                        <input name="start_date" id="start_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="0000-00-00">
+                                                        <input type="text" name="start_date" id="start_date" class="input-xlarge datepicker" id="focusedInput"  >
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">竣工日期:</label>
                                                       <div class="controls">
-                                                        <input name="complete_date" id="complete_date" class="input-xlarge focused" id="focusedInput" type="text" placeholder="0000-00-00">
+                                                        <input type="text" name="complete_date" id="complete_date" class="input-xlarge datepicker" id="focusedInput"  >
                                                       </div>
                                                     </div>
                                                     <div class="control-group" style="display: none;">
@@ -196,7 +256,7 @@
                                             <div class="tab-pane" id="tab2">
                                                 <form  class="form-horizontal" >
                                                   <fieldset>
-                                                    <div class="panel-heading" style="margin-left: 95px;">
+                                                    <!--<div class="panel-heading" style="margin-left: 95px;">
                                                         <h3 class="panel-title label " style="height: 20px;"><span style="font-size: 20px;">项目部</span></h3>
                                                     </div>
                                                     <div class="control-group" id="select0">
@@ -209,7 +269,7 @@
                                                             <select class="form-control" >
                                                               <option>请下拉选择</option>
                                                               <?php foreach($all['item'] as $v): ?>
-                                                              <option value="<?php echo $v['id'] ?>"><?php echo $v['姓名'] ?></option>
+                                                              <option value="<?php echo $v['id'] ?>"><?php echo $v['单位名称'].'--'.$v['姓名'] ?></option>
                                                               <?php endforeach ?>
                                                             </select>
                                                           </div>
@@ -219,56 +279,34 @@
                                                           ?>
                                                       </div>
                                                       <button type="button" id="add_item" class="btn btn-success" style="margin-left: 340px;" >添加+</button>
-                                                    </div>
+                                                    </div>-->
                                                    
                                                     <div class="panel-heading" style="margin-left: 80px;">
                                                         <h3 class="panel-title label " style="height: 20px;"><span style="font-size: 20px;">施工单位</span></h3>
                                                     </div>
                                                     <div class="control-group" id="select1">
-                                                      <label  class="control-label" for="focusedInput">人员姓名:</label>
+                                                      <label  class="control-label" for="focusedInput">人员手机:</label>
                                                       <div id="createSelect1">
-                                                        <?php
-                                                              for($i=0;$i<4;$i++){ 
-                                                        ?>
                                                         <div class="controls">
-                                                          <select class="form-control" >
-                                                            <option>请下拉选择</option>
-                                                            <?php foreach($all['road'] as $v): ?>
-                                                            <option value="<?php echo $v['id'] ?>"><?php echo $v['姓名'] ?></option>
-                                                            <?php endforeach ?>
-                                                          </select>
-                                                        </div>
-                                                        <br/>
-                                                        <?php 
-                                                              } 
-                                                        ?>
+                                                        	<input class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入手机号">
+                                                      	</div>
                                                       </div>
-                                                      <button type="button" id="add_road" class="btn btn-success" style="margin-left: 340px;" >添加+</button>
+                                                      <br />
+                                                      <button type="button" id="add_road" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
                                                     </div>
 
                                                     <div class="panel-heading" style="margin-left: 80px;">
                                                         <h3 class="panel-title label " style="height: 20px;"><span style="font-size: 20px;">监理单位</span></h3>
                                                     </div>
                                                     <div class="control-group" id="select2">
-                                                      <label  class="control-label" for="focusedInput">人员姓名:</label>
+                                                      <label  class="control-label" for="focusedInput">人员手机:</label>
                                                       <div id="createSelect2">
-                                                        <?php
-                                                              for($i=0;$i<4;$i++){ 
-                                                        ?>
                                                         <div class="controls">
-                                                          <select class="form-control" >
-                                                            <option>请下拉选择</option>
-                                                            <?php foreach($all['overseeing'] as $v): ?>
-                                                            <option value="<?php echo $v['id'] ?>"><?php echo $v['姓名'] ?></option>
-                                                            <?php endforeach ?>
-                                                          </select>
-                                                        </div>
-                                                        <br/>
-                                                        <?php 
-                                                              } 
-                                                        ?>
+                                                        	<input class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入手机号">
+                                                      	</div>
                                                       </div>
-                                                      <button type="button" id="add_overseeing" class="btn btn-success" style="margin-left: 340px;" >添加+</button>
+                                                      <br />
+                                                      <button type="button" id="add_overseeing" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
                                                     </div>
 
 
@@ -276,57 +314,43 @@
                                                         <h3 class="panel-title label " style="height: 20px;"><span style="font-size: 20px;">检测单位</span></h3>
                                                     </div>
                                                     <div class="control-group" id="select3">
-                                                      <label  class="control-label" for="focusedInput">人员姓名:</label>
+                                                      <label  class="control-label" for="focusedInput">人员手机:</label>
                                                       <div id="createSelect3">
-                                                        <?php
-                                                              for($i=0;$i<4;$i++){ 
-                                                        ?>
                                                         <div class="controls">
-                                                          <select class="form-control" >
-                                                            <option>请下拉选择</option>
-                                                            <?php foreach($all['detection'] as $v): ?>
-                                                            <option value="<?php echo $v['id'] ?>"><?php echo $v['姓名'] ?></option>
-                                                            <?php endforeach ?>
-                                                          </select>
-                                                        </div>
-                                                        <br/>
-                                                        <?php 
-                                                              } 
-                                                        ?>
+                                                        	<input class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入手机号">
+                                                      	</div>
                                                       </div>
-                                                      <button type="button" id="add_detection" class="btn btn-success" style="margin-left: 340px;" >添加+</button>
+                                                      <br />
+                                                      <button type="button" id="add_detection" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
                                                     </div>
 
                                                     <div class="panel-heading" style="margin-left: 80px;">
                                                         <h3 class="panel-title label " style="height: 20px;"><span style="font-size: 20px;">监督机构</span></h3>
                                                     </div>
                                                     <div class="control-group" id="select4">
-                                                      <label  class="control-label" for="focusedInput">人员姓名:</label>
+                                                      <label  class="control-label" for="focusedInput">人员手机:</label>
                                                       <div id="createSelect4">
-                                                        <?php
-                                                              for($i=0;$i<4;$i++){ 
-                                                        ?>
                                                         <div class="controls">
-                                                          <select class="form-control" >
-                                                            <option>请下拉选择</option>
-                                                            <?php foreach($all['Supervision'] as $v): ?>
-                                                            <option value="<?php echo $v['id'] ?>"><?php echo $v['姓名'] ?></option>
-                                                            <?php endforeach ?>
-                                                          </select>
-                                                        </div>
-                                                        <br/>
-                                                        <?php 
-                                                              } 
-                                                        ?>
+                                                        	<input class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入手机号">
+                                                      	</div>
                                                       </div>
-                                                      <button type="button" id="add_Supervision" class="btn btn-success" style="margin-left: 340px;" >添加+</button>
+                                                      <br />
+                                                      <button type="button" id="add_Supervision" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
                                                     </div>
                                                    
                                                   </fieldset>
                                                 </form>
                                                  <div class="form-actions" >
-                                                      <button id="save_user" class="btn btn-primary" style="margin-left: 150px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                                      <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 	<div id="mod">
+                                                 		<button id="check_user" class="btn btn-primary" style="margin-left: 150px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检测手机号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 		<button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 	</div>
+                                                 	<div id="mod2" style="display: none;">
+                                                 		<button id="save_user" class="btn btn-primary"  style="margin-left: 150px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 		<button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 	</div>  	
+                                                      
+                                                      
                                                  </div>
                                             </div>
                                             <!--工程人员信息-->
@@ -342,11 +366,11 @@
             </div>
         </div>
         <!--/.fluid-container-->
-        <!-- <link href="<?echo base_url()."style/vendors/datepicker.css"?>" rel="stylesheet" media="screen">
+        <link href="<?echo base_url()."style/vendors/datepicker.css"?>" rel="stylesheet" media="screen">
         <link href="<?echo base_url()."style/vendors/uniform.default.css"?>" rel="stylesheet" media="screen">
         <link href="<?echo base_url()."style/vendors/chosen.min.css"?>" rel="stylesheet" media="screen">
 
-        <link href="<?echo base_url()."style/vendors/wysiwyg/bootstrap-wysihtml5.css"?>" rel="stylesheet" media="screen"> -->
+        <link href="<?echo base_url()."style/vendors/wysiwyg/bootstrap-wysihtml5.css"?>" rel="stylesheet" media="screen"> 
 
         <script src="<?php echo base_url()."style/vendors/jquery-1.9.1.js"?>"></script>
         <script src="<?php echo base_url()."style/bootstrap/js/bootstrap.min.js"?>"></script>
@@ -371,14 +395,55 @@
         	jQuery(document).ready(function() {   
         	   FormValidation.init();
         	});
-    	      
-
+    	    
+    	    /**
+    	     * 各单位名称选择函数gettab_data ， select_org
+    	     */
+    	    function gettab_data(tab_doc,input_doc){
+				var str = '';
+				var row_num = tab_doc.rows.length;
+				for(i=0;i<row_num;i++){
+					if(tab_doc.rows[i].cells[1].getElementsByTagName("input")[0].checked == true){
+						str = str+tab_doc.rows[i].cells[0].getElementsByTagName("label")[0].innerHTML+",";
+					}
+				}
+	//			alert(str.substr(0,str.length-1));
+				input_doc.value = str.substr(0,str.length-1);    	    	
+    	    }
+			function select_org(div_doc,tab_doc,input_doc){
+				input_doc.addEventListener("mousedown",function(){
+					if(div_doc.style.display == 'block'){
+						gettab_data(tab_doc,input_doc);
+						div_doc.style.display = 'none';
+					}else{
+						gettab_data(tab_doc,input_doc);
+						div_doc.style.display='block';
+					}
+				})
+				for(i=0;i<tab_doc.getElementsByTagName("input").length;i++){
+					tab_doc.getElementsByTagName("input")[i].addEventListener('click',function(){
+						gettab_data(tab_doc,input_doc);
+						div_doc.style.display = 'none';
+					})		
+				}
+			}
+			//施工单位 选择
+			var construction_org_name = document.getElementById("construction_org_name");
+			var tab_construction = document.getElementById("tab_construction");
+			var construction = document.getElementById("construction");
+			select_org(construction_org_name,tab_construction,construction);
+			//监理单位选择
+			select_org(supervision_org_name,tab_supervision,supervision);
+			//检测单位 选择 
+			select_org(detection_org_name,tab_detection,detection);
+			
+			
             $(function() {
                 $(".datepicker").datepicker();
                 $(".uniform_on").uniform();
                 $(".chzn-select").chosen();
                 $('.textarea').wysihtml5();
-
+				
                 $('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
                     var $total = navigation.find('li').length;
                     var $current = index+1;
@@ -458,21 +523,22 @@
              * @return {[type]}     [description]
              */
             //项目部
-            $("#add_item").click(function(){
-                var createSelect0 = document.getElementById("createSelect0");
-                var div = document.createElement("div");
-                div.className = "controls";
-                var select = "<br/><select><option>请下拉选择</option><?php foreach($all['item'] as $v): ?><option value='<?php echo $v['id'] ?>'><?php echo $v['姓名'] ?></option><?php endforeach ?></select>";
-                div.innerHTML = select;
-                createSelect0.appendChild(div);
-            });
+//          $("#add_item").click(function(){
+//              var createSelect0 = document.getElementById("createSelect0");
+//              var div = document.createElement("div");
+//              div.className = "controls";
+//              var select = "<br/><select><option>请下拉选择</option><?php foreach($all['item'] as $v): ?><option value='<?php echo $v['id'] ?>'><?php echo $v['单位名称'].'--'.$v['姓名'] ?></option><?php endforeach ?></select>";
+//              div.innerHTML = select;
+//              createSelect0.appendChild(div);
+//          });
             //施工单位
             $("#add_road").click(function(){
                 var createSelect1 = document.getElementById("createSelect1");
                 var div = document.createElement("div");
                 div.className = "controls";
-                var select = "<br/><select><option>请下拉选择</option><?php foreach($all['road'] as $v): ?><option value='<?php echo $v['id'] ?>'><?php echo $v['姓名'] ?></option><?php endforeach ?></select>";
-                div.innerHTML = select;
+//              var select = "<br/><select><option>请下拉选择</option><?php foreach($all['road'] as $v): ?><option value='<?php echo $v['id'] ?>'><?php echo $v['单位名称'].'--'.$v['姓名'] ?></option><?php endforeach ?></select>";
+                var div_Html = '<br/><input class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入手机号">';
+                div.innerHTML = div_Html;
                 createSelect1.appendChild(div);
             });
 
@@ -481,8 +547,9 @@
                 var createSelect2 = document.getElementById("createSelect2");
                 var div = document.createElement("div");
                 div.className = "controls";
-                var select = "<br/><select><option>请下拉选择</option><?php foreach($all['overseeing'] as $v): ?><option value='<?php echo $v['id'] ?>'><?php echo $v['姓名'] ?></option><?php endforeach ?></select>";
-                div.innerHTML = select;
+//              var select = "<br/><select><option>请下拉选择</option><?php foreach($all['overseeing'] as $v): ?><option value='<?php echo $v['id'] ?>'><?php echo $v['单位名称'].'--'.$v['姓名'] ?></option><?php endforeach ?></select>";
+                var div_Html = '<br/><input class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入手机号">';
+                div.innerHTML = div_Html;
                 createSelect2.appendChild(div);
             });
 
@@ -491,84 +558,218 @@
                 var createSelect3 = document.getElementById("createSelect3");
                 var div = document.createElement("div");
                 div.className = "controls";
-                var select = "<br/><select><option>请下拉选择</option><?php foreach($all['detection'] as $v): ?><option value='<?php echo $v['id'] ?>'><?php echo $v['姓名'] ?></option><?php endforeach ?></select>";
-                div.innerHTML = select;
+//              var select = "<br/><select><option>请下拉选择</option><?php foreach($all['detection'] as $v): ?><option value='<?php echo $v['id'] ?>'><?php echo $v['单位名称'].'--'.$v['姓名'] ?></option><?php endforeach ?></select>";
+               	var div_Html = '<br/><input class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入手机号">';
+                div.innerHTML = div_Html;
                 createSelect3.appendChild(div);
             });
-
+			
             //监督机构
             $("#add_Supervision").click(function(){
                 var createSelect4 = document.getElementById("createSelect4");
                 var div = document.createElement("div");
                 div.className = "controls";
-                var select = "<br/><select><option>请下拉选择</option><?php foreach($all['Supervision'] as $v): ?><option value='<?php echo $v['id'] ?>'><?php echo $v['姓名'] ?></option><?php endforeach ?></select>";
-                div.innerHTML = select;
+//              var select = "<br/><select><option>请下拉选择</option><?php foreach($all['Supervision'] as $v): ?><option value='<?php echo $v['id'] ?>'><?php echo $v['单位名称'].'--'.$v['姓名'] ?></option><?php endforeach ?></select>";
+                var div_Html = '<br/><input class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入手机号">';
+                div.innerHTML = div_Html;
                 createSelect4.appendChild(div);
             });
 
+			
+			/*
+			 * 检测所填的手机号是否存在
+			 * */
+			//异步获取手机号
+			$("#check_user").click(function(){
+	            var controller = "<?php echo site_url('pj_all/check_phone') ?>";
+	            $.ajax({
+	                url:controller,
+	                type:"post",
+                    dataType:"json",
+	                success:function(data){
+	                	//施工单位
+	                	var msg_1 = new String();
+	                	var input_1 = document.getElementById("createSelect1").getElementsByTagName("input");
+	                	for(i=0;i<input_1.length;i++){
+	                		var flag = 0;
+	                		var inp_val = input_1[i].value;
+	                		if(inp_val != ''){
+	                			for(j=0;j<data['road'].length;j++){
+	                				if(inp_val == data['road'][j]['手机'] ){
+	                					flag = 1;
+	                				}
+	                			}
+	                			if(flag == 0){
+		                			num = i+1 ;
+		                			msg_1 = msg_1 + num +",";
+	                			}
+	                		}
+	                		
+	                	}
+	                	msg_1 = msg_1.substr(0,msg_1.length-1);
+//	                	alert("施工单位：第"+msg_1+"行的手机号记录不存在！");
+						
+						//监理单位
+	                	var msg_2 = new String();
+	                	var input_2 = document.getElementById("createSelect2").getElementsByTagName("input");
+	                	for(i=0;i<input_2.length;i++){
+	                		var flag = 0;
+	                		var inp_val = input_2[i].value;
+	                		if(inp_val != ''){
+	                			for(j=0;j<data['overseeing'].length;j++){
+	                				if(inp_val == data['overseeing'][j]['手机'] ){
+	                					flag = 1;
+	                				}
+	                			}
+	                			if(flag == 0){
+		                			num = i+1 ;
+		                			msg_2 = msg_2 + num +",";
+	                			}
+	                		}
+	                		
+	                	}
+	                	msg_2 = msg_2.substr(0,msg_2.length-1);
 
+						//检测单位
+	                	var msg_3 = new String();
+	                	var input_3 = document.getElementById("createSelect3").getElementsByTagName("input");
+	                	for(i=0;i<input_3.length;i++){
+	                		var flag = 0;
+	                		var inp_val = input_3[i].value;
+	                		if(inp_val != ''){
+	                			for(j=0;j<data['detection'].length;j++){
+	                				if(inp_val == data['detection'][j]['手机'] ){
+	                					flag = 1;
+	                				}
+	                			}
+	                			if(flag == 0){
+		                			num = i+1 ;
+		                			msg_3 = msg_3 + num +",";
+	                			}
+	                		}
+	                		
+	                	}
+	                	msg_3 = msg_3.substr(0,msg_3.length-1);
+
+						//监督机构
+	                	var msg_4 = new String();
+	                	var input_4 = document.getElementById("createSelect4").getElementsByTagName("input");
+	                	for(i=0;i<input_4.length;i++){
+	                		var flag = 0;
+	                		var inp_val = input_4[i].value;
+	                		if(inp_val != ''){
+	                			for(j=0;j<data['Supervision'].length;j++){
+	                				if(inp_val == data['Supervision'][j]['手机'] ){
+	                					flag = 1;
+	                				}
+	                			}
+	                			if(flag == 0){
+		                			num = i+1 ;
+		                			msg_4 = msg_4 + num +",";
+	                			}
+	                		}
+	                		
+	                	}
+	                	msg_4 = msg_4.substr(0,msg_4.length-1);
+						
+						if(msg_1=='' &&msg_2 =='' && msg_3=='' && msg_4 ==''){
+							//检测通过
+							alert("手机号已核实！");
+							mod.style.display = "none";
+	                		mod2.style.display = "block";
+						}else{
+							//检测不通过
+							msg = new String();
+							if(msg_1!=''){
+								msg = "施工单位：第"+msg_1+"行的手机号记录不存在！\n";
+							}
+							if(msg_2!=''){
+								msg = msg + "监理单位：第"+msg_2+"行的手机号记录不存在！\n";
+							}
+							if(msg_3 != ''){
+								msg = msg + "检测单位：第"+msg_3+"行的手机号记录不存在！\n";
+							}
+							if(msg_4 != ''){
+								msg = msg + "监督机构：第"+msg_4+"行的手机号记录不存在！\n";
+							}
+							alert(msg);
+						}
+						/*
+						//检测完成
+						mod.style.display = "none";
+	                	mod2.style.display = "block";*/
+	                },
+	                error:function(){
+	                	alert("ajax error! + 获取手机号失败！");
+	                }
+	            });				
+			});
+
+			
+			
             //保存人员信息
             $("#save_user").click(function(){
-                //项目部
-                var select0 = document.getElementById("select0");
-                var length = select0.getElementsByTagName("select").length;
-                var item = "";
-                for(var i=0;i<length;i++){
-                    if(select0.getElementsByTagName("select")[i].value!='请下拉选择'){
-                        item += select0.getElementsByTagName("select")[i].value +"|";
-                    }        
-                }
-                item = item.substring(0,(item.length-1));
+//              //项目部
+//              var select0 = document.getElementById("select0");
+//              var length = select0.getElementsByTagName("select").length;
+//              var item = "";
+//              for(var i=0;i<length;i++){
+//                  if(select0.getElementsByTagName("select")[i].value!='请下拉选择'){
+//                      item += select0.getElementsByTagName("select")[i].value +"|";
+//                  }        
+//              }
+//              item = item.substring(0,(item.length-1));
 
                 //施工单位
                 var select1 = document.getElementById("select1");
-                var length = select1.getElementsByTagName("select").length;
+                var length = select1.getElementsByTagName("input").length;
                 var road_user = "";
                 for(var i=0;i<length;i++){
-                    if(select1.getElementsByTagName("select")[i].value!='请下拉选择'){
-                        road_user += select1.getElementsByTagName("select")[i].value +"|";
+                    if(select1.getElementsByTagName("input")[i].value!=''){
+                        road_user += select1.getElementsByTagName("input")[i].value +"|";
                     }        
                 }
                 road_user = road_user.substring(0,(road_user.length-1));
 
                 //监理单位
                 var select2 = document.getElementById("select2");
-                var length = select2.getElementsByTagName("select").length;
+                var length = select2.getElementsByTagName("input").length;
                 var overseeing = "";
                 for(var i=0;i<length;i++){
-                    if(select2.getElementsByTagName("select")[i].value!='请下拉选择'){
-                        overseeing += select2.getElementsByTagName("select")[i].value +"|";
+                    if(select2.getElementsByTagName("input")[i].value!=''){
+                        overseeing += select2.getElementsByTagName("input")[i].value +"|";
                     }        
                 }
                 overseeing = overseeing.substring(0,(overseeing.length-1));
 
                 //检测单位
                 var select3 = document.getElementById("select3");
-                var length = select3.getElementsByTagName("select").length;
+                var length = select3.getElementsByTagName("input").length;
                 var detection = "";
                 for(var i=0;i<length;i++){
-                    if(select3.getElementsByTagName("select")[i].value!='请下拉选择'){
-                        detection += select3.getElementsByTagName("select")[i].value +"|";
+                    if(select3.getElementsByTagName("input")[i].value!=''){
+                        detection += select3.getElementsByTagName("input")[i].value +"|";
                     }        
                 }
                 detection = detection.substring(0,(detection.length-1));
 
                 //监督机构
                 var select4 = document.getElementById("select4");
-                var length = select4.getElementsByTagName("select").length;
+                var length = select4.getElementsByTagName("input").length;
                 var Supervision = "";
                 for(var i=0;i<length;i++){
-                    if(select4.getElementsByTagName("select")[i].value!='请下拉选择'){
-                        Supervision += select4.getElementsByTagName("select")[i].value +"|";
+                    if(select4.getElementsByTagName("input")[i].value!=''){
+                        Supervision += select4.getElementsByTagName("input")[i].value +"|";
                     }        
                 }
                 Supervision = Supervision.substring(0,(Supervision.length-1));
-
+				
+//				alert(road_user+"\n"+overseeing+"\n"+detection+"\n"+Supervision)
+                
                 //Ajax添加用户id
                 var controller = "<?php echo site_url('pj_all/add_userid') ?>";
                 $.ajax({
                     data:{
-                        item:item,
                         road_user:road_user,
                         overseeing:overseeing,
                         detection:detection,

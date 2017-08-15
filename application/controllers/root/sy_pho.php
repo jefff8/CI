@@ -26,7 +26,8 @@ Class Sy_pho extends MY_Controller{
 			'密码' => $this->input->post('password'),
 			'邮箱' => $this->input->post('mail'),
 			'手机' => $this->input->post('phone'),
-			'单位' => $this->input->post('part')
+			'单位' => $this->input->post('part'),
+			'单位名称' => $this->input->post('part_name')
 		);
 		$this->load->model('root/sy_pho_model','sy_pho');
 		$this->sy_pho->save($data);
