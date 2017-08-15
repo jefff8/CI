@@ -180,6 +180,22 @@
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">监督机构:</label>
+                                                      <div class="controls">
+                                                        <input name="Supervision_0" id="Supervision_0" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入检测单位">
+                                                      	<div class="select_org_name" id="Supervision_0_org_name">
+                                                        	<table class="tab_org_name" id="tab_Supervision_0">
+                                                        		<?php foreach($org['Supervision'] as $o): ?>
+                                                        			<tr>
+                                                        				<td><label for="<?php echo $o['id'] ?>"><?php echo $o['单位名称'] ?></label></td>
+                                                        				<td><input type="checkbox" id="<?php echo $o['id'] ?>" /></td>
+                                                        			</tr>
+                                                        		<?php endforeach ?>
+                                                        	</table>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">所属公司:</label>
                                                       <div class="controls">
                                                         <input name="company" id="company" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入公司名称">
@@ -436,7 +452,8 @@
 			select_org(supervision_org_name,tab_supervision,supervision);
 			//检测单位 选择 
 			select_org(detection_org_name,tab_detection,detection);
-			
+			//监督机构 选择
+			select_org(Supervision_0_org_name,tab_Supervision_0,Supervision_0);
 			
             $(function() {
                 $(".datepicker").datepicker();
@@ -493,6 +510,7 @@
                       pj_name:document.getElementById("pj_name").value,
                       construction:document.getElementById("construction").value,
                       supervision:document.getElementById("supervision").value,
+                      Supervision_0:document.getElementById("Supervision_0").value,
                       detection:document.getElementById("detection").value,
                       company:document.getElementById("company").value,
                       area:document.getElementById("area").value,
