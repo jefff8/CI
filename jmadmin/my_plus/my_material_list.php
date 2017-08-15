@@ -211,13 +211,14 @@
 	}else if($flag=="复检不合格"){
 		$ulid = $_POST['ulid'];
 		$gcmc = $_POST['gcmc'];
+		$recheckNum = $_POST['recheckNum'];
 		require('../conn.php');
-		$sql = "update 材料送检  set 工程单状态 = '复检不合格' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		$sql = "update 材料送检  set 工程单状态 = '复检不合格',复检编号 = '$recheckNum' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$result = $conn->query($sql);
 		if($result){
-			$data_arr['结果']="提交成功！";
+			$data_arr['result']="success";
 		}else{
-			$data_arr['结果']="提交失败！";
+			$data_arr['result']="fail";
 		}
 		$conn->close();
 		$data_json = json_encode($data_arr);

@@ -15,15 +15,10 @@
 				$data_arr[$i]['工程名称']=$row['工程名称'];
 				$data_arr[$i]['工程单状态']=$row['工程单状态'];
 				$data_arr[$i]['自检自测类型']=$row['自检自测类型'];
-				$data_arr[$i]['规格']=$row['规格'];
+				$data_arr[$i]['检测部位']=$row['检测部位'];
 				$data_arr[$i]['数量']=$row['数量'];
-				$data_arr[$i]['生产厂家']=$row['生产厂家'];
-				$data_arr[$i]['取样人']=$row['取样人'];
-				$data_arr[$i]['进厂日期']=$row['进厂日期'];
-				$data_arr[$i]['取样日期']=$row['取样日期'];
-				$data_arr[$i]['合格证编号']=$row['合格证编号'];
-				$data_arr[$i]['使用部位']=$row['使用部位'];
-				$data_arr[$i]['经销商单位']=$row['经销商单位'];
+				$data_arr[$i]['检测人']=$row['检测人'];
+				$data_arr[$i]['检测日期']=$row['检测日期'];
 				$data_arr[$i]['备注']=$row['备注'];
 				$i++;
 			}

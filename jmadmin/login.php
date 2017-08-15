@@ -12,13 +12,15 @@
    		$shji=$row["手机"];
 		$my_name=$row["姓名"];
 		$uid=$row["id"];
+		$unit=$row["单位"];
 	}else{
 		$jsonresult='error'; 
 	}	
 	$json = '{"result":"'.$jsonresult.'",
 			  "shji":"'.$shji.'",
 			  "my_name":"'.$my_name.'",
-			  "uid":"'.$uid.'"
+			  "uid":"'.$uid.'",
+			  "unit":"'.$unit.'"
 			}';
 	echo $json;
 	$conn->close();

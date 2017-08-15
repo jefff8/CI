@@ -11,17 +11,15 @@
 		if($result->num_rows > 0){
 			while($row = $result->fetch_assoc()){
 				$return_data[$i]['id']=$row['id'];
+				$data_arr[$i]['工程名称']=$row['工程名称'];
 				$return_data[$i]['自检自测类型']=$row['自检自测类型'];
-				$return_data[$i]['规格']=$row['规格'];
-				$return_data[$i]['数量']=$row['数量'];
-				$return_data[$i]['生产厂家']=$row['生产厂家'];
-				$return_data[$i]['取样人']=$row['取样人'];
-				$return_data[$i]['进场日期']=$row['进场日期'];
+				$return_data[$i]['检测部位']=$row['检测部位'];
+				$return_data[$i]['检测数量']=$row['数量'];
+				$return_data[$i]['检测人']=$row['检测人'];
+				$return_data[$i]['检测日期']=$row['检测日期'];
 				$return_data[$i]['时间戳']=$row['时间戳'];
-				$return_data[$i]['取样日期']=$row['取样日期'];
-				$return_data[$i]['合格证编号']=$row['合格证编号'];
-				$return_data[$i]['使用部位']=$row['使用部位'];
 				$return_data[$i]['工程单状态']=$row['工程单状态'];
+				$data_arr[$i]['备注']=$row['备注'];
 				$i++;
 			}
 		}
