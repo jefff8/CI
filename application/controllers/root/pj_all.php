@@ -123,6 +123,7 @@ class Pj_all extends MY_Controller{
 				'施工单位'=> $this->input->post('construction'),
 				'监理单位'=> $this->input->post('supervision'),
 				'检测单位'=> $this->input->post('detection'),
+				'监督机构'=> $this->input->post('Supervision_0'),
 				'地区'=> $this->input->post('area'),
 				'栋数'=> $this->input->post('house_num'),
 				'层数'=> $this->input->post('layer_num'),
