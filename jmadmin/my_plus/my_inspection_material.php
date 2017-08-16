@@ -67,7 +67,7 @@
 		$json = json_encode($return);
 		echo $json;
 		$conn->close(); 
-	}else if($flag == "撤销准备材料"){
+	}else if($flag == "撤销取样"){
 		$ulid = $_POST['ulid'];
 		require("../conn.php");
 		$sql = "update 材料自检   set 工程单状态='新增' where id='$ulid'";

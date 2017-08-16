@@ -88,5 +88,105 @@
 			$data_json = json_encode($data_arr);
 			echo $data_json;
 			break;
+		case "已见证":
+			$sql = "update 材料送检  set 工程单状态 = '已见证' where id ='$ulId'  ";
+			$result = $conn->query($sql);
+			if($result){
+				$data_arr['结果']="见证成功！";
+			}else{
+				$data_arr['结果']="见证失败！";
+			}
+			$conn->close();
+			$data_json = json_encode($data_arr);
+			echo $data_json;
+			break;
+		case "已见证复检":
+			$sql = "update 材料送检  set 工程单状态 = '已见证复检' where id ='$ulId'  ";
+			$result = $conn->query($sql);
+			if($result){
+				$data_arr['结果']="见证成功！";
+			}else{
+				$data_arr['结果']="见证失败！";
+			}
+			$conn->close();
+			$data_json = json_encode($data_arr);
+			echo $data_json;
+			break;
+		case "获取工程时间戳":
+			$sql = "select 工程时间戳  from 材料送检  where id='$ulId'";
+			$result = $conn->query($sql);
+			if($result){
+				$row = $result->fetch_assoc();
+				$pj_timestamp[0]['工程时间戳'] = $row['工程时间戳'];
+			}
+			$conn->close();
+			$pj_timestamp = json_encode($pj_timestamp);
+			echo $pj_timestamp;
+			break;
+		case "单位名称":
+			$pj_time = $_POST['pj_timestamp'];
+			$sql = "select 施工单位,检测单位,监理单位 from 我的工程  where 时间戳='$pj_time'";
+			$result = $conn->query($sql);
+			if($result){
+				$row = $result->fetch_assoc();
+				$data[0]['施工单位'] = $row['施工单位'];
+				$data[0]['检测单位'] = $row['检测单位'];
+				$data[0]['监理单位'] = $row['监理单位'];
+			}
+			$conn->close();
+			$data = json_encode($data);
+			echo $data;
+			break;
+		case "合格":
+			$testNum = $_POST['testNum'];
+			$sql = "update 材料送检  set 工程单状态 = '合格',检测报告编号='$testNum' where id ='$ulId'  ";
+			$result = $conn->query($sql);
+			if($result){
+				$data_arr['结果']="操作成功！";
+			}else{
+				$data_arr['结果']="操作失败！";
+			}
+			$conn->close();
+			$data_json = json_encode($data_arr);
+			echo $data_json;
+			break;
+		case "复检合格":
+			$recheckNum = $_POST['recheckNum'];
+			$sql = "update 材料送检  set 工程单状态 = '合格',复检编号 = '$recheckNum' where id ='$ulId'  ";
+			$result = $conn->query($sql);
+			if($result){
+				$data_arr['结果']="操作成功！";
+			}else{
+				$data_arr['结果']="操作失败！";
+			}
+			$conn->close();
+			$data_json = json_encode($data_arr);
+			echo $data_json;
+			break;
+		case "不合格":
+			$sql = "update 材料送检  set 工程单状态 = '不合格' where id ='$ulId'  ";
+			$result = $conn->query($sql);
+			if($result){
+				$data_arr['结果']="处理成功！";
+			}else{
+				$data_arr['结果']="失败！";
+			}
+			$conn->close();
+			$data_json = json_encode($data_arr);
+			echo $data_json;
+			break;
+		case "复检不合格":
+			$recheckNum = $_POST['recheckNum'];
+			$sql = "update 材料送检  set 工程单状态 = '复检不合格',复检编号 = '$recheckNum' where id ='$ulId'  ";
+			$result = $conn->query($sql);
+			if($result){
+				$data_arr['结果']="处理成功！";
+			}else{
+				$data_arr['结果']="失败！";
+			}
+			$conn->close();
+			$data_json = json_encode($data_arr);
+			echo $data_json;
+			break;
 	}
 ?>

@@ -208,12 +208,15 @@
 		$conn->close();
 		$data_json = json_encode($data_arr);
 		echo $data_json;
-	}else if($flag=="复检不合格"){
+	}else if($flag=="复检不合格"||$flag=="复检合格"){
+		if($flag=="复检合格"){
+			$flag = '合格';
+		}
 		$ulid = $_POST['ulid'];
 		$gcmc = $_POST['gcmc'];
 		$recheckNum = $_POST['recheckNum'];
 		require('../conn.php');
-		$sql = "update 材料送检  set 工程单状态 = '复检不合格',复检编号 = '$recheckNum' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		$sql = "update 材料送检  set 工程单状态 = '$flag',复检编号 = '$recheckNum' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$result = $conn->query($sql);
 		if($result){
 			$data_arr['result']="success";
