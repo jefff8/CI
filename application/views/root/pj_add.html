@@ -415,7 +415,7 @@
     	    /**
     	     * 各单位名称选择函数gettab_data ， select_org
     	     */
-    	    function gettab_data(tab_doc,input_doc){
+	    function gettab_data(tab_doc,input_doc){
 				var str = '';
 				var row_num = tab_doc.rows.length;
 				for(i=0;i<row_num;i++){
@@ -425,7 +425,7 @@
 				}
 	//			alert(str.substr(0,str.length-1));
 				input_doc.value = str.substr(0,str.length-1);    	    	
-    	    }
+	    }
 			function select_org(div_doc,tab_doc,input_doc){
 				input_doc.addEventListener("mousedown",function(){
 					if(div_doc.style.display == 'block'){
@@ -694,7 +694,7 @@
 							//检测通过
 							alert("手机号已核实！");
 							mod.style.display = "none";
-	                		mod2.style.display = "block";
+	            mod2.style.display = "block";
 						}else{
 							//检测不通过
 							msg = new String();

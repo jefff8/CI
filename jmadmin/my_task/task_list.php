@@ -61,12 +61,39 @@
 				$data[$i]['id'] = $row['id'];
 				$data[$i]['时间戳'] = $row['时间戳'];
 				$data[$i]['工程名称'] = $row['工程名称'];
-				$data[$i]['取样类型'] = $row['取样类型'];
+				$data[$i]['自检自测类型'] = $row['自检自测类型'];
 				$data[$i]['工程单状态'] = $row['工程单状态'];
-				$data[$i]['规格'] = $row['规格'];
+				$data[$i]['检测部位'] = $row['检测部位'];
 				$data[$i]['数量'] = $row['数量'];
-//				$data[$i]['取样人'] = $row['取样人'];
-//				$data[$i]['取样日期'] = $row['取样日期'];
+				$data[$i]['检测人'] = $row['检测人'];
+				$data[$i]['检测日期'] = $row['检测日期'];
+				$i++;
+			}
+		}
+	}
+	
+	//实体自检
+	if($flag=='实体自检'){
+		$pj_timestamp = $_POST['pj_timestamp'];
+		$unit = $_POST['unit'];
+		if($unit=='施工单位'){
+			$sql = "SELECT * from 实体自检  where 工程时间戳='$pj_timestamp' and (工程单状态='新增' or 工程单状态='准备材料')";
+		}else if($unit=='监理单位'){
+			$sql = "SELECT * from 实体自检  where 工程时间戳='$pj_timestamp' and (工程单状态='未检测' or 工程单状态='确定检测' )";
+		}
+		$result = $conn->query($sql);
+		if($result->num_rows >0){
+			$i=0;
+			while($row = $result->fetch_assoc()){
+				$data[$i]['id'] = $row['id'];
+				$data[$i]['时间戳'] = $row['时间戳'];
+				$data[$i]['工程名称'] = $row['工程名称'];
+				$data[$i]['工程单状态'] = $row['工程单状态'];
+				$data[$i]['自检自测类型'] = $row['自检自测类型'];
+				$data[$i]['检测部位'] = $row['检测部位'];
+				$data[$i]['数量'] = $row['数量'];
+				$data[$i]['检测人'] = $row['检测人'];
+				$data[$i]['检测日期'] = $row['检测日期'];
 				$i++;
 			}
 		}
