@@ -1,5 +1,5 @@
 <?php	
-	$servername = "localhost:3306";
+	$servername = "localhost";
 	$username = "root";
 	$password = "123456";
 	$dbname = "jmadmin";	
@@ -8,6 +8,6 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}else{
-		//echo "Connected successfully";
+//		echo "Connected successfully";
 	}	
 ?> 

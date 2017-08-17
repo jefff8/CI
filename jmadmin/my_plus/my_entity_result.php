@@ -16,12 +16,10 @@
 				$data_arr[$i]['工程名称']=$row['工程名称'];
 				$data_arr[$i]['工程单状态']=$row['工程单状态'];				
 				$data_arr[$i]['检测类型']=$row['检测类型'];
-				$data_arr[$i]['检测单位']=$row['检测单位'];
-				$data_arr[$i]['规格']=$row['规格'];
 				$data_arr[$i]['数量']=$row['数量'];
-				$data_arr[$i]['生产厂家']=$row['生产厂家'];
-				$data_arr[$i]['取样人']=$row['取样人'];
-				$data_arr[$i]['取样日期']=$row['取样日期'];
+				$data_arr[$i]['检测部位']=$row['检测部位'];
+				$data_arr[$i]['检测人']=$row['检测人'];
+				$data_arr[$i]['检测日期']=$row['检测日期'];
 				$i++;
 			}
 		}

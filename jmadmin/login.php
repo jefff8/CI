@@ -6,6 +6,7 @@
 	 
 	$sql = "select * from 用户信息 where 账号='".$account."'";
 	$result = $conn->query($sql);
+//	echo $sql;
 	$row = $result->fetch_assoc();
 	if($password==$row["密码"])	{
 		$jsonresult='success';

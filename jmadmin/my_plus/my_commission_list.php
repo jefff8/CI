@@ -88,9 +88,22 @@
 		}
 		$conn->close();
 		$data_json = json_encode($data_arr);
-		echo $data_json;
-		
+		echo $data_json;	
 	}
+	else if($flag=="提交结果"){
+		$ulid = $_POST['ulid'];
+		require('../conn.php');
+		$sql = "update 实体检测 set 工程单状态 = '提交结果' where id ='$ulid'  ";
+		$result = $conn->query($sql);
+		if($result){
+			$data_arr['结果']="操作成功！";
+		}else{
+			$data_arr['结果']="操作失败！";
+		}
+		$conn->close();
+		$data_json = json_encode($data_arr);
+		echo $data_json;
+		}
 //	else if($flag=="不合格"){
 //		$ulid = $_POST['ulid'];
 //		$timestamp = $_POST['timestamp'];
