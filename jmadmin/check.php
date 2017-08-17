@@ -1,7 +1,7 @@
 <?php
 	require("conn.php");
-	$name = $_POST['my_name'];
-	$sql="select id,单位 from 用户信息 where 姓名= '".$name."'";
+	$mobile = $_POST['mobile'];
+	$sql="select id,单位 from 用户信息 where 手机= '".$mobile."'";
 	$result = $conn->query($sql);
 	$i=0;
 	if($result -> num_rows>0){
