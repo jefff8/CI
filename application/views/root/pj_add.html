@@ -7,6 +7,7 @@
         <link href="<?php echo base_url()."style/bootstrap/css/bootstrap.min.css"?>" rel="stylesheet" media="screen">
         <link href="<?php echo base_url()."style/bootstrap/css/bootstrap-responsive.min.css"?>" rel="stylesheet" media="screen">
         <link href="<?php echo base_url()."style/assets/styles.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/multiselect/multiple-select.css"?>" rel="stylesheet" media="screen">
         <script src="<?php echo base_url()."style/vendors/modernizr-2.6.2-respond-1.1.0.min.js"?>"></script>
         
         <style type="text/css">
@@ -134,65 +135,45 @@
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">施工单位:</label>
                                                       <div class="controls">
-                                                        <input name="construction" id="construction" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入施工单位">
-                                                        <div class="select_org_name" id="construction_org_name">
-                                                        	<table class="tab_org_name" id="tab_construction">
-                                                        		<?php foreach($org['road'] as $o): ?>
-                                                        			<tr>
-                                                        				<td><label for="<?php echo $o['id'] ?>"><?php echo $o['单位名称'] ?></label></td>
-                                                        				<td><input type="checkbox" id="<?php echo $o['id'] ?>" /></td>
-                                                        			</tr>
-                                                        		<?php endforeach ?>
-                                                        	</table>
-                                                        </div>
+                                                        <input type="text" name="construction" id="construction" value="" style="display: none;">
+                                                        <select  id="construction_select" name="construction_select" style="width:284px" multiple="multiple">
+                                                             <?php foreach($org['road'] as $o): ?>
+                                                               <option ><?php echo $o['单位名称'] ?></option>
+                                                              <?php endforeach ?>
+                                                        </select>
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">监理单位:</label>
                                                       <div class="controls">
-                                                        <input name="supervision" id="supervision" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入监理单位">
-                                                      	<div class="select_org_name" id="supervision_org_name">
-                                                        	<table class="tab_org_name" id="tab_supervision">
-                                                        		<?php foreach($org['overseeing'] as $o): ?>
-                                                        			<tr>
-                                                        				<td><label for="<?php echo $o['id'] ?>"><?php echo $o['单位名称'] ?></label></td>
-                                                        				<td><input type="checkbox" id="<?php echo $o['id'] ?>" /></td>
-                                                        			</tr>
-                                                        		<?php endforeach ?>
-                                                        	</table>
-                                                        </div>
+                                                        <input type="text" name="supervision" id="supervision" value="" style="display: none;">
+                                                        <select  id="supervision_select" name="supervision_select" style="width:284px" multiple="multiple">
+                                                             <?php foreach($org['overseeing'] as $o): ?>
+                                                               <option ><?php echo $o['单位名称'] ?></option>
+                                                              <?php endforeach ?>
+                                                        </select>
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">检测单位:</label>
                                                       <div class="controls">
-                                                        <input name="detection" id="detection" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入检测单位">
-                                                      	<div class="select_org_name" id="detection_org_name">
-                                                        	<table class="tab_org_name" id="tab_detection">
-                                                        		<?php foreach($org['detection'] as $o): ?>
-                                                        			<tr>
-                                                        				<td><label for="<?php echo $o['id'] ?>"><?php echo $o['单位名称'] ?></label></td>
-                                                        				<td><input type="checkbox" id="<?php echo $o['id'] ?>" /></td>
-                                                        			</tr>
-                                                        		<?php endforeach ?>
-                                                        	</table>
-                                                        </div>
+                                                        <input type="text" name="detection" id="detection" value="" style="display: none;">
+                                                        <select  id="detection_select" name="detection_select" style="width:284px" multiple="multiple">
+                                                              <?php foreach($org['detection'] as $o): ?>
+                                                                <option ><?php echo $o['单位名称'] ?></option>
+                                                              <?php endforeach ?>
+                                                        </select>
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">监督机构:</label>
                                                       <div class="controls">
-                                                        <input name="Supervision_0" id="Supervision_0" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入检测单位">
-                                                      	<div class="select_org_name" id="Supervision_0_org_name">
-                                                        	<table class="tab_org_name" id="tab_Supervision_0">
-                                                        		<?php foreach($org['Supervision'] as $o): ?>
-                                                        			<tr>
-                                                        				<td><label for="<?php echo $o['id'] ?>"><?php echo $o['单位名称'] ?></label></td>
-                                                        				<td><input type="checkbox" id="<?php echo $o['id'] ?>" /></td>
-                                                        			</tr>
-                                                        		<?php endforeach ?>
-                                                        	</table>
-                                                        </div>
+                                                        <input type="text" name="Supervision_0" id="Supervision_0" value="" style="display: none;">
+                                                        <select  id="Supervision_0_select" name="Supervision_0_select" style="width:284px" multiple="multiple">
+                                                              <?php foreach($org['Supervision'] as $o): ?>
+                                                                <option ><?php echo $o['单位名称'] ?></option>
+                                                              <?php endforeach ?>
+                                                        </select>
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
@@ -243,13 +224,13 @@
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">开工日期:</label>
                                                       <div class="controls">
-                                                        <input type="text" name="start_date" id="start_date" class="input-xlarge datepicker" id="focusedInput"  >
+                                                        <input type="text" name="start_date" id="start_date" class="input-xlarge datepicker" id="focusedInput"  placeholder="请选择开工日期">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">竣工日期:</label>
                                                       <div class="controls">
-                                                        <input type="text" name="complete_date" id="complete_date" class="input-xlarge datepicker" id="focusedInput"  >
+                                                        <input type="text" name="complete_date" id="complete_date" class="input-xlarge datepicker" id="focusedInput" placeholder="请选择竣工日期" >
                                                       </div>
                                                     </div>
                                                     <div class="control-group" style="display: none;">
@@ -261,8 +242,8 @@
                                                   </fieldset>
                                                 </form>
                                                 <div class="form-actions">
-                                                  <button id="save_info" class="btn btn-primary" style="margin-left: 160px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                                  <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                  <button id="save_info" class="btn btn-primary" style="margin-left: 190px;width: 200px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                  <!-- <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button> -->
                                                 </div>
                                             </div>
                                             <!--工程基本信息-->
@@ -358,12 +339,12 @@
                                                 </form>
                                                  <div class="form-actions" >
                                                  	<div id="mod">
-                                                 		<button id="check_user" class="btn btn-primary" style="margin-left: 150px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检测手机号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                                 		<button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 		<button id="check_user" class="btn btn-primary" style="margin-left: 220px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检测手机号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 		<!-- <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button> -->
                                                  	</div>
                                                  	<div id="mod2" style="display: none;">
-                                                 		<button id="save_user" class="btn btn-primary"  style="margin-left: 150px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                                 		<button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 		<button id="save_user" class="btn btn-primary"  style="margin-left: 245px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 		<!-- <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button> -->
                                                  	</div>  	
                                                       
                                                       
@@ -387,7 +368,7 @@
         <link href="<?echo base_url()."style/vendors/chosen.min.css"?>" rel="stylesheet" media="screen">
 
         <link href="<?echo base_url()."style/vendors/wysiwyg/bootstrap-wysihtml5.css"?>" rel="stylesheet" media="screen"> 
-
+  
         <script src="<?php echo base_url()."style/vendors/jquery-1.9.1.js"?>"></script>
         <script src="<?php echo base_url()."style/bootstrap/js/bootstrap.min.js"?>"></script>
         <script src="<?php echo base_url()."style/vendors/jquery.uniform.min.js"?>"></script>
@@ -399,10 +380,14 @@
 
         <script src="<?php echo base_url()."style/vendors/wizard/jquery.bootstrap.wizard.min.js"?>"></script>
 
-    	<script type="text/javascript" src="<?php echo base_url()."style/vendors/jquery-validation/dist/jquery.validate.min.js"?>"></script>
-    	<script src="<?php echo base_url()."style/assets/form-validation.js"?>"></script>
+      	<script type="text/javascript" src="<?php echo base_url()."style/vendors/jquery-validation/dist/jquery.validate.min.js"?>"></script>
+      	<script src="<?php echo base_url()."style/assets/form-validation.js"?>"></script>
         <script src="<?php echo base_url()."style/region/PCASClass.js"?>"></script>    
-    	<script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
+    	  <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
+        <!--多选插件-->
+        <!-- <script src="<?echo base_url()."style/multiselect/jquery-1.10.2.min.js"?>"></script> -->
+        <script src="<?echo base_url()."style/multiselect/multiple-select.js"?>"></script>
+        <!-- <script src="<?echo base_url()."style/multiselect/Index_wenzhixin.js"?>"></script> -->
         <script language="javascript" defer>     
                 new PCAS("province","city","请选择省份","请选择市区");
         </script>
@@ -411,49 +396,76 @@
         	jQuery(document).ready(function() {   
         	   FormValidation.init();
         	});
-    	    
+    	    $(function () {
+              $('#construction_select').multipleSelect({
+                  placeholder: "请选择施工单位",
+                  filter: true
+              });
+              $('#supervision_select').multipleSelect({
+                  placeholder: "请选择监理单位",
+                  filter: true
+              });
+              $('#detection_select').multipleSelect({
+                  placeholder: "请选择检测单位",
+                  filter: true
+              });
+              $('#Supervision_0_select').multipleSelect({
+                  placeholder: "请选择监督机构",
+                  filter: true
+              });
+          })
+
+         
+          
+          // selected("construction");
+          // //监理单位
+          // selected("supervision");
+          // //检测单位
+          // selected("detection");
+          // //监督机构
+          // select("Supervision_0");
     	    /**
     	     * 各单位名称选择函数gettab_data ， select_org
     	     */
-	    function gettab_data(tab_doc,input_doc){
-				var str = '';
-				var row_num = tab_doc.rows.length;
-				for(i=0;i<row_num;i++){
-					if(tab_doc.rows[i].cells[1].getElementsByTagName("input")[0].checked == true){
-						str = str+tab_doc.rows[i].cells[0].getElementsByTagName("label")[0].innerHTML+",";
-					}
-				}
-	//			alert(str.substr(0,str.length-1));
-				input_doc.value = str.substr(0,str.length-1);    	    	
-	    }
-			function select_org(div_doc,tab_doc,input_doc){
-				input_doc.addEventListener("mousedown",function(){
-					if(div_doc.style.display == 'block'){
-						gettab_data(tab_doc,input_doc);
-						div_doc.style.display = 'none';
-					}else{
-						gettab_data(tab_doc,input_doc);
-						div_doc.style.display='block';
-					}
-				})
-				for(i=0;i<tab_doc.getElementsByTagName("input").length;i++){
-					tab_doc.getElementsByTagName("input")[i].addEventListener('click',function(){
-						gettab_data(tab_doc,input_doc);
-						div_doc.style.display = 'none';
-					})		
-				}
-			}
-			//施工单位 选择
-			var construction_org_name = document.getElementById("construction_org_name");
-			var tab_construction = document.getElementById("tab_construction");
-			var construction = document.getElementById("construction");
-			select_org(construction_org_name,tab_construction,construction);
-			//监理单位选择
-			select_org(supervision_org_name,tab_supervision,supervision);
-			//检测单位 选择 
-			select_org(detection_org_name,tab_detection,detection);
-			//监督机构 选择
-			select_org(Supervision_0_org_name,tab_Supervision_0,Supervision_0);
+	//     function gettab_data(tab_doc,input_doc){
+	// 			var str = '';
+	// 			var row_num = tab_doc.rows.length;
+	// 			for(i=0;i<row_num;i++){
+	// 				if(tab_doc.rows[i].cells[1].getElementsByTagName("input")[0].checked == true){
+	// 					str = str+tab_doc.rows[i].cells[0].getElementsByTagName("label")[0].innerHTML+",";
+	// 				}
+	// 			}
+	// //			alert(str.substr(0,str.length-1));
+	// 			input_doc.value = str.substr(0,str.length-1);    	    	
+	//     }
+	// 		function select_org(div_doc,tab_doc,input_doc){
+	// 			input_doc.addEventListener("mousedown",function(){
+	// 				if(div_doc.style.display == 'block'){
+	// 					gettab_data(tab_doc,input_doc);
+	// 					div_doc.style.display = 'none';
+	// 				}else{
+	// 					gettab_data(tab_doc,input_doc);
+	// 					div_doc.style.display='block';
+	// 				}
+	// 			})
+	// 			for(i=0;i<tab_doc.getElementsByTagName("input").length;i++){
+	// 				tab_doc.getElementsByTagName("input")[i].addEventListener('click',function(){
+	// 					gettab_data(tab_doc,input_doc);
+	// 					div_doc.style.display = 'none';
+	// 				})		
+	// 			}
+	// 		}
+	// 		//施工单位 选择
+			// var construction_org_name = document.getElementById("construction_org_name");
+			// var tab_construction = document.getElementById("tab_construction");
+			// var construction = document.getElementById("construction");
+			// select_org(construction_org_name,tab_construction,construction);
+			// //监理单位选择
+			// select_org(supervision_org_name,tab_supervision,supervision);
+			// //检测单位 选择 
+			// select_org(detection_org_name,tab_detection,detection);
+			// //监督机构 选择
+			// select_org(Supervision_0_org_name,tab_Supervision_0,Supervision_0);
 			
             $(function() {
                 $(".datepicker").datepicker();
@@ -487,22 +499,34 @@
             document.getElementById('timestamp').value = timestamp;
 
 
-            $("#add").click(function(){
-                var select1 = document.getElementById("select1");
-                var length = select1.getElementsByTagName("select").length;
-                var str = "";
-                for(var i=0;i<length;i++){
-                    if(select1.getElementsByTagName("select")[i].value!='请下拉选择'){
-                        str += select1.getElementsByTagName("select")[i].value +"|";
-                    }        
-                }
-                str = str.substring(0,(str.length-1));
-                // alert(str);
-            });
+          
 
              //工程基本信息添加
             $('#save_info').click(function(){
-                // alert(document.getElementById("timestamp").value);
+                // 施工单位选择
+                var construction_select = "";
+                $("#construction_select option:selected").each(function(){
+                    construction_select = construction_select + $(this).text() + ",";
+                });
+                document.getElementById("construction").value = construction_select.substr(0,construction_select.length-1);
+                // 监理单位选择
+                var supervision_select = "";
+                $("#supervision_select option:selected").each(function(){
+                    supervision_select = supervision_select + $(this).text() + ",";
+                });
+                document.getElementById("supervision").value = supervision_select.substr(0,supervision_select.length-1);
+                // 检测单位选择
+                var detection_select = "";
+                $("#detection_select option:selected").each(function(){
+                    detection_select = detection_select + $(this).text() + ",";
+                });
+                document.getElementById("detection").value = detection_select.substr(0,detection_select.length-1);
+                // 检测机构选择
+                var Supervision_0_select = "";
+                $("#Supervision_0_select option:selected").each(function(){
+                    Supervision_0_select = Supervision_0_select + $(this).text() + ",";
+                });
+                document.getElementById("Supervision_0").value = Supervision_0_select.substr(0,Supervision_0_select.length-1);
                 var pj_info = "<?php echo site_url('pj_all/add')?>";
                 $.ajax({
                   data:{
@@ -528,6 +552,10 @@
                       alert("添加工程成功~请分配该工程人员！");
                       var pj_form = document.getElementById("pj_form");
                       var length = document.getElementsByTagName("input").length;
+                      var select_length = document.getElementsByTagName("select").length;
+                      for(var i=0;i<select_length;i++){
+                        pj_form.getElementsByTagName("select")[i].setAttribute("disabled","disabled");
+                      }
                       for(var i=0;i<length;i++){
                         pj_form.getElementsByTagName("input")[i].setAttribute("readonly","readonly");
                       }

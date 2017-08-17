@@ -70,7 +70,7 @@ class Pj_all_model extends CI_Model{
 	 */
 	public function org_name(){
 		$sql = "SELECT id,单位名称 FROM 用户信息 WHERE 单位=? GROUP BY 单位名称";
-		$user['item'] = $this->db->query($sql,array('项目部'))->result_array();
+		// $user['item'] = $this->db->query($sql,array('项目部'))->result_array();
 		$user['road'] = $this->db->query($sql,array('施工单位'))->result_array();
 		$user['overseeing'] = $this->db->query($sql,array('监理单位'))->result_array();
 		$user['detection'] = $this->db->query($sql,array('检测单位'))->result_array();
