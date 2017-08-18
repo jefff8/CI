@@ -123,8 +123,9 @@
 	else if($flag=="合格"){
 		$ulid = $_POST['ulid'];
 		$gcmc = $_POST['gcmc'];
+		$testNum = $_POST['testNum'];
 		require('../conn.php');
-		$sql = "update 实体检测  set 工程单状态 = '合格' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		$sql = "update 实体检测  set 工程单状态 = '合格',检测报告编号='$testNum' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$result = $conn->query($sql);
 		if($result){
 			$data_arr['结果']="处理成功！";

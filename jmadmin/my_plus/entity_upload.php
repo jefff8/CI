@@ -60,8 +60,10 @@ for ($i= 0;$i< $nub; $i++){
 		}
 		if($lx=='clzp'){
 			$tresult=$_POST["tresult"];
+			$testNum=$_POST["testNum"];
+			$report=$_POST["report"];
 			$id=$_POST["id"];
-			$sqli = "update 实体检测  set  不合格报告 = '".$tresult."',工程单状态 = '不合格',不合格报表='".$filenames."' where id='".$id."'";
+			$sqli = "update 实体检测  set  不合格报告 = '".$tresult."',检测报告编号 = '".$testNum."',报告照片说明 = '".$report."',工程单状态 = '不合格',不合格报表='".$filenames."' where id='".$id."'";
 		}
 		if($lx=='wtjc'){
 			$tresult=$_POST["tresult"];
