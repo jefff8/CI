@@ -13,6 +13,7 @@
 			while($row = $result->fetch_assoc()){
 				$data_arr[$i]['卡项id']=$row['id'];
 				$data_arr[$i]['时间戳']=$row['时间戳'];
+				$data_arr[$i]['工程时间戳']=$row['工程时间戳'];
 				$data_arr[$i]['工程名称']=$row['工程名称'];
 				$data_arr[$i]['工程单状态']=$row['工程单状态'];
 				$data_arr[$i]['委托编号']=$row['委托编号'];

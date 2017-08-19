@@ -29,11 +29,11 @@ for ($i= 0;$i< $nub; $i++){
 //	$gcmc=$_POST["gcmc"];
 	
 	if($lx=='syzp'){
-		$sql = "select * from 实体检测  where 工程时间戳='".$mchen."'";
+		$sql = "select * from 实体检测  where 时间戳='".$mchen."'";
 	}else if($lx=='clzp'){
-		$sql = "select * from 实体检测  where 工程时间戳='".$mchen."'";
+		$sql = "select * from 实体检测  where 时间戳='".$mchen."'";
 	}else if($lx=='wtjc'){
-		$sql = "select * from 实体检测  where 工程时间戳='".$mchen."'";
+		$sql = "select * from 实体检测  where 时间戳='".$mchen."'";
 	}
 	else{
 		$sql = "select * from 实体检测  where 时间戳='".$mchen."'";
