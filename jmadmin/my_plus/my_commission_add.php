@@ -8,7 +8,6 @@
 	$dpm = $_POST["test_dpm"];//获取检测单位
 	$tsp = $_POST["owtst"];//获取時間戳
 	$protsp = $_POST["prots"];//获取工程時間戳
-	$pronewpe = $_POST["pronewpe"];//获取案件新建人
 	$proname = $_POST["proname"];//获取工程名稱
 	
 	require"../conn.php";

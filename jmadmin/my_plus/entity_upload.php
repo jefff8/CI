@@ -26,8 +26,6 @@ for ($i= 0;$i< $nub; $i++){
 	require("../conn.php");
 	$lx=$_POST["lx"];
 	$mchen=$_POST["mchen"];
-//	$gcmc=$_POST["gcmc"];
-	
 	if($lx=='syzp'){
 		$sql = "select * from 实体检测  where 时间戳='".$mchen."'";
 	}else if($lx=='clzp'){
@@ -42,21 +40,25 @@ for ($i= 0;$i< $nub; $i++){
 	$result = $conn -> query($sql);
 	if ($result -> num_rows > 0) {
 		if($lx=='cjzp'){
-			$sqli = "update 实体检测  set  检测前照片='".$filenames."' where 时间戳='".$mchen."' ";
+			$Text1 = $_POST["Text1"];
+			$sqli = "update 实体检测  set  检测前照片='".$filenames."',场景照片说明='".$Text1."'  where 时间戳='".$mchen."' ";
 		}
 		if($lx=='ypzp'){
-			$sqli = "update 实体检测  set  检测实施过程照片='".$filenames."' where 时间戳='".$mchen."' ";
+			$Text2 = $_POST["Text2"];
+			$sqli = "update 实体检测  set  检测实施过程照片='".$filenames."',检测实施过程照片说明='".$Text2."'  where 时间戳='".$mchen."' ";
 		}
 		if($lx=='teqm'){
-			$sqli = "update 实体检测  set  检测设备照片='".$filenames."' where 时间戳='".$mchen."' ";
+			$Text3 = $_POST["Text3"];
+			$sqli = "update 实体检测  set  检测设备照片='".$filenames."',检测设备照片说明 ='".$Text3."' where 时间戳='".$mchen."' ";
 		}
 		if($lx=='syzp'){
 			$dataAll=$_POST["dataAll"];
 			$id=$_POST["id"];
+			$Text4 = $_POST["Text4"];
 			$str = explode("|",$dataAll);
 //			提交见证时的状态更改和其他数据上传
 			$sqli = "update 实体检测  set 送样日期='".$str[0]."',收样日期='".$str[1]."',工程单状态 = '已确认',送样单位='".$str[2]."',
-					见证单位='".$str[3]."',收样单位='".$str[4]."',送样人='".$str[5]."',见证人='".$str[6]."',检测报告编号='".$str[7]."',实测照片='".$filenames."' where id='".$id."'";
+					见证单位='".$str[3]."',收样单位='".$str[4]."',送样人='".$str[5]."',见证人='".$str[6]."',检测报告编号='".$str[7]."',实测照片='".$filenames."',实测照片说明='".$Text4."' where id='".$id."'";
 		}
 		if($lx=='clzp'){
 			$tresult=$_POST["tresult"];
@@ -68,7 +70,8 @@ for ($i= 0;$i< $nub; $i++){
 		if($lx=='wtjc'){
 			$tresult=$_POST["tresult"];
 			$id=$_POST["id"];
-			$sqli = "update 实体检测  set  退场记录 = '".$tresult."',工程单状态 = '已处理',处理照片='".$filenames."' where id='".$id."'";
+			$Text6 = $_POST["Text6"];
+			$sqli = "update 实体检测  set  退场记录 = '".$tresult."',工程单状态 = '待审批',处理照片='".$filenames."',处理照片说明='".$Text6."'  where id='".$id."'";
 		}
 	}
 	if ($conn -> query($sqli) === TRUE) {

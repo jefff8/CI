@@ -1,10 +1,9 @@
 <?php
 	$flag = $_POST['flag'];
-
-	$gcmc = $_POST['gcmc'];
-	$timestamp = $_POST['timestamp'];
 	if($flag=="创建卡项"){
 		require('../conn.php');
+		$gcmc = $_POST['gcmc'];
+		$timestamp = $_POST['timestamp'];
 		$sql = "select * from 实体检测  where 工程名称='".$gcmc."' and 工程时间戳 ='".$timestamp."' order by id";
 		$result = $conn->query($sql);
 //		$class = mysqli_num_rows($result);
@@ -47,11 +46,11 @@
 				$data_arr[$i]['工程单状态']=$row['工程单状态'];				
 				$data_arr[$i]['检测类型']=$row['检测类型'];
 				$data_arr[$i]['检测单位']=$row['检测单位'];
-				$data_arr[$i]['规格']=$row['规格'];
+//				$data_arr[$i]['规格']=$row['规格'];
 				$data_arr[$i]['数量']=$row['数量'];
-				$data_arr[$i]['生产厂家']=$row['生产厂家'];
-				$data_arr[$i]['取样人']=$row['取样人'];
-				$data_arr[$i]['取样日期']=$row['取样日期'];
+//				$data_arr[$i]['生产厂家']=$row['生产厂家'];
+//				$data_arr[$i]['取样人']=$row['取样人'];
+//				$data_arr[$i]['取样日期']=$row['取样日期'];
 				$i++;
 			}
 		}
@@ -75,5 +74,11 @@
 		$data_json = json_encode($data_arr);
 		echo $data_json;
 		
+	}else if($flag=="审批通过"){
+		$ulId = $_POST['ulId'];
+		require('../conn.php');
+		$sql = "update 实体检测  set 工程单状态 = '已处理' where id ='$ulId'  ";
+		$result = $conn->query($sql);
+		$conn->close();
 	}
 ?>

@@ -36,7 +36,7 @@
 		$timestamp = $_POST['sjc'];
 		$project_id = $_POST['gcid'];
 		require("../conn.php");
-		$sql = "select 时间戳,工程单状态,检测前照片,检测实施过程照片,检测设备照片,自测照片,处理照片 from 材料自检   where id='$project_id' and 时间戳='$timestamp'";
+		$sql = "select 时间戳,工程单状态,检测前照片,检测实施过程照片,检测设备照片,自测照片,处理照片,场景照片说明,检测实施过程照片说明,检测设备照片说明 ,自测照片说明,处理照片说明 from 材料自检   where id='$project_id' and 时间戳='$timestamp'";
 		$result = $conn->query($sql);
 		if($result->num_rows > 0){
 			while($row = $result->fetch_assoc()){
@@ -47,6 +47,11 @@
 				$return_data['检测设备照片']=$row['检测设备照片'];
 				$return_data['自测照片']=$row['自测照片'];
 				$return_data['处理照片']=$row['处理照片'];
+				$return_data['场景照片说明']=$row['场景照片说明'];
+				$return_data['检测实施过程照片说明']=$row['检测实施过程照片说明'];
+				$return_data['检测设备照片说明']=$row['检测设备照片说明'];
+				$return_data['自测照片说明']=$row['自测照片说明'];
+				$return_data['处理照片说明']=$row['处理照片说明'];
 			}
 		}
 		$json = json_encode($return_data);

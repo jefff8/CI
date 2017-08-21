@@ -7,7 +7,6 @@
 		require('../conn.php');
 		$sql = "select * from 实体检测 where id='$myid' ";
 		$result = $conn->query($sql);
-//		$class = mysqli_num_rows($result);
 		$i = 0;
 		if($result->num_rows >0){
 			while($row = $result->fetch_assoc()){
@@ -37,9 +36,15 @@
 				$data_arr[$i]['检测设备照片']=$row['检测设备照片'];				
 				$data_arr[$i]['实测照片']=$row['实测照片'];
 				$data_arr[$i]['不合格报告']=$row['不合格报告'];
+				$data_arr[$i]['不合格报表']=$row['不合格报表'];
 				$data_arr[$i]['退场记录']=$row['退场记录'];
 				$data_arr[$i]['处理照片']=$row['处理照片'];
-				$data_arr[$i]['不合格报表']=$row['不合格报表'];
+				$data_arr[$i]['场景照片说明']=$row['场景照片说明'];
+				$data_arr[$i]['检测实施过程照片说明']=$row['检测实施过程照片说明'];
+				$data_arr[$i]['检测设备照片说明']=$row['检测设备照片说明'];
+				$data_arr[$i]['实测照片说明']=$row['实测照片说明'];
+				$data_arr[$i]['报告照片说明']=$row['报告照片说明'];
+				$data_arr[$i]['处理照片说明']=$row['处理照片说明'];
 				$i++;
 			}
 		}

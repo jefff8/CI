@@ -114,5 +114,18 @@
 		$conn->close();
 		$data_json = json_encode($data_arr);
 		echo $data_json;
+	}else if($flag=="审批通过"){
+		$ulid = $_POST['ulid'];
+		require('../conn.php');
+		$sql = "update 实体自检  set 工程单状态 = '已处理' where id ='$ulid'  ";
+		$result = $conn->query($sql);
+		if($result){
+			$data_arr['结果']="成功！";
+		}else{
+			$data_arr['结果']="失败！";
+		}
+		$conn->close();
+		$data_json = json_encode($data_arr);
+		echo $data_json;
 	}
 ?>
