@@ -27,7 +27,7 @@ for ($i= 0;$i< $nub; $i++){
 	$lx=$_POST["lx"];
 	$mchen=$_POST["mchen"];
 	if($lx=='syzp'){
-		$sql = "select * from 实体检测  where 时间戳='".$mchen."'";
+		$sql = "select * from 实体检测  where 工程时间戳='".$mchen."'";
 	}else if($lx=='clzp'){
 		$sql = "select * from 实体检测  where 时间戳='".$mchen."'";
 	}else if($lx=='wtjc'){
@@ -57,8 +57,7 @@ for ($i= 0;$i< $nub; $i++){
 			$Text4 = $_POST["Text4"];
 			$str = explode("|",$dataAll);
 //			提交见证时的状态更改和其他数据上传
-			$sqli = "update 实体检测  set 送样日期='".$str[0]."',收样日期='".$str[1]."',工程单状态 = '已确认',送样单位='".$str[2]."',
-					见证单位='".$str[3]."',收样单位='".$str[4]."',送样人='".$str[5]."',见证人='".$str[6]."',检测报告编号='".$str[7]."',实测照片='".$filenames."',实测照片说明='".$Text4."' where id='".$id."'";
+			$sqli = "update 实体检测  set 送样日期='".$str[0]."',收样日期='".$str[1]."',工程单状态 = '已确认',送样单位='".$str[2]."',见证单位='".$str[3]."',收样单位='".$str[4]."',见证人='".$str[5]."',实测照片='".$filenames."',实测照片说明='".$Text4."' where id='".$id."'";
 		}
 		if($lx=='clzp'){
 			$tresult=$_POST["tresult"];

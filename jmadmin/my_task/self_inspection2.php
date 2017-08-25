@@ -15,6 +15,18 @@
 			echo $data_json;
 			$conn->close();
 			break;
+		case "获取工程时间戳":
+			$sql = "select 工程时间戳  from 实体自检  where  id = '$ulId' " ;
+			$result = $conn->query($sql);
+			if($result->num_rows >0){
+				while($row = $result->fetch_assoc()){
+					$data_arr['工程时间戳']=$row['工程时间戳'];
+				}
+			}
+			$data_json = json_encode($data_arr);
+			echo $data_json;
+			$conn->close();
+			break;
 		case "获取时间戳":
 			$sql = "select 时间戳  from 实体自检  where  id = '$ulId' " ;
 			$result = $conn->query($sql);

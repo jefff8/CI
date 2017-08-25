@@ -1,10 +1,9 @@
 <?php
+	require('../conn.php');
 	$flag = $_POST['flag'];
 //	$gcmc = $_POST['gcmc'];
 	if($flag=='获取信息'){
 		$myid = $_POST['myid'];
-		
-		require('../conn.php');
 		$sql = "select * from 实体检测 where id='$myid' ";
 		$result = $conn->query($sql);
 		$i = 0;

@@ -216,36 +216,35 @@
                                                           <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['检测单位']; ?>" readonly="readonly">
                                                         </div>
                                                       </div>
+                                                      <div class="control-group">
+                                                        <label  class="control-label" for="focusedInput">样品编号:</label>
+                                                        <div class="controls">
+                                                          <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['样品编号']; ?>" readonly="readonly">
+                                                        </div>
+                                                      </div>
                                                       <?php 
                                                             if($v['复检编号']!=null){
                                                               $number = $v['复检编号'];
                                                       ?>
                                                       <div class="control-group">
-                                                        <label  class="control-label" for="focusedInput">样品编号:</label>
+                                                        <label  class="control-label" for="focusedInput">检测报告编号:</label>
                                                         <div class="controls">
                                                           <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $number; ?>" readonly="readonly">
                                                         </div>
                                                       </div>
-                                                     <?php 
+                                                      <?php 
                                                             }else{
-                                                              $number = $v['样品编号'];
-                                                     ?>
-                                                      <div class="control-group">
-                                                        <label  class="control-label" for="focusedInput">样品编号:</label>
-                                                        <div class="controls">
-                                                          <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $number; ?>" readonly="readonly">
-                                                        </div>
-                                                      </div>
-                                                     
-                                                     <?php 
-                                                              } 
-                                                     ?>
+                                                              $number = $v['检测报告编号'];
+                                                      ?>
                                                       <div class="control-group">
                                                         <label  class="control-label" for="focusedInput">检测报告编号:</label>
                                                         <div class="controls">
-                                                          <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['检测报告编号']; ?>" readonly="readonly">
+                                                          <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $number; ?>" readonly="readonly">
                                                         </div>
                                                       </div>
+                                                       <?php 
+                                                              } 
+                                                       ?>
                                                       <div class="control-group">
                                                         <label  class="control-label" for="focusedInput">送样日期:</label>
                                                         <div class="controls">

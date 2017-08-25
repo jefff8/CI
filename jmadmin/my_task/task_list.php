@@ -26,6 +26,8 @@
 			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' and (工程单状态='未见证' or 工程单状态='未见证复检' or 工程单状态='已见证' or 工程单状态='已见证复检')";
 		}else if($unit=='检测单位'){
 			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' and (工程单状态='收样' or 工程单状态='收样复检')";
+		}else if($unit=='管理员'){
+			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' ";
 		}
 		$result = $conn->query($sql);
 		if($result->num_rows >0){
@@ -53,6 +55,8 @@
 			$sql = "SELECT * from 材料自检  where 工程时间戳='$pj_timestamp' and (工程单状态='新增' or 工程单状态='准备材料')";
 		}else if($unit=='监理单位'){
 			$sql = "SELECT * from 材料自检  where 工程时间戳='$pj_timestamp' and (工程单状态='提交见证' or 工程单状态='确定自测' )";
+		}else if($unit=='管理员'){
+			$sql = "SELECT * from 材料自检 where 工程时间戳='$pj_timestamp' ";
 		}
 		$result = $conn->query($sql);
 		if($result->num_rows >0){
@@ -80,6 +84,8 @@
 			$sql = "SELECT * from 实体自检  where 工程时间戳='$pj_timestamp' and (工程单状态='新增' or 工程单状态='准备材料')";
 		}else if($unit=='监理单位'){
 			$sql = "SELECT * from 实体自检  where 工程时间戳='$pj_timestamp' and (工程单状态='未检测' or 工程单状态='确定检测' )";
+		}else if($unit=='管理员'){
+			$sql = "SELECT * from 实体自检 where 工程时间戳='$pj_timestamp' ";
 		}
 		$result = $conn->query($sql);
 		if($result->num_rows >0){
@@ -107,6 +113,8 @@
 			$sql = "SELECT * from 实体检测  where 工程时间戳='$pj_timestamp' and (工程单状态='新建' or 工程单状态='准备' or 工程单状态='提交结果')";
 		}else if($unit=='监理单位'){
 			$sql = "SELECT * from 实体检测  where 工程时间戳='$pj_timestamp' and (工程单状态='待确认' or 工程单状态='已确认' )";
+		}else if($unit=='管理员'){
+			$sql = "SELECT * from 实体检测 where 工程时间戳='$pj_timestamp' ";
 		}
 		$result = $conn->query($sql);
 		if($result->num_rows >0){

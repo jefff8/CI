@@ -119,11 +119,9 @@
 		                                            <tr>
 		                                                <th>检测类型</th>
 		                                                <th>检测单位</th>
-		                                                <th>取样人</th>
-		                                                <!--<th>见证人</th>-->
+		                                                <th>检测人</th>
 		                                                <th>检测日期</th>
 		                                                <th>委托编号</th>
-		                                                <!--<th>取样日期</th>-->
 		                                                <th>操作</th>
 		                                            </tr>
 		                                        </thead>
@@ -132,11 +130,9 @@
 		                                                <tr class="">
 		                                                    <td><?php echo $v['检测类型'] ?></td>
 		                                                    <td><?php echo $v['检测单位'] ?></td>
-		                                                    <td><?php echo $v['取样人'] ?></td>
-		                                                    <!--<td><?php echo $v['生产厂家'] ?></td>-->
-		                                                    <td><?php echo $v['取样日期'] ?></td>
+		                                                    <td><?php echo $v['检测人'] ?></td>
+		                                                    <td><?php echo $v['检测日期'] ?></td>
 		                                                    <td><?php echo $v['委托编号'] ?></td>
-		                                                    <!--<td><?php echo $v['取样日期'] ?></td>-->
 		                                                    <td>
 		                                                    	<a href="<?php echo site_url('commission/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$commission_timestamp) ?>" type="button" class="btn btn-default">查看</a>
 		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
@@ -175,12 +171,10 @@
 		                                        <thead>
 		                                            <tr>
 		                                                <th>检测类型</th>
-		                                                <th>规格</th>
-		                                                <th>数量</th>
-		                                                <th>生产厂家</th>
-		                                                <th>取样人</th>
-		                                                <th>进场日期</th>
-		                                                <th>取样日期</th>
+		                                                <th>检测单位</th>
+		                                                <th>检测人</th>
+		                                                <th>检测日期</th>
+		                                                <th>委托编号</th>
 		                                                <th>操作</th>
 		                                            </tr>
 		                                        </thead>
@@ -188,12 +182,10 @@
 		                                                <?php  foreach($witness_data as $v): ?>
 		                                                <tr class="">
 		                                                    <td><?php echo $v['检测类型'] ?></td>
-		                                                    <td><?php echo $v['规格'] ?></td>
-		                                                    <td><?php echo $v['数量'] ?></td>
-		                                                    <td><?php echo $v['生产厂家'] ?></td>
-		                                                    <td><?php echo $v['取样人'] ?></td>
-		                                                    <td><?php echo $v['进场日期'] ?></td>
-		                                                    <td><?php echo $v['取样日期'] ?></td>
+		                                                    <td><?php echo $v['检测单位'] ?></td>
+		                                                    <td><?php echo $v['检测人'] ?></td>
+		                                                    <td><?php echo $v['检测日期'] ?></td>
+		                                                    <td><?php echo $v['委托编号'] ?></td>
 		                                                    <td>
 		                                                    	<a href="<?php echo site_url('commission/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$commission_timestamp) ?>" type="button" class="btn btn-default">查看</a>
 		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
@@ -232,12 +224,10 @@
 		                                        <thead>
 		                                            <tr>
 		                                                <th>检测类型</th>
-		                                                <th>规格</th>
-		                                                <th>数量</th>
-		                                                <th>生产厂家</th>
-		                                                <th>取样人</th>
-		                                                <th>进场日期</th>
-		                                                <th>取样日期</th>
+		                                                <th>检测单位</th>
+		                                                <th>检测人</th>
+		                                                <th>检测日期</th>
+		                                                <th>委托编号</th>
 		                                                <th>状态</th>
 		                                                <th>操作</th>
 		                                            </tr>
@@ -246,12 +236,10 @@
 		                                                <?php  foreach($result_data as $v): ?>
 		                                                <tr class="">
 		                                                    <td><?php echo $v['检测类型'] ?></td>
-		                                                    <td><?php echo $v['规格'] ?></td>
-		                                                    <td><?php echo $v['数量'] ?></td>
-		                                                    <td><?php echo $v['生产厂家'] ?></td>
-		                                                    <td><?php echo $v['取样人'] ?></td>
-		                                                    <td><?php echo $v['进场日期'] ?></td>
-		                                                    <td><?php echo $v['取样日期'] ?></td>
+		                                                    <td><?php echo $v['检测单位'] ?></td>
+		                                                    <td><?php echo $v['检测人'] ?></td>
+		                                                    <td><?php echo $v['检测日期'] ?></td>
+		                                                    <td><?php echo $v['委托编号'] ?></td>
 		                                                    <td><?php echo $v['工程单状态'] ?></td>
 		                                                    <td>
 		                                                    	<a href="<?php echo site_url('commission/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$commission_timestamp) ?>" type="button" class="btn btn-default">查看</a>
