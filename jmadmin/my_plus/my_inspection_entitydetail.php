@@ -23,9 +23,8 @@
 				$return_data['见证单位']=$row['见证单位'];
 				$return_data['收样单位']=$row['收样单位'];
 				$return_data['见证人']=$row['见证人'];
-				$return_data['检测报告编号']=$row['检测报告编号'];
 				$return_data['处理情况']=$row['处理情况'];
-				$return_data['退厂记录']=$row['退厂记录'];
+				$return_data['退场记录']=$row['退场记录'];
 			}
 		}
 		$json = json_encode($return_data);
