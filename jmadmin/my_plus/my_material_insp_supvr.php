@@ -6,7 +6,7 @@
 	$result = $conn->query($sql);
 	$count=mysqli_num_rows($result);
 	if($result->num_rows > 0){
-		$sqli = "update 材料自检  set 工程单状态='待审批',退场记录='".$tcjv."' where id='".$ulid."'";
+		$sqli = "update 材料自检  set 工程单状态='已处理',退场记录='".$tcjv."' where id='".$ulid."'";
 		if($conn->query($sqli) === TRUE){
 				$jsonresult = 'success';
 			}else{

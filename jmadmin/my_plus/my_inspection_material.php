@@ -120,12 +120,6 @@
 		$josn = json_encode($return);
 		echo $json;
 		$conn->close(); 
-	}else if($flag == "审批通过"){
-		$ulId = $_POST['ulId'];
-		require("../conn.php");
-		$sql = "update 材料自检 set 工程单状态='已处理' where id='$ulId' ";
-		$result = $conn->query($sql);
-		$conn->close(); 
 	}
 	
 	

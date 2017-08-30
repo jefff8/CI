@@ -2,9 +2,10 @@
 
 	$flag = $_POST['flag'];//执行什么的判断条件
 	$gcmc = $_POST['gcmc'];
-	$timestamp = $_POST['timestamp'];
+	
 	if($flag=="创建卡项"){
 		require('../conn.php');
+		$timestamp = $_POST['timestamp'];
 		$sql = "select * from 材料送检  where 工程名称='".$gcmc."' and 工程时间戳 ='".$timestamp."' order by id desc";
 		$result = $conn->query($sql);
 //		$class = mysqli_num_rows($result);
@@ -141,7 +142,7 @@
 		require('../conn.php');
 		$sql2 = "insert into 材料送检初检表  select * from 材料送检  where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$conn->query($sql2);
-		$sql = "update 材料送检  set 工程单状态 = '新增复检' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		$sql = "update 材料送检  set 工程单状态 = '新增复检',场景照片='',场景照片说明='',样品照片='',样品照片说明='',收样照片='',收样照片说明='',检测照片='',检测报告照片说明='',处理照片='',处理照片说明='',退厂记录='' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$result = $conn->query($sql);
 		if($result){
 			$data_arr['结果']="复检成功！";
@@ -228,6 +229,7 @@
 		echo $data_json;
 	}else if($flag=='初检单'){
 		require('../conn.php');
+		$timestamp = $_POST['timestamp'];
 		//初检单
 		$sql = "select * from 材料送检初检表 where 工程名称='".$gcmc."' and 工程时间戳 ='".$timestamp."' order by id desc";
 		$result = $conn->query($sql);
