@@ -7,7 +7,7 @@ class Pj_all_model extends CI_Model{
 	 */		
 	public function index($uid){
 		if($uid=='1'){
-			$data = $this->db->query("select id as 工程id,时间戳,工程名称,地区,施工单位,监理单位,检测单位,监督机构 from 我的工程 ")->result_array();
+			$data = $this->db->query("select id as 工程id,时间戳,工程名称,地址,施工单位,监理单位,检测单位,监督机构 from 我的工程 ")->result_array();
 			return $data;
 		}else{
 			$data = $this->db->query("select * from 用户工程关系表 a inner join 我的工程 b on a.工程id=b.id where 用户id='$uid' ")->result_array();

@@ -16,7 +16,7 @@
 			$data_arr[$i]['id']=$row['id'];
 			$data_arr[$i]['时间戳']=$row['时间戳'];
 			$data_arr[$i]['工程名称']=$row['工程名称'];
-			$data_arr[$i]['地区']=$row['地区'];
+			$data_arr[$i]['地址']=$row['地址'];
 			$data_arr[$i]['施工单位']=$row['施工单位'];
 			$data_arr[$i]['监理单位']=$row['监理单位'];
 			$data_arr[$i]['检测单位']=$row['检测单位'];

@@ -188,5 +188,29 @@
 			$data_json = json_encode($data_arr);
 			echo $data_json;
 			break;
+		case "复检":
+			$sql2 = "insert into 材料送检初检表  select * from 材料送检  where id ='$ulId' ";
+			$conn->query($sql2);
+			$sql = "update 材料送检  set 工程单状态 = '新增复检',场景照片='',场景照片说明='',样品照片='',样品照片说明='',收样照片='',收样照片说明='',检测照片='',检测报告照片说明='',处理照片='',处理照片说明='',退厂记录='' where id ='$ulId'";
+			$result = $conn->query($sql);
+			if($result){
+				$data_arr['结果']="复检成功！";
+			}else{
+				$data_arr['结果']="失败！";
+			}
+			$conn->close();
+			$data_json = json_encode($data_arr);
+			echo $data_json;
+		case "审批通过":
+			$sql = "update 材料送检  set 工程单状态 = '已处理' where id ='$ulId' ";
+			$result = $conn->query($sql);
+			if($result){
+				$data_arr['结果']="提交成功！";
+			}else{
+				$data_arr['结果']="提交失败！";
+			}
+			$conn->close();
+			$data_json = json_encode($data_arr);
+			echo $data_json;
 	}
 ?>
