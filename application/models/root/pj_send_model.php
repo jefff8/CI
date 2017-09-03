@@ -49,6 +49,36 @@ class Pj_send_model extends CI_Model{
 		$data = $this->db->get_where('材料送检',array('id'=>$send_id))->result_array();
 		return $data;
 	}
+	/**
+	 * 送检合格
+	 */
+	public function qualified($data){
+		$testNum = $data['testNum'];
+		$id = $data['self_id'];
+		$pj_status = $data['pj_status'];
+		if($pj_status=='收样'){
+			$info = array('工程单状态'=>'合格','检测报告编号'=>$testNum);
+			$where = "id = '$id'";
+			$this->db->update('材料送检',$info,$where);
+		}elseif ($pj_status=='收样复检') {
+			$info = array('工程单状态'=>'合格','复检编号'=>$testNum);
+			$where = "id = '$id'";
+			$this->db->update('材料送检',$info,$where);
+		}
+		
+	}
+	/**
+	 * 送检不合格
+	 */
+	public function fail($data){
+		$img = $data['filename'];
+		$id = $data['self_id'];
+		$testNum = $data['testNum'];
+		$explain = $data['explain'];
+		$info = array('工程单状态'=>'不合格','检测照片'=>$img,'检测报告编号'=>$testNum,'检测报告照片说明'=>$explain);
+		$where = "id = '$id'";
+		$this->db->update('材料送检',$info,$where);
+	}
 
 
 }

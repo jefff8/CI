@@ -54,11 +54,13 @@
 		$pj_timestamp = $_POST['pj_timestamp'];
 		$unit = $_POST['unit'];
 		if($unit=='施工单位'){
-			$sql = "SELECT * from 材料自检  where 工程时间戳='$pj_timestamp' and (工程单状态='新增' or 工程单状态='准备材料')";
+			$sql = "SELECT * from 材料自检  where 工程时间戳='$pj_timestamp' and (工程单状态='新增' or 工程单状态='准备材料' or 工程单状态='取样送检' or 工程单状态='取样送检准备材料')";
 		}else if($unit=='监理单位'){
-			$sql = "SELECT * from 材料自检  where 工程时间戳='$pj_timestamp' and (工程单状态='提交见证' or 工程单状态='确定自测' or 工程单状态='不合格')";
+			$sql = "SELECT * from 材料自检  where 工程时间戳='$pj_timestamp' and (工程单状态='提交见证' or 工程单状态='确定自测' or 工程单状态='不合格' or 工程单状态='取样送检提交见证' or 工程单状态='取样送检确定自测' or 工程单状态='取样送检不合格')";
 		}else if($unit=='管理员'){
 			$sql = "SELECT * from 材料自检 where 工程时间戳='$pj_timestamp' ";
+		}else if($unit=='监督机构'){
+			$sql = "SELECT * from 材料自检 where 工程时间戳='$pj_timestamp' and (工程单状态='不合格' or 工程单状态='取样送检不合格') ";
 		}
 		$result = $conn->query($sql);
 		if($result->num_rows >0){
