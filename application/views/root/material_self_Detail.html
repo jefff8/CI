@@ -218,9 +218,9 @@
                                                       <button id="save" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                       <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                     </div>
-                                                  <?php endforeach ?>
                                                   </fieldset>
                                                 </form>
+                                                <?php endforeach ?>
                                             </div>
                                             
                                             <div class="tab-pane" id="tab2">
@@ -235,14 +235,14 @@
 												                <tr>
 												                  <td>
 												                  	<div class="row-fluid padd-bottom">
-										                                <?php 
+                                              <p style="color: grey;">场景照片说明：<?php echo $v['场景照片说明'] ; ?></p>
+										                          <?php 
 													                  		if($v['检测前照片']<>'0'){
 													                  			$pho = explode('~*^*~',$v['检测前照片']);
 													                  			$len = count($pho);
 													                  			for($i=1;$i<$len;$i++){
 													                  	?>
 										                                  <div  class="span3">
-                                                          <p style="color: grey;">场景照片说明：<?php echo $v['场景照片说明'] ; ?></p>
 										                                      <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
 										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
 										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
@@ -270,14 +270,15 @@
 												                <tr>
 												                  <td>
 												                  	<div class="row-fluid padd-bottom">
-										                                <?php 
+                                              <p style="color: grey;">检测实施过程照片说明：<?php echo $v['检测实施过程照片说明'] ; ?></p>    
+										                          <?php 
 													                  		if($v['检测实施过程照片']<>'0'){
 													                  			$pho = explode('~*^*~',$v['检测实施过程照片']);
 													                  			$len = count($pho);
 													                  			for($i=1;$i<$len;$i++){
 													                  	?>
 										                                  <div  class="span3">
-                                                          <p style="color: grey;">检测实施过程照片说明：<?php echo $v['检测实施过程照片说明'] ; ?></p>
+                                                          
 										                                      <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
 										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
 										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
@@ -305,14 +306,15 @@
 												                <tr>
 												                  <td>
 												                  	<div class="row-fluid padd-bottom">
-										                                <?php 
+                                               <p style="color: grey;">检测设备照片说明：<?php echo $v['检测设备照片说明'] ; ?></p>
+										                          <?php 
 													                  		if($v['检测设备照片']<>'0'){
 													                  			$pho = explode('~*^*~',$v['检测设备照片']);
 													                  			$len = count($pho);
 													                  			for($i=1;$i<$len;$i++){
 													                  	?>
 										                                  <div  class="span3">
-                                                          <p style="color: grey;">检测设备照片说明：<?php echo $v['检测设备照片说明'] ; ?></p>
+                                                          
 										                                      <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
 										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
 										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
@@ -340,14 +342,14 @@
 												                <tr>
 												                  <td>
 												                  	<div class="row-fluid padd-bottom">
-										                                <?php 
+                                              <p style="color: grey;">自测照片说明：<?php echo $v['自测照片说明'] ; ?></p>
+										                          <?php 
 													                  		if($v['自测照片']<>'0'){
 													                  			$pho = explode('~*^*~',$v['自测照片']);
 													                  			$len = count($pho);
 													                  			for($i=1;$i<$len;$i++){
 													                  	?>
 										                                  <div  class="span3">
-                                                          <p style="color: grey;">自测照片说明：<?php echo $v['自测照片说明'] ; ?></p>
 										                                      <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
 										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
 										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
@@ -375,14 +377,14 @@
 												                <tr>
 												                  <td>
 												                  	<div class="row-fluid padd-bottom">
-										                                <?php 
+                                              <p style="color: grey;">处理照片说明：<?php echo $v['处理照片说明'] ; ?></p>
+										                          <?php 
 													                  		if($v['处理照片']<>'0'){
 													                  			$pho = explode('~*^*~',$v['处理照片']);
 													                  			$len = count($pho);
 													                  			for($i=1;$i<$len;$i++){
 													                  	?>
 										                                  <div  class="span3">
-                                                          <p style="color: grey;">处理照片说明：<?php echo $v['处理照片说明'] ; ?></p>
 										                                      <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
 										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
 										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
