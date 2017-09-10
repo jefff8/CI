@@ -92,7 +92,7 @@ class Pj_send extends MY_Controller{
 		$pj_timestamp = $this->input->post('pj_timestamp');
 		//上传配置  
 		$config['upload_path'] = './jmadmin/upload/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = '*';
         $config['max_size'] = 0;
         $config['max_width'] = 0;
         $config['max_height'] = 0;

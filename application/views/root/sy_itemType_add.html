@@ -97,7 +97,7 @@
                                                             <option>请下拉选择</option>
                                                             <option value="材料送检">材料送检</option>
                                                             <option value="实体检测">实体检测</option>
-                                                            <option value="自检自测">自检自测</option>
+                                                            <option value="自检自测">自检自测(材料自检)</option>
                                                         </select>
                                                       </div>
                                                     </div>
@@ -201,7 +201,10 @@
              * 项目类型添加
              */
             $("#save").click(function(){
-                var controller = "<?php echo site_url('itemType/add') ?>";
+                if($("#module").val()=='请下拉选择'||$("#type2").val()==""){
+                    layer.alert('需要填入完成信息!');
+                }else{
+                    var controller = "<?php echo site_url('itemType/add') ?>";
                     $.ajax({
                         data:{  
                             module:$("#module").val(),
@@ -214,16 +217,17 @@
                             // alert(data);
                         }
                     });
-                layer.confirm('添加成功！是否继续添加？',{
-                        btn:['确定','取消'],
-                        btn1:function(index,layero){
-                            window.location = "<?php echo site_url('itemType/add_page') ?>";
-                        },
-                        btn2:function(index,layero){
-                            window.location = "<?php echo site_url('itemType') ?>";
-                        }
-                    });
-                
+                    layer.confirm('添加成功！是否继续添加？',{
+                            btn:['确定','取消'],
+                            btn1:function(index,layero){
+                                window.location = "<?php echo site_url('itemType/add_page') ?>";
+                            },
+                            btn2:function(index,layero){
+                                window.location = "<?php echo site_url('itemType/add_page') ?>";
+                            }
+                        });
+                }
+               
             });
 
 
