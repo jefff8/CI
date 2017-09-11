@@ -50,12 +50,11 @@
 			$pj_timestamp = $this->input->post('pj_timestamp');
 			//上传配置  
 			$config['upload_path'] = './jmadmin/upload/';
-	        $config['allowed_types'] = 'gif|jpg|png';
+	        $config['allowed_types'] = '*';
 	        $config['max_size'] = 0;
 	        $config['max_width'] = 0;
 	        $config['max_height'] = 0;
-	        $config['file_name']  = time().'.jpg';
-	        $data['filename'] = "~*^*~".$config['file_name'];
+	        $config['file_name']  = time();
 	        //加载上传类 
 	        $this->load->library('upload', $config);
 	        //执行上传任务
@@ -68,9 +67,9 @@
 	        }
 	        else
 	        {
-	         //    $data['upload_data']=$this->upload->data();  //文件的一些信息
-		        // $img=$data['upload_data']['file_name'];  //取得文件名
-		        // echo $img."<br>";
+	            $data['upload_data']=$this->upload->data();  //文件的一些信息
+		        $img=$data['upload_data']['file_name'];  //取得文件名
+		        $data['filename'] = "~*^*~".$img; //保存文件名
 		        // foreach ($data['upload_data'] as $item => $value){ 
 		        //      echo $item . ":" . $value . "<br>";    
 		        // }
