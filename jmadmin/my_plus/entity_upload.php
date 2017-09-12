@@ -70,7 +70,8 @@ for ($i= 0;$i< $nub; $i++){
 			$tresult=$_POST["tresult"];
 			$id=$_POST["id"];
 			$Text6 = $_POST["Text6"];
-			$sqli = "update 实体检测  set  退场记录 = '".$tresult."',工程单状态 = '待审批',处理照片='".$filenames."',处理照片说明='".$Text6."'  where id='".$id."'";
+			$process_type = $_POST["process_type"];
+			$sqli = "update 实体检测  set  退场记录 = '".$tresult."',工程单状态 = '待审批',处理照片='".$filenames."',处理照片说明='".$Text6."',处理类型='".$process_type."'  where id='".$id."'";
 		}
 	}
 	if ($conn -> query($sqli) === TRUE) {

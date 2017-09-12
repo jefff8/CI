@@ -407,7 +407,7 @@
                                                                 for($i=1;$i<$len;$i++){
                                                             ?>
                                                                     <div  class="span3">
-                                                                        <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+                                                                        <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
                                                                         <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                           <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
                                                                         </a>
@@ -417,7 +417,7 @@
                                                                     }else{
                                                                   ?>
                                                                     <div  class="span3">
-                                                                        <a href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+                                                                        <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
                                                                         <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                           <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
                                                                         </a>
@@ -442,7 +442,7 @@
                                                               for($i=1;$i<$len;$i++){
                                                           ?>
                                                                   <div  class="span3">
-                                                                      <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
+                                                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
                                                                       <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                         <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
                                                                       </a>
@@ -452,7 +452,7 @@
                                                                   }else{
                                                                 ?>
                                                                   <div  class="span3">
-                                                                      <a href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
+                                                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
                                                                       <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                         <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
                                                                       </a>
@@ -477,7 +477,7 @@
                                                                 for($i=1;$i<$len;$i++){
                                                             ?>
                                                                   <div  class="span3">
-                                                                      <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
+                                                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
                                                                       <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                         <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
                                                                       </a>
@@ -487,7 +487,7 @@
                                                                   }else{
                                                                 ?>
                                                                   <div  class="span3">
-                                                                      <a href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
+                                                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
                                                                       <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                         <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
                                                                       </a>
@@ -507,22 +507,38 @@
                                                            <p style="color: grey;">报告照片说明：<?php echo $v['检测报告照片说明'] ; ?></p> 
                                                            <?php 
                                                             if($v['检测照片']<>'0'){
-                                                              $pho = explode('~*^*~',$v['检测照片']);
-                                                              $len = count($pho);
-                                                              for($i=1;$i<$len;$i++){
-                                                           ?>
-                                                                  <div  class="span3">
-                                                                      <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
-                                                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
-                                                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
-                                                                      </a>
-                                                                  </div>
-                                                                <?php
+                                                              $file_type = explode('.',$v['检测照片']);
+                                                              if($file_type[1]=='pdf'){  
+                                                                $pho = explode('~*^*~',$v['检测照片']);
+                                                                $len = count($pho);
+                                                                for($i=1;$i<$len;$i++){
+                                                           ?>   
+                                                              <div  class="span3">
+                                                                  <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
+                                                                  <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+                                                                    <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/pdf_file.jpg"; ?>" >
+                                                                  </a>
+                                                              </div>
+                                                              <?php 
+                                                                }
+                                                              }else{
+                                                                    $pho = explode('~*^*~',$v['检测照片']);
+                                                                    $len = count($pho);
+                                                                    for($i=1;$i<$len;$i++){
+                                                                 ?>
+                                                                        <div  class="span3">
+                                                                            <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
+                                                                            <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+                                                                              <img  data-src="" alt="" style="width: 300px; height: 300px;"  src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
+                                                                            </a>
+                                                                        </div>
+                                                                      <?php
+                                                                      }
                                                                     }
                                                                   }else{
                                                                 ?>
                                                                   <div  class="span3">
-                                                                      <a href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
+                                                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
                                                                       <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                         <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
                                                                       </a>
@@ -547,7 +563,7 @@
                                                               for($i=1;$i<$len;$i++){
                                                           ?>
                                                                   <div  class="span3">
-                                                                      <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+                                                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
                                                                       <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                         <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
                                                                       </a>
@@ -557,7 +573,7 @@
                                                                   }else{
                                                                 ?>
                                                                   <div  class="span3">
-                                                                      <a href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
+                                                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
                                                                       <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                         <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
                                                                       </a>
@@ -763,7 +779,7 @@
                                                                     for($i=1;$i<$len;$i++){
                                                                 ?>
                                                                         <div  class="span3">
-                                                                            <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+                                                                            <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
                                                                             <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                               <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
                                                                             </a>
@@ -773,7 +789,7 @@
                                                                         }else{
                                                                       ?>
                                                                         <div  class="span3">
-                                                                            <a href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+                                                                            <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
                                                                             <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                               <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
                                                                             </a>
@@ -798,7 +814,7 @@
                                                                   for($i=1;$i<$len;$i++){
                                                               ?>
                                                                       <div  class="span3">
-                                                                          <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
+                                                                          <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
                                                                           <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                             <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
                                                                           </a>
@@ -808,7 +824,7 @@
                                                                       }else{
                                                                     ?>
                                                                       <div  class="span3">
-                                                                          <a href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
+                                                                          <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
                                                                           <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                             <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
                                                                           </a>
@@ -833,7 +849,7 @@
                                                                     for($i=1;$i<$len;$i++){
                                                                 ?>
                                                                       <div  class="span3">
-                                                                          <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
+                                                                          <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
                                                                           <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                             <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
                                                                           </a>
@@ -843,7 +859,7 @@
                                                                       }else{
                                                                     ?>
                                                                       <div  class="span3">
-                                                                          <a href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
+                                                                          <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
                                                                           <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                             <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
                                                                           </a>
@@ -868,7 +884,7 @@
                                                                   for($i=1;$i<$len;$i++){
                                                                ?>
                                                                       <div  class="span3">
-                                                                          <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
+                                                                          <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" class="thumbnail"    >
                                                                           <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                             <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
                                                                           </a>
@@ -878,7 +894,7 @@
                                                                       }else{
                                                                     ?>
                                                                       <div  class="span3">
-                                                                          <a href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
+                                                                          <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
                                                                           <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                             <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
                                                                           </a>
@@ -904,7 +920,7 @@
                                                               ?>
                                                                       <div  class="span3">
                                                                           
-                                                                          <a href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+                                                                          <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
                                                                           <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                             <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
                                                                           </a>
@@ -914,7 +930,7 @@
                                                                       }else{
                                                                     ?>
                                                                       <div  class="span3">
-                                                                          <a href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
+                                                                          <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" class="thumbnail"    >
                                                                           <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
                                                                             <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
                                                                           </a>
