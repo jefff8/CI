@@ -14,6 +14,7 @@
 		$my_name=$row["姓名"];
 		$uid=$row["id"];
 		$unit=$row["单位"];
+		$unitName=$row["单位名称"];
 	}else{
 		$jsonresult='error'; 
 	}	
@@ -21,7 +22,8 @@
 			  "shji":"'.$shji.'",
 			  "my_name":"'.$my_name.'",
 			  "uid":"'.$uid.'",
-			  "unit":"'.$unit.'"
+			  "unit":"'.$unit.'",
+			  "unitName":"'.$unitName.'"
 			}';
 	echo $json;
 	$conn->close();

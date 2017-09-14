@@ -9,11 +9,11 @@
 	$tsp = $_POST["owtst"];//获取時間戳
 	$protsp = $_POST["prots"];//获取工程時間戳
 	$proname = $_POST["proname"];//获取工程名稱
+	$operation_unit = $_POST["operation_unit"];//操作单位
 	
 	require"../conn.php";
-		$sql = "insert into 实体检测(时间戳,工程名称,工程时间戳,检测类型,检测部位,数量,检测人,检测日期,备注,检测单位,工程单状态)  
-								values ('".$tsp."','".$proname."','".$protsp."','".$type."',
-'".$jcbw."','".$num."','".$jcr."','".$jcrq."','".$rmark."','".$dpm."','新建')";
+		$sql = "insert into 实体检测(时间戳,工程名称,工程时间戳,检测类型,检测部位,数量,检测人,检测日期,备注,检测单位,工程单状态,监理操作单位) values ('".$tsp."','".$proname."','".$protsp."','".$type."',
+'".$jcbw."','".$num."','".$jcr."','".$jcrq."','".$rmark."','".$dpm."','新建','".$operation_unit."')";
 			
 	$result = $conn->query($sql);
 	if($result){

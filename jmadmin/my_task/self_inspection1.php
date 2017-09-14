@@ -151,10 +151,14 @@
 			$conn->close();
 			break;
 		case "取样送检操作":
-			$sql2 = "insert into 材料自检初检表  select * from 材料自检  where id ='$ulId'  ";
+			$sql2 = "insert into 材料自检初检表  select * from 材料自检  where id ='$ulId'";
 			$conn->query($sql2);
-			$sql = "update 材料自检  set 工程单状态 = '取样送检',检测前照片='',场景照片说明='',检测实施过程照片='',检测实施过程照片说明='',检测设备照片='',检测设备照片说明='',自测照片='',自测照片说明='',处理照片='',处理照片说明='',退场记录='' where id ='$ulId'  ";
+			$sql4 = "UPDATE 材料自检  SET 工程单状态='新增复检'where id ='$ulId'";
+			$conn->query($sql4);
+			$sql="insert into 材料送检(工程名称,时间戳,工程时间戳,工程单状态,取样类型,数量,取样人,取样日期,使用部位,备注,检测单位) select 工程名称,时间戳,工程时间戳,工程单状态,自检自测类型,数量,检测人,检测日期,检测部位,备注,检测单位 from 材料自检 where id='$ulId'";
 			$result = $conn->query($sql);
+			$sqlDel = "delete from 材料自检 where id='$ulId'";
+			$conn->query($sqlDel);
 			if($result){
 				$return['result'] = "操作成功";
 			}else{

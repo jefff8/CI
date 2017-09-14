@@ -20,6 +20,7 @@
 				$return_data[$i]['时间戳']=$row['时间戳'];
 				$return_data[$i]['工程单状态']=$row['工程单状态'];
 				$data_arr[$i]['备注']=$row['备注'];
+				$return_data[$i]['监理操作单位']=$row['监理操作单位'];
 				$i++;
 			}
 		}
@@ -127,26 +128,10 @@
 		$conn->query($sql2);
 		$sql4 = "UPDATE 材料自检  SET 工程单状态='新增复检'where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$conn->query($sql4);
-		$sql3 = "select * from 材料自检   where id='$ulid'";
-		$result3 = $conn->query($sql3);
-		if($result3->num_rows > 0){
-			while($row = $result3->fetch_assoc()){
-				$data_send['工程单状态'] = $row['工程单状态'];
-				$data_send['工程时间戳'] = $row['工程时间戳'];
-				$data_send['时间戳'] = $row['时间戳'];
-				$data_send['自检自测类型'] = $row['自检自测类型'];
-				$data_send['数量'] = $row['数量'];
-				$data_send['检测人'] = $row['检测人'];
-				$data_send['检测部位'] = $row['检测部位'];
-				$data_send['检测日期'] = $row['检测日期'];
-				$data_send['检测单位'] = $row['检测单位'];
-				$data_send['备注'] = $row['备注'];
-			}
-		}
-		$sql="INSERT INTO 材料送检 (工程名称,时间戳,工程时间戳,工程单状态,取样类型,数量,取样人,取样日期,使用部位,备注,检测单位)
-VALUES ('".$gcmc."','".$data_send['时间戳']."','".$data_send['工程时间戳']."','新增复检','".$data_send['自检自测类型']."','".$data_send['数量']."','".$data_send['检测人']."','".$data_send['检测日期']."','".$data_send['检测部位']."','".$data_send['备注']."','".$data_send['检测单位']."')";
-////		$sql = "insert into 材料送检  set 工程单状态 = '新增复检',检测前照片='',场景照片说明='',检测实施过程照片='',检测实施过程照片说明='',检测设备照片='',检测设备照片说明='',自测照片='',自测照片说明='',处理照片='',处理照片说明='',退场记录='' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		$sql="insert into 材料送检(工程名称,时间戳,工程时间戳,工程单状态,取样类型,数量,取样人,取样日期,使用部位,备注,检测单位) select 工程名称,时间戳,工程时间戳,工程单状态,自检自测类型,数量,检测人,检测日期,检测部位,备注,检测单位 from 材料自检 where id='$ulid'";
 		$result = $conn->query($sql);
+		$sqlDel = "delete from 材料自检 where id='$ulid'";
+		$conn->query($sqlDel);
 		if($result){
 			$data_arr['结果']="取样送检成功！";
 		}else{
