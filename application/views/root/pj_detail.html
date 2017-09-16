@@ -138,7 +138,7 @@
                                                       <div class="controls">
                                                         <input id="construction" name="construction" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请选择施工单位" value="<?php echo $v['施工单位'] ?>" disabled="disabled">
                                                          <div  style="display: none;">
-                                                            <select  id="construction_select" name="construction_select" style="width:284px;" multiple="multiple"  disabled="disabled">
+                                                            <select  id="construction_select" name="construction_select" style="width:284px;" multiple="multiple" value="<?php echo $v['施工单位'] ?>" >
                                                              <?php foreach($org['road'] as $o): ?>
                                                                <option ><?php echo $o['单位名称'] ?></option>
                                                               <?php endforeach ?>
@@ -164,7 +164,7 @@
                                                       <div class="controls">
                                                         <input id="detection" name="detection" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请选择施工单位" value="<?php echo $v['检测单位'] ?>" disabled="disabled">
                                                         <div style="display: none;" >
-                                                          <select  id="detection_select" name="detection_select" style="width:284px" multiple="multiple" disabled="disabled">
+                                                          <select  id="detection_select" name="detection_select" style="width:284px" multiple="multiple" >
                                                               <?php foreach($org['detection'] as $o): ?>
                                                                 <option ><?php echo $o['单位名称'] ?></option>
                                                               <?php endforeach ?>
@@ -177,7 +177,7 @@
                                                       <div class="controls">
                                                         <input name="Supervision_0" id="Supervision_0" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请选择施工单位"  value="<?php echo $v['监督机构'] ?>" disabled="disabled">
                                                         <div style="display: none;">
-                                                            <select  id="Supervision_0_select" name="Supervision_0_select" style="width:284px" multiple="multiple" disabled="disabled">
+                                                            <select  id="Supervision_0_select" name="Supervision_0_select" style="width:284px" multiple="multiple" >
                                                               <?php foreach($org['Supervision'] as $o): ?>
                                                                 <option ><?php echo $o['单位名称'] ?></option>
                                                               <?php endforeach ?>
@@ -524,29 +524,29 @@
              */
             $("#save_info").click(function(){
                  // 施工单位选择
-                var construction_select = "";
-                $("#construction_select option:selected").each(function(){
-                    construction_select = construction_select + $(this).text() + ",";
-                });
-                document.getElementById("construction").value = construction_select.substr(0,construction_select.length-1);
-                // 监理单位选择
-                var supervision_select = "";
-                $("#supervision_select option:selected").each(function(){
-                    supervision_select = supervision_select + $(this).text() + ",";
-                });
-                document.getElementById("supervision").value = supervision_select.substr(0,supervision_select.length-1);
-                // 检测单位选择
-                var detection_select = "";
-                $("#detection_select option:selected").each(function(){
-                    detection_select = detection_select + $(this).text() + ",";
-                });
-                document.getElementById("detection").value = detection_select.substr(0,detection_select.length-1);
-                // 检测机构选择
-                var Supervision_0_select = "";
-                $("#Supervision_0_select option:selected").each(function(){
-                    Supervision_0_select = Supervision_0_select + $(this).text() + ",";
-                });
-                document.getElementById("Supervision_0").value = Supervision_0_select.substr(0,Supervision_0_select.length-1);
+                // var construction_select = "";
+                // $("#construction_select option:selected").each(function(){
+                //     construction_select = construction_select + $(this).text() + ",";
+                // });
+                // document.getElementById("construction").value = construction_select.substr(0,construction_select.length-1);
+                // // 监理单位选择
+                // var supervision_select = "";
+                // $("#supervision_select option:selected").each(function(){
+                //     supervision_select = supervision_select + $(this).text() + ",";
+                // });
+                // document.getElementById("supervision").value = supervision_select.substr(0,supervision_select.length-1);
+                // // 检测单位选择
+                // var detection_select = "";
+                // $("#detection_select option:selected").each(function(){
+                //     detection_select = detection_select + $(this).text() + ",";
+                // });
+                // document.getElementById("detection").value = detection_select.substr(0,detection_select.length-1);
+                // // 检测机构选择
+                // var Supervision_0_select = "";
+                // $("#Supervision_0_select option:selected").each(function(){
+                //     Supervision_0_select = Supervision_0_select + $(this).text() + ",";
+                // });
+                // document.getElementById("Supervision_0").value = Supervision_0_select.substr(0,Supervision_0_select.length-1);
                 var pj_info = "<?php echo site_url('pj_all/add')?>";
                 var controller = "<?php echo site_url('pj_all/update') ?>";
                 $.ajax({
