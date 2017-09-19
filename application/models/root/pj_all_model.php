@@ -7,7 +7,7 @@ class Pj_all_model extends CI_Model{
 	 */		
 	public function index($uid){
 		if($uid=='1'){
-			$data = $this->db->query("select id as 工程id,时间戳,工程名称,地址,施工单位,监理单位,检测单位,监督机构 from 我的工程 ")->result_array();
+			$data = $this->db->query("select id as 工程id,时间戳,工程名称,地址,施工单位,监理单位,检测单位,监督机构,是否竣工 from 我的工程 ")->result_array();
 			return $data;
 		}else{
 			$data = $this->db->query("select * from 用户工程关系表 a inner join 我的工程 b on a.工程id=b.id where 用户id='$uid' ")->result_array();
@@ -16,6 +16,7 @@ class Pj_all_model extends CI_Model{
 		
 	}
 
+	
 	/**
 	 * 添加工程
 	 */
@@ -26,9 +27,24 @@ class Pj_all_model extends CI_Model{
 	/**
 	 * 删除工程
 	 */
-	public function del($pid){
-		$this->db->delete('我的工程',array('id'=>$pid));
-		$this->db->delete('用户工程关系表',array('工程id'=>$pid));
+	public function del($pj_timestamp){
+		$data['pj_send'] = $this->db->query("select 场景照片,样品照片,收样照片,检测照片,处理照片 from 材料送检 where 工程时间戳='$pj_timestamp' ")->result_array();
+		$data['commission'] = $this->db->query("select 检测前照片,检测实施过程照片,检测设备照片,实测照片,不合格报表,处理照片 from 实体检测 where 工程时间戳='$pj_timestamp' ")->result_array();
+		$data['materital_self'] = $this->db->query("select 检测前照片,检测实施过程照片,检测设备照片,自测照片,处理照片 from 材料自检 where 工程时间戳='$pj_timestamp' ")->result_array();
+		$data['entity_self'] = $this->db->query("select 检测前照片,检测实施过程照片,检测设备照片,自测照片,处理照片 from 实体自检 where 工程时间戳='$pj_timestamp' ")->result_array();
+		return $data;
+		// $this->db->delete('用户工程关系表',array('工程id'=>$pid));
+	}
+
+	/**
+	 * 竣工的图片处理
+	 */
+	public function del_img($pj_timestamp){
+		$this->db->query("update 材料送检 set 场景照片='0',样品照片='0',收样照片='0',检测照片='0',处理照片='0' where 工程时间戳='$pj_timestamp'");
+		$this->db->query("update 实体检测 set 检测前照片='0',检测实施过程照片='0',检测设备照片='0',实测照片='0',不合格报表='0',处理照片='0' where 工程时间戳='$pj_timestamp'");
+		$this->db->query("update 材料自检 set 检测前照片='0',检测实施过程照片='0',检测设备照片='0',自测照片='0',处理照片='0' where 工程时间戳='$pj_timestamp'");
+		$this->db->query("update 实体自检 set 检测前照片='0',检测实施过程照片='0',检测设备照片='0',自测照片='0',处理照片='0' where 工程时间戳='$pj_timestamp'");
+		$this->db->query("update 我的工程 set 是否竣工='1' where 时间戳='$pj_timestamp'");
 	}
 
 	/**

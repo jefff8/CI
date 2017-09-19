@@ -47,6 +47,7 @@ class Login extends CI_Controller{
 				$this->session->set_userdata($sessionData); 
 				$this->load->model('root/pj_all_model','pj_all');
 				$uid = $sessionData['userid'];
+				$data['uid'] = $uid;
 				$data['pj_all'] = $this->pj_all->index($uid);
 				$this->load->view('root/pj_all.html',$data);
 			}

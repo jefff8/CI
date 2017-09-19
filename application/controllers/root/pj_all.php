@@ -6,9 +6,11 @@ class Pj_all extends MY_Controller{
 	 * @return [type] [description]
 	 */
 	public function index(){
-		$uid = $this->session->userdata('userid');
+		$data['uid'] = $this->session->userdata('userid');
 		$this->load->model('root/pj_all_model','pj_all');
-		$data['pj_all'] = $this->pj_all->index($uid);
+		// $this->load->model('root/pj_all_model','uid');
+		$data['pj_all'] = $this->pj_all->index($data['uid']);
+		// $data['pj_all'] = $uid;
 		$this->load->view('root/pj_all.html',$data);
 	}
 
@@ -77,15 +79,119 @@ class Pj_all extends MY_Controller{
 	}
 
 	/**
-	 * 删除项目
+	 * 竣工项目
 	 */
 	public function del(){
 		// $timestamp = $this->uri->segment(4);
-		// p($timestamp);
-		$pid = $this->input->post('pid');
-		$this->load->model('root/pj_all_model','all');
-		$this->all->del($pid);
-		success('root/pj_all','删除成功');
+		$pj_timestamp = $this->input->post('pj_timestamp');
+		$this->load->model('root/Pj_all_model','all');
+		$data = $this->all->del($pj_timestamp);
+		$pj_send_length = count($data['pj_send']); //材料送检
+		$commission_length = count($data['commission']); //实体检测
+		$materital_self_length = count($data['materital_self']);//材料自检
+		$entity_self_length = count($data['entity_self']);//实体自检
+		//材料送检删除
+		for($i=0;$i<$pj_send_length;$i++){
+			foreach($data['pj_send'][$i] as $key =>$getoutvis0)
+	      	{
+	        	if(!$getoutvis0||$getoutvis0=="")
+	        	{
+	          		unset($data['pj_send'][$i][$key]);
+	        	}
+	      	}
+	      	$file = implode("",$data['pj_send'][$i]);  //数组转换为字符串
+	      	$del_file = explode("~*^*~",$file);
+	      	$file_length = count($del_file);
+	      	if(!empty($data['pj_send'][$i])){
+      			for($j=1;$j<$file_length;$j++){
+					$del = $del_file[$j];
+					$path = "D:/Data/hxajxt/WWW/CI/jmadmin/upload/".$del;
+					unlink($path); //删除的文件
+					p($del);
+				}
+      		}
+		}
+		//实体检测删除
+		for($i=0;$i<$commission_length;$i++){
+			foreach($data['commission'][$i] as $key =>$getoutvis0)
+	      	{
+	        	if(!$getoutvis0||$getoutvis0=="")
+	        	{
+	          		unset($data['commission'][$i][$key]);
+	        	}
+	      	}
+	      	$file = implode("",$data['commission'][$i]);  //数组转换为字符串
+	      	$del_file = explode("~*^*~",$file);
+	      	$file_length = count($del_file);
+	      	if(!empty($data['commission'][$i])){
+      			for($j=1;$j<$file_length;$j++){
+					$del = $del_file[$j];
+					$path = "D:/Data/hxajxt/WWW/CI/jmadmin/upload/".$del;
+					unlink($path); //删除的文件
+					p($del);
+				}
+      		}
+		}
+		//材料自检
+		for($i=0;$i<$materital_self_length;$i++){
+			foreach($data['materital_self'][$i] as $key =>$getoutvis0)
+	      	{
+	        	if(!$getoutvis0||$getoutvis0=="")
+	        	{
+	          		unset($data['materital_self'][$i][$key]);
+	        	}
+	      	}
+	      	$file = implode("",$data['materital_self'][$i]);  //数组转换为字符串
+	      	$del_file = explode("~*^*~",$file);
+	      	$file_length = count($del_file);
+	      	if(!empty($data['materital_self'][$i])){
+      			for($j=1;$j<$file_length;$j++){
+					$del = $del_file[$j];
+					$path = "D:/Data/hxajxt/WWW/CI/jmadmin/upload/".$del;
+					unlink($path); //删除的文件
+					p($del);
+				}
+      		}
+		}
+		//实体自检
+		for($i=0;$i<$entity_self_length;$i++){
+			foreach($data['entity_self'][$i] as $key =>$getoutvis0)
+	      	{
+	        	if(!$getoutvis0||$getoutvis0=="")
+	        	{
+	          		unset($data['entity_self'][$i][$key]);
+	        	}
+	      	}
+	      	$file = implode("",$data['entity_self'][$i]);  //数组转换为字符串
+	      	$del_file = explode("~*^*~",$file);
+	      	$file_length = count($del_file);
+	      	if(!empty($data['entity_self'][$i])){
+      			for($j=1;$j<$file_length;$j++){
+					$del = $del_file[$j];
+					$path = "D:/Data/hxajxt/WWW/CI/jmadmin/upload/".$del;
+					unlink($path); //删除的文件
+					p($del);
+				}
+      		}
+		}
+		$this->load->model('root/Pj_all_model','del_img');
+		$this->del_img->del_img($pj_timestamp);
+	 	
+      	
+      	
+		// for($i=0;$i<$pj_send_length;$i++){
+			
+			
+			// unlink('D:\Data\hxajxt\WWW\CI\jmadmin\upload\15056140321.jpg');  //删除文件函数
+			
+			
+			
+			// echo $file_length;		
+		// }
+		
+		// p($del_file);
+		// p($data);
+		// success('root/pj_all','已确认竣工！');
 	}
 
 	/**
