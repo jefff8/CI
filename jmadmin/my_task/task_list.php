@@ -24,9 +24,9 @@
 		if($unit=='施工单位'){
 			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' and (工程单状态='新增' or 工程单状态='取样' or 工程单状态='新增复检' or 工程单状态='取样复检')";
 		}else if($unit=='监理单位'){
-			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' and (工程单状态='未见证' or 工程单状态='未见证复检' or 工程单状态='已见证' or 工程单状态='已见证复检' or 工程单状态='复检不合格') and 监理操作单位='$unitName'";
+			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' and (工程单状态='未见证' or 工程单状态='未见证复检' or 工程单状态='已见证' or 工程单状态='已见证复检' or  工程单状态='复检不合格' or 工程单状态='不合格') and 监理操作单位='$unitName'";
 		}else if($unit=='检测单位'){
-			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' and (工程单状态='收样' or 工程单状态='收样复检' or 工程单状态='不合格' ) and 检测操作单位='$unitName'";
+			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' and (工程单状态='收样' or 工程单状态='收样复检'  ) and 检测操作单位='$unitName'";
 		}else if($unit=='管理员'){
 			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' ";
 		}else if($unit=='监督机构'){

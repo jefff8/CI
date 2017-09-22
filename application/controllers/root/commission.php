@@ -20,6 +20,11 @@
 			$pj_timestamp = $this->uri->segment(4);
 			//时间戳
 			$timestamp = $this->uri->segment(5);
+			//用户id
+			$data['uid'] = $this->session->userdata('userid');
+			$this->load->model('root/Privilege_model','unit');
+			//用户单位
+			$data['unit'] = $this->unit->index($data['uid']);
 			$this ->load -> model('root/commission_model','commission');
 			$data['detail_data'] = $this->commission->check($com_id);
 			$data['pj_timestamp'] = $pj_timestamp;

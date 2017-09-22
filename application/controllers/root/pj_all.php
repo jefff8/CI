@@ -8,9 +8,7 @@ class Pj_all extends MY_Controller{
 	public function index(){
 		$data['uid'] = $this->session->userdata('userid');
 		$this->load->model('root/pj_all_model','pj_all');
-		// $this->load->model('root/pj_all_model','uid');
 		$data['pj_all'] = $this->pj_all->index($data['uid']);
-		// $data['pj_all'] = $uid;
 		$this->load->view('root/pj_all.html',$data);
 	}
 

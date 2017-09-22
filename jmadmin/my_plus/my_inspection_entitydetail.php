@@ -15,7 +15,6 @@
 				$return_data['检测人']=$row['检测人'];
 				$return_data['检测日期']=$row['检测日期'];
 				$return_data['检测部位']=$row['检测部位'];
-				$return_data['检测单位']=$row['检测单位'];
 				$return_data['备注']=$row['备注'];
 				$return_data['送样日期']=$row['送样日期'];
 				$return_data['收样日期']=$row['收样日期'];

@@ -136,7 +136,7 @@
                                                       <label  class="control-label" for="focusedInput">施工单位:</label>
                                                       <div class="controls">
                                                         <input type="text" name="construction" id="construction" value="" style="display: none;">
-                                                        <select  id="construction_select" name="construction_select" style="width:284px" multiple="multiple">
+                                                        <select  id="construction_select" name="construction_select" style="width:515px" multiple="multiple">
                                                              <?php foreach($org['road'] as $o): ?>
                                                                <option ><?php echo $o['单位名称'] ?></option>
                                                               <?php endforeach ?>
@@ -147,7 +147,7 @@
                                                       <label  class="control-label" for="focusedInput">监理单位:</label>
                                                       <div class="controls">
                                                         <input type="text" name="supervision" id="supervision" value="" style="display: none;">
-                                                        <select  id="supervision_select" name="supervision_select" style="width:284px" multiple="multiple">
+                                                        <select  id="supervision_select" name="supervision_select" style="width:515px" multiple="multiple">
                                                              <?php foreach($org['overseeing'] as $o): ?>
                                                                <option ><?php echo $o['单位名称'] ?></option>
                                                               <?php endforeach ?>
@@ -158,7 +158,7 @@
                                                       <label  class="control-label" for="focusedInput">检测单位:</label>
                                                       <div class="controls">
                                                         <input type="text" name="detection" id="detection" value="" style="display: none;">
-                                                        <select  id="detection_select" name="detection_select" style="width:284px" multiple="multiple">
+                                                        <select  id="detection_select" name="detection_select" style="width:515px" multiple="multiple">
                                                               <?php foreach($org['detection'] as $o): ?>
                                                                 <option ><?php echo $o['单位名称'] ?></option>
                                                               <?php endforeach ?>
@@ -169,7 +169,7 @@
                                                       <label  class="control-label" for="focusedInput">监督机构:</label>
                                                       <div class="controls">
                                                         <input type="text" name="Supervision_0" id="Supervision_0" value="" style="display: none;">
-                                                        <select  id="Supervision_0_select" name="Supervision_0_select" style="width:284px" multiple="multiple">
+                                                        <select  id="Supervision_0_select" name="Supervision_0_select" style="width:515px" multiple="multiple">
                                                               <?php foreach($org['Supervision'] as $o): ?>
                                                                 <option ><?php echo $o['单位名称'] ?></option>
                                                               <?php endforeach ?>
@@ -236,7 +236,7 @@
                                                   </fieldset>
                                                 </form>
                                                 <div class="form-actions">
-                                                  <button id="save_info" class="btn btn-primary" style="margin-left: 190px;width: 200px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                  <button id="save_info" class="btn btn-primary" style="margin-left: 300px;width: 200px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                   <!-- <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button> -->
                                                 </div>
                                             </div>
@@ -283,7 +283,7 @@
                                                       	</div>
                                                       </div>
                                                       <br />
-                                                      <button type="button" id="add_road" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
+                                                      <button type="button" id="add_road" class="btn btn-success" style="margin-left: 630px;" >添加+</button>
                                                     </div>
 
                                                     <div class="panel-heading" style="margin-left: 80px;">
@@ -297,7 +297,7 @@
                                                       	</div>
                                                       </div>
                                                       <br />
-                                                      <button type="button" id="add_overseeing" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
+                                                      <button type="button" id="add_overseeing" class="btn btn-success" style="margin-left: 630px;" >添加+</button>
                                                     </div>
 
 
@@ -312,7 +312,7 @@
                                                       	</div>
                                                       </div>
                                                       <br />
-                                                      <button type="button" id="add_detection" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
+                                                      <button type="button" id="add_detection" class="btn btn-success" style="margin-left: 630px;" >添加+</button>
                                                     </div>
 
                                                     <div class="panel-heading" style="margin-left: 80px;">
@@ -326,18 +326,18 @@
                                                       	</div>
                                                       </div>
                                                       <br />
-                                                      <button type="button" id="add_Supervision" class="btn btn-success" style="margin-left: 400px;" >添加+</button>
+                                                      <button type="button" id="add_Supervision" class="btn btn-success" style="margin-left: 630px;" >添加+</button>
                                                     </div>
                                                    
                                                   </fieldset>
                                                 </form>
                                                  <div class="form-actions" >
                                                  	<div id="mod">
-                                                 		<button id="check_user" class="btn btn-primary" style="margin-left: 220px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检测手机号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 		<button id="check_user" class="btn btn-primary" style="margin-left: 320px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检测手机号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                  		<!-- <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button> -->
                                                  	</div>
                                                  	<div id="mod2" style="display: none;">
-                                                 		<button id="save_user" class="btn btn-primary"  style="margin-left: 245px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                 		<button id="save_user" class="btn btn-primary"  style="margin-left: 320px;width: 146px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                  		<!-- <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button> -->
                                                  	</div>  	
                                                       

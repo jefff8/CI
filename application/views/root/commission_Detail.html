@@ -246,10 +246,10 @@
                                                   </fieldset>
                                                 </form>
                                                 <?php 
-                                                      if($v['工程单状态']=='提交结果'){
+                                                      if($v['工程单状态']=='提交结果' &&  ($unit[0]['单位']=='检测单位'||$unit[0]['单位']=='管理员')){
                                                 ?>
                                                 <div class="form-actions">
-                                                  <button  class="btn btn-success" data-toggle="modal" data-target="#qualifiedModal" style="margin-left: 170px;width: 132px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                  <button  class="btn btn-success" data-toggle="modal" data-target="#qualifiedModal" style="margin-left: 270px;width: 132px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                   <button  class="btn btn-danger" data-toggle="modal" data-target="#failModal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不合格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                 </div>
                                                 <?php 

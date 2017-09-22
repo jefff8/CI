@@ -16,6 +16,11 @@
 		public function check(){
 			$material_id = $this->uri->segment(3);
 			$material_timestamp = $this->uri->segment(4);
+			//用户id
+			$data['uid'] = $this->session->userdata('userid');
+			$this->load->model('root/Privilege_model','unit');
+			//用户单位
+			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/material_self_model','material_self');
 			$data['detail_data'] = $this->material_self->check($material_id);
 			$data['pj_timestamp']= $material_timestamp;

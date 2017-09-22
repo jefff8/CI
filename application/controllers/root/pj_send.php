@@ -62,6 +62,11 @@ class Pj_send extends MY_Controller{
 	public function check(){
 		$passval['send_id'] = $this->uri->segment(3);
 		$passval['pj_timestamp'] = $this->uri->segment(4);
+		//用户id
+		$data['uid'] = $this->session->userdata('userid');
+		$this->load->model('root/Privilege_model','unit');
+		//用户单位
+		$passval['unit'] = $this->unit->index($data['uid']);
 		$this->load->model('root/pj_send_model','send_detail');
 		$passval['send_data_st'] = $this->send_detail->detail_st($passval['send_id']);
 		$passval['send_data_nd'] = $this->send_detail->detail_nd($passval['send_id']);
