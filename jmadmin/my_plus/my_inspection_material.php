@@ -128,7 +128,7 @@
 		$conn->query($sql2);
 		$sql4 = "UPDATE 材料自检  SET 工程单状态='新增复检'where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$conn->query($sql4);
-		$sql="insert into 材料送检(工程名称,时间戳,工程时间戳,工程单状态,取样类型,数量,取样人,取样日期,使用部位,备注,检测单位) select 工程名称,时间戳,工程时间戳,工程单状态,自检自测类型,数量,检测人,检测日期,检测部位,备注,检测单位 from 材料自检 where id='$ulid'";
+		$sql="insert into 材料送检(工程名称,时间戳,工程时间戳,工程单状态,取样类型,数量,取样人,取样日期,使用部位,备注) select 工程名称,时间戳,工程时间戳,工程单状态,自检自测类型,数量,检测人,检测日期,检测部位,备注 from 材料自检 where id='$ulid'";
 		$result = $conn->query($sql);
 		$sqlDel = "delete from 材料自检 where id='$ulid'";
 		$conn->query($sqlDel);
@@ -160,7 +160,6 @@
 				$data_arr[$i]['检测部位']=$row['检测部位'];
 				$data_arr[$i]['检测人']=$row['检测人'];
 				$data_arr[$i]['检测日期']=$row['检测日期'];
-				$data_arr[$i]['检测单位']=$row['检测单位'];
 				$i++;
 			}
 		}

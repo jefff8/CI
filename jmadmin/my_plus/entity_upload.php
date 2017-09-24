@@ -71,8 +71,8 @@ for ($i= 0;$i< $nub3; $i++){
 		$Text3 = $_POST["Text3"];
 		$pj_name = $_POST["pj_name"];
 		$pj_timestamp = $_POST["pj_timestamp"];
-		$sqli = "insert into 实体检测(时间戳,工程名称,工程时间戳,检测类型,检测部位,数量,检测人,检测日期,备注,检测单位,工程单状态,监理操作单位,场景照片说明,检测实施过程照片说明,检测设备照片说明,检测前照片,检测实施过程照片,检测设备照片) values ('$mchen','$pj_name','$pj_timestamp','$Info[0]',
-'$Info[1]','$Info[2]','$Info[3]','$Info[4]','$Info[5]','$Info[6]','新建','$Info[7]','$Text1','$Text2','$Text3','".$filenames1."','".$filenames2."','".$filenames3."')";
+		$sqli = "insert into 实体检测(时间戳,工程名称,工程时间戳,检测类型,检测部位,数量,检测人,检测日期,备注,检测单位,工程单状态,监理操作单位,场景照片说明,检测实施过程照片说明,检测设备照片说明,检测前照片,检测实施过程照片,检测设备照片,检测操作单位) values ('$mchen','$pj_name','$pj_timestamp','$Info[0]',
+'$Info[1]','$Info[2]','$Info[3]','$Info[4]','$Info[5]','$Info[6]','新建','$Info[7]','$Text1','$Text2','$Text3','".$filenames1."','".$filenames2."','".$filenames3."','$Info[6]')";
 	}
 	$sql = "select * from 实体检测  where 时间戳='".$mchen."'";
 	$result = $conn -> query($sql);
