@@ -104,7 +104,7 @@
                                                     if($uid=='1'){
                                                 ?>
                                                 <th style="width: 100px;">操作</th>
-                                                <!-- <th style="width: 60px;">操作</th> -->
+                                                <th style="width: 100px;">操作</th>
                                                 <?php
                                                     }
                                                 ?>
@@ -136,10 +136,10 @@
                                                         if($uid=='1'){
                                                     ?>
                                                     <td><button  id="<?php echo $v['时间戳']?>" style="width: 100px;" type="button" class="btn btn-default" onclick="completed(this.id)">竣工</button></td>
+                                                    <td><button style="width: 100px;" id="<?php echo $v['工程id']?>"  type="button" class="btn btn-danger"  onclick="del_pj(this.id)">删除</button></td>
                                                     <?php
                                                         }
                                                     ?>
-                                                    <!-- <td><button  type="button" class="btn btn-danger" ><?php echo $uid?></button></td> -->
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
@@ -179,6 +179,30 @@
                             success:function(data){
                                 // alert(data);
                                 alert("已确认竣工！");
+                                location.href="<?php echo site_url('pj_all') ?>"
+                            }
+                        });
+                    }
+                });
+            }
+
+            /**
+             * 工程删除
+            */
+            function del_pj(pj_id){
+                layer.confirm('是否确定删除该工程？',{
+                    btn:['确定','取消'],
+                    btn1:function(index,layero){
+                        var controller = "<?php echo site_url('Pj_all/del_pj') ?>";
+                        $.ajax({
+                            data:{
+                                pj_id:pj_id
+                            },
+                            type:"post",
+                            url:controller,
+                            success:function(data){
+                                // alert(data);
+                                alert("已删除！");
                                 location.href="<?php echo site_url('pj_all') ?>"
                             }
                         });

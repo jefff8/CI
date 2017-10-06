@@ -250,6 +250,15 @@ class Pj_all extends MY_Controller{
 		$this->del_user->del_user($id);
 	}
 
+	/**
+	 * 删除工程
+	 */
+	public function del_pj(){
+		$pj_id = $this->input->post('pj_id');
+		$this->load->model('root/Pj_all_model','del_pj');
+		$this->del_pj->del_pj($pj_id);
+	}
+
 
 }
 ?>

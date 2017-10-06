@@ -25,7 +25,7 @@ class Pj_all_model extends CI_Model{
 	}
 
 	/**
-	 * 删除工程
+	 * 工程竣工
 	 */
 	public function del($pj_timestamp){
 		$data['pj_send'] = $this->db->query("select 场景照片,样品照片,收样照片,检测照片,处理照片 from 材料送检 where 工程时间戳='$pj_timestamp' ")->result_array();
@@ -193,6 +193,14 @@ class Pj_all_model extends CI_Model{
 	 */
 	public function del_user($id){
 		$this->db->delete('用户工程关系表',array('id'=>$id));
+	}
+
+	/**
+	 * 删除工程
+	 */
+	public function del_pj($pj_id){
+		$this->db->delete('我的工程',array('id'=>$pj_id));
+		$this->db->delete('用户工程关系表',array('工程id'=>$pj_id));
 	}
 
 }
