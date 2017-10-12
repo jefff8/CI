@@ -43,8 +43,10 @@ try {
 	$strMd5=md5($strInput);
     $groupId=$client->ArrayOfSmsIDList[1];
 	print_r($groupId);
+	
 	$group=$client-> ArrayOfMobileList[1];
 	$group[0] =$client->MobileListGroup;
+	$group[0] = new stdClass(); //php高版本需要添加(否则会出现警告)
     $group[0]->Mobile = $mobPhone;
 	
 	$param = array('CorpID'=>$lCorpID,'LoginName'=>$strLoginName,'Password'=>$strMd5,'TimeStamp'=>$strTimeStamp,'AddNum'=>$addnum,'Timer'=>$timer,'LongSms'=>$longSms,'MobileList'=>$group,
