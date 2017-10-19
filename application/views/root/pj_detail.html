@@ -126,8 +126,14 @@
                                             <div class="tab-pane" id="tab1">
                                                 <form  class="form-horizontal"  id="pj_form" >
                                                   <fieldset>
-                                                  <?php foreach($pj_detail['detail'] as $v): ?> 
-                                                     <div class="control-group">
+                                                  <?php foreach($pj_detail['detail'] as $v): ?>
+                                                    <div class="control-group" style="display: none;">
+                                                      <label  class="control-label" for="focusedInput">工程id:</label>
+                                                      <div class="controls">
+                                                        <input id="pj_id" name="pj_id"  class="input-xlarge focused" id="focusedInput" type="text"  value="<?php echo $v['id'] ?>" disabled="disabled">
+                                                      </div>
+                                                    </div> 
+                                                    <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">工程名称:</label>
                                                       <div class="controls">
                                                         <input id="pj_name" name="pj_name"  class="input-xlarge focused" id="focusedInput" type="text" placeholder="请输入公司名称" value="<?php echo $v['工程名称'] ?>" disabled="disabled">
@@ -828,9 +834,10 @@
                 Supervision = Supervision.substring(0,(Supervision.length-1));
                 //Ajax添加用户id
                 var controller = "<?php echo site_url('pj_all/add_userid') ?>";
+                var pj_id = $('#pj_id').val();
                 $.ajax({
                     data:{
-//                      item:item,
+                        pj_id:pj_id,
                         road_user:road_user,
                         overseeing:overseeing,
                         detection:detection,

@@ -196,20 +196,21 @@ class Pj_all extends MY_Controller{
 	 * 添加人员id到用户工程关系表
 	 */
 	public function add_userid(){
-//		$item_data = $this->input->post('item');//获取项目部选择的人员
+		$pj_id = $this->input->post('pj_id');
 		$road_data = $this->input->post('road_user');//获取施工单位选择的人员
 		$overseeing_data = $this->input->post('overseeing');//获取监理单位选择的人员
 		$detection_data = $this->input->post('detection');//获取检测单位选择的人员
 		$Supervision_data = $this->input->post('Supervision');//获取监督单位选择的人员
 //		$user['item'] = explode('|',$item_data);
 		// p ($item_data);
+		$user['pj_id'] = $pj_id;
 		$user['road_user'] = explode('|',$road_data);
 		$user['overseeing'] = explode('|',$overseeing_data);
 		$user['detection'] = explode('|',$detection_data);
 		$user['Supervision'] = explode('|',$Supervision_data);
 		// echo count($user['item']);
 		// p($user['item'][0]);
-		$this->load->model('root/pj_all_model','add_user');
+		$this->load->model('root/Pj_all_model','add_user');
 		$this->add_user->add_id($user);
 		success('pj_all/index','分配成功！');
 		

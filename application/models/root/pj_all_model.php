@@ -98,17 +98,12 @@ class Pj_all_model extends CI_Model{
 	 */
 	public function add_id($data){
 		//获取当前新添加的工程id
-		$pj_id = $this->db->query("select max(id) as 工程id from 我的工程")->result_array();
-		$new_pj = $pj_id[0]['工程id'];
-
-//		//项目部
-//		$length0 = count($data['item']);
-//		$item = $data['item'];
-//		if($item[0]){
-//			for($i=0;$i<$length0;$i++){
-//				$this->db->query("insert into 用户工程关系表 (用户id,工程id) values ('$item[$i]','$new_pj')");
-//			}
-//		}
+		if($data['pj_id']){
+			$new_pj = $data['pj_id'];
+		}else{
+			$pj_id = $this->db->query("select max(id) as 工程id from 我的工程")->result_array();
+			$new_pj = $pj_id[0]['工程id'];
+		}
 		
 
 		//施工单位:先通过手机号获取id再保存
