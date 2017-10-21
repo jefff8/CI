@@ -61,8 +61,22 @@
 		}
 	}
 	
+	//用户信息里的单位
+	if($pj_type=='单位'){
+//		echo 'ok';
+		$sql = "SELECT DISTINCT `单位` FROM `用户信息` WHERE `单位` NOT IN ('管理员')";
+		$result = $conn->query($sql);
+		if($result->num_rows>0){
+			$i=0;
+			while($row = $result->fetch_assoc()){
+				$type[$i]['单位'] = $row['单位'];
+				$i++;
+			}
+		}
+	}
+	
 
-
+//	print_r($type[$i]['单位']);
 	$json = json_encode($type);
 	echo $json;
 	$conn->close();

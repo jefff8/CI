@@ -14,6 +14,7 @@
 				$data_arr[$i]['密码']=$row['密码'];
 				$data_arr[$i]['手机']=$row['手机'];
 				$data_arr[$i]['邮箱']=$row['邮箱'];
+				$data_arr[$i]['单位']=$row['单位'];
 				$data_arr[$i]['单位名称']=$row['单位名称'];
 				$i++;
 			}
