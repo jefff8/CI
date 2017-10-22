@@ -75,9 +75,17 @@ class Pj_send_model extends CI_Model{
 		$id = $data['self_id'];
 		$testNum = $data['testNum'];
 		$explain = $data['explain'];
-		$info = array('工程单状态'=>'不合格','检测照片'=>$img,'检测报告编号'=>$testNum,'检测报告照片说明'=>$explain);
-		$where = "id = '$id'";
-		$this->db->update('材料送检',$info,$where);
+		$pj_status = $data['pj_status'];
+		if($pj_status=='收样'){
+			$info = array('工程单状态'=>'不合格','检测照片'=>$img,'检测报告编号'=>$testNum,'检测报告照片说明'=>$explain);
+			$where = "id = '$id'";
+			$this->db->update('材料送检',$info,$where);
+		}else{
+			$info = array('工程单状态'=>'复检不合格','检测照片'=>$img,'复检编号'=>$testNum,'检测报告照片说明'=>$explain);
+			$where = "id = '$id'";
+			$this->db->update('材料送检',$info,$where);
+		}
+		
 	}
 
 

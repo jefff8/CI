@@ -7,6 +7,11 @@ class Pj_send extends MY_Controller{
 	 */
 	public function index(){
 		$pj_timestamp = $this->uri->segment(3);
+		//用户id
+		$data['uid'] = $this->session->userdata('userid');
+		$this->load->model('root/Privilege_model','unit');
+		//用户单位
+		$data['unit'] = $this->unit->index($data['uid']);
 		$this->load->model('root/pj_send_model','pj_send');
 		$data['send_data'] = $this->pj_send->check($pj_timestamp);
 		$data['witness_data'] = $this->pj_send->witness($pj_timestamp);
@@ -94,6 +99,7 @@ class Pj_send extends MY_Controller{
 		$data['self_id'] = $this->input->post('self_id');
 		$data['testNum'] =  $this->input->post('testNum');
 		$data['explain'] =  $this->input->post('explain');
+		$data['pj_status'] =  $this->input->post('pj_status');
 		$pj_timestamp = $this->input->post('pj_timestamp');
 		//上传配置  
 		$config['upload_path'] = './jmadmin/upload/';

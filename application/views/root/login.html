@@ -22,17 +22,18 @@
   </head>
   <body id="login" class="row bg">
     <div class="container">
-      <form action="<?php echo site_url('login/verify')?>" method="post" class="form-signin" >
-        <input name="username" type="text" class="input-block-level" placeholder="用户名" value="<?php echo set_value('username')?>" style="width: 230px" >
+      <form action="<?php echo site_url('login/verify')?>" method="post" class="form-signin" style="width: 250px;padding-left: 15px;">
+        <i class="icon-user"></i><input name="username" type="text" class="input-block-level" placeholder="用户名" value="<?php echo set_value('username')?>" style="width: 230px;margin-left: 5px;" >
         <?php echo form_error('username','<p style="color:red;">','</p>')?>
-        <input name="password" type="password" class="input-block-level" placeholder="密码" style="width: 230px">&nbsp;&nbsp;<a href="">找回密码</a>
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me">记住账号
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          
-        </label>
-
-        <button class="btn btn-large btn-primary" type="submit" style="width: 230px">登录</button>
+        <i class="icon-lock"></i><input name="password" type="password" class="input-block-level" placeholder="密码" style="width: 230px;margin-left: 5px;">
+        &nbsp;&nbsp;
+        <button class="btn btn-large btn-primary" type="submit" style="width: 230px;margin-left: 5px;">登录</button>
+        <hr>
+        <div >
+          <span style="margin-left: 40px;">操作手册</span><span class="icon-download-alt"></span>:
+          <a  href="<?php echo base_url()."manual/PC.docx" ?>">平台端</a>
+          <a  href="<?php echo base_url()."manual/app.doc" ?>" style="margin-left: 10px;">手机端</a>
+        </div>
       </form>
     </div>
     <script src="<?php echo base_url(). "style/vendors/jquery-1.9.1.min.js"?>"></script>

@@ -32,7 +32,8 @@
 		$email = $_POST['email'];
 		$Telephone = $_POST['Telephone'];
 		$Company = $_POST['Company'];
-		$sql = "UPDATE 用户信息  SET 账号='".$account."',密码='".$passWord."',邮箱='".$email."',手机='".$Telephone."',单位名称='".$Company."' WHERE id='".$uid."' ";
+		$unit = $_POST['unit'];
+		$sql = "UPDATE 用户信息  SET 账号='".$account."',密码='".$passWord."',邮箱='".$email."',手机='".$Telephone."',单位名称='".$Company."',单位='".$unit."' WHERE id='".$uid."' ";
 		$result = $conn->query($sql);
 		if($result){
 			$json_result = 'success';

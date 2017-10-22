@@ -83,9 +83,9 @@
                     	<div class="navbar">
                         	<div class="nav nav-tabs">
                                 <ul class="nav nav-tabs">
-                                  <li role="presentation" class="active"><a href="#about-1" data-toggle="tab">取样(施工单位)</a></li>
+                                  <li role="presentation" ><a href="#about-1" data-toggle="tab">取样(施工单位)</a></li>
                                   <li role="presentation"><a href="#about-2" data-toggle="tab">见证(监理单位)</a></li>
-                                  <li role="presentation"><a href="#about-3" data-toggle="tab">收样(检测单位)</a></li>
+                                  <li role="presentation" class="active"><a href="#about-3" data-toggle="tab">收样(检测单位)</a></li>
                                   <li role="presentation"><a href="#about-4" data-toggle="tab">结果</a></li>
                                 </ul>
                         	</div>
@@ -93,7 +93,7 @@
                     </div>
                     <!--工程列表-->
             <div class="tab-content">
-                <div class="tab-pane active" id="about-1">	
+                <div class="tab-pane " id="about-1">	
                     <div class="row-fluid" >
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
@@ -211,7 +211,7 @@
                     </div>
                 </div>
                 <!--收样-->
-                 <div class="tab-pane" id="about-3">	
+                 <div class="tab-pane active" id="about-3">	
                     <div class="row-fluid" >
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
@@ -236,6 +236,7 @@
                                             <tr>
                                                 <th>id</th>
                                                 <th>取样类型</th>
+                                                <th>样品编号</th>
                                                 <th>规格</th>
                                                 <th>数量</th>
                                                 <th>生产厂家</th>
@@ -243,6 +244,13 @@
                                                 <th>进场日期</th>
                                                 <th>取样日期</th>
                                                 <th>操作</th>
+                                                <?php 
+                                                      if($unit[0]['单位']=='检测单位'||$unit[0]['单位']=='管理员'){
+                                                ?>
+                                                <th>检测结果</th>
+                                                <?php 
+                                                      }
+                                                ?>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -250,6 +258,7 @@
                                                 <tr class="">
                                                     <td><?php echo $v['id'] ?></td>
                                                     <td><?php echo $v['取样类型'] ?></td>
+                                                    <td><?php echo $v['样品编号'] ?></td>
                                                     <td><?php echo $v['规格'] ?></td>
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
@@ -260,6 +269,90 @@
                                                     	<a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>" type="button" class="btn btn-default">查看</a>
                                                     	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
                                                     </td>
+                                                    <?php 
+                                                      if($unit[0]['单位']=='检测单位'||$unit[0]['单位']=='管理员'){
+                                                    ?>
+                                                    <td>
+                                                        <!-- <input type="" name="" value="<?php echo $v['工程单状态'] ?>"> -->
+                                                        <button class="btn btn-success" data-toggle="modal" data-target="#qualifiedModal" id="<?php echo $v['id'] ?>" value="<?php echo $v['工程单状态'] ?>" onclick="self_id(this.id,this.value)">合格</button>
+                                                        <!-- 合格模态框（Modal） -->
+                                                        <div class="modal fade" id="qualifiedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                            
+                                                          <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                                  &times;
+                                                                </button>
+                                                                <h4 class="modal-title" id="myModalLabel">
+                                                                  合格
+                                                                </h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                  检测报告编号:<input id="testNum" name="testNum" class="input-xlarge focused" id="focusedInput"  type="text" placeholder="请输入检测报告编号">
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                                                </button>
+                                                                <button id="qualified" type="button" class="btn btn-primary">
+                                                                  确认提交
+                                                                </button>
+                                                              </div>
+                                                            </div><!-- /.modal-content -->
+                                                          </div><!-- /.modal -->
+                                                        </div>
+                                                        &nbsp;
+                                                        <button class="btn btn-danger" data-toggle="modal" data-target="#failModal" id="<?php echo $v['id'] ?>" value="<?php echo $v['工程单状态'] ?>" onclick="self_id(this.id,this.value)">不合格</button>
+                                                        <!-- 不合格模态框（Modal） -->
+                                                        <div class="modal fade" id="failModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                          <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                                  &times;
+                                                                </button>
+                                                                <h4 class="modal-title" id="myModalLabel">
+                                                                  不合格
+                                                                </h4>
+                                                              </div>
+                                                              <form action="<?php echo site_url('Pj_send/do_upload')?>" method="post" enctype="multipart/form-data">
+                                                                <div class="control-group" style="display: none;">
+                                                                  <label  class="control-label" for="focusedInput">工程时间戳:</label>
+                                                                  <div class="controls">
+                                                                    <input id="pj_timestamp" name="pj_timestamp" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程时间戳']; ?>">
+                                                                  </div>
+                                                                </div>
+                                                                <div class="control-group" style="display: none;">
+                                                                  <label  class="control-label" for="focusedInput">id:</label>
+                                                                  <div class="controls">
+                                                                    <input id="self_id" name="self_id" class="input-xlarge focused" id="focusedInput" type="text" >
+                                                                  </div>
+                                                                </div>
+                                                                <div class="control-group" style="display: none;">
+                                                                  <label  class="control-label" for="focusedInput">工程单状态:</label>
+                                                                  <div class="controls">
+                                                                    <input id="pj_status" name="pj_status" class="input-xlarge focused" id="focusedInput" type="text" >
+                                                                  </div>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    检测报告编号：<input id="testNum" name="testNum" class="input-xlarge focused" id="focusedInput"  type="text" placeholder="请输入检测报告编号">
+                                                                    <div>
+                                                                      报告照片：<input id="userfile" name="userfile" class="input-xlarge focused" id="focusedInput"  type="file" multiple="multiple" class="file-loading">
+                                                                    </div> 
+                                                                    报告照片说明：<input id="explain" name="explain" class="input-xlarge focused" id="focusedInput"  type="text" placeholder="请输入报告照片说明">
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                                  <button  type="submit" class="btn btn-primary">确认提交</button>
+                                                                </div>
+                                                              </form>
+                                                            </div><!-- /.modal-content -->
+                                                          </div><!-- /.modal -->
+                                                        </div>
+                                                    </td>
+                                                    <?php 
+                                                      }
+                                                    ?>
                                                 </tr>
                                             <?php  endforeach ?>
                                         </tbody>
@@ -346,7 +439,30 @@
         <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
         <script src="<?php echo base_url()."style/assets/DT_bootstrap.js"?>"></script>
         <script>
-    
+             //送检合格
+            $("#qualified").click(function(){
+                var controller = "<?php echo site_url('Pj_send/qualified') ?>";
+                $.ajax({
+                    data:{
+                      pj_timestamp:document.getElementById("pj_timestamp").value,
+                      self_id:document.getElementById("self_id").value,
+                      testNum:document.getElementById("testNum").value,
+                      pj_status:document.getElementById("pj_status").value
+                    },
+                    url:controller,
+                    type:'post',
+                    success:function(data){
+                      alert("操作成功！");
+                      window.location = "<?php echo site_url('Pj_send/index/' .$v['工程时间戳']) ?>";
+                    }
+                });
+            });
+            //传递参数id到模态框
+            function self_id(id,pj_status){
+                $("#self_id").val(id);
+                $("#pj_status").val(pj_status);
+            }
+            
         </script>
     </body>
 
