@@ -514,12 +514,21 @@
                     detection_select = detection_select + $(this).text() + ",";
                 });
                 document.getElementById("detection").value = detection_select.substr(0,detection_select.length-1);
-                // 检测机构选择
+                // 监督机构选择
                 var Supervision_0_select = "";
                 $("#Supervision_0_select option:selected").each(function(){
                     Supervision_0_select = Supervision_0_select + $(this).text() + ",";
                 });
                 document.getElementById("Supervision_0").value = Supervision_0_select.substr(0,Supervision_0_select.length-1);
+                if($("#construction").val()==""){
+                	alert("请选择施工单位");
+                }else if($("#supervision_select").val()==null){
+                	alert("请选择监理单位");
+                }else if($("#detection_select").val()==null){
+                	alert("请选择检测单位");
+                }else if($("#Supervision_0_select").val()==null){
+                	alert("请选择监督机构");
+                }
                 var pj_info = "<?php echo site_url('pj_all/add')?>";
                 $.ajax({
                   data:{
