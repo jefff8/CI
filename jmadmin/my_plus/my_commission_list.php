@@ -5,7 +5,7 @@
 	$timestamp = $_POST['timestamp'];
 	if($flag=="创建卡项"){
 		require('../conn.php');
-		$sql = "select * from 实体检测  where 工程名称='".$gcmc."' and 工程时间戳 ='".$timestamp."' order by id";
+		$sql = "select * from 实体检测  where 工程名称='".$gcmc."' and 工程时间戳 ='".$timestamp."' order by id desc";
 		$result = $conn->query($sql);
 //		$class = mysqli_num_rows($result);
 		$i = 0;
