@@ -63,6 +63,16 @@
 			$json = json_encode($data);
 			echo $json;
 			break;
+		case "division":
+			$sql="select id,单位,单位名称 from 用户信息 where 手机= '".$mobile."'";
+			$result = $conn->query($sql);
+			$row = $result->fetch_assoc();
+			$data['id']=$row['id'];
+			$data['单位']=$row['单位'];
+			$data['单位名称']=$row['单位名称'];
+			$json = json_encode($data);
+			echo $json;
+			break;
 	}
 	
 //	返回用户单位
