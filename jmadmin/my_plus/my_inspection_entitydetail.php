@@ -24,6 +24,7 @@
 				$return_data['见证人']=$row['见证人'];
 				$return_data['处理情况']=$row['处理情况'];
 				$return_data['退场记录']=$row['退场记录'];
+				$return_data['拒收理由']=$row['拒收理由'];
 			}
 		}
 		$json = json_encode($return_data);

@@ -21,6 +21,7 @@
 				$return_data[$i]['工程单状态']=$row['工程单状态'];
 				$data_arr[$i]['备注']=$row['备注'];
 				$return_data[$i]['监理操作单位']=$row['监理操作单位'];
+				$return_data[$i]['拒收理由']=$row['拒收理由'];
 				$i++;
 			}
 		}
