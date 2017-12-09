@@ -80,7 +80,19 @@
 			break;
 		case "重新组织验收":
 			$ulId = $_POST["ulId"];
-			$sql = "update 分部验收  set 工程单状态='重新组织验收' where id='$ulId'";
+			$sql = "update 分部验收  set 工程单状态='重新组织验收',验收时间='',验收通知='',会议照片='',签到记录表='',验收报告='',验收通知说明='',会议照片说明='',签到记录表说明='',验收报告说明='' where id='$ulId'";
+			$conn->query($sql);
+			break;
+		case "重新组织验收修改":
+			$ulId = $_POST["ulId"];
+			$acceptanceTime = $_POST["acceptanceTime"];
+			$sql = "update 分部验收  set 验收时间='$acceptanceTime' where id='$ulId'";
+			$conn->query($sql);
+			break;
+		case "资料完善修改":
+			$ulId = $_POST["ulId"];
+			$acceptanceTime = $_POST["acceptanceTime"];
+			$sql = "update 分部验收  set 工程单状态='待审批',验收时间='$acceptanceTime' where id='$ulId'";
 			$conn->query($sql);
 			break;
 	}
