@@ -69,6 +69,9 @@
 			$result0 = $conn->query($sql0);
 			$result = $conn->query($sql);
 			$row0 = $result0->fetch_assoc();
+		case "division":
+			$sql="select id,单位,单位名称 from 用户信息 where 手机= '".$mobile."'";
+			$result = $conn->query($sql);
 			$row = $result->fetch_assoc();
 			$data['id']=$row['id'];
 			$data['单位']=$row['单位'];
