@@ -53,7 +53,7 @@
 		$ulid = $_POST['ulid'];
 		$code = $_POST['code'];
 		
-		$sql = "update 实体监督抽检 set 工程单状态 = '准备',委托编号='".$code."' where id ='$ulid'  ";
+		$sql = "update 实体监督抽检 set 工程单状态 = '提交检测',委托编号='".$code."' where id ='$ulid'  ";
 		$result = $conn->query($sql);
 		if($result){
 			$data_arr['结果']="操作成功！";
