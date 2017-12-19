@@ -60,11 +60,13 @@
 		echo $data_json;
 	}
 	else if($flag=="监理处理"){
-		$ulid = $_POST['ulid'];
-		$ttxt = $_POST['ttxt'];
-		$timestamp = $_POST['timestamp'];
 		require('../conn.php');
-		$sql = "update 实体监督抽检  set 退场记录 = '".$ttxt."',工程单状态 = '已处理' where id ='$ulid' and 工程时间戳 = '".$timestamp."' ";
+		$ulId = $_POST['ulId'];
+//		$ttxt = $_POST['ttxt'];
+//		$timestamp = $_POST['timestamp'];
+		require('../conn.php');
+//		$sql = "update 实体监督抽检  set 退场记录 = '".$ttxt."',工程单状态 = '待审核' where id ='$ulid' and 工程时间戳 = '".$timestamp."' ";
+		$sql = "update 实体监督抽检  set 工程单状态 = '待审批' where id ='$ulId'  ";
 		$result = $conn->query($sql);
 		if($result){
 			$data_arr['结果']="处理成功！";
@@ -74,6 +76,7 @@
 		$conn->close();
 		$data_json = json_encode($data_arr);
 		echo $data_json;
+//		print_r($ulId);
 		
 	}else if($flag=="审批通过"){
 		$ulId = $_POST['ulId'];

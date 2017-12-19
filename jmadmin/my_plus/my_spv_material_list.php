@@ -52,8 +52,14 @@
 	}else if($flag=="改新增状态"){
 		$ulid = $_POST['ulid'];
 		$gcmc = $_POST['gcmc'];
+		$gcdzt = $_POST['gcdzt'];
 		require('../conn.php');
-		$sql = "update 材料监督抽检 set 工程单状态 = '已取样' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		if($gcdzt=='新增复检'){
+			$state = '已取样复检';
+		}else{
+			$state = '已取样';
+		}
+		$sql = "update 材料监督抽检 set 工程单状态 = '".$state."' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$result = $conn->query($sql);
 		if($result){
 			$data_arr['结果']="抽检成功！";

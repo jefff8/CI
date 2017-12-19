@@ -19,13 +19,21 @@
 				$data_arr[$i]['数量']=$row['数量'];
 				$data_arr[$i]['生产厂家']=$row['生产厂家'];
 				$data_arr[$i]['取样人']=$row['取样人'];
+				$data_arr[$i]['送样人']=$row['送样人'];
+				$data_arr[$i]['见证人']=$row['见证人'];
 				$data_arr[$i]['进场日期']=$row['进场日期'];
 				$data_arr[$i]['取样日期']=$row['取样日期'];
+				$data_arr[$i]['送样日期']=$row['送样日期'];
+				$data_arr[$i]['收样日期']=$row['收样日期'];
 				$data_arr[$i]['合格证编号']=$row['合格证编号'];
 				$data_arr[$i]['使用部位']=$row['使用部位'];
 				$data_arr[$i]['经销商单位']=$row['经销商单位'];
 				$data_arr[$i]['备注']=$row['备注'];
+				$data_arr[$i]['样品编号']=$row['样品编号'];
 				$data_arr[$i]['检测单位']=$row['检测单位'];
+				$data_arr[$i]['送样单位']=$row['送样单位'];
+				$data_arr[$i]['见证单位']=$row['见证单位'];
+				$data_arr[$i]['收样单位']=$row['收样单位'];
 				$i++;
 			}
 		}

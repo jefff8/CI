@@ -56,12 +56,13 @@ for ($i= 0;$i< $nub2; $i++){
 	if ($result -> num_rows > 0) {
 		if($lx=='syzp'||$lx=='syzp2'){
 			$myInfo = $_POST["myInfo"];
+			$gcdzt = $_POST["gcdzt"];
 			$receivedText = $_POST["receivedText"];
 			$Info = explode("|", $myInfo);
-			if($lx=='syzp'){
-				$status = '收样';
-			}else{
+			if($gcdzt=='已取样复检'){
 				$status = '收样复检';
+			}else{
+				$status = '收样';
 			}
 			$sqli = "update 材料监督抽检  set 工程单状态='".$status."',收样日期='".$Info[0]."',送样日期='".$Info[1]."',送样单位='".$Info[2]."',见证单位='".$Info[3]."',收样单位='".$Info[4]."',送样人='".$Info[5]."',见证人='".$Info[6]."',样品编号='".$Info[7]."',检测操作单位='".$Info[8]."',  收样照片='".$filenames1."',收样照片说明='".$receivedText."' where 时间戳='".$mchen."' ";
 		}
