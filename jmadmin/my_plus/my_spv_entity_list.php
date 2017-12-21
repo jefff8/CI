@@ -165,12 +165,32 @@
 		$ulid = $_POST['ulid'];
 		$gcmc = $_POST['gcmc'];
 		$testNum = $_POST['testNum'];
-		$gcdzt = $_POST['gcdzt'];
-		if($gcdzt=='提交检测'){
+//		$gcdzt = $_POST['gcdzt'];
+//		if($gcdzt=='提交检测'){
 			$result = '合格';
-		}else if($gcdzt=='扩大抽检检测'){
-			$result = '扩大抽检合格';
+//		}else if($gcdzt=='扩大抽检检测'){
+//			$result = '扩大抽检合格';
+//		}
+		$sql = "update 实体监督抽检  set 工程单状态 = '".$result."',检测报告编号='$testNum' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		$result = $conn->query($sql);
+		if($result){
+			$data_arr['结果']="处理成功！";
+		}else{
+			$data_arr['结果']="失败！";
 		}
+		$conn->close();
+		$data_json = json_encode($data_arr);
+		echo $data_json;
+	}else if($flag=="扩大抽检合格"){
+		$ulid = $_POST['ulid'];
+		$gcmc = $_POST['gcmc'];
+		$testNum = $_POST['testNum'];
+//		$gcdzt = $_POST['gcdzt'];
+//		if($gcdzt=='提交检测'){
+//			$result = '合格';
+//		}else if($gcdzt=='扩大抽检检测'){
+			$result = '扩大抽检合格';
+//		}
 		$sql = "update 实体监督抽检  set 工程单状态 = '".$result."',检测报告编号='$testNum' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$result = $conn->query($sql);
 		if($result){
