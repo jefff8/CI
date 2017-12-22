@@ -85,8 +85,6 @@
 			$data['id']=$row['id'];
 			$data['单位']=$row['单位'];
 			$data['单位名称']=$row['单位名称'];
-			$data['监理操作单位']=$row0['监理操作单位'];
-			$data['检测操作单位']=$row0['检测操作单位'];	
 			$json = json_encode($data);
 			echo $json;
 			break;

@@ -84,7 +84,7 @@ for ($i= 0;$i< $nub3; $i++){
 		$pj_timestamp = $_POST["pj_timestamp"];
 //		$sqli = "insert into 实体监督抽检(时间戳,工程名称,工程时间戳,检测类型0,检测部位1,数量2,检测人3,检测日期4,备注5,检测单位6,工程单状态,监理操作单位7,场景照片说明8,检测实施过程照片说明9,检测设备照片说明10,检测前照片11,检测实施过程照片12,检测设备照片13,检测操作单位14) values ('$mchen','$pj_name','$pj_timestamp','$Info[0]',
 //'$Info[1]','$Info[2]','$Info[3]','$Info[4]','$Info[5]','$Info[6]','新建','$Info[7]','$Text1','$Text2','$Text3','".$filenames1."','".$filenames2."','".$filenames3."','$Info[6]')";
-		$sqli = "update 实体监督抽检  set 检测类型='$Info[0]',检测部位='$Info[1]',数量='$Info[2]',检测人='$Info[3]',检测日期='$Info[4]',备注='$Info[5]',检测单位='$Info[6]',监理操作单位='$Info[7]',场景照片说明='$Text1',检测实施过程照片说明='$Text2',检测设备照片说明='$Text3',检测前照片='".$filenames1."',检测实施过程照片='".$filenames2."',检测设备照片='".$filenames3."',检测操作单位='$Info[6]' where 时间戳='".$mchen."'";
+		$sqli = "update 实体监督抽检  set 工程单状态='扩大抽检准备',检测类型='$Info[0]',检测部位='$Info[1]',数量='$Info[2]',检测人='$Info[3]',检测日期='$Info[4]',备注='$Info[5]',检测单位='$Info[6]',监理操作单位='$Info[7]',委托编号='$Info[8]',场景照片说明='$Text1',检测实施过程照片说明='$Text2',检测设备照片说明='$Text3',检测前照片='".$filenames1."',检测实施过程照片='".$filenames2."',检测设备照片='".$filenames3."',检测操作单位='$Info[6]' where 时间戳='".$mchen."'";
 	}
 	$sql = "select * from 实体监督抽检  where 时间戳='".$mchen."'";
 	$result = $conn -> query($sql);
