@@ -12,9 +12,10 @@
 			$mytime = $_POST["mytime"];
 			$acceptanceTime = $_POST["acceptanceTime"];
 			$allHouse = $_POST["allHouse"];
+			$startTime = $_POST["startTime"];
 			$houseNum = explode("|", $allHouse);
 			$account = count($houseNum);
-			$sql = "insert into 分户验收 (时间戳 ,工程时间戳,工程名称,工程单状态,栋号,楼层,户数,起始层,验收时间) values ('$mytime','$pj_timestamp','$pj_name','施工申请','$buildingNum','$floor','$households','$beginFloor','$acceptanceTime')";
+			$sql = "insert into 分户验收 (时间戳 ,工程时间戳,工程名称,工程单状态,栋号,楼层,户数,起始层,验收时间,起始日期) values ('$mytime','$pj_timestamp','$pj_name','施工申请','$buildingNum','$floor','$households','$beginFloor','$acceptanceTime','$startTime')";
 			if($conn->query($sql)){
 				$result = 'success';
 			}else{
@@ -80,6 +81,7 @@
 					$data[$i]['户数'] = $row['户数'];
 					$data[$i]['起始层'] = $row['起始层'];
 					$data[$i]['验收时间'] = $row['验收时间'];
+					$data[$i]['起始日期'] = $row['起始日期'];
 					$data[$i]['整改通知单'] = $row['整改通知单'];
 					$data[$i]['整改通知单说明'] = $row['整改通知单说明'];
 					$i++;
