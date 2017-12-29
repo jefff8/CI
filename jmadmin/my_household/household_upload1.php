@@ -58,10 +58,11 @@ for ($i= 0;$i< $nub3; $i++){
 	$recordText=$_POST["recordText"];
 	$acceptText=$_POST["acceptText"];
 	$summaryText=$_POST["summaryText"];
+	$status=$_POST["result"];
 	$sql = "select id from 户号汇总  where id='".$selfId."'";
 	$result = $conn -> query($sql);
 	if ($result -> num_rows > 0) {
-			$sqli = "update 户号汇总  set  验收记录表 = '".$filenames1."',验收照片 = '".$filenames2."',验收汇总表='".$filenames3."',验收记录表说明='".$recordText."',验收照片说明='".$acceptText."',验收汇总表说明='".$summaryText."',上传状态='已上传' where id='".$selfId."'";
+			$sqli = "update 户号汇总  set  验收记录表 =concat(验收记录表,'".$filenames1."'),验收照片 =concat(验收照片,'".$filenames2."'),验收汇总表=concat(验收汇总表,'".$filenames3."'),验收记录表说明='".$recordText."',验收照片说明='".$acceptText."',验收汇总表说明='".$summaryText."',状态='".$status."' where id='".$selfId."'";
 	}
 	if ($conn -> query($sqli) === TRUE) {
 			$jsonresult = 'success';
