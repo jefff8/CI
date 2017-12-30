@@ -62,9 +62,9 @@
 		$sql = "update 材料监督抽检 set 工程单状态 = '".$state."' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$result = $conn->query($sql);
 		if($result){
-			$data_arr['结果']="抽检成功！";
+			$data_arr['结果']="委托成功！";
 		}else{
-			$data_arr['结果']="抽检失败！";
+			$data_arr['结果']="委托失败！";
 		}
 		$conn->close();
 		$data_json = json_encode($data_arr);

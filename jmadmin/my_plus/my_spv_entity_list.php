@@ -1,8 +1,6 @@
 <?php
 	require('../conn.php');
 	$flag = $_POST['flag'];//执行什么的判断条件
-//	$gcmc = $_POST['gcmc'];
-//	$timestamp = $_POST['timestamp'];
 	if($flag=="创建卡项"){
 		$gcmc = $_POST['gcmc'];
 		$timestamp = $_POST['timestamp'];
@@ -32,17 +30,36 @@
 		$data_json = json_encode($data_arr);
 		echo $data_json;
 //		print_r($result);
-
+	}else if($flag=="新建"){
+		$myInfo = $_POST["myInfo"];
+		$Info = explode("|", $myInfo);
+		$pj_name = $_POST["pj_name"];
+		$sjc = $_POST["sjc"];
+		$pj_timestamp = $_POST["pj_timestamp"];
+		$sqli = "insert into 实体监督抽检(时间戳,工程名称,工程时间戳,检测类型,检测部位,数量,检测人,检测日期,备注,检测单位,工程单状态,监理操作单位,检测操作单位) values ('$sjc','$pj_name','$pj_timestamp','$Info[0]',
+'$Info[1]','$Info[2]','$Info[3]','$Info[4]','$Info[5]','$Info[6]','新建','$Info[7]','$Info[6]')";
+//		$result = $conn->query($sql);
+		if ($conn -> query($sqli) === TRUE) {
+			$jsonresult = 'success';
+		} else {
+			$jsonresult = 'error';
+		}
+		$conn->close();
+		$data_arr['result'] = $jsonresult;
+		$data_json = json_encode($data_arr);		
+//		print_r($data_json);
+		echo $data_json;
 		
 	}else if($flag=="获取状态"){
 		$ulid = $_POST['ulid'];
 		$gcmc = $_POST['gcmc'];
 		
-		$sql = "select 工程单状态  from 实体监督抽检  where id = '$ulid' and 工程名称 = '".$gcmc."' " ;
+		$sql = "select 工程单状态,时间戳  from 实体监督抽检  where id = '$ulid' and 工程名称 = '".$gcmc."' " ;
 		$result = $conn->query($sql);
 		if($result->num_rows >0){
 			while($row = $result->fetch_assoc()){
 				$data_arr['工程单状态']=$row['工程单状态'];
+				$data_arr['时间戳']=$row['时间戳'];
 			}
 		}
 		$conn->close();
@@ -51,9 +68,9 @@
 		
 	}else if($flag=="准备"){
 		$ulid = $_POST['ulid'];
-		$code = $_POST['code'];
+//		$code = $_POST['code'];
 		
-		$sql = "update 实体监督抽检 set 工程单状态 = '提交检测',委托编号='".$code."' where id ='$ulid'  ";
+		$sql = "update 实体监督抽检 set 工程单状态 = '提交检测' where id ='$ulid'  ";
 		$result = $conn->query($sql);
 		if($result){
 			$data_arr['结果']="操作成功！";
