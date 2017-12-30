@@ -48,6 +48,7 @@
 					$data[$i]['会议照片说明'] = $row['会议照片说明'];
 					$data[$i]['签到记录表说明'] = $row['签到记录表说明'];
 					$data[$i]['验收报告说明'] = $row['验收报告说明'];
+					$data[$i]['重新组织理由'] = $row['重新组织理由'];
 					$i++;
 				}
 				$jsonresult = 'success';
@@ -68,6 +69,11 @@
 			$sql = "delete from 分部验收  where id='$ulId'";
 			$conn->query($sql);
 			break;
+		case "监理确认":
+			$ulId = $_POST["ulId"];
+			$sql = "update 分部验收  set 工程单状态='待审批' where id='$ulId'";
+			$conn->query($sql);
+			break;
 		case "审批通过":
 			$ulId = $_POST["ulId"];
 			$sql = "update 分部验收  set 工程单状态='审批通过' where id='$ulId'";
@@ -80,7 +86,8 @@
 			break;
 		case "重新组织验收":
 			$ulId = $_POST["ulId"];
-			$sql = "update 分部验收  set 工程单状态='重新组织验收',验收时间='',验收通知='',会议照片='',签到记录表='',验收报告='',验收通知说明='',会议照片说明='',签到记录表说明='',验收报告说明='' where id='$ulId'";
+			$reason = $_POST["reason"];
+			$sql = "update 分部验收  set 工程单状态='重新组织验收',验收时间='',验收通知='',会议照片='',签到记录表='',验收报告='',验收通知说明='',会议照片说明='',签到记录表说明='',验收报告说明='',重新组织理由='$reason' where id='$ulId'";
 			$conn->query($sql);
 			break;
 		case "重新组织验收修改":
