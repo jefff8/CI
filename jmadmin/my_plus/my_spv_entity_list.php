@@ -111,6 +111,24 @@
 		$data_json = json_encode($data_arr);
 		echo $data_json;
 //print_r($data_arr);
+	}else if($flag=="提交"){
+		$gcdId = $_POST['gcdId'];
+		$gcdzt = $_POST['gcdzt'];
+		if($gcdzt=='新建'){
+			$result = '准备';
+		}else if($gcdzt=='扩大抽检'){
+			$result = '扩大抽检准备';
+		}
+		$sql = "update 实体监督抽检 set 工程单状态 = '".$result."' where id ='$gcdId'  ";
+		$result = $conn->query($sql);
+		if($result){
+			$data_arr['结果']="提交检测成功！";
+		}else{
+			$data_arr['结果']="操作失败！";
+		}
+		$conn->close();
+		$data_json = json_encode($data_arr);
+		echo $data_json;
 	}else if($flag=="删除"){
 		$ulid = $_POST['ulid'];
 		$gcmc = $_POST['gcmc'];

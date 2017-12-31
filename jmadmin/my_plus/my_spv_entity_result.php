@@ -4,7 +4,7 @@
 		require('../conn.php');
 		$gcmc = $_POST['gcmc'];
 		$timestamp = $_POST['timestamp'];
-		$sql = "select * from 实体监督抽检  where 工程名称='".$gcmc."' and 工程时间戳 ='".$timestamp."' order by id";
+		$sql = "select * from 实体监督抽检  where 工程名称='".$gcmc."' and 工程时间戳 ='".$timestamp."' order by id desc";
 		$result = $conn->query($sql);
 //		$class = mysqli_num_rows($result);
 		$i = 0;
