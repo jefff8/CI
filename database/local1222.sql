@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50547
 File Encoding         : 65001
 
-Date: 2017-12-12 10:55:25
+Date: 2017-12-22 10:14:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -51,12 +51,11 @@ CREATE TABLE `分户验收` (
   `整改通知单` varchar(255) DEFAULT NULL,
   `整改通知单说明` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of 分户验收
 -- ----------------------------
-INSERT INTO `分户验收` VALUES ('53', '1512983381354', '1506414368014', '江门市技师学院第二校区~3、4(教学楼)', '审批不通过', 'A', '3', '3', '1', '2017-12-11', '~*^*~151298394801.jpg', '');
 
 -- ----------------------------
 -- Table structure for 分部验收
@@ -84,12 +83,11 @@ CREATE TABLE `分部验收` (
   `签到记录表说明` varchar(255) DEFAULT NULL,
   `验收报告说明` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of 分部验收
 -- ----------------------------
-INSERT INTO `分部验收` VALUES ('49', '1512980558870', '1506414368014', '江门市技师学院第二校区~3、4(教学楼)', '待审批', '装饰工程', '2017-12-11', '广州众磊建筑工程有限公司', '广东海外建设监理有限公司', '好路胡提好', '红红火火', '2017-12-12', '~*^*~151298339601.jpg', '~*^*~151298339602.jpg', '~*^*~151298339603.jpg', '~*^*~151298339604.jpg', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for 实体检测
@@ -140,11 +138,56 @@ CREATE TABLE `实体检测` (
 -- ----------------------------
 -- Records of 实体检测
 -- ----------------------------
-INSERT INTO `实体检测` VALUES ('1', '1508421183363', '五邑大学策文商学院大楼工程', '1506568903657', '拒收', '房建工程—基桩抗压承载力检测', '', '', '管理员', '0000-00-00', '', '江门市建联检测股份有限公司', 'gg123', '~*^*~150842134701.jpg', '', '~*^*~150842134702.jpg', '', '~*^*~15084213470.jpg', '', null, null, null, null, null, null, '0', null, 'qwer', '~*^*~150842199101.jpg', '', 'dfd', null, '0', null, null, '广东海外建设监理有限公司', '江门市建联检测股份有限公司', 'q w er');
-INSERT INTO `实体检测` VALUES ('2', '1508552481179', '五邑大学策文商学院大楼工程', '1506568903657', '提交结果', '房建工程—基桩抗压承载力检测', 'xxzz', '123', '管理员', '2017-10-21', '备注', '江门市建设工程检测中心有限公司', '123ac', '~*^*~150855265001.jpg', '', '~*^*~150855265002.jpg', '', '~*^*~15085526500.jpg', '', '2017-10-21', '2017-10-21', '广东新可宇建设工程有限公司', '广州穗科建设管理有限公司', '江门市建设工程检测中心有限公司', '管理员', '~*^*~150855274801.jpg', '', null, '0', null, null, null, '0', null, null, '广州穗科建设管理有限公司', '江门市建设工程检测中心有限公司', null);
-INSERT INTO `实体检测` VALUES ('12', '1511491220554', '江门市技师学院第二校区~3、4(教学楼)', '1506414368014', '拒收', '房建工程—基桩抗压承载力检测', '', '', '管理员', '0000-00-00', '', '江门市建设工程检测中心有限公司', null, '~*^*~151149138201.jpg~*^*~151149138211.jpg', '', '~*^*~151149138202.jpg', '', '~*^*~15114913820.jpg', '', null, null, null, null, null, null, '0', null, null, '0', null, null, null, '0', null, null, '广东海外建设监理有限公司', '江门市建设工程检测中心有限公司', '');
-INSERT INTO `实体检测` VALUES ('10', '1510463254079', '江门市技师学院第二校区~3、4(教学楼)', '1506414368014', '拒收', '房建工程—基桩抗压承载力检测', '', '', '管理员', '0000-00-00', '', '江门市建设工程检测中心有限公司', null, '~*^*~151046342301.jpg~*^*~151046342311.jpg~*^*~151046342321.jpg', '', '~*^*~151046342302.jpg~*^*~151046342312.jpg~*^*~151046342322.jpg', '', '~*^*~15104634230.jpg~*^*~15104634231.jpg', '', null, null, null, null, null, null, '0', null, null, '0', null, null, null, '0', null, null, '广东海外建设监理有限公司', '江门市建设工程检测中心有限公司', null);
-INSERT INTO `实体检测` VALUES ('13', '1511678353545', '江门市技师学院第二校区~3、4(教学楼)', '1506414368014', '拒收', '房建工程—基桩抗压承载力检测', '', '', '管理员', '0000-00-00', '', '江门市建设工程检测中心有限公司', '考虑考虑', '~*^*~151167852901.jpg', '', '~*^*~151167852902.jpg', '', '~*^*~15116785290.jpg', '', null, null, null, null, null, null, '0', null, null, '0', null, null, null, '0', null, null, '广东海外建设监理有限公司', '江门市建设工程检测中心有限公司', '');
+
+-- ----------------------------
+-- Table structure for 实体监督抽检
+-- ----------------------------
+DROP TABLE IF EXISTS `实体监督抽检`;
+CREATE TABLE `实体监督抽检` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `时间戳` varchar(255) DEFAULT NULL,
+  `工程名称` varchar(255) NOT NULL,
+  `工程时间戳` varchar(255) DEFAULT NULL,
+  `工程单状态` varchar(255) DEFAULT NULL,
+  `检测类型` varchar(255) DEFAULT NULL,
+  `检测部位` varchar(255) DEFAULT NULL,
+  `数量` varchar(255) DEFAULT NULL,
+  `检测人` varchar(255) DEFAULT NULL,
+  `检测日期` date DEFAULT NULL,
+  `备注` varchar(255) DEFAULT NULL,
+  `检测单位` varchar(255) DEFAULT NULL,
+  `委托编号` varchar(255) DEFAULT NULL,
+  `检测前照片` varchar(255) DEFAULT '0' COMMENT '场景照片',
+  `场景照片说明` varchar(255) DEFAULT NULL,
+  `检测实施过程照片` varchar(255) DEFAULT '0',
+  `检测实施过程照片说明` varchar(1000) DEFAULT NULL,
+  `检测设备照片` varchar(255) DEFAULT '0',
+  `检测设备照片说明` varchar(255) DEFAULT NULL,
+  `送样日期` date DEFAULT NULL,
+  `收样日期` date DEFAULT NULL,
+  `送样单位` varchar(255) DEFAULT NULL,
+  `见证单位` varchar(255) DEFAULT NULL,
+  `收样单位` varchar(255) DEFAULT NULL,
+  `见证人` varchar(255) DEFAULT NULL,
+  `实测照片` varchar(255) DEFAULT '0',
+  `实测照片说明` varchar(255) DEFAULT NULL,
+  `不合格报告` varchar(255) DEFAULT NULL,
+  `不合格报表` varchar(255) DEFAULT '0',
+  `检测照片` varchar(255) DEFAULT NULL,
+  `报告照片说明` varchar(255) DEFAULT NULL,
+  `检测报告编号` varchar(255) DEFAULT NULL,
+  `退场记录` varchar(255) DEFAULT NULL,
+  `处理照片` varchar(255) DEFAULT '0',
+  `处理照片说明` varchar(255) DEFAULT NULL,
+  `处理类型` varchar(255) DEFAULT NULL,
+  `监理操作单位` varchar(255) DEFAULT NULL,
+  `检测操作单位` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of 实体监督抽检
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for 实体自检
@@ -184,12 +227,13 @@ CREATE TABLE `实体自检` (
   `监理操作单位` varchar(255) DEFAULT NULL,
   `拒收理由` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of 实体自检
 -- ----------------------------
 INSERT INTO `实体自检` VALUES ('1', '1510281070116', '1506414368014', '江门市技师学院第二校区~3、4(教学楼)', '拒收', '房建工程—基桩抗压承载力检测', 'aaaa', '', '管理员', '', '', null, '~*^*~151028124801.jpg', '', '~*^*~151028124802.jpg', '', '~*^*~15102812480.jpg', '', '0', null, null, null, null, null, null, null, null, null, '0', null, '广东海外建设监理有限公司', 'tyyyy');
+INSERT INTO `实体自检` VALUES ('2', '1513689281024', '1506414368014', '江门市技师学院第二校区~3、4(教学楼)', '准备材料', '房建工程—基桩抗压承载力检测', '', '', '管理员', '', '', null, '~*^*~151368946801.jpg', '', '~*^*~151368946802.jpg', '', '~*^*~15136894680.jpg', '', '0', null, null, null, null, null, null, null, null, null, '0', null, '广东海外建设监理有限公司', null);
 
 -- ----------------------------
 -- Table structure for 我的工程
@@ -243,7 +287,7 @@ CREATE TABLE `户号汇总` (
   `验收汇总表说明` varchar(255) DEFAULT NULL,
   `上传状态` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of 户号汇总
@@ -276,6 +320,124 @@ INSERT INTO `户号汇总` VALUES ('78', '53', 'A203', '0', '0', '0', null, null
 INSERT INTO `户号汇总` VALUES ('79', '53', 'A301', '0', '0', '0', null, null, null, null);
 INSERT INTO `户号汇总` VALUES ('80', '53', 'A302', '0', '0', '0', null, null, null, null);
 INSERT INTO `户号汇总` VALUES ('81', '53', 'A303', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('82', '54', 'A101', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('83', '54', 'A102', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('84', '54', 'A201', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('85', '54', 'A202', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('86', '54', 'A301', '~*^*~151390643201.jpg', '~*^*~151390643202.jpg', '~*^*~151390643203.jpg', '', '', '', '已上传');
+INSERT INTO `户号汇总` VALUES ('87', '54', 'A302', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('88', '54', 'A401', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('89', '54', 'A402', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('90', '54', 'A501', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('91', '54', 'A502', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('92', '54', 'A601', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('93', '54', 'A602', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('94', '54', 'A701', '0', '0', '0', null, null, null, null);
+INSERT INTO `户号汇总` VALUES ('95', '54', 'A702', '0', '0', '0', null, null, null, null);
+
+-- ----------------------------
+-- Table structure for 材料监督抽检
+-- ----------------------------
+DROP TABLE IF EXISTS `材料监督抽检`;
+CREATE TABLE `材料监督抽检` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `时间戳` varchar(255) NOT NULL,
+  `工程时间戳` varchar(255) DEFAULT NULL,
+  `工程名称` varchar(255) NOT NULL,
+  `工程单状态` varchar(255) DEFAULT NULL,
+  `取样类型` varchar(255) DEFAULT NULL,
+  `规格` varchar(255) DEFAULT NULL,
+  `数量` varchar(255) DEFAULT NULL,
+  `生产厂家` varchar(255) DEFAULT NULL,
+  `取样人` varchar(255) DEFAULT NULL,
+  `进场日期` date DEFAULT NULL,
+  `取样日期` date DEFAULT NULL,
+  `合格证编号` varchar(255) DEFAULT NULL,
+  `使用部位` varchar(255) DEFAULT NULL,
+  `经销商单位` varchar(255) DEFAULT NULL,
+  `备注` varchar(255) DEFAULT NULL,
+  `检测单位` varchar(255) DEFAULT NULL,
+  `场景照片` varchar(255) DEFAULT '0',
+  `场景照片说明` varchar(255) DEFAULT NULL,
+  `样品照片` varchar(255) DEFAULT '0',
+  `样品照片说明` varchar(255) DEFAULT NULL,
+  `检测报告编号` varchar(255) DEFAULT NULL,
+  `样品编号` varchar(255) DEFAULT NULL,
+  `送样日期` date DEFAULT NULL,
+  `收样日期` date DEFAULT NULL,
+  `送样单位` varchar(255) DEFAULT NULL,
+  `见证单位` varchar(255) DEFAULT NULL,
+  `收样单位` varchar(255) DEFAULT NULL,
+  `送样人` varchar(255) DEFAULT NULL,
+  `见证人` varchar(255) DEFAULT NULL,
+  `收样照片` varchar(255) DEFAULT '0',
+  `收样照片说明` varchar(255) DEFAULT NULL,
+  `检测照片` varchar(255) DEFAULT '0' COMMENT '报告照片（结论页）',
+  `检测报告照片说明` varchar(255) DEFAULT NULL,
+  `处理照片` varchar(255) DEFAULT '0',
+  `处理照片说明` varchar(255) DEFAULT NULL,
+  `退厂记录` varchar(255) DEFAULT NULL,
+  `复检编号` varchar(255) DEFAULT NULL,
+  `监理操作单位` varchar(255) DEFAULT NULL,
+  `检测操作单位` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of 材料监督抽检
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for 材料监督抽检初检表
+-- ----------------------------
+DROP TABLE IF EXISTS `材料监督抽检初检表`;
+CREATE TABLE `材料监督抽检初检表` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `时间戳` varchar(255) NOT NULL,
+  `工程时间戳` varchar(255) DEFAULT NULL,
+  `工程名称` varchar(255) NOT NULL,
+  `工程单状态` varchar(255) DEFAULT NULL,
+  `取样类型` varchar(255) DEFAULT NULL,
+  `规格` varchar(255) DEFAULT NULL,
+  `数量` varchar(255) DEFAULT NULL,
+  `生产厂家` varchar(255) DEFAULT NULL,
+  `取样人` varchar(255) DEFAULT NULL,
+  `进场日期` date DEFAULT NULL,
+  `取样日期` date DEFAULT NULL,
+  `合格证编号` varchar(255) DEFAULT NULL,
+  `使用部位` varchar(255) DEFAULT NULL,
+  `经销商单位` varchar(255) DEFAULT NULL,
+  `备注` varchar(255) DEFAULT NULL,
+  `检测单位` varchar(255) DEFAULT NULL,
+  `场景照片` varchar(255) DEFAULT '0',
+  `场景照片说明` varchar(255) DEFAULT NULL,
+  `样品照片` varchar(255) DEFAULT '0',
+  `样品照片说明` varchar(255) DEFAULT NULL,
+  `检测报告编号` varchar(255) DEFAULT NULL,
+  `样品编号` varchar(255) DEFAULT NULL,
+  `送样日期` date DEFAULT NULL,
+  `收样日期` date DEFAULT NULL,
+  `送样单位` varchar(255) DEFAULT NULL,
+  `见证单位` varchar(255) DEFAULT NULL,
+  `收样单位` varchar(255) DEFAULT NULL,
+  `送样人` varchar(255) DEFAULT NULL,
+  `见证人` varchar(255) DEFAULT NULL,
+  `收样照片` varchar(255) DEFAULT '0',
+  `收样照片说明` varchar(255) DEFAULT NULL,
+  `检测照片` varchar(255) DEFAULT '0' COMMENT '报告照片（结论页）',
+  `检测报告照片说明` varchar(255) DEFAULT NULL,
+  `处理照片` varchar(255) DEFAULT '0',
+  `处理照片说明` varchar(255) DEFAULT NULL,
+  `退厂记录` varchar(255) DEFAULT NULL,
+  `复检编号` varchar(255) DEFAULT NULL,
+  `监理操作单位` varchar(255) DEFAULT NULL,
+  `检测操作单位` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of 材料监督抽检初检表
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for 材料自检
@@ -412,20 +574,11 @@ CREATE TABLE `材料送检` (
   `检测操作单位` varchar(255) DEFAULT NULL,
   `拒收理由` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of 材料送检
 -- ----------------------------
-INSERT INTO `材料送检` VALUES ('25', '1510626603124', '1506414368014', '江门市技师学院第二校区~3、4(教学楼)', '收样', '房建工程—水泥', '', '', '', '管理员', '0000-00-00', '2017-11-14', '', '', '', '', '江门市建设工程检测中心有限公司', '~*^*~151062674901.jpg', '', '~*^*~15106267490.jpg', '', null, null, null, null, null, null, null, null, null, '0', null, '0', null, '0', null, null, null, '广东海外建设监理有限公司', null, '啊啊啊了了');
-INSERT INTO `材料送检` VALUES ('23', '1510216802816', '1506414368014', '江门市技师学院第二校区~3、4(教学楼)', '不合格', '房建工程—砼抗渗试件', 'xxx', 'xxx', 'xxx', '管理员', '0000-00-00', '2017-11-09', '', '', '', '', '江门市建设工程检测中心有限公司', '~*^*~151021694601.jpg', '', '~*^*~15102169460.jpg', '', null, null, null, null, null, null, null, null, null, '0', null, '0', null, '0', null, null, null, '广东海外建设监理有限公司', null, 'uuuh');
-INSERT INTO `材料送检` VALUES ('26', '1510626816162', '1506414368014', '江门市技师学院第二校区~3、4(教学楼)', '拒收', '房建工程—钢绞线', '', '', '', '管理员', '0000-00-00', '2017-11-14', '', '', '', '', '江门市建设工程检测中心有限公司', '~*^*~151062704401.jpg~*^*~151062704411.jpg~*^*~151062704421.jpg~*^*~151062704431.jpg~*^*~151062704441.jpg', '', '~*^*~15106270440.jpg~*^*~15106270441.jpg', '', null, null, null, null, null, null, null, null, null, '0', null, '0', null, '0', null, null, null, '广东海外建设监理有限公司', null, 'iiii');
-INSERT INTO `材料送检` VALUES ('3', '1506734289267', '1506568903657', '五邑大学策文商学院大楼工程', '拒收', '房建工程—砼标准养护试件', 'C4O,C4OC4OC4O', '50立方', '江门市政混凝土有限公司', '李丽琴', '2017-09-05', '2017-09-30', '', '后浇带', '江门市政混凝土有限公司', '', '江门市建设工程检测中心有限公司', '~*^*~150673585901.jpg~*^*~150673585911.jpg', '', '~*^*~15067358590.jpg', '', '000000', 'JS-kA17110285、0286', '2017-09-30', '2017-09-30', '广东新可宇建设工程有限公司', '广州穗科建设管理有限公司', '江门市建设工程检测中心有限公司', '李丽琴', '周顺安', '~*^*~150673708901.jpg', '', '~*^*~150866298601.jpg', '', '0', null, null, '5656', '广州穗科建设管理有限公司', '江门市建设工程检测中心有限公司', '是否');
-INSERT INTO `材料送检` VALUES ('14', '1509010092730', '1508149424951', '测试项目', '不合格', '开关', null, '', null, '管理员', null, '0000-00-00', null, '', null, '', null, '0', null, '0', null, '叫姐姐', null, null, null, null, null, null, null, null, '0', null, '~*^*~151298439201.jpg', '', '0', null, null, null, null, null, null);
-INSERT INTO `材料送检` VALUES ('15', '1510211114795', '1506414368014', '江门市技师学院第二校区~3、4(教学楼)', '拒收', '房建工程—水泥', '', '', '', '管理员', '0000-00-00', '2017-11-09', '', '', '', '', '江门市建设工程检测中心有限公司', '~*^*~151021127301.jpg', '', '~*^*~15102112730.jpg', '', null, null, null, null, null, null, null, null, null, '0', null, '0', null, '0', null, null, null, '广东海外建设监理有限公司', null, '');
-INSERT INTO `材料送检` VALUES ('11', '1507524403385', '1506568903657', '五邑大学策文商学院大楼工程', '收样复检', '房建工程—水泥', '', '', '', '管理员', '0000-00-00', '2017-10-09', '', '', '', '', '江门市建设工程检测中心有限公司', '~*^*~150752452101.jpg', '', '~*^*~15075245210.jpg', '', '1472369', null, null, null, null, null, null, null, null, '0', null, '~*^*~150866380701.jpg', '', '0', null, null, '7777777', '广东海外建设监理有限公司', null, null);
-INSERT INTO `材料送检` VALUES ('12', '1508029445268', '1508029166032', '测试项目', '已处理', '道路工程—道路稳定土无侧限抗压强度', '123456噢噢噢', '123456咯亏', '给你做哈哈', '管理员和经济', '2017-10-15', '2017-10-15', 'ffj经济界', '默默谁真惬意呀', '咯嘛秋衣秋裤', '搜秀噢', '', '~*^*~150803118001.jpg', '啊啊啊', '~*^*~15080311800.jpg', '呃呃呃额额', '123', '12358', '2017-10-15', '2017-10-15', '凯哥', '和你一样', '好哦是我是', '管理员和经济', '管理员', '~*^*~150803136701.jpg', '123555', '~*^*~150803142101.jpg', 'hi4G', '~*^*~150803148901.jpg', '就咯啦咯啦咯了', '1哈哈', '聚聚', '', '', null);
-INSERT INTO `材料送检` VALUES ('13', '1508221134584', '1506504880993', '江门市迎宾西路建设工程', '未见证', '房建工程—水泥', '', '', '', '管理员', '0000-00-00', '2017-10-17', '', '', '', '', '江门市建联检测股份有限公司', '~*^*~150822125901.jpg', '', '~*^*~15082212590.jpg', '', null, null, null, null, null, null, null, null, null, '0', null, '0', null, '0', null, null, null, '广州市穗高工程监理有限公司', null, null);
 
 -- ----------------------------
 -- Table structure for 材料送检初检表
@@ -595,15 +748,11 @@ CREATE TABLE `短信记录` (
   `手机号` varchar(255) DEFAULT NULL,
   `时间` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of 短信记录
 -- ----------------------------
-INSERT INTO `短信记录` VALUES ('23', '江门市技师学院第二校区~3、4(教学楼)', '实体检测', '207144', '管理员', '13048126246', 'Fri Nov 10 2017 10:25:56 GMT+0800 (CST)');
-INSERT INTO `短信记录` VALUES ('25', '江门市技师学院第二校区~3、4(教学楼)', '实体自检', '159848', '管理员', '13048126246', 'Fri Nov 10 2017 10:34:58 GMT+0800 (CST)');
-INSERT INTO `短信记录` VALUES ('26', '江门市技师学院第二校区~3、4(教学楼)', '材料自检', '507812', '管理员', '13048126246', 'Fri Nov 10 2017 10:42:29 GMT+0800 (CST)');
-INSERT INTO `短信记录` VALUES ('27', '任务通知', '任务通知', '145401', '管理员', '13048126246', 'Fri Nov 10 2017 10:56:21 GMT+0800 (CST)');
 
 -- ----------------------------
 -- Table structure for 项目类型选择
