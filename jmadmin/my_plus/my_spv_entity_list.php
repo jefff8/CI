@@ -16,6 +16,7 @@
 				$data_arr[$i]['工程单状态']=$row['工程单状态'];				
 				$data_arr[$i]['检测类型']=$row['检测类型'];
 				$data_arr[$i]['检测部位']=$row['检测部位'];
+				$data_arr[$i]['委托编号']=$row['委托编号'];
 				$data_arr[$i]['检测数量']=$row['数量'];
 				$data_arr[$i]['检测人']=$row['检测人'];
 				$data_arr[$i]['检测日期']=$row['检测日期'];
@@ -36,8 +37,8 @@
 		$pj_name = $_POST["pj_name"];
 		$sjc = $_POST["sjc"];
 		$pj_timestamp = $_POST["pj_timestamp"];
-		$sqli = "insert into 实体监督抽检(时间戳,工程名称,工程时间戳,检测类型,检测部位,数量,检测人,检测日期,备注,检测单位,工程单状态,监理操作单位,检测操作单位) values ('$sjc','$pj_name','$pj_timestamp','$Info[0]',
-'$Info[1]','$Info[2]','$Info[3]','$Info[4]','$Info[5]','$Info[6]','新建','$Info[7]','$Info[6]')";
+		$sqli = "insert into 实体监督抽检(时间戳,工程名称,工程时间戳,检测类型,检测人,委托编号,检测单位,工程单状态) values ('$sjc','$pj_name','$pj_timestamp','$Info[2]',
+'$Info[0]','$Info[1]','$Info[3]','新建')";
 //		$result = $conn->query($sql);
 		if ($conn -> query($sqli) === TRUE) {
 			$jsonresult = 'success';
@@ -180,22 +181,20 @@
 		$data_json = json_encode($data_arr);
 		echo $data_json;
 		}
-//	else if($flag=="不合格"){
-//		$ulid = $_POST['ulid'];
-//		$timestamp = $_POST['timestamp'];
-//		$tresult = $_POST['tresult'];
-//		
-//		$sql = "update 实体监督抽检  set 不合格报告 = '".$tresult."',工程单状态 = '不合格' where id ='$ulid' and 工程时间戳 = '".$timestamp."' ";
-//		$result = $conn->query($sql);
-//		if($result){
-//			$data_arr['结果']="处理成功！";
-//		}else{
-//			$data_arr['结果']="失败！";
-//		}
-//		$conn->close();
-//		$data_json = json_encode($data_arr);
-//		echo $data_json;
-//	}
+	else if($flag=="检测单位"){
+		$sql = "SELECT DISTINCT 单位名称 FROM `用户信息` WHERE `单位`='检测单位'";
+		$result = $conn->query($sql);
+		$i = 0;
+		if($result->num_rows >0){
+			while($row = $result->fetch_assoc()){
+				$data_arr[$i]['检测单位']=$row['单位名称'];
+				$i++;
+			}
+		}	
+		$conn->close();
+		$data_json = json_encode($data_arr);
+		echo $data_json;
+	}
 	else if($flag=="合格"){
 		$ulid = $_POST['ulid'];
 		$gcmc = $_POST['gcmc'];
