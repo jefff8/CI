@@ -56,25 +56,38 @@
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                         <li>
-                            <a href="<?php echo site_url('pj_send/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
+                            <a href="<?php echo site_url('pj_send/index/'.$household_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('commission/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
+                            <a href="<?php echo site_url('commission/index/'.$household_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('material_self/index/'.$household_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('entity_self/index/'.$household_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
+                        </li>
+                        <!--下面2个模块(监督抽检)只有监督机构和检测单位可以查看-->
+                        <?php 
+                            if($unit[0]['单位']=='检测单位'||$unit[0]['单位']=='监督机构'||$unit[0]['单位']=='管理员'){
+                        ?>
+                        <li>
+                            <a href="#"><i class="icon-chevron-right"></i>材料监督抽检</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
+                        </li>
+                        <?php
+                            }
+                        ?>
+                        <li>
+                            <a href="<?php echo site_url('Division/index/'.$household_timestamp) ?>"><i class="icon-chevron-right"></i>分部验收</a>
                         </li>
                         <li class="active">
-                            <a href="<?php echo site_url('material_self/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
+                            <a href="<?php echo site_url('Household/index/'.$household_timestamp) ?>"><i class="icon-chevron-right"></i>分户验收</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('entity_self/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
-                        </li>
-                        <li>
-                            <a ><i class="icon-chevron-right"></i>材料监督抽检</a>
-                        </li>
-                        <li>
-                            <a ><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('pj_query/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
+                            <a href="<?php echo site_url('pj_query/index/'.$household_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
                         </li>
                     </ul>
                 </div>
@@ -85,14 +98,14 @@
                     	<div class="navbar">
                         	<div class="nav nav-tabs">
                                 <ul class="nav nav-tabs">
-                                  <li role="presentation" class="active"><a href="#about-1" data-toggle="tab">材料抽检</a></li>
-                                  <li role="presentation"><a href="#about-2" data-toggle="tab">监理见证</a></li>
-                                  <li role="presentation"><a href="#about-3" data-toggle="tab">结果</a></li>
+                                  <li role="presentation" class="active"><a href="#about-1" data-toggle="tab">申请</a></li>
+                                  <li role="presentation"><a href="#about-2" data-toggle="tab">确认</a></li>
+                                  <li role="presentation"><a href="#about-3" data-toggle="tab">审批</a></li>
                                 </ul>
                         	</div>
                     	</div>
                     </div>
-                    <!--实体自检-->
+                    <!--分户验收列表-->
                 <div class="tab-content">
                     	<div class="tab-pane active" id="about-1">
 		                    <div class="row-fluid" >
@@ -118,25 +131,25 @@
 		                                        <thead>
 		                                            <tr>
 		                                            	<th>id</th>
-		                                                <th>自检自测类型</th>
-		                                                <th>检测部位</th>
-		                                                <th>数量</th>
-		                                                <th>检测人</th>
-		                                                <th>检测日期</th>
+		                                                <th>栋号</th>
+		                                                <th>层数</th>
+		                                                <th>层户数</th>
+		                                                <th>起始日期</th>
+		                                                <th>完成时间</th>
 		                                                <th>操作</th>
 		                                            </tr>
 		                                        </thead>
 		                                        <tbody>
-		                                            <?php  foreach($material_data as $v): ?>
+		                                            <?php  foreach($application_data as $v): ?>
 		                                                <tr class="">
 		                                                	<td><?php echo $v['id'] ?></td>
-		                                                    <td><?php echo $v['自检自测类型'] ?></td>
-		                                                    <td><?php echo $v['检测部位'] ?></td>
-		                                                    <td><?php echo $v['数量'] ?></td>
-		                                                    <td><?php echo $v['检测人'] ?></td>
-		                                                    <td><?php echo $v['检测日期'] ?></td>
+		                                                    <td><?php echo $v['栋号'] ?></td>
+		                                                    <td><?php echo $v['楼层'] ?></td>
+		                                                    <td><?php echo $v['户数'] ?></td>
+		                                                    <td><?php echo $v['起始日期'] ?></td>
+		                                                    <td><?php echo $v['验收时间'] ?></td>
 		                                                    <td>
-		                                                    	<a href="<?php echo site_url().'/material_self/check'.'/'.$v['id'].'/'.$material_timestamp ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="<?php echo site_url().'/Household/check'.'/'.$v['id'].'/'.$household_timestamp ?>" type="button" class="btn btn-default">查看</a>
 		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
 		                                                    </td>
 		                                                </tr>
@@ -148,7 +161,7 @@
 		                        </div>
 		                    </div>
 		                </div>
-                    <!--监理见证-->
+                    <!--确认-->
                     	<div class="tab-pane" id="about-2">
 		                    <div class="row-fluid" >
 		                        <div class="block">
@@ -173,25 +186,25 @@
 		                                        <thead>
 		                                            <tr>
 		                                            	<th>id</th>
-		                                                <th>自检自测类型</th>
-		                                                <th>检测部位</th>
-		                                                <th>数量</th>
-		                                                <th>检测人</th>
-		                                                <th>检测日期</th>
+		                                                <th>栋号</th>
+		                                                <th>层数</th>
+		                                                <th>层户数</th>
+		                                                <th>起始日期</th>
+		                                                <th>完成时间</th>
 		                                                <th>操作</th>
 		                                            </tr>
 		                                        </thead>
 		                                        <tbody>
-		                                                <?php  foreach($witness_data as $v): ?>
+		                                                <?php  foreach($confirmation_data as $v): ?>
 		                                                <tr class="">
 		                                                	<td><?php echo $v['id'] ?></td>
-		                                                    <td><?php echo $v['自检自测类型'] ?></td>
-		                                                    <td><?php echo $v['检测部位'] ?></td>
-		                                                    <td><?php echo $v['数量'] ?></td>
-		                                                    <td><?php echo $v['检测人'] ?></td>
-		                                                    <td><?php echo $v['检测日期'] ?></td>
+		                                                    <td><?php echo $v['栋号'] ?></td>
+		                                                    <td><?php echo $v['楼层'] ?></td>
+		                                                    <td><?php echo $v['户数'] ?></td>
+		                                                    <td><?php echo $v['起始日期'] ?></td>
+		                                                    <td><?php echo $v['验收时间'] ?></td>
 		                                                    <td>
-		                                                    	<a href="<?php echo site_url().'/material_self/check'.'/'.$v['id'].'/'.$material_timestamp ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="<?php echo site_url().'/Household/check'.'/'.$v['id'].'/'.$household_timestamp ?>" type="button" class="btn btn-default">查看</a>
 		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
 		                                                    </td>
 		                                                </tr>
@@ -203,7 +216,7 @@
 		                        </div>
 		                    </div>
 		                </div>
-                    <!--自检结果-->
+                    <!--审批-->
                     	<div class="tab-pane" id="about-3">
 		                    <div class="row-fluid" >
 		                        <div class="block">
@@ -228,27 +241,25 @@
 		                                        <thead>
 		                                            <tr>
 		                                            	<th>id</th>
-		                                                <th>自检自测类型</th>
-		                                                <th>检测部位</th>
-		                                                <th>数量</th>
-		                                                <th>检测人</th>
-		                                                <th>检测日期</th>
-		                                                <th>状态</th>
+		                                                <th>栋号</th>
+		                                                <th>层数</th>
+		                                                <th>层户数</th>
+		                                                <th>起始日期</th>
+		                                                <th>完成时间</th>
 		                                                <th>操作</th>
 		                                            </tr>
 		                                        </thead>
 		                                        <tbody>
-		                                                <?php  foreach($result_data as $v): ?>
+		                                                <?php  foreach($approval_data as $v): ?>
 		                                                <tr class="">
 		                                                	<td><?php echo $v['id'] ?></td>
-		                                                    <td><?php echo $v['自检自测类型'] ?></td>
-		                                                    <td><?php echo $v['检测部位'] ?></td>
-		                                                    <td><?php echo $v['数量'] ?></td>
-		                                                    <td><?php echo $v['检测人'] ?></td>
-		                                                    <td><?php echo $v['检测日期'] ?></td>
-		                                                    <td><?php echo $v['工程单状态'] ?></td>
+		                                                    <td><?php echo $v['栋号'] ?></td>
+		                                                    <td><?php echo $v['楼层'] ?></td>
+		                                                    <td><?php echo $v['户数'] ?></td>
+		                                                    <td><?php echo $v['起始日期'] ?></td>
+		                                                    <td><?php echo $v['验收时间'] ?></td>
 		                                                    <td>
-		                                                    	<a href="<?php echo site_url().'/material_self/check'.'/'.$v['id'].'/'.$material_timestamp ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="<?php echo site_url().'/Household/check'.'/'.$v['id'].'/'.$household_timestamp ?>" type="button" class="btn btn-default">查看</a>
 		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
 		                                                    </td>
 		                                                </tr>

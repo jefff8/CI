@@ -6,6 +6,11 @@ class Pj_query extends MY_Controller{
 	 */
 	public function index(){
 		$data['pj_timestamp'] = $this->uri->segment(3);
+		//用户id
+		$data['uid'] = $this->session->userdata('userid');
+		$this->load->model('root/Privilege_model','unit');
+		//用户单位
+		$data['unit'] = $this->unit->index($data['uid']);
 		$this->load->view('root/pj_query.html',$data);
 //		$this->output->enable_profiler(TRUE);
 	}

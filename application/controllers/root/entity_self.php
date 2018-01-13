@@ -4,6 +4,11 @@
 		//实体质量自检
 		public function index(){
 			$entity_timestamp = $this->uri->segment(3);
+			//用户id
+			$data['uid'] = $this->session->userdata('userid');
+			$this->load->model('root/Privilege_model','unit');
+			//用户单位
+			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/entity_self_model','entity_self');
 			$data['entity_data'] = $this->entity_self->self_inspection($entity_timestamp);
 			$data['witness_data'] = $this->entity_self->witness($entity_timestamp);

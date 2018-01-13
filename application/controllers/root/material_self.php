@@ -4,6 +4,11 @@
 		//材料自检
 		public function index(){
 			$material_timestamp = $this->uri->segment(3);
+			//用户id
+			$data['uid'] = $this->session->userdata('userid');
+			$this->load->model('root/Privilege_model','unit');
+			//用户单位
+			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/material_self_model','material_self');
 			$data['material_data'] = $this->material_self->self_inspection($material_timestamp);
 			$data['witness_data'] = $this->material_self->witness($material_timestamp);

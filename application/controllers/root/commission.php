@@ -4,6 +4,11 @@
 		//第三方实体检测
 		public function index(){
 			$commission_timestamp = $this->uri->segment(3);
+			//用户id
+			$data['uid'] = $this->session->userdata('userid');
+			$this->load->model('root/Privilege_model','unit');
+			//用户单位
+			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/commission_model','commission');
 			$data['commission_data'] = $this->commission->commission($commission_timestamp);
 			$data['witness_data'] = $this->commission->witness($commission_timestamp);
