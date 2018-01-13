@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="no-js">
+    
+    <head>
+        <title>分部验收</title>
+        <!-- Bootstrap -->
+        <link href="<?php echo base_url()."style/bootstrap/css/bootstrap.min.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/bootstr/css/bootstrap-responsive.min.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/vendors/easypiechart/jquery.easy-pie-chart.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/assets/styles.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/assets/DT_bootstrap.css"?>" rel="stylesheet" media="screen">
+        <script src="<?php echo base_url()."style/vendors/modernizr-2.6.2-respond-1.1.0.min.js"?>"></script>
+    </head>
+    
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="<?php echo site_url('pj_all') ?>">江门市建设工程施工质量管理系统</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> 我的账号<i class="caret"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a  href="<?php echo site_url('login/login_out')?>">账号注销</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li class="active">
+                                <a >项目管理</a>
+                            </li>
+                            <li class="">
+                                <a >综合查询</a>
+                            </li>
+                            <li class="">
+                                <a  >任务通知</a>
+                            </li>
+                            <li class="">
+                                <a  href="<?php echo site_url('sy_pho')?>">系统管理</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li>
+                            <a href="<?php echo site_url('pj_send/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('commission/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
+                        </li>
+                        <li class="active">
+                            <a href="<?php echo site_url('material_self/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('entity_self/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
+                        </li>
+                        <li>
+                            <a ><i class="icon-chevron-right"></i>材料监督抽检</a>
+                        </li>
+                        <li>
+                            <a ><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('pj_query/index/'.$material_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!--/span-->
+                <div class="span9" id="content">
+                    <div class="row-fluid">
+                    	<div class="navbar">
+                        	<div class="nav nav-tabs">
+                                <ul class="nav nav-tabs">
+                                  <li role="presentation" class="active"><a href="#about-1" data-toggle="tab">材料抽检</a></li>
+                                  <li role="presentation"><a href="#about-2" data-toggle="tab">监理见证</a></li>
+                                  <li role="presentation"><a href="#about-3" data-toggle="tab">结果</a></li>
+                                </ul>
+                        	</div>
+                    	</div>
+                    </div>
+                    <!--实体自检-->
+                <div class="tab-content">
+                    	<div class="tab-pane active" id="about-1">
+		                    <div class="row-fluid" >
+		                        <div class="block">
+		                            <div class="navbar navbar-inner block-header">
+		                                <div class="muted pull-left">工程列表</div>
+		                            </div>
+		                            <div class="block-content collapse in">
+		                                <div class="span12">
+		                                   <div class="table-toolbar">
+		                                      <div class="btn-group pull-right">
+		                                         <button data-toggle="dropdown" class="btn dropdown-toggle">工具<span class="caret"></span></button>
+		                                         <ul class="dropdown-menu">
+		                                            <li><a href="#">打印</a></li>
+		                                            <li><a href="#">PDF</a></li>
+		                                            <li><a href="#">导出</a></li>
+		                                        
+		                                         </ul>
+		                                      </div>
+		                                   </div>
+		                                    
+		                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example1">
+		                                        <thead>
+		                                            <tr>
+		                                            	<th>id</th>
+		                                                <th>自检自测类型</th>
+		                                                <th>检测部位</th>
+		                                                <th>数量</th>
+		                                                <th>检测人</th>
+		                                                <th>检测日期</th>
+		                                                <th>操作</th>
+		                                            </tr>
+		                                        </thead>
+		                                        <tbody>
+		                                            <?php  foreach($material_data as $v): ?>
+		                                                <tr class="">
+		                                                	<td><?php echo $v['id'] ?></td>
+		                                                    <td><?php echo $v['自检自测类型'] ?></td>
+		                                                    <td><?php echo $v['检测部位'] ?></td>
+		                                                    <td><?php echo $v['数量'] ?></td>
+		                                                    <td><?php echo $v['检测人'] ?></td>
+		                                                    <td><?php echo $v['检测日期'] ?></td>
+		                                                    <td>
+		                                                    	<a href="<?php echo site_url().'/material_self/check'.'/'.$v['id'].'/'.$material_timestamp ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
+		                                                    </td>
+		                                                </tr>
+		                                            <?php  endforeach ?>
+		                                        </tbody>
+		                                    </table>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+                    <!--监理见证-->
+                    	<div class="tab-pane" id="about-2">
+		                    <div class="row-fluid" >
+		                        <div class="block">
+		                            <div class="navbar navbar-inner block-header">
+		                                <div class="muted pull-left">工程列表</div>
+		                            </div>
+		                            <div class="block-content collapse in">
+		                                <div class="span12">
+		                                   <div class="table-toolbar">
+		                                      <div class="btn-group pull-right">
+		                                         <button data-toggle="dropdown" class="btn dropdown-toggle">工具<span class="caret"></span></button>
+		                                         <ul class="dropdown-menu">
+		                                            <li><a href="#">打印</a></li>
+		                                            <li><a href="#">PDF</a></li>
+		                                            <li><a href="#">导出</a></li>
+		                                        
+		                                         </ul>
+		                                      </div>
+		                                   </div>
+		                                    
+		                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
+		                                        <thead>
+		                                            <tr>
+		                                            	<th>id</th>
+		                                                <th>自检自测类型</th>
+		                                                <th>检测部位</th>
+		                                                <th>数量</th>
+		                                                <th>检测人</th>
+		                                                <th>检测日期</th>
+		                                                <th>操作</th>
+		                                            </tr>
+		                                        </thead>
+		                                        <tbody>
+		                                                <?php  foreach($witness_data as $v): ?>
+		                                                <tr class="">
+		                                                	<td><?php echo $v['id'] ?></td>
+		                                                    <td><?php echo $v['自检自测类型'] ?></td>
+		                                                    <td><?php echo $v['检测部位'] ?></td>
+		                                                    <td><?php echo $v['数量'] ?></td>
+		                                                    <td><?php echo $v['检测人'] ?></td>
+		                                                    <td><?php echo $v['检测日期'] ?></td>
+		                                                    <td>
+		                                                    	<a href="<?php echo site_url().'/material_self/check'.'/'.$v['id'].'/'.$material_timestamp ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
+		                                                    </td>
+		                                                </tr>
+		                                            <?php  endforeach ?>
+		                                        </tbody>
+		                                    </table>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+                    <!--自检结果-->
+                    	<div class="tab-pane" id="about-3">
+		                    <div class="row-fluid" >
+		                        <div class="block">
+		                            <div class="navbar navbar-inner block-header">
+		                                <div class="muted pull-left">工程列表</div>
+		                            </div>
+		                            <div class="block-content collapse in">
+		                                <div class="span12">
+		                                   <div class="table-toolbar">
+		                                      <div class="btn-group pull-right">
+		                                         <button data-toggle="dropdown" class="btn dropdown-toggle">工具<span class="caret"></span></button>
+		                                         <ul class="dropdown-menu">
+		                                            <li><a href="#">打印</a></li>
+		                                            <li><a href="#">PDF</a></li>
+		                                            <li><a href="#">导出</a></li>
+		                                        
+		                                         </ul>
+		                                      </div>
+		                                   </div>
+		                                    
+		                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example3">
+		                                        <thead>
+		                                            <tr>
+		                                            	<th>id</th>
+		                                                <th>自检自测类型</th>
+		                                                <th>检测部位</th>
+		                                                <th>数量</th>
+		                                                <th>检测人</th>
+		                                                <th>检测日期</th>
+		                                                <th>状态</th>
+		                                                <th>操作</th>
+		                                            </tr>
+		                                        </thead>
+		                                        <tbody>
+		                                                <?php  foreach($result_data as $v): ?>
+		                                                <tr class="">
+		                                                	<td><?php echo $v['id'] ?></td>
+		                                                    <td><?php echo $v['自检自测类型'] ?></td>
+		                                                    <td><?php echo $v['检测部位'] ?></td>
+		                                                    <td><?php echo $v['数量'] ?></td>
+		                                                    <td><?php echo $v['检测人'] ?></td>
+		                                                    <td><?php echo $v['检测日期'] ?></td>
+		                                                    <td><?php echo $v['工程单状态'] ?></td>
+		                                                    <td>
+		                                                    	<a href="<?php echo site_url().'/material_self/check'.'/'.$v['id'].'/'.$material_timestamp ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
+		                                                    </td>
+		                                                </tr>
+		                                            <?php  endforeach ?>
+		                                        </tbody>
+		                                    </table>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+                    <!--工程列表-->
+                </div>
+            </div>
+            <hr>
+            <!--<footer>
+                <p>&copy; K 2017</p>
+            </footer>-->
+        </div>
+        <!--/.fluid-container-->
+        <script src="<?php echo base_url()."style/vendors/jquery-1.9.1.js"?>"></script>
+        <script src="<?php echo base_url()."style/bootstrap/js/bootstrap.min.js"?>"></script>
+        <script src="<?php echo base_url()."style/vendors/datatables/js/jquery.dataTables.min.js"?>"></script>
+        <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
+        <script src="<?php echo base_url()."style/assets/DT_bootstrap.js"?>"></script>
+        <script>
+        $(function() {
+            // Easy pie charts
+            $('.chart').easyPieChart({animate: 1000});
+        });
+        </script>
+    </body>
+
+</html>

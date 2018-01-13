@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html class="no-js">
+    
+    <head>
+        <title>分部验收详情</title>
+        <!-- Bootstrap -->
+        <link href="<?php echo base_url()."style/bootstrap/css/bootstrap.min.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/bootstrap/css/bootstrap-responsive.min.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/assets/styles.css"?>" rel="stylesheet" media="screen">
+        <script src="<?php echo base_url()."style/vendors/modernizr-2.6.2-respond-1.1.0.min.js"?>"></script>
+        <style type="text/css">
+          div img{  
+                cursor: pointer;  
+                transition: all 0.6s;  
+            }  
+          div img:hover{  
+                transform: scale(1.4);  
+            }  
+        </style>
+    </head>
+    
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="<?php echo site_url('pj_all') ?>">江门市建设工程施工质量管理系统</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> 我的账号<i class="caret"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="<?php echo site_url('login/login_out')?>">账号注销</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="">项目管理</a>
+                            </li>
+                            <li class="">
+                                <a  >综合查询</a>
+                            </li>
+                            <li class="">
+                                <a  >任务通知</a>
+                            </li>
+                            <li class="">
+                                <a href="<?php echo site_url('sy_pho')?>" >系统管理</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li>
+                            <a href="<?php echo site_url('pj_send/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
+                        </li>
+                        <li class="active">
+                            <a href="<?php echo site_url('commission/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('material_self/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('entity_self/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
+                        </li>
+                        <li>
+                            <a href="#"><!--<a href="material_con.html">--><i class="icon-chevron-right"></i>材料监督抽检</a>
+                        </li>
+                        <li>
+                            <a href="#"><!--<a href="entity_con.html">--><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('pj_query/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/span-->
+                <div class="span9" id="content">
+                    <!--工程列表-->
+                    <div class="row-fluid section">
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">项目信息</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <div id="rootwizard">
+                                        <div class="navbar">
+                                          <div class="navbar-inner">
+                                            <div class="container">
+                                                <ul>
+                                                    <li><a href="#tab1" data-toggle="tab">基本信息</a></li>
+                                                    <li><a href="#tab2" data-toggle="tab">附件查看</a></li>
+                                                </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                        <div class="tab-content">
+                                            
+                                            <div class="tab-pane" id="tab1">
+                                                <form action="" method="POST" class="form-horizontal" >
+                                                  <fieldset>
+                                                  <?php foreach($detail_data as $v): ?>
+                                                    <div class="control-group" style="display: none;">
+                                                      <label  class="control-label" for="focusedInput">工程时间戳:</label>
+                                                      <div class="controls">
+                                                        <input id="pj_timestamp" name="pj_timestamp" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程时间戳'] ?>">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group" >
+                                                      <label  class="control-label" for="focusedInput">工程名称:</label>
+                                                      <div class="controls">
+                                                        <input name="pj_name" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程名称'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group" style="display: none;">
+                                                        <label  class="control-label" for="focusedInput">id:</label>
+                                                        <div class="controls">
+                                                          <input id="self_id" name="self_id" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['id']; ?>">
+                                                        </div>
+                                                      </div>
+                                                     <div class="control-group" style="display: none;">
+                                                      <label  class="control-label" for="focusedInput">工程单状态:</label>
+                                                      <div class="controls">
+                                                        <input id="pj_status" name="pj_status" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程单状态'] ?>">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测类型:</label>
+                                                      <div class="controls">
+                                                        <input name="get_type" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['检测类型'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测部位:</label>
+                                                      <div class="controls">
+                                                        <input name="specification" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['检测部位'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测数量:</label>
+                                                      <div class="controls">
+                                                        <input name="specification" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['数量'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测人:</label>
+                                                      <div class="controls">
+                                                        <input name="get_guy" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['检测人'] ?>"  readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                     <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测日期:</label>
+                                                      <div class="controls">
+                                                        <input name="enter_date" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['检测日期'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                     <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">备注:</label>
+                                                      <div class="controls">
+                                                        <input name="get_date" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['备注'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测单位:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['检测单位'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">委托编号:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['委托编号'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">送样日期:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['送样日期'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">收样日期:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['收样日期'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">送样单位:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['送样单位'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">见证单位:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['见证单位'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">收样单位 :</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['收样单位'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">见证人:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['见证人'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">检测报告编号:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['检测报告编号'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">不合格报告:</label>
+                                                      <div class="controls">
+                                                        <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['不合格报告'] ?>" readonly="readonly">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label  class="control-label" for="focusedInput">退场记录:</label>
+                                                      <div class="controls">
+                                                        <textarea name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['退场记录'] ?>" readonly="readonly"></textarea>
+                                                      </div>
+                                                    </div>
+                                                    <div style="display: none;" class="form-actions">
+                                                      <button id="save" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                      <button type="reset" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                    </div>
+                                                  </fieldset>
+                                                </form>
+                                                <?php 
+                                                      if($v['工程单状态']=='提交结果' &&  ($unit[0]['单位']=='检测单位'||$unit[0]['单位']=='管理员')){
+                                                ?>
+                                                <div class="form-actions">
+                                                  <button  class="btn btn-success" data-toggle="modal" data-target="#qualifiedModal" style="margin-left: 270px;width: 132px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                  <button  class="btn btn-danger" data-toggle="modal" data-target="#failModal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不合格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                </div>
+                                                <?php 
+                                                      }
+                                                ?>
+                                                <?php endforeach ?>
+                                            </div>
+
+                                            <!-- 合格模态框（Modal） -->
+                                            <div class="modal fade" id="qualifiedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                      &times;
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                      合格
+                                                    </h4>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                      检测报告编号:<input id="testNum" name="testNum" class="input-xlarge focused" id="focusedInput"  type="text" placeholder="请输入检测报告编号">
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                                    </button>
+                                                    <button id="qualified" type="button" class="btn btn-primary">
+                                                      确认提交
+                                                    </button>
+                                                  </div>
+                                                </div><!-- /.modal-content -->
+                                              </div><!-- /.modal -->
+                                            </div>
+
+                                             <!-- 不合格模态框（Modal） -->
+                                            <div class="modal fade" id="failModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                      &times;
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">
+                                                      不合格
+                                                    </h4>
+                                                  </div>
+                                                  <form action="<?php echo site_url('Commission/do_upload')?>" method="post" enctype="multipart/form-data">
+                                                    <div class="control-group" style="display: none;">
+                                                      <label  class="control-label" for="focusedInput">工程时间戳:</label>
+                                                      <div class="controls">
+                                                        <input id="pj_timestamp" name="pj_timestamp" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程时间戳']; ?>">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group" style="display: none;">
+                                                      <label  class="control-label" for="focusedInput">id:</label>
+                                                      <div class="controls">
+                                                        <input id="self_id" name="self_id" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['id']; ?>">
+                                                      </div>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        检测报告编号：<input id="testNum" name="testNum" class="input-xlarge focused" id="focusedInput"  type="text" placeholder="请输入检测报告编号">
+                                                        <label>结果报告：<input id="result" name="result" class="input-xlarge focused" id="focusedInput"  type="text" placeholder="请输入结果报告"></label>
+                                                        <div>
+                                                          结果报表：<input id="userfile" name="userfile" class="input-xlarge focused" id="focusedInput"  type="file" multiple="multiple" class="file-loading">
+                                                        </div> 
+                                                        报告照片说明：<input id="explain" name="explain" class="input-xlarge focused" id="focusedInput"  type="text" placeholder="请输入报告照片说明">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                      <button  type="submit" class="btn btn-primary">确认提交</button>
+                                                    </div>
+                                                  </form>
+                                                </div><!-- /.modal-content -->
+                                              </div><!-- /.modal -->
+                                            </div>
+
+                                            
+                                            <div class="tab-pane" id="tab2">
+                                                <form action="<?php echo site_url('pj_send/add')?>" method="POST" class="form-horizontal" >
+                                                  <fieldset>
+                                                  	<div class="block-content collapse in">
+								                        <div class="span12">
+															<table class="table">
+												                <tr>
+												                  <th>场景照片</th>
+												                </tr>
+												                <tr>
+												                  <td>
+												                  	<div class="row-fluid padd-bottom">
+                                              <p style="color: grey;">场景照片说明：<?php echo $v['场景照片说明'] ; ?></p>
+									                            <?php 
+													                  		if($v['检测前照片']<>'0'){
+													                  			$pho = explode('~*^*~',$v['检测前照片']);
+													                  			$len = count($pho);
+													                  			for($i=1;$i<$len;$i++){
+													                  	?>
+										                                  <div  class="span3">
+                                                          
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                		}
+										                                	}else{
+										                                ?>
+										                                  <div  class="span3">
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                	}
+										                                ?>
+									                                </div>
+												                  </td>
+												                </tr>
+												                <tr>
+												                  <th>检查实施过程照片</th>
+												                </tr>
+												                <tr>
+												                  <td>
+												                  	<div class="row-fluid padd-bottom">
+                                              <p style="color: grey;">检测实施过程照片说明：<?php echo $v['检测实施过程照片说明'] ; ?></p>
+									                             <?php 
+													                  		if($v['检测实施过程照片']<>'0'){
+													                  			$pho = explode('~*^*~',$v['检测实施过程照片']);
+													                  			$len = count($pho);
+													                  			for($i=1;$i<$len;$i++){
+													                  	?>
+										                                  <div  class="span3">
+                                                          
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                		}
+										                                	}else{
+										                                ?>
+										                                  <div  class="span3">
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                	}
+										                                ?>
+									                                </div>
+												                  </td>
+												                </tr>
+												                <tr>
+												                  <th>检查设备照片</th>
+												                </tr>
+												                <tr>
+												                  <td>
+												                  	<div class="row-fluid padd-bottom">
+                                              <p style="color: grey;">检测设备照片说明：<?php echo $v['检测设备照片说明'] ; ?></p>
+									                            <?php 
+													                  		if($v['检测设备照片']<>'0'){
+													                  			$pho = explode('~*^*~',$v['检测设备照片']);
+													                  			$len = count($pho);
+													                  			for($i=1;$i<$len;$i++){
+													                  	?>
+										                                  <div  class="span3">
+                                                          
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                		}
+										                                	}else{
+										                                ?>
+										                                  <div  class="span3">
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                	}
+										                                ?>
+									                                </div>
+												                  </td>
+												                </tr>
+												                <tr>
+												                  <th>实测照片</th>
+												                </tr>
+												                <tr>
+												                  <td>
+												                  	<div class="row-fluid padd-bottom">
+                                              <p style="color: grey;">实测照片说明：<?php echo $v['实测照片说明'] ; ?></p>
+									                            <?php 
+													                  		if($v['实测照片']<>'0'){
+													                  			$pho = explode('~*^*~',$v['实测照片']);
+													                  			$len = count($pho);
+													                  			for($i=1;$i<$len;$i++){
+													                  	?>
+										                                  <div  class="span3">
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                		}
+										                                	}else{
+										                                ?>
+										                                  <div  class="span3">
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                	}
+										                                ?>
+									                                </div>
+												                  </td>
+												                </tr>
+												                <tr>
+												                  <th>处理照片</th>
+												                </tr>
+												                <tr>
+												                  <td>
+												                  	<div class="row-fluid padd-bottom">
+                                              <p style="color: grey;">处理照片说明：<?php echo $v['处理照片说明'] ; ?></p>
+									                            <?php 
+													                  		if($v['处理照片']<>'0'){
+													                  			$pho = explode('~*^*~',$v['处理照片']);
+													                  			$len = count($pho);
+													                  			for($i=1;$i<$len;$i++){
+													                  	?>
+										                                  <div  class="span3">
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                		}
+										                                	}else{
+										                                ?>
+										                                  <div  class="span3">
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                	}
+										                                ?>
+									                                </div>
+												                  </td>
+												                </tr>
+												                <tr>
+												                  <th>不合格报表</th>
+												                </tr>
+												                <tr>
+												                  <td>
+												                  	<div class="row-fluid padd-bottom">
+                                              <p style="color: grey;">不合格照片说明：<?php echo $v['报告照片说明'] ; ?></p>
+									                            <?php 
+													                  		if($v['不合格报表']<>'0'){
+													                  			$pho = explode('~*^*~',$v['不合格报表']);
+													                  			$len = count($pho);
+													                  			for($i=1;$i<$len;$i++){
+													                  	?>
+										                                  <div  class="span3">
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                		}
+										                                	}else{
+										                                ?>
+										                                  <div  class="span3">
+										                                      <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+										                                      <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+										                                        <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" >
+										                                      </a>
+										                                  </div>
+										                                <?php
+										                                	}
+										                                ?>
+									                                </div>
+												                  </td>
+												                </tr>
+												            </table>
+								                        </div>
+								                    </div>
+                                                  </fieldset>
+                                                </form>
+                                            </div>
+                                            
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--工程列表-->
+                </div>
+            </div>
+        </div>
+        <!--/.fluid-container-->
+        <link href="<?php echo base_url()."style/vendors/datepicker.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/vendors/uniform.default.css"?>" rel="stylesheet" media="screen">
+        <link href="<?php echo base_url()."style/vendors/chosen.min.css"?>" rel="stylesheet" media="screen">
+
+        <link href="<?php echo base_url()."style/vendors/wysiwyg/bootstrap-wysihtml5.css"?>" rel="stylesheet" media="screen">
+
+        <script src="<?php echo base_url()."style/vendors/jquery-1.9.1.js"?>"></script>
+        <script src="<?php echo base_url()."style/bootstrap/js/bootstrap.min.js"?>"></script>
+        <script src="<?php echo base_url()."style/vendors/jquery.uniform.min.js"?>"></script>
+        <script src="<?php echo base_url()."style/vendors/chosen.jquery.min.js"?>"></script>
+        <script src="<?php echo base_url()."style/vendors/bootstrap-datepicker.js"?>"></script>
+
+        <script src="<?php echo base_url()."style/vendors/wysiwyg/wysihtml5-0.3.0.js"?>"></script>
+        <script src="<?php echo base_url()."style/vendors/wysiwyg/bootstrap-wysihtml5.js"?>"></script>
+
+        <script src="<?php echo base_url()."style/vendors/wizard/jquery.bootstrap.wizard.min.js"?>"></script>
+
+        <script type="text/javascript" src="<?php echo base_url()."style/vendors/jquery-validation/dist/jquery.validate.min.js"?>"></script>
+        <script src="<?php echo base_url()."style/assets/form-validation.js"?>"></script>
+            
+        <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
+        <script>
+            jQuery(document).ready(function() {   
+               FormValidation.init();
+            });
+        
+
+            $(function() {
+                $(".datepicker").datepicker();
+                $(".uniform_on").uniform();
+                $(".chzn-select").chosen();
+                $('.textarea').wysihtml5();
+
+                $('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+                    var $total = navigation.find('li').length;
+                    var $current = index+1;
+                    var $percent = ($current/$total) * 100;
+                    $('#rootwizard').find('.bar').css({width:$percent+'%'});
+                    // If it's the last tab then hide the last button and show the finish instead
+                    if($current >= $total) {
+                        $('#rootwizard').find('.pager .next').hide();
+                        $('#rootwizard').find('.pager .finish').show();
+                        $('#rootwizard').find('.pager .finish').removeClass('disabled');
+                    } else {
+                        $('#rootwizard').find('.pager .next').show();
+                        $('#rootwizard').find('.pager .finish').hide();
+                    }
+                }});
+                $('#rootwizard .finish').click(function() {
+                    alert('Finished!, Starting over!');
+                    $('#rootwizard').find("a[href*='tab1']").trigger('click');
+                });
+            });
+
+           
+
+            
+            $("#qualified").click(function(){
+                var controller = "<?php echo site_url('Commission/qualified') ?>";
+                 // alert(controller);
+                $.ajax({
+                    data:{
+                      pj_timestamp:document.getElementById("pj_timestamp").value,
+                      self_id:document.getElementById("self_id").value,
+                      testNum:document.getElementById("testNum").value,
+                      pj_status:document.getElementById("pj_status").value
+                    },
+                    url:controller,
+                    type:'post',
+                    success:function(data){
+                      alert("操作成功！");
+                      window.location = "<?php echo site_url('Commission/index/' .$v['工程时间戳']) ?>";
+                    }
+                });
+            });
+        </script>
+    </body>
+
+</html>
