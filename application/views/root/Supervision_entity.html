@@ -56,25 +56,25 @@
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                         <li>
-                            <a href="<?php echo site_url('pj_send/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
+                            <a href="<?php echo site_url('pj_send/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i> 材料见证送检</a>
+                        </li>
+                        <li >
+                            <a href="<?php echo site_url('commission/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('material_self/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('entity_self/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('Supervision_material/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>材料监督抽检</a>
                         </li>
                         <li  class="active">
-                            <a href="<?php echo site_url('commission/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i>第三方实体检测 </a>
+                            <a href="<?php echo site_url('Supervision_entity/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('material_self/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i>材料自检</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('entity_self/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量自检</a>
-                        </li>
-                        <li>
-                            <a href=""><!--material_con.html--><i class="icon-chevron-right"></i>材料监督抽检</a>
-                        </li>
-                        <li>
-                            <a href=""><!--entity_con.html--><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('pj_query/index/'.$commission_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
+                            <a href="<?php echo site_url('pj_query/index/'.$pj_timestamp) ?>"><i class="icon-chevron-right"></i>综合查询</a>
                         </li>
                     </ul>
                 </div>
@@ -85,9 +85,9 @@
                     	<div class="navbar">
                         	<div class="nav nav-tabs">
                                 <ul class="nav nav-tabs">
-                                  <li role="presentation" class="active"><a href="#about-1" data-toggle="tab">委托检测</a></li>
-                                  <li role="presentation"><a href="#about-2" data-toggle="tab">监理见证</a></li>
-                                  <li role="presentation"><a href="#about-3" data-toggle="tab">检测核实</a></li>
+                                  <li role="presentation" class="active"><a href="#about-1" data-toggle="tab">监督抽检</a></li>
+                                  <li role="presentation"><a href="#about-2" data-toggle="tab">委托检测</a></li>
+                                  <li role="presentation"><a href="#about-3" data-toggle="tab">检测结果</a></li>
                                   <li role="presentation"><a href="#about-4" data-toggle="tab">结果</a></li>
                                 </ul>
                         	</div>
@@ -121,23 +121,21 @@
 		                                            	<th>id</th>
 		                                                <th>检测类型</th>
 		                                                <th>检测单位</th>
-		                                                <th>检测人</th>
-		                                                <th>检测日期</th>
+		                                                <th>监督员</th>
 		                                                <th>委托编号</th>
 		                                                <th>操作</th>
 		                                            </tr>
 		                                        </thead>
 		                                        <tbody>
-		                                            <?php  foreach($commission_data as $v): ?>
+		                                            <?php  foreach($draft_data as $v): ?>
 		                                                <tr class="">
 		                                                	<td><?php echo $v['id'] ?></td>
 		                                                    <td><?php echo $v['检测类型'] ?></td>
 		                                                    <td><?php echo $v['检测单位'] ?></td>
 		                                                    <td><?php echo $v['检测人'] ?></td>
-		                                                    <td><?php echo $v['检测日期'] ?></td>
 		                                                    <td><?php echo $v['委托编号'] ?></td>
 		                                                    <td>
-		                                                    	<a href="<?php echo site_url('commission/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$commission_timestamp) ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="<?php echo site_url('Supervision_entity/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$pj_timestamp) ?>" type="button" class="btn btn-default">查看</a>
 		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
 		                                                    </td>
 		                                                </tr>
@@ -176,8 +174,7 @@
 		                                            	<th>id</th>
 		                                                <th>检测类型</th>
 		                                                <th>检测单位</th>
-		                                                <th>检测人</th>
-		                                                <th>检测日期</th>
+		                                                <th>监督员</th>
 		                                                <th>委托编号</th>
 		                                                <th>操作</th>
 		                                            </tr>
@@ -189,10 +186,9 @@
 		                                                    <td><?php echo $v['检测类型'] ?></td>
 		                                                    <td><?php echo $v['检测单位'] ?></td>
 		                                                    <td><?php echo $v['检测人'] ?></td>
-		                                                    <td><?php echo $v['检测日期'] ?></td>
 		                                                    <td><?php echo $v['委托编号'] ?></td>
 		                                                    <td>
-		                                                    	<a href="<?php echo site_url('commission/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$commission_timestamp) ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="<?php echo site_url('Supervision_entity/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$pj_timestamp) ?>" type="button" class="btn btn-default">查看</a>
 		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
 		                                                    </td>
 		                                                </tr>
@@ -231,23 +227,21 @@
 		                                            	<th>id</th>
 		                                                <th>检测类型</th>
 		                                                <th>检测单位</th>
-		                                                <th>检测人</th>
-		                                                <th>检测日期</th>
+		                                                <th>监督员</th>
 		                                                <th>委托编号</th>
 		                                                <th>操作</th>
 		                                            </tr>
 		                                        </thead>
 		                                        <tbody>
-		                                                <?php  foreach($test as $v): ?>
+		                                                <?php  foreach($detection_result_data as $v): ?>
 		                                                <tr class="">
 		                                                	<td><?php echo $v['id'] ?></td>
 		                                                    <td><?php echo $v['检测类型'] ?></td>
 		                                                    <td><?php echo $v['检测单位'] ?></td>
 		                                                    <td><?php echo $v['检测人'] ?></td>
-		                                                    <td><?php echo $v['检测日期'] ?></td>
 		                                                    <td><?php echo $v['委托编号'] ?></td>
 		                                                    <td>
-		                                                    	<a href="<?php echo site_url('commission/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$commission_timestamp) ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="<?php echo site_url('Supervision_entity/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$pj_timestamp) ?>" type="button" class="btn btn-default">查看</a>
 		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
 		                                                    </td>
 		                                                </tr>
@@ -286,8 +280,7 @@
 		                                            	<th>id</th>
 		                                                <th>检测类型</th>
 		                                                <th>检测单位</th>
-		                                                <th>检测人</th>
-		                                                <th>检测日期</th>
+		                                                <th>监督员</th>
 		                                                <th>委托编号</th>
 		                                                <th>状态</th>
 		                                                <th>操作</th>
@@ -300,11 +293,10 @@
 		                                                    <td><?php echo $v['检测类型'] ?></td>
 		                                                    <td><?php echo $v['检测单位'] ?></td>
 		                                                    <td><?php echo $v['检测人'] ?></td>
-		                                                    <td><?php echo $v['检测日期'] ?></td>
 		                                                    <td><?php echo $v['委托编号'] ?></td>
 		                                                    <td><?php echo $v['工程单状态'] ?></td>
 		                                                    <td>
-		                                                    	<a href="<?php echo site_url('commission/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$commission_timestamp) ?>" type="button" class="btn btn-default">查看</a>
+		                                                    	<a href="<?php echo site_url('Supervision_entity/check/'. $v['id'] .'/' . $v['工程时间戳'].'/'.$pj_timestamp) ?>" type="button" class="btn btn-default">查看</a>
 		                                                    	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
 		                                                    </td>
 		                                                </tr>

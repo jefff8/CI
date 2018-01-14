@@ -7,14 +7,15 @@ try {
 	$pj_id =$_POST['pj_id'];
 	$ulId =$_POST['ulId'];
 	$flag =$_POST['flag'];
+	$tcjv=$_POST['tcjv'];//监督站整改意见
 	switch($flag)
 	{
 		case "扩大抽检":
 //			$sql = "update 实体监督抽检  set 工程单状态 = '已处理',检测前照片='',场景照片说明='',检测实施过程照片='',检测实施过程照片说明='',检测设备照片='',检测设备照片说明='',实测照片='',实测照片说明='',处理照片='',处理照片说明='',退场记录='' where id ='$ulId' ";
-			$sql = "update 实体监督抽检  set 工程单状态 = '已处理' where id ='$ulId'  ";
+			$sql = "update 实体监督抽检  set 工程单状态 = '已处理',退场记录='".$tcjv."' where id ='$ulId'  ";
 			break;
 		case "监理处理":
-			$sql = "update 实体监督抽检  set 工程单状态 = '已处理' where id ='$ulId'  ";
+			$sql = "update 实体监督抽检  set 工程单状态 = '已处理',退场记录='".$tcjv."' where id ='$ulId'  ";
 			break;
 	}
 		
@@ -53,7 +54,7 @@ try {
 	
 	//短信内容
 	$smsContent=$_POST['smsContent'];
-	$tcjv=$_POST['tcjv'];//监督站整改意见
+	
 	$gcmc=$_POST['gcmc'];//工程名称
 	$smsContent=$gcmc.$smsContent.$tcjv;
 	
