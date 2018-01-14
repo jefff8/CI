@@ -16,6 +16,9 @@
           div img:hover{  
             transform: scale(1.4);  
           }
+          #viewImage{
+            display: none;
+          }
         </style>
     </head>
     
@@ -116,6 +119,13 @@
                                                     <li><a href="#tab1" data-toggle="tab">基本信息</a></li>
                                                     <li><a href="#tab2" data-toggle="tab">验收方案</a></li>
                                                     <li><a href="#tab3" data-toggle="tab">各个分户</a></li>
+                                                    <?php
+                                                      if($household_detail[0]['工程单状态']=='待审批' || $household_detail[0]['工程单状态']=='审批通过' || $household_detail[0]['工程单状态']=='审批不通过'){
+                                                    ?>
+                                                    <li><a href="#tab4" data-toggle="tab">汇总结果</a></li>
+                                                    <?php
+                                                      }
+                                                    ?>
                                                 </ul>
                                             </div>
                                           </div>
@@ -198,47 +208,95 @@
 
                                             <!--验收方案-->
                                             <div class="tab-pane" id="tab2">
-                                                <form action="<?php echo site_url('pj_send/add')?>" method="POST" class="form-horizontal" >
-                                                  <fieldset>
-                                                    <div class="block-content collapse in">
-                                                      <div class="span12">
-                                                        <table class="table">
-
-                                                        </table>
-                                                      </div>
-                                                    </div>
-                                                  </fieldset>
-                                                </form>
+                                              <fieldset>
+                                                <div class="block-content collapse in">
+                                                  <div class="span12">
+                                                    <table class="table">
+                                                      <tr>
+                                                        <th>验收方案</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>
+                                                          <div id="Scene_photos" class="row-fluid padd-bottom">
+                                                            <p style="color: grey;">验收方案说明：<?php echo $v['验收方案说明'] ; ?></p>
+                                                            <?php 
+                                                              foreach($household_detail as $v):
+                                                              if($v['验收方案']){
+                                                                $pho = explode('~*^*~',$v['验收方案']);
+                                                                $len = count($pho);
+                                                                for($i=1;$i<$len;$i++){
+                                                            ?>
+                                                                    <div  class="span3">
+                                                                        <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+                                                                        <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+                                                                          <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
+                                                                        </a>
+                                                                    </div>
+                                                                  <?php
+                                                                      }
+                                                                    }else{
+                                                                  ?>
+                                                                    <div  class="span3">
+                                                                        <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+                                                                        <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+                                                                          <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
+                                                                        </a>
+                                                                    </div>
+                                                                  <?php
+                                                                    }
+                                                                    endforeach
+                                                                  ?>
+                                                            </div>
+                                                        </td>
+                                                      </tr>
+                                                    </table>
+                                                  </div>
+                                                </div>
+                                              </fieldset>
                                             </div>
 
                                             <!-- 分户图片查看模态框（Modal） -->
-                                            <div class="modal fade" id="qualifiedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                              <div class="modal-dialog">
-                                                <div class="modal-content">
+                                            <div class="modal fade" id="viewImage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 1000px;">
+                                              <div class="modal-dialog" style="width: 1000px;" >
+                                                <div class="modal-content" >
                                                   <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                                       &times;
                                                     </button>
                                                     <h4 class="modal-title" id="myModalLabel">
-                                                      合格
+                                                      附件查看
                                                     </h4>
                                                   </div>
-                                                  <div class="modal-body">
-                                                      检测报告编号:<input id="testNum" name="testNum" class="input-xlarge focused" id="focusedInput"  type="text" placeholder="请输入检测报告编号">
+                                                  <div class="modal-body" >
+                                                    <span style="font-weight: bold;">验收观感表</span>
+                                                    <div id="Acceptance_table" >
+                                                      
+                                                    </div>
+                                                    <p style="color: grey;" id="Acceptance_table_explain"></p>
+                                                    <br>
+                                                    <span style="font-weight: bold;">验收实测照片</span>
+                                                    <div id="check_photos">
+                                                      
+                                                    </div>
+                                                    <p style="color: grey;" id="check_photos_explain"></p>
+                                                    <br>
+                                                    <span style="font-weight: bold;">验收照片</span>
+                                                    <div id="Acceptance_photo">
+                                                      
+                                                    </div>
+                                                    <p style="color: grey;" id="Acceptance_photo_explain">验收照片说明：</p>
+                                                   
                                                   </div>
                                                   <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                                                    </button>
-                                                    <button id="qualified" type="button" class="btn btn-primary">
-                                                      确认提交
-                                                    </button>
+                                                      
                                                   </div>
                                                 </div><!-- /.modal-content -->
                                               </div><!-- /.modal -->
                                             </div>
+
+
                                             <!--各个分户-->
                                             <div class="tab-pane" id="tab3">
-                                                <form action="<?php echo site_url('pj_send/add')?>" method="POST" class="form-horizontal" >
                                                   <fieldset>
                                                   	<div class="block-content collapse in">
 								                                      <div class="span12" id="floorTab">
@@ -246,15 +304,15 @@
                                                           foreach($photo_data as $v): 
                                                           if($v['状态']=='合格'){
                                                         ?>
-                                                          <button style="margin:2px;width:100px;height:100px;background-color:#00EE00;border-radius:10px;"><?php echo $v['户号']?></button>
+                                                          <button style="margin:2px;width:100px;height:100px;background-color:#00EE00;border-radius:10px;" data-toggle="modal" data-target="#viewImage" id="<?php echo $v['id'] ?>" onclick="get_photo(this.id)"><?php echo $v['户号']?></button>
                                                         <?php
                                                           }else if($v['状态']=='返工合格'){
                                                         ?>
-                                                          <button style="margin:2px;width:100px;height:100px;background-color:orange;border-radius:10px;"><?php echo $v['户号']?></button>
+                                                          <button style="margin:2px;width:100px;height:100px;background-color:orange;border-radius:10px;" data-toggle="modal" data-target="#viewImage" id="<?php echo $v['id'] ?>" onclick="get_photo(this.id)"><?php echo $v['户号']?></button>
                                                         <?php
                                                           }else{
                                                         ?>
-                                                          <button style="margin:2px;width:100px;height:100px;background-color:white;border-radius:10px;"><?php echo $v['户号']?></button>
+                                                          <button style="margin:2px;width:100px;height:100px;background-color:white;border-radius:10px;" data-toggle="modal" data-target="#viewImage" id="<?php echo $v['id'] ?>" onclick="get_photo(this.id)"><?php echo $v['户号']?></button>
                                                         <?php
                                                           }
                                                         ?>
@@ -264,8 +322,92 @@
 								                                      </div>
 								                                    </div>
                                                   </fieldset>
-                                                </form>
                                             </div>
+
+                                            <!--汇总结果-->
+                                            <div class="tab-pane" id="tab4">
+                                              <fieldset>
+                                                <div class="block-content collapse in">
+                                                  <div class="span12">
+                                                    <table class="table">
+                                                      <tr>
+                                                        <th>汇总表</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>
+                                                          <div class="row-fluid padd-bottom">
+                                                            <?php 
+                                                              foreach($household_detail as $v):
+                                                              if($v['汇总表']){
+                                                                $pho = explode('~*^*~',$v['汇总表']);
+                                                                $len = count($pho);
+                                                                for($i=1;$i<$len;$i++){
+                                                            ?>
+                                                            <p style="color: grey;">汇总表说明：<?php echo $v['汇总表说明'] ; ?></p>
+                                                                    <div  class="span3">
+                                                                        <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+                                                                        <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+                                                                          <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
+                                                                        </a>
+                                                                    </div>
+                                                                  <?php
+                                                                      }
+                                                                    }else{
+                                                                  ?>
+                                                                    <div  class="span3">
+                                                                        <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+                                                                        <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+                                                                          <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
+                                                                        </a>
+                                                                    </div>
+                                                                  <?php
+                                                                    }
+                                                                  ?>
+                                                            </div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th>整改通知单</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>
+                                                          <div class="row-fluid padd-bottom">
+                                                            <?php 
+                                                              if($v['整改通知单']){
+                                                                $pho = explode('~*^*~',$v['整改通知单']);
+                                                                $len = count($pho);
+                                                                for($i=1;$i<$len;$i++){
+                                                            ?>
+                                                            <p style="color: grey;">整改通知单说明：<?php echo $v['整改通知单说明'] ; ?></p>
+                                                                    <div  class="span3">
+                                                                        <a target="_blank" href="<?php echo base_url()."jmadmin/upload/".$pho[$i] ?>" class="thumbnail"    >
+                                                                        <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+                                                                          <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/".$pho[$i]; ?>" >
+                                                                        </a>
+                                                                    </div>
+                                                                  <?php
+                                                                      }
+                                                                    }else{
+                                                                  ?>
+                                                                    <div  class="span3">
+                                                                        <a target="_blank" href="<?php echo base_url()."jmadmin/upload/nodata.png" ?>" class="thumbnail"    >
+                                                                        <!--<a href="<?php echo base_url()."jmadmin/upload/15013256160.jpg" ?>" class="thumbnail"    >-->
+                                                                          <img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >
+                                                                        </a>
+                                                                    </div>
+                                                                  <?php
+                                                                    }
+                                                                    endforeach
+                                                                  ?>
+                                                            </div>
+                                                        </td>
+                                                      </tr>
+                                                    </table>
+                                                  </div>
+                                                </div>
+                                              </fieldset>
+                                            </div>
+
                                         </div>  
                                     </div>
                                 </div>
@@ -330,6 +472,88 @@
                     $('#rootwizard').find("a[href*='tab1']").trigger('click');
                 });
             });
+            var AcceptanceTable = [];
+            var CheckPhoto = [];
+            var AcceptancePhoto = [];
+            var Acceptance_table = document.getElementById("Acceptance_table");
+            var check_photos = document.getElementById("check_photos");
+            var Acceptance_photo = document.getElementById("Acceptance_photo");
+            var Acceptance_table_explain = document.getElementById("Acceptance_table_explain");
+            var check_photos_explain = document.getElementById("check_photos_explain");
+            var Acceptance_photo_explain = document.getElementById("Acceptance_photo_explain");
+            //获取图片
+            var controller = "<?php echo site_url('Household/get_photo') ?>";
+            function get_photo(id){
+              var houseId = id;
+              $.ajax({
+                data:{
+                    houseId:houseId
+                },
+                url:controller,
+                type:"post",
+                dataType:"json",
+                success:function(data){
+                  Acceptance_table.innerHTML = "";
+                  check_photos.innerHTML = "";
+                  Acceptance_photo.innerHTML = "";
+                  AcceptanceTable = data[0]['验收汇总表'].split("~*^*~");
+                  CheckPhoto = data[0]['验收记录表'].split("~*^*~");
+                  AcceptancePhoto = data[0]['验收照片'].split("~*^*~");
+                  Acceptance_table_explain.innerHTML = '验收观感表说明：'+data[0]['验收汇总表说明'];
+                  check_photos_explain.innerHTML = '验收实测照片说明：'+data[0]['验收记录表说明'];
+                  Acceptance_photo_explain.innerHTML = '验收照片说明：'+data[0]['验收照片说明'];
+                  var base_url = '<?php echo base_url() ?>';
+                  //验收观感表
+                  if(AcceptanceTable.length>1){
+                    for(var i=1;i<AcceptanceTable.length;i++){
+                      var imgTag = document.createElement("img");
+                      var aTag = document.createElement("a");
+                      aTag.target = '_blank';
+                      aTag.href = base_url+'jmadmin/upload/'+AcceptanceTable[i];
+                      imgTag.style.width = "300px";
+                      imgTag.style.height = "300px";
+                      imgTag.src = base_url+'jmadmin/upload/'+AcceptanceTable[i];
+                      Acceptance_table.appendChild(aTag);
+                      aTag.appendChild(imgTag);
+                    }
+                  }else{
+                    Acceptance_table.innerHTML = '<img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >';
+                  }
+                  //验收实测照片
+                  if(CheckPhoto.length>1){
+                    for(var i=1;i<CheckPhoto.length;i++){
+                      var imgTag = document.createElement("img");
+                      var aTag = document.createElement("a");
+                      aTag.target = '_blank';
+                      aTag.href = base_url+'jmadmin/upload/'+CheckPhoto[i];
+                      imgTag.style.width = "300px";
+                      imgTag.style.height = "300px";
+                      imgTag.src = base_url+'jmadmin/upload/'+CheckPhoto[i];
+                      check_photos.appendChild(aTag);
+                      aTag.appendChild(imgTag);
+                    }
+                  }else{
+                      check_photos.innerHTML = '<img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >';
+                  }
+                  //验收照片
+                  if(AcceptancePhoto.length>1){
+                    for(var i=1;i<AcceptancePhoto.length;i++){
+                      var imgTag = document.createElement("img");
+                      var aTag = document.createElement("a");
+                      aTag.target = '_blank';
+                      aTag.href = base_url+'jmadmin/upload/'+AcceptancePhoto[i];
+                      imgTag.style.width = "300px";
+                      imgTag.style.height = "300px";
+                      imgTag.src = base_url+'jmadmin/upload/'+AcceptancePhoto[i];
+                      Acceptance_photo.appendChild(aTag);
+                      aTag.appendChild(imgTag);
+                    }
+                  }else{
+                      Acceptance_photo.innerHTML = '<img  data-src="" alt="" style="width: 300px; height: 300px;" src="<?php echo base_url()."jmadmin/upload/nodata.png"; ?>" >';
+                  }
+                }
+              });
+            }
 
         </script>
     </body>

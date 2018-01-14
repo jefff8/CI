@@ -33,5 +33,15 @@
 			$data['pj_timestamp']=$pj_timestamp;
 			$this->load->view('root/household_Detail.html',$data);
 		}
+
+		//各分户附件
+		public function get_photo(){
+			$houseId = $this->input->post('houseId');
+			$this->load->model('root/Household_model','household');
+			$data = $this->household->get_photo($houseId);
+			$json = json_encode($data);
+			echo $json;
+			// $this->load->view('root/household_Detail.html',$data);
+		}
 	}
 ?>

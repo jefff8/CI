@@ -142,9 +142,9 @@
 			$conn->close();
 			break;
 		case "监理确认":
-			$ulId = $_POST["ulId"];
-			$sql = "update 分户验收 set 工程单状态='待审批' where id='$ulId'";
-			$conn->query($sql);
+//			$ulId = $_POST["ulId"];
+//			$sql = "update 分户验收 set 工程单状态='待审批' where id='$ulId'";
+//			$conn->query($sql);
 			break;
 		case "审批通过":
 			$ulId = $_POST["ulId"];

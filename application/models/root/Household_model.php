@@ -28,7 +28,7 @@
 			$data = $this->db->query($sql,array($household_id))->result_array();
 			return $data;
 		}
-		//各户图片
+		//项目各户
 		public function photo($household_id){
 			$sql = "select id,户号,状态 from 户号汇总  where 项目id=? ";
 			$data = $this->db->query($sql,array($household_id))->result_array();
@@ -40,5 +40,12 @@
 			$data = $this->db->query($sql,array($household_id))->result_array();
 			return $data;
 		}
+		//各户附件
+		public function get_photo($houseId){
+			$sql = "select 验收记录表,验收照片,验收汇总表,验收记录表说明,验收照片说明,验收汇总表说明 from 户号汇总  where id=? ";
+			$data = $this->db->query($sql,array($houseId))->result_array();
+			return $data;
+		}
+
 	}
 ?>
