@@ -4,7 +4,11 @@
 		//实体监督抽检
 		public function index(){
 			$pj_timestamp = $this->uri->segment(3);
-
+			//用户id
+			$data['uid'] = $this->session->userdata('userid');
+			$this->load->model('root/Privilege_model','unit');
+			//用户单位
+			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/Supervision_entity_model','Supervision_entity');
 			$data['draft_data'] = $this->Supervision_entity->supervised_inspection($pj_timestamp);
 			$data['witness_data'] = $this->Supervision_entity->witness($pj_timestamp);

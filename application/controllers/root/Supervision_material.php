@@ -5,6 +5,10 @@
 		public function index(){
 			//获取工程时间戳
 			$pj_timestamp = $this->uri->segment(3);
+			$data['uid'] = $this->session->userdata('userid');
+			$this->load->model('root/Privilege_model','unit');
+			//用户单位
+			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/Supervision_material_model','supervision_material');
 			$data['supervisel_data'] = $this->supervision_material->supervised_inspection($pj_timestamp);
 			$data['witness_data'] = $this->supervision_material->witness($pj_timestamp);

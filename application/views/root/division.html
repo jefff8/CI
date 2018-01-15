@@ -72,10 +72,10 @@
                             if($unit[0]['单位']=='检测单位'||$unit[0]['单位']=='监督机构'||$unit[0]['单位']=='管理员'){
                         ?>
                         <li>
-                            <a href="#"><i class="icon-chevron-right"></i>材料监督抽检</a>
+                            <a href="<?php echo site_url('Supervision_material/index/'.$division_timestamp) ?>"><i class="icon-chevron-right"></i>材料监督抽检</a>
                         </li>
                         <li>
-                            <a href="#"><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
+                            <a href="<?php echo site_url('Supervision_entity/index/'.$division_timestamp) ?>"><i class="icon-chevron-right"></i>实体质量监督抽检 </a>
                         </li>
                         <?php
                             }
