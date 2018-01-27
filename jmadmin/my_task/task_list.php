@@ -30,7 +30,7 @@
 		}else if($unit=='管理员'){
 			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' ";
 		}else if($unit=='监督机构'){
-			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' and (工程单状态='待审批' or 工程单状态='不合格') ";
+			$sql = "SELECT * from 材料送检 where 工程时间戳='$pj_timestamp' and 工程单状态='待审批' ";
 		}
 		$result = $conn->query($sql);
 		if($result->num_rows >0){
@@ -61,7 +61,7 @@
 		}else if($unit=='管理员'){
 			$sql = "SELECT * from 材料自检 where 工程时间戳='$pj_timestamp' ";
 		}else if($unit=='监督机构'){
-			$sql = "SELECT * from 材料自检 where 工程时间戳='$pj_timestamp' and (工程单状态='不合格' or 工程单状态='取样送检不合格' or 工程单状态='待审批') ";
+			$sql = "SELECT * from 材料自检 where 工程时间戳='$pj_timestamp' and (工程单状态='不合格' or 工程单状态='取样送检不合格') ";
 		}
 		$result = $conn->query($sql);
 		if($result->num_rows >0){
@@ -92,7 +92,7 @@
 		}else if($unit=='管理员'){
 			$sql = "SELECT * from 实体自检 where 工程时间戳='$pj_timestamp' ";
 		}else if($unit=='监督机构'){
-			$sql = "SELECT * from 实体自检  where 工程时间戳='$pj_timestamp' and (工程单状态='不合格' or 工程单状态='待审批') ";
+			$sql = "SELECT * from 实体自检  where 工程时间戳='$pj_timestamp' and 工程单状态='不合格' ";
 		}
 		$result = $conn->query($sql);
 		if($result->num_rows >0){
@@ -123,7 +123,7 @@
 		}else if($unit=='管理员'){
 			$sql = "SELECT * from 实体检测 where 工程时间戳='$pj_timestamp' ";
 		}else if($unit=='监督机构'){
-			$sql = "SELECT * from 实体检测 where 工程时间戳='$pj_timestamp' and (工程单状态='待审批' or 工程单状态='不合格') ";
+			$sql = "SELECT * from 实体检测 where 工程时间戳='$pj_timestamp' and 工程单状态='待审批' ";
 		}
 		$result = $conn->query($sql);
 		if($result->num_rows >0){
