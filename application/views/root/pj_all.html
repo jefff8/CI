@@ -98,22 +98,16 @@
                                                 <th>监理单位</th>
                                                 <th>检测单位</th>
                                                 <th>监督机构</th>
-                                                <th>工程状况</th>
+                                                <th style="width: 70px;">工程状况</th>
                                                 <th style="width: 100px;">详情</th>
-                                                <?php
-                                                    if($uid=='1'){
-                                                ?>
                                                 <th style="width: 100px;">操作</th>
                                                 <th style="width: 100px;">操作</th>
-                                                <?php
-                                                    }
-                                                ?>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach($pj_all as $v): ?>
+                                            <?php $i=0; foreach($pj_all as $v): ?>
                                                 <tr class="">
-                                                    <td><?php echo $v['工程id']?></td>
+                                                    <td><?php $i++; echo $i; ?></td>
                                                     <td><a href="<?php echo site_url('pj_send/index/' .$v['时间戳'] )?>"><?php echo $v['工程名称']?></a></td>
                                                     <td><?php echo $v['地址']?></td>
                                                     <td><?php echo $v['施工单位']?></td>
@@ -132,14 +126,8 @@
                                                         }
                                                     ?>
                                                     <td><button  style="width: 100px;" type="button" class="btn btn-primary" onclick="window.location='<?php echo site_url('pj_all/detail/' . $v['工程id']) ?>' ">查看</button></td>
-                                                    <?php
-                                                        if($uid=='1'){
-                                                    ?>
                                                     <td><button  id="<?php echo $v['时间戳']?>" style="width: 100px;" type="button" class="btn btn-default" onclick="completed(this.id)">竣工</button></td>
                                                     <td><button style="width: 100px;" id="<?php echo $v['工程id']?>"  type="button" class="btn btn-danger"  onclick="del_pj(this.id)">删除</button></td>
-                                                    <?php
-                                                        }
-                                                    ?>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
