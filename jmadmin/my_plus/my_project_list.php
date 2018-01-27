@@ -2,9 +2,9 @@
 	require('../conn.php');
 	$uid = $_POST['uid'];
 	if($uid=='1'){
-		$sql = "select * from 我的工程";
+		$sql = "select * from 我的工程 where 是否竣工='0'";
 	}else{
-		$sql = "SELECT * from 用户工程关系表 A INNER JOIN 我的工程 B ON A.工程id=B.id  where 用户id='$uid' order by 工程id";
+		$sql = "SELECT * from 用户工程关系表 A INNER JOIN 我的工程 B ON A.工程id=B.id  where 用户id='$uid' and 是否竣工='0' order by 工程id";
 	}
 	
 	$result = $conn->query($sql);
