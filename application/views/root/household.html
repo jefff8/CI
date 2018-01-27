@@ -111,7 +111,7 @@
 		                    <div class="row-fluid" >
 		                        <div class="block">
 		                            <div class="navbar navbar-inner block-header">
-		                                <div class="muted pull-left">工程列表</div>
+		                                <div class="muted pull-left"><?php echo $approval_data[0]['工程名称'].' 工程列表' ?></div>
 		                            </div>
 		                            <div class="block-content collapse in">
 		                                <div class="span12">
@@ -130,7 +130,7 @@
 		                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example1">
 		                                        <thead>
 		                                            <tr>
-		                                            	<th>id</th>
+		                                            	<th>序号</th>
 		                                                <th>栋号</th>
 		                                                <th>层数</th>
 		                                                <th>层户数</th>
@@ -140,9 +140,9 @@
 		                                            </tr>
 		                                        </thead>
 		                                        <tbody>
-		                                            <?php  foreach($application_data as $v): ?>
+		                                            <?php $i=0; foreach($application_data as $v): ?>
 		                                                <tr class="">
-		                                                	<td><?php echo $v['id'] ?></td>
+		                                                	<td><?php $i++; echo $i; ?></td>
 		                                                    <td><?php echo $v['栋号'] ?></td>
 		                                                    <td><?php echo $v['楼层'] ?></td>
 		                                                    <td><?php echo $v['户数'] ?></td>
@@ -166,7 +166,7 @@
 		                    <div class="row-fluid" >
 		                        <div class="block">
 		                            <div class="navbar navbar-inner block-header">
-		                                <div class="muted pull-left">工程列表</div>
+		                                <div class="muted pull-left"><?php echo $approval_data[0]['工程名称'].' 工程列表' ?></div>
 		                            </div>
 		                            <div class="block-content collapse in">
 		                                <div class="span12">
@@ -185,7 +185,7 @@
 		                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
 		                                        <thead>
 		                                            <tr>
-		                                            	<th>id</th>
+		                                            	<th>序号</th>
 		                                                <th>栋号</th>
 		                                                <th>层数</th>
 		                                                <th>层户数</th>
@@ -195,9 +195,9 @@
 		                                            </tr>
 		                                        </thead>
 		                                        <tbody>
-		                                                <?php  foreach($confirmation_data as $v): ?>
+		                                                <?php $i=0; foreach($confirmation_data as $v): ?>
 		                                                <tr class="">
-		                                                	<td><?php echo $v['id'] ?></td>
+		                                                	<td><?php $i++; echo $i; ?></td>
 		                                                    <td><?php echo $v['栋号'] ?></td>
 		                                                    <td><?php echo $v['楼层'] ?></td>
 		                                                    <td><?php echo $v['户数'] ?></td>
@@ -221,7 +221,7 @@
 		                    <div class="row-fluid" >
 		                        <div class="block">
 		                            <div class="navbar navbar-inner block-header">
-		                                <div class="muted pull-left">工程列表</div>
+		                                <div class="muted pull-left"><?php echo $approval_data[0]['工程名称'].' 工程列表' ?></div>
 		                            </div>
 		                            <div class="block-content collapse in">
 		                                <div class="span12">
@@ -240,7 +240,7 @@
 		                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example3">
 		                                        <thead>
 		                                            <tr>
-		                                            	<th>id</th>
+		                                            	<th>序号</th>
 		                                                <th>栋号</th>
 		                                                <th>层数</th>
 		                                                <th>层户数</th>
@@ -250,9 +250,9 @@
 		                                            </tr>
 		                                        </thead>
 		                                        <tbody>
-		                                                <?php  foreach($approval_data as $v): ?>
+		                                                <?php $i=0; foreach($approval_data as $v): ?>
 		                                                <tr class="">
-		                                                	<td><?php echo $v['id'] ?></td>
+		                                                	<td><?php $i++; echo $i; ?></td>
 		                                                    <td><?php echo $v['栋号'] ?></td>
 		                                                    <td><?php echo $v['楼层'] ?></td>
 		                                                    <td><?php echo $v['户数'] ?></td>
