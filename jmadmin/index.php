@@ -2,9 +2,9 @@
 	require("conn.php");
 	$uid = $_POST['uid'];
 	if($uid=="1"){
-		$sql = "select count(*) as pj_num from 我的工程";
+		$sql = "select count(*) as pj_num from 我的工程  where 是否竣工='0'";
 	}else{
-		$sql = "SELECT count(*) as pj_num from 用户工程关系表 A INNER JOIN 我的工程 B ON A.工程id=B.id  where 用户id='$uid'";
+		$sql = "SELECT count(*) as pj_num from 用户工程关系表 A INNER JOIN 我的工程 B ON A.工程id=B.id  where 用户id='$uid' and 是否竣工='0' ";
 	}
 	
 	$result = $conn->query($sql);

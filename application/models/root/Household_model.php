@@ -6,19 +6,19 @@
 		 */
 		//申请
 		public function application($household_timestamp){
-			$sql = "select id,栋号,楼层,户数,起始日期,验收时间 from 分户验收 where 工程时间戳=? and (工程单状态=?)";
+			$sql = "select id,工程名称,栋号,楼层,户数,起始日期,验收时间 from 分户验收 where 工程时间戳=? and (工程单状态=?)";
 			$data = $this->db->query($sql,array($household_timestamp,'施工申请'))->result_array();
 			return $data;
 		}
 		//确认
 		public function confirmation($household_timestamp){
-			$sql = "select id,栋号,楼层,户数,起始日期,验收时间 from 分户验收 where 工程时间戳=? and (工程单状态=?)";
+			$sql = "select id,工程名称,栋号,楼层,户数,起始日期,验收时间 from 分户验收 where 工程时间戳=? and (工程单状态=?)";
 			$data = $this->db->query($sql,array($household_timestamp,'监理确认'))->result_array();
 			return $data;
 		}
 		//审批
 		public function approval($household_timestamp){
-			$sql = "select id,栋号,楼层,户数,起始日期,验收时间 from 分户验收 where 工程时间戳=? and (工程单状态=? or 工程单状态=? or 工程单状态=?)";
+			$sql = "select id,工程名称,栋号,楼层,户数,起始日期,验收时间 from 分户验收 where 工程时间戳=? and (工程单状态=? or 工程单状态=? or 工程单状态=?)";
 			$data = $this->db->query($sql,array($household_timestamp,'待审批','审批通过','审批不通过'))->result_array();
 			return $data;
 		}
