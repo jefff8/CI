@@ -262,5 +262,24 @@
 		$conn->close();
 		$data_json = json_encode($data_arr);
 		echo $data_json;
+	}else if($flag=='新建'){
+		$sjc=$_POST["sjc"];
+		$myInfo = $_POST["myInfo"];
+//		$pj_name = $_POST["pj_name"];
+		$pj_timestamp = $_POST["pj_timestamp"];
+		$Info = explode("|", $myInfo);
+		require('../conn.php');
+		$sqli = "insert into 材料监督抽检(时间戳,工程时间戳,工程名称,取样类型,规格,数量,生产厂家,取样人,进场日期,取样日期,合格证编号,使用部位,经销商单位,备注,检测单位,工程单状态,监理操作单位) values('$sjc','$pj_timestamp','$gcmc','$Info[0]','$Info[1]','$Info[2]','$Info[3]','$Info[4]','$Info[5]','$Info[6]','$Info[7]','$Info[8]','$Info[9]','$Info[10]','$Info[11]','新增','$Info[12]')";
+//		$sql = "update 材料监督抽检  set 工程单状态 = '已处理' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		$result = $conn->query($sqli);
+		if($result){
+			$data_arr['结果']="提交成功！";
+		}else{
+			$data_arr['结果']="提交失败！";
+		}
+		$conn->close();
+		$data_json = json_encode($data_arr);
+		echo $data_json;
+//		print_r($data_arr);
 	}											
 ?>

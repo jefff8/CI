@@ -85,5 +85,22 @@
 //		print_r($sqldate);
 		$conn->close();
 		
+	} else if($flag=='新建状态修改信息'){
+		$sjc = $_POST['sjc'];
+		$data = $_POST['myInfo'];
+		$data_arr = explode('|', $data);
+		$sql = "update 材料监督抽检 set 取样类型='$data_arr[0]',规格='$data_arr[1]',数量='$data_arr[2]',生产厂家='$data_arr[3]',取样人='$data_arr[4]',进场日期='$data_arr[5]',取样日期='$data_arr[6]',合格证编号='$data_arr[7]',使用部位='$data_arr[8]',经销商单位='$data_arr[9]',备注='$data_arr[10]',检测单位='$data_arr[11]' where 时间戳='$sjc' ";
+		$result = $conn->query($sql);
+		if($result){
+			$data_arr['result']="success";
+			$data_arr['SQL语句']=$sql;
+		}else{
+			$data_arr['result']="error";
+			$data_arr['SQL语句']=$sql;
+		}
+		$conn->close();
+		$data_json = json_encode($data_arr);
+		echo $data_json;
+		
 	}
 ?>

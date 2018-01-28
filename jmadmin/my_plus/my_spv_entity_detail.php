@@ -1,7 +1,6 @@
 <?php
 	require('../conn.php');
 	$flag = $_POST['flag'];
-//	$gcmc = $_POST['gcmc'];
 	if($flag=='获取信息'){
 		$myid = $_POST['myid'];
 		$sql = "select * from 实体监督抽检 where id='$myid' ";
@@ -51,8 +50,21 @@
 		$conn->close();
 		$data_json = json_encode($data_arr);
 		echo $data_json;
+//		print_r($data_arr);		
+	}else if($flag=="修改信息"){
+		$myInfo = $_POST["myInfo"];
+		$Info = explode("|", $myInfo);
+		$myid = $_POST['myid'];
+		$sqli = "update 实体监督抽检  set 检测人 = '$Info[0]',委托编号 = '$Info[2]',检测单位 = '$Info[1]',检测类型 = '$Info[3]' where id='$myid'";
+		if ($conn -> query($sqli) === TRUE) {
+			$jsonresult = 'success';
+		} else {
+			$jsonresult = 'error';
+		}
+		$data_arr = '{"result":"'.$jsonresult.'"}';
+		$conn->close();
+		$data_json = json_encode($data_arr);
+		echo $data_json;
 //		print_r($data_arr);
-
-		
 	}
 ?>

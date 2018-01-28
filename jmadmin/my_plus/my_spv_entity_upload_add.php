@@ -20,11 +20,8 @@ for ($i= 0;$i< $nub1; $i++){
 	$lx=$_POST["lx"];
 	$mchen=$_POST["mchen"];//时间戳
 	if($lx=='add'){
-		$myInfo = $_POST["myInfo"];
-		$gcmc = $_POST["gcmc"];
-		$timestamp = $_POST["timestamp"];
-		$Info = explode("|", $myInfo);
-		$sqli = "insert into 实体监督抽检(时间戳,工程名称,工程时间戳,工程单状态,检测人,委托编号,检测类型,检测单位,监督抽检委托单) values ('$mchen','$gcmc','$timestamp','新建','$Info[0]','$Info[1]','$Info[2]','$Info[3]','".$filenames1."')";
+//		$sqli = "insert into 实体监督抽检(监督抽检委托单) values ('".$filenames1."')";
+		$sqli = "UPDATE 实体监督抽检  SET 监督抽检委托单  ='".$filenames1."' where 时间戳 ='".$mchen."'  ";
 	}
 	if ($conn -> query($sqli) === TRUE) {
 			$jsonresult = 'success';
