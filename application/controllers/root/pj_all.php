@@ -103,9 +103,8 @@ class Pj_all extends MY_Controller{
 	      	if(!empty($data['pj_send'][$i])){
       			for($j=1;$j<$file_length;$j++){
 					$del = $del_file[$j];
-					$path = "D:/Data/hxajxt/WWW/CI/jmadmin/upload/".$del;
+					$path = "../../../jmadmin/upload/".$del;
 					unlink($path); //删除的文件
-					p($del);
 				}
       		}
 		}
@@ -124,9 +123,8 @@ class Pj_all extends MY_Controller{
 	      	if(!empty($data['commission'][$i])){
       			for($j=1;$j<$file_length;$j++){
 					$del = $del_file[$j];
-					$path = "D:/Data/hxajxt/WWW/CI/jmadmin/upload/".$del;
+					$path = "../../../jmadmin/upload/".$del;
 					unlink($path); //删除的文件
-					p($del);
 				}
       		}
 		}
@@ -145,9 +143,8 @@ class Pj_all extends MY_Controller{
 	      	if(!empty($data['materital_self'][$i])){
       			for($j=1;$j<$file_length;$j++){
 					$del = $del_file[$j];
-					$path = "D:/Data/hxajxt/WWW/CI/jmadmin/upload/".$del;
+					$path = "../../../jmadmin/upload/".$del;
 					unlink($path); //删除的文件
-					p($del);
 				}
       		}
 		}
@@ -166,9 +163,8 @@ class Pj_all extends MY_Controller{
 	      	if(!empty($data['entity_self'][$i])){
       			for($j=1;$j<$file_length;$j++){
 					$del = $del_file[$j];
-					$path = "D:/Data/hxajxt/WWW/CI/jmadmin/upload/".$del;
+					$path = "../../../jmadmin/upload/".$del;
 					unlink($path); //删除的文件
-					p($del);
 				}
       		}
 		}
