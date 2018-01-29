@@ -24,6 +24,21 @@
 				$conn->close();
 			}
 			break;
+		case "实体检测":
+			if($type=='场景照片'){
+				$sql = "update 实体检测  set 检测前照片=replace(检测前照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+				$conn->close();
+			}else if($type=='检测实施过程中照片'){
+				$sql = "update 实体检测  set 检测实施过程中照片=replace(检测实施过程中照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+				$conn->close();
+			}else{
+				$sql = "update 实体检测  set 检测设备照片=replace(检测设备照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+				$conn->close();
+			}
+			break;
 	}
 	
 ?>
