@@ -17,27 +17,50 @@
 			if($type=='场景照片'){
 				$sql = "update 材料送检  set 场景照片=replace(场景照片,'".$imgID."','') where 时间戳='$sjc'";
 				$conn->query($sql);
-				$conn->close();
 			}else{
 				$sql = "update 材料送检  set 样品照片=replace(样品照片,'".$imgID."','') where 时间戳='$sjc'";
 				$conn->query($sql);
-				$conn->close();
 			}
+			$conn->close();
 			break;
 		case "实体检测":
 			if($type=='场景照片'){
 				$sql = "update 实体检测  set 检测前照片=replace(检测前照片,'".$imgID."','') where 时间戳='$sjc'";
 				$conn->query($sql);
-				$conn->close();
 			}else if($type=='检测实施过程中照片'){
 				$sql = "update 实体检测  set 检测实施过程中照片=replace(检测实施过程中照片,'".$imgID."','') where 时间戳='$sjc'";
 				$conn->query($sql);
-				$conn->close();
 			}else{
 				$sql = "update 实体检测  set 检测设备照片=replace(检测设备照片,'".$imgID."','') where 时间戳='$sjc'";
 				$conn->query($sql);
-				$conn->close();
 			}
+			$conn->close();
+			break;
+		case "实体自检":
+			if($type=='场景照片'){
+				$sql = "update 实体自检  set 检测前照片=replace(检测前照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+			}else if($type=='检测实施过程照片'){
+				$sql = "update 实体自检  set 检测实施过程照片=replace(检测实施过程照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+			}else{
+				$sql = "update 实体自检  set 检测设备照片=replace(检测设备照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+			}
+			$conn->close();
+			break;
+		case "材料自检":
+			if($type=='场景照片'){
+				$sql = "update 材料自检  set 检测前照片=replace(检测前照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+			}else if($type=='检测实施过程照片'){
+				$sql = "update 材料自检  set 检测实施过程照片=replace(检测实施过程照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+			}else{
+				$sql = "update 材料自检  set 检测设备照片=replace(检测设备照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+			}
+			$conn->close();
 			break;
 	}
 	
