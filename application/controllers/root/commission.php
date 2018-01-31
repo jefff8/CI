@@ -10,6 +10,8 @@
 			//用户单位
 			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/commission_model','commission');
+			$this->load->model('root/pj_all_model','get_pjname');
+			$data['projectName'] = $this->get_pjname->get_pjname($commission_timestamp);
 			$data['commission_data'] = $this->commission->commission($commission_timestamp);
 			$data['witness_data'] = $this->commission->witness($commission_timestamp);
 			$data['test'] = $this->commission->test($commission_timestamp);

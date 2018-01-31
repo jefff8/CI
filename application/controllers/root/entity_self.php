@@ -10,6 +10,8 @@
 			//用户单位
 			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/entity_self_model','entity_self');
+			$this->load->model('root/pj_all_model','get_pjname');
+			$data['projectName'] = $this->get_pjname->get_pjname($entity_timestamp);
 			$data['entity_data'] = $this->entity_self->self_inspection($entity_timestamp);
 			$data['witness_data'] = $this->entity_self->witness($entity_timestamp);
 			$data['result_data'] = $this->entity_self->result($entity_timestamp);

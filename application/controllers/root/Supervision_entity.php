@@ -10,6 +10,8 @@
 			//用户单位
 			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/Supervision_entity_model','Supervision_entity');
+			$this->load->model('root/pj_all_model','get_pjname');
+			$data['projectName'] = $this->get_pjname->get_pjname($pj_timestamp);
 			$data['draft_data'] = $this->Supervision_entity->supervised_inspection($pj_timestamp);
 			$data['witness_data'] = $this->Supervision_entity->witness($pj_timestamp);
 			$data['detection_result_data'] = $this->Supervision_entity->detection_result($pj_timestamp);

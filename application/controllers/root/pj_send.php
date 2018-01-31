@@ -13,6 +13,8 @@ class Pj_send extends MY_Controller{
 		//用户单位
 		$data['unit'] = $this->unit->index($data['uid']);
 		$this->load->model('root/pj_send_model','pj_send');
+		$this->load->model('root/pj_all_model','get_pjname');
+		$data['projectName'] = $this->get_pjname->get_pjname($pj_timestamp);
 		$data['send_data'] = $this->pj_send->check($pj_timestamp);
 		$data['witness_data'] = $this->pj_send->witness($pj_timestamp);
 		$data['samp_data'] = $this->pj_send->samp($pj_timestamp);

@@ -10,6 +10,8 @@
 			//用户单位
 			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/Division_model','Division');
+			$this->load->model('root/pj_all_model','get_pjname');
+			$data['projectName'] = $this->get_pjname->get_pjname($division_timestamp);
 			$data['division_timestamp'] = $division_timestamp;
 			$data['application_data'] = $this->Division->application($division_timestamp);
 			$data['confirmation_data'] = $this->Division->confirmation($division_timestamp);

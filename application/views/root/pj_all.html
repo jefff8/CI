@@ -94,10 +94,11 @@
                                                 <th>序号</th>
                                                 <th>工程名称</th>
                                                 <th>地址</th>
-                                                <th>施工单位</th>
+                                                <!-- <th>施工单位</th>
                                                 <th>监理单位</th>
                                                 <th>检测单位</th>
-                                                <th>监督机构</th>
+                                                <th>监督机构</th> -->
+                                                <th>竣工日期</th>
                                                 <th style="width: 80px;">工程状况</th>
                                                 <th style="width: 100px;">详情</th>
                                                 <th style="width: 100px;">操作</th>
@@ -110,10 +111,11 @@
                                                     <td><?php $i++; echo $i; ?></td>
                                                     <td><a href="<?php echo site_url('pj_send/index/' .$v['时间戳'] )?>"><?php echo $v['工程名称']?></a></td>
                                                     <td><?php echo $v['地址']?></td>
-                                                    <td><?php echo $v['施工单位']?></td>
+                                                    <td><?php echo $v['竣工日期']?></td>
+                                                    <!-- <td><?php echo $v['施工单位']?></td>
                                                     <td><?php echo $v['监理单位']?></td>
                                                     <td><?php echo $v['检测单位']?></td>
-                                                    <td><?php echo $v['监督机构']?></td>
+                                                    <td><?php echo $v['监督机构']?></td> -->
                                                     <?php
                                                         if($v['是否竣工']=='0'){
                                                     ?>

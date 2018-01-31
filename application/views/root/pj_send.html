@@ -110,7 +110,7 @@
                     <div class="row-fluid" >
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left"><?php echo $send_data[0]['工程名称'].' 工程列表' ?></div>
+                                <div class="muted pull-left"><?php echo $projectName[0]['工程名称'].' 工程列表' ?></div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
@@ -169,7 +169,7 @@
                     <div class="row-fluid" >
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left"><?php echo $send_data[0]['工程名称'].' 工程列表' ?></div>
+                                <div class="muted pull-left"><?php echo $projectName[0]['工程名称'].' 工程列表' ?></div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
@@ -228,7 +228,7 @@
                     <div class="row-fluid" >
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left"><?php echo $send_data[0]['工程名称'].' 工程列表' ?></div>
+                                <div class="muted pull-left"><?php echo $projectName[0]['工程名称'].' 工程列表' ?></div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
@@ -254,8 +254,8 @@
                                                 <th>数量</th>
                                                 <th>生产厂家</th>
                                                 <th>取样人</th>
-                                                <th>进场日期</th>
-                                                <th>取样日期</th>
+                                                <!-- <th>进场日期</th>
+                                                <th>取样日期</th> -->
                                                 <th style="width: 60px;">操作</th>
                                                 <?php 
                                                       if($unit[0]['单位']=='检测单位'||$unit[0]['单位']=='管理员'){
@@ -276,8 +276,8 @@
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
                                                     <td><?php echo $v['取样人'] ?></td>
-                                                    <td><?php echo $v['进场日期'] ?></td>
-                                                    <td><?php echo $v['取样日期'] ?></td>
+                                                    <!-- <td><?php echo $v['进场日期'] ?></td>
+                                                    <td><?php echo $v['取样日期'] ?></td> -->
                                                     <td>
                                                     	<a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>" type="button" class="btn btn-default">查看</a>
                                                     	<!-- <a href="" type="button" class="btn btn-default">删除</a> -->
@@ -380,7 +380,7 @@
                     <div class="row-fluid" >
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left"><?php echo $send_data[0]['工程名称'].' 工程列表' ?></div>
+                                <div class="muted pull-left"><?php echo $projectName[0]['工程名称'].' 工程列表' ?></div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
@@ -405,8 +405,8 @@
                                                 <th>数量</th>
                                                 <th>生产厂家</th>
                                                 <th>取样人</th>
-                                                <th>进场日期</th>
-                                                <th>取样日期</th>
+                                                <!-- <th>进场日期</th>
+                                                <th>取样日期</th> -->
                                                 <th>结果</th>
                                                 <th>操作</th>
                                             </tr>
@@ -420,8 +420,8 @@
                                                     <td><?php echo $v['数量'] ?></td>
                                                     <td><?php echo $v['生产厂家'] ?></td>
                                                     <td><?php echo $v['取样人'] ?></td>
-                                                    <td><?php echo $v['进场日期'] ?></td>
-                                                    <td><?php echo $v['取样日期'] ?></td>
+                                                    <!-- <td><?php echo $v['进场日期'] ?></td>
+                                                    <td><?php echo $v['取样日期'] ?></td> -->
                                                     <td><?php echo $v['工程单状态'] ?></td>
                                                     <td>
                                                     	<a href="<?php echo site_url('pj_send/check/'. $v['id'] .'/' . $v['工程时间戳']) ?>" type="button" class="btn btn-default">查看</a>

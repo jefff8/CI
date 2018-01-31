@@ -10,6 +10,8 @@
 			//用户单位
 			$data['unit'] = $this->unit->index($data['uid']);
 			$this->load->model('root/Household_model','household');
+			$this->load->model('root/pj_all_model','get_pjname');
+			$data['projectName'] = $this->get_pjname->get_pjname($household_timestamp);
 			$data['household_timestamp'] = $household_timestamp;
 			$data['application_data'] = $this->household->application($household_timestamp);
 			$data['confirmation_data'] = $this->household->confirmation($household_timestamp);
