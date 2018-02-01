@@ -38,11 +38,12 @@
 		$ulid = $_POST['ulid'];
 		$gcmc = $_POST['gcmc'];
 		require('../conn.php');
-		$sql = "select 工程单状态  from 材料监督抽检 where id = '$ulid' and 工程名称 = '".$gcmc."' " ;
+		$sql = "select 工程单状态 ,工程时间戳  from 材料监督抽检 where id = '$ulid' and 工程名称 = '".$gcmc."' " ;
 		$result = $conn->query($sql);
 		if($result->num_rows >0){
 			while($row = $result->fetch_assoc()){
 				$data_arr['工程单状态']=$row['工程单状态'];
+				$data_arr['工程时间戳']=$row['工程时间戳'];
 			}
 		}
 		$conn->close();
@@ -152,7 +153,7 @@
 		$gcmc = $_POST['gcmc'];
 		$testNum = $_POST['testNum'];
 		require('../conn.php');
-		$sql = "update 材料监督抽检  set 工程单状态 = '合格',检测报告编号='$testNum' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+		$sql = "update 材料监督抽检  set 工程单状态 = '合格',检测报告编号='$testNum' where id ='$ulid'  ";
 		$result = $conn->query($sql);
 		if($result){
 			$data_arr['结果']="处理成功！";
@@ -269,7 +270,7 @@
 		$pj_timestamp = $_POST["pj_timestamp"];
 		$Info = explode("|", $myInfo);
 		require('../conn.php');
-		$sqli = "insert into 材料监督抽检(时间戳,工程时间戳,工程名称,取样类型,规格,数量,生产厂家,取样人,进场日期,取样日期,合格证编号,使用部位,经销商单位,备注,检测单位,工程单状态,监理操作单位) values('$sjc','$pj_timestamp','$gcmc','$Info[0]','$Info[1]','$Info[2]','$Info[3]','$Info[4]','$Info[5]','$Info[6]','$Info[7]','$Info[8]','$Info[9]','$Info[10]','$Info[11]','新增','$Info[12]')";
+		$sqli = "insert into 材料监督抽检(时间戳,工程时间戳,工程名称,取样类型,规格,数量,生产厂家,取样人,进场日期,取样日期,合格证编号,使用部位,经销商单位,备注,检测单位,工程单状态,监理操作单位,检测操作单位) values('$sjc','$pj_timestamp','$gcmc','$Info[0]','$Info[1]','$Info[2]','$Info[3]','$Info[4]','$Info[5]','$Info[6]','$Info[7]','$Info[8]','$Info[9]','$Info[10]','$Info[11]','新增','$Info[12]','$Info[11]')";
 //		$sql = "update 材料监督抽检  set 工程单状态 = '已处理' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 		$result = $conn->query($sqli);
 		if($result){

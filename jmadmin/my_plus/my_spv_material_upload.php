@@ -54,7 +54,7 @@ for ($i= 0;$i< $nub2; $i++){
 		$sql = "update 材料监督抽检  set 工程单状态 = '已处理' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
 //		$sqli = "insert into 材料监督抽检(时间戳,工程时间戳,工程名称,取样类型,规格,数量,生产厂家,取样人,进场日期,取样日期,合格证编号,使用部位,经销商单位,备注,检测单位,工程单状态,监理操作单位,场景照片,场景照片说明,样品照片,样品照片说明) values('$mchen','$pj_timestamp','$pj_name','$Info[0]','$Info[1]','$Info[2]','$Info[3]','$Info[4]','$Info[5]','$Info[6]','$Info[7]','$Info[8]','$Info[9]','$Info[10]','$Info[11]','新增','$Info[12]','".$filenames1."','$sceneText','".$filenames2."','$sampleText')";
 	}
-	$sql = "select * from 材料监督抽检  '".$mchen."'";
+	$sql = "select * from 材料监督抽检  WHERE 时间戳='".$mchen."'";
 	$result = $conn -> query($sql);
 	if ($result -> num_rows > 0) {
 		if($lx=='syzp'||$lx=='syzp2'){
