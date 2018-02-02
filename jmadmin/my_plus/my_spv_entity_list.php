@@ -37,8 +37,8 @@
 		$pj_name = $_POST["pj_name"];
 		$sjc = $_POST["sjc"];
 		$pj_timestamp = $_POST["pj_timestamp"];
-		$sqli = "insert into 实体监督抽检(时间戳,工程名称,工程时间戳,检测类型,检测人,委托编号,检测单位,工程单状态) values ('$sjc','$pj_name','$pj_timestamp','$Info[2]',
-'$Info[0]','$Info[1]','$Info[3]','新建')";
+		$sqli = "insert into 实体监督抽检(时间戳,工程名称,工程时间戳,检测类型,检测人,委托编号,检测单位,工程单状态) values ('$sjc','$pj_name','$pj_timestamp','$Info[0]',
+'$Info[1]','$Info[2]','$Info[3]','新建')";
 //		$result = $conn->query($sql);
 		if ($conn -> query($sqli) === TRUE) {
 			$jsonresult = 'success';

@@ -55,7 +55,7 @@
 		$myInfo = $_POST["myInfo"];
 		$Info = explode("|", $myInfo);
 		$myid = $_POST['myid'];
-		$sqli = "update 实体监督抽检  set 检测人 = '$Info[0]',委托编号 = '$Info[2]',检测单位 = '$Info[1]',检测类型 = '$Info[3]' where id='$myid'";
+		$sqli = "UPDATE 实体监督抽检  SET 检测类型 = '$Info[0]',检测人= '$Info[1]',委托编号 = '$Info[2]',检测单位= '$Info[3]' WHERE id='$myid'";
 		if ($conn -> query($sqli) === TRUE) {
 			$jsonresult = 'success';
 		} else {
