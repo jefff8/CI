@@ -71,10 +71,6 @@ for ($i= 0;$i< $nub3; $i++){
 		$Text2 = $_POST["Text2"];//检测实施过程照片说明
 		$Text3 = $_POST["Text3"];//检测设备照片说明
 		$gcdzt = $_POST["gcdzt"];//工程单状态
-//		$pj_timestamp = $_POST["pj_timestamp"];
-//		$sqli = "insert into 实体监督抽检(时间戳,委托编号,场景照片说明,检测实施过程照片说明,检测设备照片说明,检测前照片,检测实施过程照片,检测设备照片) values ('$mchen','$ENum','$Text1','$Text2','$Text3','".$filenames1."','".$filenames2."','".$filenames3."')";
-//		$sqli = "insert into 实体监督抽检(委托编号) values ('$ENum')";
-//		$sqli = "update 实体监督抽检  set 工程单状态='提交检测',委托编号='$ENum',场景照片说明='$Text1',检测实施过程照片说明='$Text2',检测设备照片说明='$Text3',检测前照片='".$filenames1."',检测实施过程照片='".$filenames2."',检测设备照片='".$filenames3."' where 时间戳='".$mchen."'";
 		if($gcdzt=='扩大抽检准备'){
 			$sqli = "update 实体监督抽检  set 工程单状态='扩大抽检检测',场景照片说明='$Text1',检测实施过程照片说明='$Text2',检测设备照片说明='$Text3',检测前照片='".$filenames1."',检测实施过程照片='".$filenames2."',检测设备照片='".$filenames3."' where 时间戳='".$mchen."'";
 		}elseif($gcdzt=='准备'){

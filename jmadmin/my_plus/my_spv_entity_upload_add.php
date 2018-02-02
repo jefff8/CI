@@ -20,8 +20,11 @@ for ($i= 0;$i< $nub1; $i++){
 	$lx=$_POST["lx"];
 	$mchen=$_POST["mchen"];//时间戳
 	if($lx=='add'){
-//		$sqli = "insert into 实体监督抽检(监督抽检委托单) values ('".$filenames1."')";
 		$sqli = "UPDATE 实体监督抽检  SET 监督抽检委托单  ='".$filenames1."' where 时间戳 ='".$mchen."'  ";
+	}
+	//叠加附件
+	if($lx=='update1'){
+		$sqli = "update 实体监督抽检  set 监督抽检委托单=concat(监督抽检委托单,'".$filenames1."') where 时间戳='".$mchen."'";
 	}
 	if ($conn -> query($sqli) === TRUE) {
 			$jsonresult = 'success';

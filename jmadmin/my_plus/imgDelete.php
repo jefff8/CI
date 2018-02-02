@@ -62,6 +62,23 @@
 			}
 			$conn->close();
 			break;
+		case "材料监督抽检":
+			if($type=='场景照片'){
+				$sql = "update 材料监督抽检  set 场景照片=replace(场景照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+			}else{
+				$sql = "update 材料监督抽检  set 样品照片=replace(样品照片,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+			}
+			$conn->close();
+			break;
+		case "实体监督抽检":
+			if($type=='监督抽检委托单'){
+				$sql = "update 实体监督抽检  set 监督抽检委托单=replace(监督抽检委托单,'".$imgID."','') where 时间戳='$sjc'";
+				$conn->query($sql);
+			}
+			$conn->close();
+			break;
 	}
 	
 ?>
