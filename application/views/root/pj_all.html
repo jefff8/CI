@@ -99,10 +99,10 @@
                                                 <th>检测单位</th>
                                                 <th>监督机构</th> -->
                                                 <th>竣工日期</th>
-                                                <th style="width: 80px;">工程状况</th>
-                                                <th style="width: 100px;">详情</th>
-                                                <th style="width: 100px;">操作</th>
-                                                <th style="width: 100px;">操作</th>
+                                                <th >工程状况</th>
+                                                <th >详情</th>
+                                                <th >操作</th>
+                                                <th >操作</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -127,9 +127,9 @@
                                                     <?php
                                                         }
                                                     ?>
-                                                    <td><button  style="width: 100px;" type="button" class="btn btn-primary" onclick="window.location='<?php echo site_url('pj_all/detail/' . $v['工程id']) ?>' ">查看</button></td>
-                                                    <td><button  id="<?php echo $v['时间戳']?>" style="width: 100px;" type="button" class="btn btn-default" onclick="completed(this.id)">竣工</button></td>
-                                                    <td><button style="width: 100px;" id="<?php echo $v['工程id']?>"  type="button" class="btn btn-danger"  onclick="del_pj(this.id)">删除</button></td>
+                                                    <td><button  style="" type="button" class="btn btn-default" onclick="window.location='<?php echo site_url('pj_all/detail/' . $v['工程id']) ?>' ">查看</button></td>
+                                                    <td><button  id="<?php echo $v['时间戳']?>" style="" type="button" class="btn btn-default" onclick="completed(this.id)">竣工√</button></td>
+                                                    <td><button style="" id="<?php echo $v['工程id']?>"  type="button" class="btn btn-danger"  onclick="del_pj(this.id)">删除×</button></td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>

@@ -234,7 +234,7 @@
                                                             <td>
                                                               <div class="row-fluid padd-bottom">
                                                                 <?php 
-                                                                  if($v['监督抽检委托单']<>'0'){
+                                                                  if($v['监督抽检委托单']){
                                                                     $pho = explode('~*^*~',$v['监督抽检委托单']);
                                                                     $len = count($pho);
                                                                     for($i=1;$i<$len;$i++){
@@ -269,7 +269,7 @@
                   												                  	<div class="row-fluid padd-bottom">
                                                                 <p style="color: grey;">场景照片说明：<?php echo $v['场景照片说明'] ; ?></p>
                   									                            <?php 
-                  													                  		if($v['检测前照片']<>'0'){
+                  													                  		if($v['检测前照片']){
                   													                  			$pho = explode('~*^*~',$v['检测前照片']);
                   													                  			$len = count($pho);
                   													                  			for($i=1;$i<$len;$i++){
@@ -305,7 +305,7 @@
                   												                  	<div class="row-fluid padd-bottom">
                                                                 <p style="color: grey;">检测实施过程照片说明：<?php echo $v['检测实施过程照片说明'] ; ?></p>
                   									                             <?php 
-                  													                  		if($v['检测实施过程照片']<>'0'){
+                  													                  		if($v['检测实施过程照片']){
                   													                  			$pho = explode('~*^*~',$v['检测实施过程照片']);
                   													                  			$len = count($pho);
                   													                  			for($i=1;$i<$len;$i++){

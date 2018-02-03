@@ -364,7 +364,7 @@
                 												                  	<div class="row-fluid padd-bottom">
                                                               <p style="color: grey;">场景照片说明：<?php echo $v['场景照片说明'] ; ?></p>
                 									                            <?php 
-                													                  		if($v['场景照片']<>'0'){
+                													                  		if($v['场景照片']){
                 													                  			$pho = explode('~*^*~',$v['场景照片']);
                 													                  			$len = count($pho);
                 													                  			for($i=1;$i<$len;$i++){
@@ -401,7 +401,7 @@
                 												                  	<div class="row-fluid padd-bottom">
                                                               <p style="color: grey;">样品照片说明：<?php echo $v['样品照片说明'] ; ?></p>
                 									                             <?php 
-                													                  		if($v['样品照片']<>'0'){
+                													                  		if($v['样品照片']){
                 													                  			$pho = explode('~*^*~',$v['样品照片']);
                 													                  			$len = count($pho);
                 													                  			for($i=1;$i<$len;$i++){
