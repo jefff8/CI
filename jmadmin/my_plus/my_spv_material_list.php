@@ -60,13 +60,23 @@
 		}else{
 			$state = '已取样';
 		}
-		$sql = "update 材料监督抽检 set 工程单状态 = '".$state."' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
-		$result = $conn->query($sql);
-		if($result){
-			$data_arr['结果']="委托成功！";
-		}else{
-			$data_arr['结果']="委托失败！";
+		//判断是否上传了附件
+		$sql1 = "select 场景照片,样品照片 from 材料监督抽检  where id='$ulid'";
+		$result1 = $conn->query($sql1);
+		if($result1->num_rows>0){
+			while($row = $result1->fetch_assoc()){
+				$data['场景照片'] = $row['场景照片'];
+				$data['样品照片'] = $row['样品照片'];
+			}
+			if($data['场景照片']=='' || $data['样品照片']==''){
+				$data_arr['结果']="检测到该项目未上传附件,提交失败!";
+			}else{
+				$sql = "update 材料监督抽检 set 工程单状态 = '".$state."' where id ='$ulid' and 工程名称 = '".$gcmc."' ";
+				$result = $conn->query($sql);
+				$data_arr['结果']="委托成功！";
+			}
 		}
+		
 		$conn->close();
 		$data_json = json_encode($data_arr);
 		echo $data_json;

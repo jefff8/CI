@@ -120,13 +120,22 @@
 		}else if($gcdzt=='扩大抽检'){
 			$result = '扩大抽检准备';
 		}
-		$sql = "update 实体监督抽检 set 工程单状态 = '".$result."' where id ='$gcdId'  ";
-		$result = $conn->query($sql);
-		if($result){
-			$data_arr['结果']="提交检测成功！";
-		}else{
-			$data_arr['结果']="操作失败！";
+		//判断是否上传了附件
+		$sql1 = "select 监督抽检委托单 from 实体监督抽检  where id='$gcdId'";
+		$result1 = $conn->query($sql1);
+		if($result1->num_rows>0){
+			while($row = $result1->fetch_assoc()){
+				$data['监督抽检委托单'] = $row['监督抽检委托单'];
+			}
+			if($data['监督抽检委托单']==''){
+				$data_arr['结果']="检测到该项目未上传附件,提交失败!";
+			}else{
+				$sql = "update 实体监督抽检 set 工程单状态 = '".$result."' where id ='$gcdId'  ";
+				$result = $conn->query($sql);
+				$data_arr['结果']="提交检测成功！";
+			}
 		}
+		
 		$conn->close();
 		$data_json = json_encode($data_arr);
 		echo $data_json;
