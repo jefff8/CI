@@ -70,10 +70,10 @@
 		}
 		if($lx=='step2'){
 			$myInfo = $_POST["myInfo"];
-			$Info = explode("|", $myInfo);
+//			$Info = explode("|", $myInfo);
 			$sceneText = $_POST["sceneText"];
 			$sampleText = $_POST["sampleText"];
-			$sqli = "update 材料送检  set 工程单状态='取样复检',取样类型='$Info[0]',规格='$Info[1]',数量='$Info[2]',生产厂家='$Info[3]',取样人='$Info[4]',进场日期='$Info[5]',取样日期='$Info[6]',合格证编号='$Info[7]',使用部位='$Info[8]',经销商单位='$Info[9]',备注='$Info[10]',检测单位='$Info[11]',监理操作单位='$Info[12]',场景照片说明='$sceneText',样品照片说明='$sampleText',场景照片='".$filenames1."',样品照片='".$filenames2."' where 时间戳='".$mchen."'";
+			$sqli = "update 材料送检  set 工程单状态='取样复检',场景照片说明='$sceneText',样品照片说明='$sampleText',场景照片='".$filenames1."',样品照片='".$filenames2."' where 时间戳='".$mchen."'";
 		}
 	}
 	if ($conn -> query($sqli) === TRUE) {
