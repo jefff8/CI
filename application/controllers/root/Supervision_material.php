@@ -37,5 +37,32 @@
 			$this->load->view('root/supervision_material_Detail.html',$data);
 			// print_r($data['detail_data']);
 		}
+		
+		/**
+	 * 送检（送样）信息修改保存
+	 */
+		public function saving(){
+		$data = array(
+		'时间戳' =>$this ->input->post('timestamp'),
+		'合格证编号' =>$this ->input->post('save_pass'),
+		'进场日期'   =>$this ->input->post('save_date')
+		);
+		$this ->load ->model('root/supervision_material_model','update');
+		$this->update->update($data);
+	}
+		
+		/**
+	 * 送检（收样）信息修改保存
+	 */
+	public function saving1(){
+		$data = array(
+		'取样类型'   =>$this ->input->post('qylx'),
+		'时间戳' =>$this ->input->post('timestamp'),
+		'样品编号' =>$this ->input->post('save_pass1'),
+		'送样日期'   =>$this ->input->post('save_date1')
+		);
+		$this ->load ->model('root/supervision_material_model','update');
+		$this->update->update1($data);
+	}
 	}
 ?>

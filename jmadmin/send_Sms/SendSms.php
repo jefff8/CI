@@ -9,6 +9,7 @@ try {
     //);
 	$wsdl =$_POST['serverIP'];
 	//"http://sms3.mobset.com:8080/Api?wsdl";
+	
     $client = new SoapClient($wsdl);
 	$client->soap_defencoding = 'utf-8';
     $client->decode_utf8 = false;

@@ -16,11 +16,13 @@ class Pj_send_model extends CI_Model{
 		$data = $this->db->query($sql,array($pj_timestamp,'未见证','未见证复检','已见证','已见证复检'))->result_array();
 		return $data;
 	}
+	
 	public function samp($pj_timestamp){
 		$sql = "select * from 材料送检 where 工程时间戳=? and (工程单状态=? or 工程单状态=?)";
 		$data = $this->db->query($sql,array($pj_timestamp,'收样','收样复检'))->result_array();
 		return $data;
 	}
+	
 	public function result($pj_timestamp){
 		$sql = "select * from 材料送检 where 工程时间戳=? and (工程单状态=? or 工程单状态=? or 工程单状态=? or 工程单状态=?)";
 		$data = $this->db->query($sql,array($pj_timestamp,'合格','不合格','已处理','复检不合格'))->result_array();
@@ -49,6 +51,26 @@ class Pj_send_model extends CI_Model{
 		$data = $this->db->get_where('材料送检',array('id'=>$send_id))->result_array();
 		return $data;
 	}
+	
+	/**
+	 *  项目基本信息更新(取样)
+	 */
+	public function update($data){
+		$timestamp = $data['时间戳'];
+		$where = " 时间戳 = '$timestamp' ";
+		$this->db->update('材料送检',$data,$where);
+	}
+	
+	/**
+	 *  项目基本信息更新(收样)
+	 */
+	public function update1($data){
+		$timestamp = $data['时间戳'];
+		$pj_qylx =$data['取样类型'];
+		$where = " 时间戳 = '$timestamp' and 取样类型 = '$pj_qylx' ";
+		$this->db->update('材料送检',$data,$where);
+	}
+	
 	/**
 	 * 送检合格
 	 */

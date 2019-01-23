@@ -56,7 +56,38 @@
 		$json = json_encode($data_send);
 		echo $json;
 		$conn->close();
-	}else if($flag == "准备材料"){
+	}
+	
+	else if($flag=="检测验证码"){
+		$mobile = $_POST['mobile'];
+		$gcmc = $_POST['gcmc'];
+		$submodule = $_POST["submodule"];
+		require('../conn.php');
+		$sql ="select 插入时间 ,验证码 from 短信记录  where 手机号 = '$mobile' and 工程名称 ='".$gcmc."' and 子模块 = '".$submodule."'";
+		
+//		echo $sql;
+		$time = date("Y-m-d");
+//		echo $time;
+		$result = $conn->query($sql);
+		if($result){
+//			echo $result;
+			while($row = $result->fetch_assoc()){
+				$data_arr['插入时间']=$row['插入时间'];
+				if(strtotime($time) == strtotime($data_arr['插入时间'])){
+				$data_arr['判断位'] = 1;
+				$data_arr['验证码']=$row['验证码'];
+				}
+			}
+//		
+		}
+		
+		
+		$conn->close();
+		$data_json = json_encode($data_arr);
+		echo $data_json;
+	}
+	
+	else if($flag == "准备材料"){
 		$ulid = $_POST['ulid'];
 		require("../conn.php");
 		$sql = "update 材料自检   set 工程单状态='准备材料' where id='$ulid'";

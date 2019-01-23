@@ -143,11 +143,23 @@
                                                       <label  class="control-label" for="focusedInput">施工单位:</label>
                                                       <div class="controls">
                                                         <input id="construction" name="construction" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请选择施工单位" style value="<?php echo $v['施工单位'] ?>" disabled="disabled" >
-                                                         <div  style="display: none;">
-                                                            <select  id="construction_select" name="construction_select" style="width:284px;" multiple="multiple" value="<?php echo $v['施工单位'] ?>" >
-                                                             <?php foreach($org['road'] as $o): ?>
-                                                               <option ><?php echo $o['单位名称'] ?></option>
-                                                              <?php endforeach ?>
+                                                         <div   id= "construction_div"  style="display: none;">
+                                                            <select  id="construction_select" name="construction_select" style="width:515px;" multiple="multiple"  >
+                                                             <?php 
+                                                             	$sgdw = explode(",",$v['施工单位']);
+                                                             	foreach($org['road'] as $o){ 
+                                                             		
+                                                             		if(in_array($o['单位名称'],$sgdw)){
+                                                             ?>
+                                                             		<option selected="selected"><?php echo $o['单位名称'] ?></option>
+                                                             <?php
+                                                             		} else{
+                                                             ?>
+                                                             		<option ><?php echo $o['单位名称'] ?></option>
+                                                             <?php
+                                                             		}
+                                                             	}
+                                                             ?>
                                                             </select>
                                                          </div>
                                                       </div>
@@ -155,12 +167,25 @@
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">监理单位:</label>
                                                       <div id="select2" class="controls">
-                                                        <input id="supervision" name="supervision" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请选择施工单位" value="<?php echo $v['监理单位'] ?>" disabled="disabled">
-                                                        <div style="display: none;">
-                                                              <select  id="supervision_select" name="supervision_select" style="width:284px" multiple="multiple" >
-                                                             <?php foreach($org['overseeing'] as $o): ?>
-                                                               <option ><?php echo $o['单位名称'] ?></option>
-                                                              <?php endforeach ?>
+                                                        <input id="supervision" name="supervision" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请选择监理单位" value="<?php echo $v['监理单位'] ?>" disabled="disabled">
+                                                        <div id= "supervision_div"style="display: none;">
+                                                              <select  id="supervision_select" name="supervision_select" style="width:515px" multiple="multiple" >
+                                                             <?php 
+                                                             	$jldw = explode(",",$v['监理单位']);
+                                                             	foreach($org['overseeing'] as $o){ 
+                                                             		
+                                                             		if(in_array($o['单位名称'],$jldw)){
+                                                             ?>
+                                                             		<option selected="selected"><?php echo $o['单位名称'] ?></option>
+                                                             <?php
+                                                             		} else{
+                                                             ?>
+                                                             		<option ><?php echo $o['单位名称'] ?></option>
+                                                             <?php
+                                                             		}
+                                                             	}
+                                                             ?>
+                                                             
                                                               </select>
                                                         </div>
                                                       </div>
@@ -168,12 +193,24 @@
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">检测单位:</label>
                                                       <div class="controls">
-                                                        <input id="detection" name="detection" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请选择施工单位" value="<?php echo $v['检测单位'] ?>" disabled="disabled">
-                                                        <div style="display: none;" >
-                                                          <select  id="detection_select" name="detection_select" style="width:284px" multiple="multiple" >
-                                                              <?php foreach($org['detection'] as $o): ?>
-                                                                <option ><?php echo $o['单位名称'] ?></option>
-                                                              <?php endforeach ?>
+                                                        <input id="detection" name="detection" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请选择检测单位" value="<?php echo $v['检测单位'] ?>" disabled="disabled">
+                                                        <div id="detection_div"style="display: none;" >
+                                                          <select  id="detection_select" name="detection_select" style="width:515px" multiple="multiple" >
+                                                             <?php 
+                                                             	$jcdw = explode(",",$v['检测单位']);
+                                                             	foreach($org['detection'] as $o){ 
+                                                             		
+                                                             		if(in_array($o['单位名称'],$jcdw)){
+                                                             ?>
+                                                             		<option selected="selected"><?php echo $o['单位名称'] ?></option>
+                                                             <?php
+                                                             		} else{
+                                                             ?>
+                                                             		<option ><?php echo $o['单位名称'] ?></option>
+                                                             <?php
+                                                             		}
+                                                             	}
+                                                             ?>
                                                           </select>
                                                         </div>
                                                       </div>
@@ -181,12 +218,24 @@
                                                     <div class="control-group">
                                                       <label  class="control-label" for="focusedInput">监督机构:</label>
                                                       <div class="controls">
-                                                        <input name="Supervision_0" id="Supervision_0" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请选择施工单位"  value="<?php echo $v['监督机构'] ?>" disabled="disabled">
-                                                        <div style="display: none;">
-                                                            <select  id="Supervision_0_select" name="Supervision_0_select" style="width:284px" multiple="multiple" >
-                                                              <?php foreach($org['Supervision'] as $o): ?>
-                                                                <option ><?php echo $o['单位名称'] ?></option>
-                                                              <?php endforeach ?>
+                                                        <input name="Supervision_0" id="Supervision_0" class="input-xlarge focused" id="focusedInput" type="text" placeholder="请选择监督机构"  value="<?php echo $v['监督机构'] ?>" disabled="disabled">
+                                                        <div id="Supervision_0_div" style="display: none;">
+                                                            <select  id="Supervision_0_select" name="Supervision_0_select" style="width:515px" multiple="multiple" >
+                                                              <?php 
+                                                             	$jdjg = explode(",",$v['监督机构']);
+                                                             	foreach($org['Supervision'] as $o){ 
+                                                             		
+                                                             		if(in_array($o['单位名称'],$jdjg)){
+                                                             ?>
+                                                             		<option selected="selected"><?php echo $o['单位名称'] ?></option>
+                                                             <?php
+                                                             		} else{
+                                                             ?>
+                                                             		<option ><?php echo $o['单位名称'] ?></option>
+                                                             <?php
+                                                             		}
+                                                             	}
+                                                             ?>
                                                             </select>
                                                         </div>
                                                       </div>
@@ -520,8 +569,35 @@
                 alter.style.display="none";
                 var pj_form = document.getElementById("pj_form");
                 var length = document.getElementsByTagName("input").length;
+                
+                //获取当前施工单位名字
+                var contruction = document.getElementById("construction");
+                var contruction_div = document.getElementById("construction_div");
+                contruction.style.display = "none";
+                contruction_div.style.display  = "block";
+                
+                //获取当前监理单位名字
+                var supervision = document.getElementById("supervision");
+                var supervision_div = document.getElementById("supervision_div");
+                supervision.style.display = "none";
+                supervision_div.style.display  = "block";
+                
+                //获取当前检测单位名字
+                var detection = document.getElementById("detection");
+                var detection_div = document.getElementById("detection_div");
+                detection.style.display = "none";
+                detection_div.style.display  = "block";
+                
+                //获取当前监督机构名字
+                var Supervision = document.getElementById("Supervision_0");
+                var Supervision_div = document.getElementById("Supervision_0_div");
+                Supervision.style.display = "none";
+                Supervision_div.style.display  = "block";
+                
+                
                 for(var i=0;i<length;i++){
                   pj_form.getElementsByTagName("input")[i].removeAttribute("readonly");
+                  pj_form.getElementsByTagName("input")[i].removeAttribute("disabled");
                 }
             });
 
@@ -529,30 +605,30 @@
              * 工程基本信息修改保存
              */
             $("#save_info").click(function(){
-                 // 施工单位选择
-                // var construction_select = "";
-                // $("#construction_select option:selected").each(function(){
-                //     construction_select = construction_select + $(this).text() + ",";
-                // });
-                // document.getElementById("construction").value = construction_select.substr(0,construction_select.length-1);
-                // // 监理单位选择
-                // var supervision_select = "";
-                // $("#supervision_select option:selected").each(function(){
-                //     supervision_select = supervision_select + $(this).text() + ",";
-                // });
-                // document.getElementById("supervision").value = supervision_select.substr(0,supervision_select.length-1);
-                // // 检测单位选择
-                // var detection_select = "";
-                // $("#detection_select option:selected").each(function(){
-                //     detection_select = detection_select + $(this).text() + ",";
-                // });
-                // document.getElementById("detection").value = detection_select.substr(0,detection_select.length-1);
-                // // 检测机构选择
-                // var Supervision_0_select = "";
-                // $("#Supervision_0_select option:selected").each(function(){
-                //     Supervision_0_select = Supervision_0_select + $(this).text() + ",";
-                // });
-                // document.getElementById("Supervision_0").value = Supervision_0_select.substr(0,Supervision_0_select.length-1);
+                   // 施工单位选择
+                   var construction_select = "";
+                   $("#construction_select option:selected").each(function(){
+                       construction_select = construction_select + $(this).text() + ",";
+                   });
+                   document.getElementById("construction").value = construction_select.substr(0,construction_select.length-1);
+                   // 监理单位选择
+                   var supervision_select = "";
+                   $("#supervision_select option:selected").each(function(){
+                       supervision_select = supervision_select + $(this).text() + ",";
+                   });
+                   document.getElementById("supervision").value = supervision_select.substr(0,supervision_select.length-1);
+                   // 检测单位选择
+                   var detection_select = "";
+                   $("#detection_select option:selected").each(function(){
+                       detection_select = detection_select + $(this).text() + ",";
+                   });
+                   document.getElementById("detection").value = detection_select.substr(0,detection_select.length-1);
+                   // 检测机构选择
+                   var Supervision_0_select = "";
+                   $("#Supervision_0_select option:selected").each(function(){
+                       Supervision_0_select = Supervision_0_select + $(this).text() + ",";
+                   });
+                   document.getElementById("Supervision_0").value = Supervision_0_select.substr(0,Supervision_0_select.length-1);
                 var pj_info = "<?php echo site_url('pj_all/add')?>";
                 var controller = "<?php echo site_url('pj_all/update') ?>";
                 $.ajax({

@@ -22,6 +22,27 @@
 			$data = $this->db->query($sql,array($material_timestamp,'已取样','收样','已取样复检','收样复检'))->result_array();
 			return $data;
 		}
+		
+		/**
+	 *  项目基本信息更新(取样)
+	 */
+	public function update($data){
+		$timestamp = $data['时间戳'];
+		$where = "时间戳 = '$timestamp' ";
+		$this->db->update('材料监督抽检',$data,$where);
+	}
+	
+	
+	/**
+	 *  项目基本信息更新(收样)
+	 */
+	public function update1($data){
+		$timestamp = $data['时间戳'];
+		$pj_qylx =$data['取样类型'];
+		$where = " 时间戳 = '$timestamp' and 取样类型 = '$pj_qylx' ";
+		$this->db->update('材料监督抽检',$data,$where);
+	}
+		
 
 		/**
 		 * 材料抽检结果

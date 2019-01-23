@@ -145,10 +145,16 @@
                                                           <input id="pj_timestamp" name="pj_timestamp" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程时间戳']; ?>">
                                                         </div>
                                                       </div>
+                                                      <div class="control-group" style="display: none;">
+                                                        <label  class="control-label" for="focusedInput">时间戳:</label>
+                                                        <div class="controls">
+                                                          <input id="timestamp" name="timestamp" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['时间戳']; ?>">
+                                                        </div>
+                                                      </div>
                                                       <div class="control-group" >
                                                         <label  class="control-label" for="focusedInput">工程名称:</label>
                                                         <div class="controls">
-                                                          <input name="pj_name" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程名称']; ?>" readonly="readonly">
+                                                          <input  name="pj_name" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['工程名称']; ?>" readonly="readonly">
                                                         </div>
                                                       </div>
                                                       <div class="control-group" style="display: none;">
@@ -166,7 +172,7 @@
                                                       <div class="control-group">
                                                         <label  class="control-label" for="focusedInput">取样类型:</label>
                                                         <div class="controls">
-                                                          <input name="get_type" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['取样类型']; ?>" readonly="readonly">
+                                                          <input id="qylx" name="get_type" class="input-xlarge focused" id="focusedInput" type="text" value="<?php echo $v['取样类型']; ?>" readonly="readonly">
                                                         </div>
                                                       </div>
                                                       <div class="control-group">
@@ -196,8 +202,9 @@
                                                        <div class="control-group">
                                                         <label  class="control-label" for="focusedInput">进场日期:</label>
                                                         <div class="controls">
-                                                          <input name="enter_date" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['进场日期']; ?>" readonly="readonly">
+                                                          <input name="enter_date" class="input-xlarge focused" id="jcrq"  type="text" value="<?php echo $v['进场日期']; ?>" readonly="readonly">
                                                         </div>
+                                                        
                                                       </div>
                                                        <div class="control-group">
                                                         <label  class="control-label" for="focusedInput">取样日期:</label>
@@ -208,7 +215,7 @@
                                                       <div class="control-group">
                                                         <label  class="control-label" for="focusedInput">合格证编号:</label>
                                                         <div class="controls">
-                                                          <input name="qualified_num" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['合格证编号']; ?>" readonly="readonly">
+                                                          <input name="qualified_num" class="input-xlarge focused" id="hgzbh"  type="text" value="<?php echo $v['合格证编号']; ?>" readonly="readonly">
                                                         </div>
                                                       </div>
                                                       <div class="control-group">
@@ -238,7 +245,7 @@
                                                       <div class="control-group">
                                                         <label  class="control-label" for="focusedInput">样品编号:</label>
                                                         <div class="controls">
-                                                          <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['样品编号']; ?>" readonly="readonly">
+                                                          <input name="test_unit" class="input-xlarge focused" id="ypbh"  type="text" value="<?php echo $v['样品编号']; ?>" readonly="readonly">
                                                         </div>
                                                       </div>
                                                       <?php 
@@ -275,7 +282,7 @@
                                                       <div class="control-group">
                                                         <label  class="control-label" for="focusedInput">收样日期:</label>
                                                         <div class="controls">
-                                                          <input name="test_unit" class="input-xlarge focused" id="focusedInput"  type="text" value="<?php echo $v['收样日期']; ?>" readonly="readonly">
+                                                          <input name="test_unit" class="input-xlarge focused" id="syrq"  type="text" value="<?php echo $v['收样日期']; ?>" readonly="readonly">
                                                         </div>
                                                       </div>
                                                       <div class="control-group">
@@ -317,13 +324,28 @@
                                                     
                                                   </fieldset>
                                                 </form>
+                                                
+                                                <?php 
+                                                      if(($v['工程单状态']=='新增'||$v['工程单状态']=='取样'||$v['工程单状态']=='未见证') && ($unit[0]['单位']=='检测单位'||$unit[0]['单位']=='管理员')){
+                                                ?>
+                                                <div class="form-actions">
+                                                  	<button  class="btn btn-primary"  id="xiugai" style="margin-left: 270px;width: 132px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+													<button  class="btn btn-primary"  id="baocun" style="margin-left: 270px;width: 132px; display:none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                </div>
+                                                <?php 
+                                                      }
+                                                ?>
+                                                
                                                 <?php 
                                                       if(($v['工程单状态']=='收样'||$v['工程单状态']=='收样复检') && ($unit[0]['单位']=='检测单位'||$unit[0]['单位']=='管理员')){
                                                 ?>
                                                 <div class="form-actions">
                                                   <button  class="btn btn-success" data-toggle="modal" data-target="#qualifiedModal" style="margin-left: 270px;width: 132px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                   <button  class="btn btn-danger" data-toggle="modal" data-target="#failModal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不合格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                  <button  class="btn btn-primary"  id="xiugai1" style="position: absolute; margin-left: 5px;width:132px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+													<button  class="btn btn-primary"  id="baocun1" style="position:absolute; margin-left: 5px;width: 132px; display: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                 </div>
+                                                
                                                 <?php 
                                                       }
                                                 ?>
@@ -1000,11 +1022,89 @@
         <script src="<?php echo base_url()."style/assets/form-validation.js"?>"></script>
             
         <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
+        <script src="<?php echo base_url()."style/layer/layer.js" ?>"></script>
 		<script>
             jQuery(document).ready(function() {   
                FormValidation.init();
             });
         
+			//信息修改(取样)
+			$("#xiugai").click(function(){
+                layer.msg('请修改工程信息!',{
+                  time:1000
+                });
+                var save_info = document.getElementById("baocun");
+                var alter = document.getElementById("xiugai");
+                save_info.style.display = "block";
+                alter.style.display="none";
+//              
+                var hgzbh = document.getElementById("hgzbh");
+                var jcrq = document.getElementById("jcrq");
+                hgzbh.removeAttribute("readonly");
+                jcrq.removeAttribute("readonly");
+             });
+
+			//信息保存(取样)
+			$("#baocun").click(function(){				
+                var saving = "<?php echo site_url('Pj_send/saving') ?>";
+                $.ajax({
+                    data:{
+                      timestamp:document.getElementById("timestamp").value,
+                      save_pass:document.getElementById("hgzbh").value,
+                      save_date:document.getElementById("jcrq").value,
+                    },
+                    url:saving,
+                    type:'post',
+                    success:function(data){
+//                  	alert(data);
+                      alert("操作成功！");
+                      location.reload();
+                    },
+                    error:function(xhr,type,errorThrown){
+						alert('ajax错误'+type+'---'+errorThrown+"失败！");
+						}
+                });
+             });
+
+			//信息修改(收样)
+			$("#xiugai1").click(function(){
+                layer.msg('请修改工程信息!',{
+                  time:1000
+                });
+                var save_info = document.getElementById("baocun1");
+                var alter = document.getElementById("xiugai1");
+                save_info.style.display = "";
+                alter.style.display="none";
+//              
+                var ypbh = document.getElementById("ypbh");
+                var syrq = document.getElementById("syrq");
+                ypbh.removeAttribute("readonly");
+                syrq.removeAttribute("readonly");
+             });
+
+			//信息保存(收样)
+			$("#baocun1").click(function(){				
+                var saving1 = "<?php echo site_url('Pj_send/saving1') ?>";
+                $.ajax({
+                    data:{
+                      qylx:document.getElementById("qylx").value,
+                      timestamp:document.getElementById("timestamp").value,
+                      save_pass1:document.getElementById("ypbh").value,
+                      save_date1:document.getElementById("syrq").value,
+                    },
+                    url:saving1,
+                    type:'post',
+                    success:function(data){
+//                  	alert(data);
+                      alert("操作成功！");
+                      location.reload();
+                    },
+                    error:function(xhr,type,errorThrown){
+						alert('ajax错误'+type+'---'+errorThrown+"失败！");
+						}
+                });
+             });
+
 
             $(function() {
                 $(".datepicker").datepicker();
