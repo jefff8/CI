@@ -3,9 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Class Sy_pho extends MY_Controller{
 	//页面账号信息显示
 	public function index(){
+		//用户id
+		$data['uid'] = $this->session->userdata('userid');
+		$this->load->model('root/Privilege_model','unit');
+		//用户单位
+		$data['unit'] = $this->unit->index($data['uid']);
 		$this->load->model('root/sy_pho_model','sy_pho');
 		$data['sy_all'] = $this->sy_pho->index();
 		$this->load->view('root/sy_pho.html',$data);
+		
+		
 	}
 	//账号新建页面
 	public function add(){
@@ -33,7 +40,20 @@ Class Sy_pho extends MY_Controller{
 		$this->sy_pho->save($data);
 		success('sy_pho','保存成功');
 	}
+	
+
+		
+	
+
+	//删除用户信息
+public function del_user(){
+		$user_id = $this->input->post('user_id');
+		$this->load->model('root/sy_pho_model','del_user');
+		$this->del_user->del_user($user_id);
+	}
 
 }
+
+
 
 ?>

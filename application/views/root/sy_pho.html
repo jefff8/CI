@@ -101,9 +101,12 @@
                                                 <th>手机</th>
                                                 <th>单位</th>
                                                 <th>单位名称</th>
+                                                <th>操作</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        	<!--<?php print_r($unit); ?>-->
                                             <?php foreach($sy_all as $v): ?>
                                                 <tr class="">
                                                 	<td><?php echo $v['姓名'] ?></td>
@@ -112,6 +115,9 @@
                                                     <td><?php echo $v['手机'] ?></td>
                                                     <td><?php echo $v['单位'] ?></td>
                                                     <td><?php echo $v['单位名称'] ?></td>
+                                                    <td>
+                                                    	<button <?php if($unit[0]["单位"] == "管理员"||$unit[0]["单位"] == "监督机构"){?> onclick="del_user(this.id)" <?php }else{?> disabled="disabled" <?php } ?> style="" id="<?php echo $v['id']?>"  type="button" class="btn btn-danger"  >删除×</button></td>
+                                                    
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
@@ -130,6 +136,44 @@
         <script src="<?php echo base_url()."style/vendors/datatables/js/jquery.dataTables.min.js"?>"></script>
         <script src="<?php echo base_url()."style/assets/scripts.js"?>"></script>
         <script src="<?php echo base_url()."style/assets/DT_bootstrap.js"?>"></script>
+        <script src="<?php echo base_url()."style/layer/layer.js" ?>"></script>
+        <script >
+      
+        	
+        	
+        	 function del_user(user_id){
+        	
+        	 	
+        	 	
+                layer.confirm('是否确定删除该用户？',{
+                    btn:['确定','取消'],
+                    btn1:function(index,layero){
+                    	
+                        var controller = "<?php echo site_url('sy_pho/del_user') ?>";
+                        $.ajax({
+                            data:{
+                               user_id:user_id
+                            },
+                            type:"post",
+                            url:controller,
+                            success:function(data){
+                                //alert(data);
+                                alert("已删除！");
+                                location.href="<?php echo site_url('sy_pho') ?>"
+                            }
+                        });
+                     }
+                });
+               
+        	 	
+        	 		
+        	 	
+           
+               
+        	 	
+        	 	
+        	 }
+        </script>
     </body>
 
 </html>

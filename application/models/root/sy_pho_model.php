@@ -16,5 +16,13 @@ class Sy_pho_model extends CI_Model{
 	public function save($data){
 		$this->db->insert('用户信息',$data);
 	}
+	
+		
+	
+	//删除用户信息
+	public function del_user($user_id){
+		$this->db->delete('用户信息',array('id'=>$user_id));
+		
+	}
 }
 ?>

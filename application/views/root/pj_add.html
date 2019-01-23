@@ -653,17 +653,39 @@
 	                		var inp_val = input_1[i].value;
 	                		if(inp_val != ''){
 	                			for(j=0;j<data['road'].length;j++){
-	                				if(inp_val == data['road'][j]['手机'] ){
+	                				if(inp_val == data['road'][j]['手机']){
 	                					flag = 1;
 	                				}
+	                			if(  flag==1  ){
+	                					var arr = construction_select.value.split(",");
+	                				
+	                				for(var k = 0;k<arr.length;k++){
+	                					if(arr[k]==data['road'][j]['单位名称']){
+	                						flag=2;
+	                					}
+	                				}
+	                				
+	                				
+	                				
 	                			}
-	                			if(flag == 0){
+	                					
+	                				
+	                				
+	                				
+	                				
+	                				
+	                				
+	                			}
+	                			if(flag == 0||flag==1){
 		                			num = i+1 ;
 		                			msg_1 = msg_1 + num +",";
 	                			}
+	                			
+	                			
 	                		}
 	                		
 	                	}
+	                	
 	                	msg_1 = msg_1.substr(0,msg_1.length-1);
 //	                	alert("施工单位：第"+msg_1+"行的手机号记录不存在！");
 						
@@ -673,13 +695,27 @@
 	                	for(i=0;i<input_2.length;i++){
 	                		var flag = 0;
 	                		var inp_val = input_2[i].value;
+	                		
 	                		if(inp_val != ''){
 	                			for(j=0;j<data['overseeing'].length;j++){
 	                				if(inp_val == data['overseeing'][j]['手机'] ){
 	                					flag = 1;
 	                				}
+	                				if(flag==1){
+	                					var arr = supervision_select.value.split(",");
+	                				
+	                				for(var k = 0;k<arr.length;k++){
+	                					if(arr[k]==data['overseeing'][j]['单位名称']){
+	                						flag=2;
+	                					}
+	                				}
+	                				
+	                				
+	                				
 	                			}
-	                			if(flag == 0){
+	                				
+	                			}
+	                			if(flag == 0||flag==1){
 		                			num = i+1 ;
 		                			msg_2 = msg_2 + num +",";
 	                			}
@@ -694,13 +730,27 @@
 	                	for(i=0;i<input_3.length;i++){
 	                		var flag = 0;
 	                		var inp_val = input_3[i].value;
+	                		var arr = detection_select.value.split(",");
 	                		if(inp_val != ''){
 	                			for(j=0;j<data['detection'].length;j++){
 	                				if(inp_val == data['detection'][j]['手机'] ){
 	                					flag = 1;
 	                				}
+	                				if(flag==1){
+	                				
+	                				for(var k =0 ;k<arr.length;k++){
+	                					if(arr[k]==data['detection'][j]['单位名称']){
+	                						flag=2;
+	                					}
+	                				}
+	                				
+	                				
+	                				
 	                			}
-	                			if(flag == 0){
+	                				
+	                				
+	                			}
+	                			if(flag == 0||flag==1){
 		                			num = i+1 ;
 		                			msg_3 = msg_3 + num +",";
 	                			}
@@ -715,16 +765,30 @@
 	                	for(i=0;i<input_4.length;i++){
 	                		var flag = 0;
 	                		var inp_val = input_4[i].value;
+	                		var arr = Supervision_0_select.value.split(",");
 	                		if(inp_val != ''){
 	                			for(j=0;j<data['Supervision'].length;j++){
 	                				if(inp_val == data['Supervision'][j]['手机'] ){
 	                					flag = 1;
 	                				}
+	                				if(flag==1){
+	                				
+	                				for(var k = 0;k<arr.length;k++){
+	                					if(arr[k]==data['Supervision'][j]['单位名称']){
+	                						flag=2;
+	                					}
+	                				}
+	                				
+	                				
+	                				
 	                			}
-	                			if(flag == 0){
+	                				
+	                			}
+	                			if(flag == 0||flag==1){
 		                			num = i+1 ;
 		                			msg_4 = msg_4 + num +",";
 	                			}
+	                			
 	                		}
 	                		
 	                	}
@@ -739,16 +803,16 @@
 							//检测不通过
 							msg = new String();
 							if(msg_1!=''){
-								msg = "施工单位：第"+msg_1+"行的手机号记录不存在！\n";
+								msg = "施工单位：第"+msg_1+"行的手机号记录不存在或注册单位与项目登记施工单位不一致(请单位变更)！\n";
 							}
 							if(msg_2!=''){
-								msg = msg + "监理单位：第"+msg_2+"行的手机号记录不存在！\n";
+								msg = msg + "监理单位：第"+msg_2+"行的手机号记录不存在或注册单位与项目登记监理单位不一致(请单位变更)！\n";
 							}
 							if(msg_3 != ''){
-								msg = msg + "检测单位：第"+msg_3+"行的手机号记录不存在！\n";
+								msg = msg + "检测单位：第"+msg_3+"行的手机号记录不存在或注册单位与项目登记检测单位不一致(请走单位变更)！\n";
 							}
 							if(msg_4 != ''){
-								msg = msg + "监督机构：第"+msg_4+"行的手机号记录不存在！\n";
+								msg = msg + "监督机构：第"+msg_4+"行的手机号记录不存在或注册单位与项目登记监督机构不一致(请单位变更)！\n";
 							}
 							alert(msg);
 						}
